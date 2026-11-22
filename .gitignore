@@ -5,3 +5,4 @@ spike/results/
 .DS_Store
 .superpowers/
 .pytest_cache/
+dist/

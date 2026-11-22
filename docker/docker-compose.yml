@@ -1,0 +1,22 @@
+name: chesspgn
+
+services:
+  ollama:
+    image: chesspgn-ollama:latest
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
+    restart: unless-stopped
+
+  app:
+    image: chesspgn-app:latest
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.app
+    ports:
+      - "127.0.0.1:8321:8000"
+    volumes:
+      - "${CHESSPGN_DIR:?set CHESSPGN_DIR to the folder for saved games}:/data"
+    depends_on:
+      - ollama
+    restart: unless-stopped
