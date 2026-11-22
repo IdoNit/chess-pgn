@@ -1,0 +1,299 @@
+"""Decode a game's main line from noisy book text: search for the cheapest legal game.
+
+Each token may be read as a move (exactly, or after an OCR correction, at a cost), skipped (free for prose,
+expensive for something that looks like a move), or replaced by any legal move (expensive: the OCR destroyed
+it). A move missing from the text can be inserted. Move numbers and +/x/mate are soft checksums. Every
+correction becomes a Flag, so a guess is never silent.
+"""
+
+import re
+from dataclasses import dataclass, field
+from functools import lru_cache
+
+import chess
+
+from chesspgn import notation
+from chesspgn.tokens import COST_DROP_GROUP, COST_SUBSTITUTION, RESULT, Token, tokenize, variants
+
+COST_SKIP_MOVELIKE = 3.0  # ignore something that reads as a move
+COST_WILDCARD = 4.0  # token unreadable: play any legal move instead
+COST_NUMBER_MISMATCH = 1.5
+COST_GROUP_CONFLICT = 2.0  # an icon whose group was already learned as another piece
+CLOSE_CALL_MARGIN = 1.0  # a different game this close in cost gets a flag where it differs
+BEAM_WIDTH = 100
+MISSING_MOVE_TOP_STATES = 5
+
+_NO_MAPPING: tuple[int, ...] = (0,) * len(notation.GROUP_SYMBOLS)
+_MOVEISH = re.compile(r"[1-8x♔♕♖♗♘♙♚♛♜♝♞♟]|^[0O]-[0O]")
+_BRACKETS = {"(": ")", "[": "]", "{": "}"}
+
+
+@dataclass(frozen=True)
+class Flag:
+    ply: int  # 1-based within its line
+    token: str
+    chosen: str  # SAN of the move that was played there
+    reason: str  # ocr | icon | unreadable | missing | close_call | time_budget (side lines: "side:" prefix)
+
+
+@dataclass
+class Decoded:
+    convention: str
+    moves: list[chess.Move]
+    annotations: list[str]
+    token_index: list[int]
+    cost: float
+    flags: list[Flag]
+    result: str
+    mapping: tuple[int, ...]
+
+
+@dataclass(order=True)
+class _State:
+    cost: float
+    board: chess.Board = field(compare=False)
+    moves: tuple[chess.Move, ...] = field(compare=False, default=())
+    annotations: tuple[str, ...] = field(compare=False, default=())
+    flags: tuple[Flag, ...] = field(compare=False, default=())
+    token_index: tuple[int, ...] = field(compare=False, default=())
+    mapping: tuple[int, ...] = field(compare=False, default=_NO_MAPPING)
+
+    def but(self, **changes) -> "_State":
+        values = {f: getattr(self, f) for f in self.__dataclass_fields__}
+        values.update(changes)
+        return _State(**values)
+
+
+# ---------------------------------------------------------------- public API
+
+
+def decode_text(text: str, convention: str | None = None, pins: dict[int, chess.Move] | None = None) -> Decoded:
+    """Main line of `text`, ignoring everything inside ( ), [ ] and { }."""
+    return decode_tokens(tokenize(strip_brackets(text)), convention, pins)
+
+
+def decode_tokens(
+    tokens: list[Token], convention: str | None = None, pins: dict[int, chess.Move] | None = None
+) -> Decoded:
+    conventions = [convention] if convention is not None else notation.CONVENTIONS
+    results = [_decode(tokens, c, pins or {}) for c in conventions]
+    # A wrong convention breaks within a few moves: few moves, high cost.
+    return min(results, key=lambda r: r.cost - 2 * len(r.moves))
+
+
+def strip_brackets(text: str) -> str:
+    out: list[str] = []
+    stack: list[str] = []
+    for ch in text:
+        if ch in _BRACKETS:
+            stack.append(_BRACKETS[ch])
+        elif stack and ch == stack[-1]:
+            stack.pop()
+            out.append(" ")
+        elif not stack:
+            out.append(ch)
+    return "".join(out)
+
+
+def game_start(tokens: list[Token], convention: str) -> int:
+    """Index of the first "1" followed by a legal first move; earlier text (prose, tables) is ignored."""
+    start_board = chess.Board()
+    for i, token in enumerate(tokens[:-1]):
+        if token.number != 1 or token.black_to_move:
+            continue
+        readings = _readings(tokens[i + 1].text, convention)
+        for move in start_board.legal_moves:
+            found = _reading_match(start_board, move, readings, _NO_MAPPING)
+            if found is not None and found[0] == 0.0:
+                return i
+    return 0
+
+
+def looks_like_a_move(token: Token, convention: str) -> bool:
+    if token.number is not None or not token.text:
+        return False
+    return any(group[0][1] <= COST_SUBSTITUTION for group in _readings(token.text, convention).values())
+
+
+# ---------------------------------------------------------------- search
+
+
+def _decode(tokens: list[Token], convention: str, pins: dict[int, chess.Move]) -> Decoded:
+    start = game_start(tokens, convention)
+    beam = _search(tokens, start, convention, chess.Board(), pins)
+    return _finish(beam, convention, _result(tokens[start:], beam[0]))
+
+
+def _search(
+    tokens: list[Token], start: int, convention: str, board: chess.Board, pins: dict[int, chess.Move]
+) -> list[_State]:
+    beam = [_State(0.0, board.copy(stack=False))]
+    for index in range(start, len(tokens)):
+        token = tokens[index]
+        if token.number is not None:
+            beam = [_apply_number(s, token) for s in beam]
+        elif RESULT.match(token.text) is None and token.text != "=":
+            beam = _expand(beam, token, index, convention, pins)
+    return beam
+
+
+def _apply_number(state: _State, token: Token) -> _State:
+    black_to_move = state.board.turn == chess.BLACK
+    if state.board.fullmove_number == token.number and black_to_move == token.black_to_move:
+        return state
+    return state.but(cost=state.cost + COST_NUMBER_MISMATCH)  # numbers are OCR'd and misprinted too
+
+
+def _expand(beam: list[_State], token: Token, index: int, convention: str, pins: dict[int, chess.Move]) -> list[_State]:
+    readings = _readings(token.text, convention)
+    near_reading = any(group[0][1] <= COST_SUBSTITUTION for group in readings.values())
+    junk = sum(not ch.isalnum() and ch not in "-+/" for ch in token.text) * 2 >= len(token.text)
+    looks_like_move = near_reading or (len(token.text) <= 7 and (bool(_MOVEISH.search(token.text)) or junk))
+    best: dict[tuple, _State] = {}
+
+    def offer(state: _State) -> None:
+        key = (state.board._transposition_key(), len(state.moves), state.mapping)
+        if key not in best or state.cost < best[key].cost:
+            best[key] = state
+
+    for rank, state in enumerate(beam):
+        offer(state.but(cost=state.cost + (COST_SKIP_MOVELIKE if looks_like_move else 0.0)))
+        pinned = pins.get(len(state.moves) + 1)
+        if pinned is not None:
+            if looks_like_move and state.board.is_legal(pinned):
+                offer(_play(state, pinned, 0.0, token, "", index, state.mapping))
+            continue
+        matched = False
+        for move in state.board.legal_moves:
+            found = _reading_match(state.board, move, readings, state.mapping)
+            if found is not None:
+                matched = True
+                offer(_play(state, move, found[0], token, _reason(found[0]), index, found[1]))
+        if looks_like_move and not matched:
+            for move in state.board.legal_moves:
+                offer(_play(state, move, COST_WILDCARD, token, "unreadable", index, state.mapping))
+            if rank < MISSING_MOVE_TOP_STATES:
+                _offer_missing_move(state, token, readings, index, offer)
+    return sorted(best.values())[:BEAM_WIDTH]
+
+
+def _offer_missing_move(state: _State, token: Token, readings, index: int, offer) -> None:
+    """The book's previous move is missing from the text: insert one, then read this token."""
+    for missing in state.board.legal_moves:
+        inserted = _play(state, missing, COST_WILDCARD, Token("<missing>"), "missing", index, state.mapping)
+        for move in inserted.board.legal_moves:
+            found = _reading_match(inserted.board, move, readings, inserted.mapping)
+            if found is not None:
+                offer(_play(inserted, move, found[0], token, _reason(found[0]), index, found[1]))
+
+
+def _reason(cost: float) -> str:
+    if cost >= COST_SUBSTITUTION:
+        return "ocr"
+    if cost >= COST_DROP_GROUP:
+        return "icon"
+    return ""
+
+
+def _play(
+    state: _State, move: chess.Move, cost: float, token: Token, reason: str, index: int, mapping: tuple[int, ...]
+) -> _State:
+    board = state.board.copy(stack=False)
+    flags = state.flags
+    if reason:
+        flags = flags + (Flag(len(state.moves) + 1, token.text, board.san(move), reason),)
+    board.push(move)
+    return _State(
+        state.cost + cost, board, state.moves + (move,), state.annotations + (token.annotation,), flags,
+        state.token_index + (index,), mapping,
+    )
+
+
+# ---------------------------------------------------------------- reading tokens
+
+
+@lru_cache(maxsize=400_000)
+def _readings(text: str, convention: str) -> dict[object, tuple[tuple[notation.Clues, float], ...]]:
+    """Readings of a token grouped by moving piece ("castle", "group" for icon groups), cheapest first."""
+    groups: dict[object, list[tuple[notation.Clues, float]]] = {}
+    for variant, cost in variants(text):
+        clues = notation.read_clues(variant, convention)
+        if clues is None:
+            continue
+        if clues.castle is not None:
+            key: object = "castle"
+        elif clues.piece_class is not None:
+            key = "group"
+        else:
+            key = clues.piece
+        groups.setdefault(key, []).append((clues, cost))
+    return {k: tuple(v) for k, v in groups.items()}
+
+
+def _reading_match(
+    board: chess.Board, move: chess.Move, readings, mapping: tuple[int, ...]
+) -> tuple[float, tuple[int, ...]] | None:
+    """Cheapest reading of the token that fits `move`, and the icon-group mapping that results."""
+    piece = board.piece_type_at(move.from_square)
+    key: object = "castle" if board.is_castling(move) else piece
+    candidates = list(readings.get(key, ()))
+    if key not in ("castle", chess.PAWN):
+        candidates += readings.get("group", ())
+    best: tuple[float, tuple[int, ...]] | None = None
+    for clues, variant_cost in sorted(candidates, key=lambda r: r[1]):
+        if best is not None and variant_cost >= best[0]:
+            break
+        penalty = notation.match_cost(board, move, clues)
+        if penalty is None:
+            continue
+        new_mapping = mapping
+        if clues.piece_class is not None:
+            learned = mapping[clues.piece_class]
+            if learned == 0:
+                new_mapping = mapping[: clues.piece_class] + (piece,) + mapping[clues.piece_class + 1:]
+            elif learned != piece:
+                penalty += COST_GROUP_CONFLICT
+        total = variant_cost + penalty
+        if best is None or total < best[0]:
+            best = (total, new_mapping)
+    return best
+
+
+# ---------------------------------------------------------------- result
+
+
+def _finish(beam: list[_State], convention: str, result: str) -> Decoded:
+    best = beam[0]
+    flags = list(best.flags)
+    runner_up = next((s for s in beam[1:] if len(s.moves) == len(best.moves) and s.moves != best.moves), None)
+    if runner_up is not None and runner_up.cost - best.cost < CLOSE_CALL_MARGIN:
+        ply = next(i for i, (a, b) in enumerate(zip(best.moves, runner_up.moves), start=1) if a != b)
+        if not any(f.ply == ply for f in flags):
+            board = chess.Board()
+            for move in best.moves[: ply - 1]:
+                board.push(move)
+            flags.append(Flag(ply, "", board.san(best.moves[ply - 1]), "close_call"))
+    return Decoded(
+        convention=convention,
+        moves=list(best.moves),
+        annotations=list(best.annotations),
+        token_index=list(best.token_index),
+        cost=best.cost,
+        flags=sorted(flags, key=lambda f: f.ply),
+        result=result,
+        mapping=best.mapping,
+    )
+
+
+def _result(tokens: list[Token], best: _State) -> str:
+    for token in tokens:
+        if RESULT.match(token.text):
+            return {"1:0": "1-0", "0:1": "0-1", "½-½": "1/2-1/2"}.get(token.text, token.text)
+    words = " ".join(t.text.lower() for t in tokens[-6:])
+    if "black resigned" in words or "black resigns" in words:
+        return "1-0"
+    if "white resigned" in words or "white resigns" in words:
+        return "0-1"
+    if "and won" in words or "and wins" in words or best.board.is_checkmate():
+        return "0-1" if best.board.turn == chess.WHITE else "1-0"  # the side that moved last won
+    return "*"
