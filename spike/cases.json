@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Stein-Korchnoi 1964 (descriptive)",
+    "images": ["Stein-Korchnoi_Moscow_1964.jpg"],
+    "expected": "Stein-Korchnoi_Moscow_1964.pgn"
+  },
+  {
+    "name": "Korchnoi-Razov 1946 (figurine, variations)",
+    "images": ["1000071947.jpg"],
+    "expected": "1. Korchnoi-Razov - Leningrad 1946.pgn"
+  },
+  {
+    "name": "Zikov-Korchnoi 1946 (figurine, variations)",
+    "images": ["1000071949.jpg"],
+    "expected": "2. Zikov-Korchnoi - Leningrad 1946.pgn"
+  }
+]

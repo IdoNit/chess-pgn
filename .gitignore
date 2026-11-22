@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+spike/results/
+.DS_Store
+.superpowers/
+.pytest_cache/
