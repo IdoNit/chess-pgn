@@ -1,1 +1,68 @@
-<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><title>Chess PGN</title></head><body></body></html>
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chess PGN</title>
+  <link rel="stylesheet" href="/static/vendor/cm-chessboard/assets/chessboard.css">
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="top">
+    <h1 data-i18n="app.title"></h1>
+    <nav>
+      <a href="#/" data-i18n="nav.convert"></a>
+      <a href="#/games" data-i18n="nav.games"></a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="view-convert" class="view">
+      <div id="drop" class="drop">
+        <p data-i18n="convert.drop"></p>
+        <label class="button secondary"><span data-i18n="convert.choose"></span>
+          <input id="file-input" type="file" accept="image/*" multiple hidden></label>
+      </div>
+      <p class="hint" data-i18n="convert.order_hint"></p>
+      <ol id="pages" class="pages"></ol>
+      <button id="convert-button" class="button primary" data-i18n="convert.button"></button>
+      <p id="convert-status" class="status" role="status"></p>
+      <div id="results"></div>
+    </section>
+
+    <section id="view-review" class="view" hidden>
+      <div class="review">
+        <div class="review-main">
+          <h2 data-i18n="review.title"></h2>
+          <form id="headers" class="headers">
+            <h3 data-i18n="review.headers"></h3>
+            <div id="header-fields" class="header-fields"></div>
+            <button class="button secondary" type="submit" data-i18n="review.save_headers"></button>
+            <span id="headers-status" class="status"></span>
+          </form>
+          <div class="board-and-panel">
+            <div id="board" dir="ltr" class="board"></div>
+            <div id="panel" class="panel"></div>
+          </div>
+          <div id="moves" dir="ltr" class="moves"></div>
+          <div id="side-flags" class="side-flags"></div>
+          <div class="actions">
+            <a id="download" class="button primary" data-i18n="result.download"></a>
+          </div>
+        </div>
+        <div class="review-page">
+          <p class="hint" data-i18n="review.zoom_hint"></p>
+          <div id="page-viewer" class="page-viewer"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="view-games" class="view" hidden>
+      <h2 data-i18n="nav.games"></h2>
+      <ul id="games" class="games"></ul>
+    </section>
+  </main>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

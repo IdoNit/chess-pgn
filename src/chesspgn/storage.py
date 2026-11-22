@@ -62,6 +62,9 @@ class GameStore:
     def update(self, game_id: str, state: dict) -> GameRecord:
         return self._write(self._folder(game_id), state)
 
+    def delete(self, game_id: str) -> None:
+        shutil.rmtree(self._folder(game_id))
+
     def text(self, game_id: str) -> str:
         return (self._folder(game_id) / "text.txt").read_text(encoding="utf-8")
 

@@ -97,3 +97,11 @@ def test_index_served(tmp_path):
     client = TestClient(create_app(tmp_path, DownReader()))
     response = client.get("/")
     assert response.status_code == 200 and 'dir="rtl"' in response.text
+
+
+def test_delete_game(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    assert client.delete(f"/api/games/{game_id}").status_code == 200
+    assert client.get("/api/games").json() == []
+    assert client.get(f"/api/games/{game_id}").status_code == 404

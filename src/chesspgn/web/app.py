@@ -70,6 +70,11 @@ def create_app(store_root: Path, reader: Reader) -> FastAPI:
     def get_game(game_id: str):
         return _detail(store, game_id)
 
+    @app.delete("/api/games/{game_id}")
+    def delete_game(game_id: str):
+        store.delete(game_id)
+        return {"deleted": game_id}
+
     @app.get("/api/games/{game_id}/images/{name}")
     def get_image(game_id: str, name: str):
         return FileResponse(store.image(game_id, name))
