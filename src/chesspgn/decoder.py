@@ -396,3 +396,27 @@ def _result(tokens: list[Token], best: _State) -> str:
     if "and won" in words or "and wins" in words or best.board.is_checkmate():
         return "0-1" if best.board.turn == chess.WHITE else "1-0"  # the side that moved last won
     return "*"
+
+
+def suggest_moves(board: chess.Board, token_text: str, chosen: chess.Move, limit: int = 3) -> list[str]:
+    """Other legal moves that could be what the book printed, best fit first (SAN)."""
+    scored: list[tuple[float, str]] = []
+    for move in board.legal_moves:
+        if move == chosen:
+            continue
+        fits = [
+            found[0]
+            for convention in notation.CONVENTIONS
+            if token_text
+            and (found := _reading_match(board, move, _readings(token_text, convention), _NO_MAPPING)) is not None
+        ]
+        if fits:
+            score = min(fits)
+        elif move.to_square == chosen.to_square:
+            score = 5.0
+        elif board.piece_type_at(move.from_square) == board.piece_type_at(chosen.from_square):
+            score = 6.0
+        else:
+            continue
+        scored.append((score, board.san(move)))
+    return [san for _score, san in sorted(scored)[:limit]]
