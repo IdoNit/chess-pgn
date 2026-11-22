@@ -7,6 +7,7 @@ correction becomes a Flag, so a guess is never silent.
 """
 
 import re
+import time
 from dataclasses import dataclass, field
 from functools import lru_cache
 
@@ -21,7 +22,11 @@ COST_NUMBER_MISMATCH = 1.5
 COST_GROUP_CONFLICT = 2.0  # an icon whose group was already learned as another piece
 CLOSE_CALL_MARGIN = 1.0  # a different game this close in cost gets a flag where it differs
 BEAM_WIDTH = 100
+BEAM_WIDTH_OVER_BUDGET = 10
 MISSING_MOVE_TOP_STATES = 5
+PROBE_TOKENS = 24  # tokens decoded under every convention before committing to one
+RETRY_COST_PER_MOVE = 1.0  # a committed convention this costly gets the runner-up tried in full too
+DEFAULT_TIME_BUDGET_S = 90.0
 
 _NO_MAPPING: tuple[int, ...] = (0,) * len(notation.GROUP_SYMBOLS)
 _MOVEISH = re.compile(r"[1-8x♔♕♖♗♘♙♚♛♜♝♞♟]|^[0O]-[0O]")
@@ -67,18 +72,43 @@ class _State:
 # ---------------------------------------------------------------- public API
 
 
-def decode_text(text: str, convention: str | None = None, pins: dict[int, chess.Move] | None = None) -> Decoded:
+def decode_text(
+    text: str,
+    convention: str | None = None,
+    pins: dict[int, chess.Move] | None = None,
+    time_budget_s: float = DEFAULT_TIME_BUDGET_S,
+) -> Decoded:
     """Main line of `text`, ignoring everything inside ( ), [ ] and { }."""
-    return decode_tokens(tokenize(strip_brackets(text)), convention, pins)
+    return decode_tokens(tokenize(strip_brackets(text)), convention, pins, time_budget_s)
 
 
 def decode_tokens(
-    tokens: list[Token], convention: str | None = None, pins: dict[int, chess.Move] | None = None
+    tokens: list[Token],
+    convention: str | None = None,
+    pins: dict[int, chess.Move] | None = None,
+    time_budget_s: float = DEFAULT_TIME_BUDGET_S,
 ) -> Decoded:
-    conventions = [convention] if convention is not None else notation.CONVENTIONS
-    results = [_decode(tokens, c, pins or {}) for c in conventions]
-    # A wrong convention breaks within a few moves: few moves, high cost.
-    return min(results, key=lambda r: r.cost - 2 * len(r.moves))
+    deadline = time.monotonic() + time_budget_s
+    options = {"pins": pins or {}, "deadline": deadline}
+    if convention is not None:
+        return _decode_with_convention(tokens, convention, game_start(tokens, convention), **options)
+    # Probe every convention on the opening moves; a wrong one breaks within a few moves.
+    probes = []
+    for c in notation.CONVENTIONS:
+        start = game_start(tokens, c)
+        probes.append((_score(_decode_with_convention(tokens, c, start, start + PROBE_TOKENS, **options)), c, start))
+    probes.sort()
+    _score_, best_convention, start = probes[0]
+    result = _decode_with_convention(tokens, best_convention, start, **options)
+    if len(probes) > 1 and result.cost > RETRY_COST_PER_MOVE * max(1, len(result.moves)):
+        _s, second, second_start = probes[1]
+        other = _decode_with_convention(tokens, second, second_start, **options)
+        result = min((result, other), key=_score)
+    return result
+
+
+def _score(decoded: "Decoded") -> float:
+    return decoded.cost - 2 * len(decoded.moves)
 
 
 def strip_brackets(text: str) -> str:
@@ -118,23 +148,44 @@ def looks_like_a_move(token: Token, convention: str) -> bool:
 # ---------------------------------------------------------------- search
 
 
-def _decode(tokens: list[Token], convention: str, pins: dict[int, chess.Move]) -> Decoded:
-    start = game_start(tokens, convention)
-    beam = _search(tokens, start, convention, chess.Board(), pins)
-    return _finish(beam, convention, _result(tokens[start:], beam[0]))
+def _decode_with_convention(
+    tokens: list[Token],
+    convention: str,
+    start: int,
+    stop: int | None = None,
+    *,
+    pins: dict[int, chess.Move],
+    deadline: float,
+) -> Decoded:
+    end = len(tokens) if stop is None else min(stop, len(tokens))
+    beam, budget_ply = _search(tokens[:end], start, convention, chess.Board(), pins, deadline)
+    decoded = _finish(beam, convention, _result(tokens[start:end], beam[0]))
+    if budget_ply is not None:
+        decoded.flags.append(Flag(min(budget_ply, max(1, len(decoded.moves))), "", "", "time_budget"))
+        decoded.flags.sort(key=lambda f: f.ply)
+    return decoded
 
 
 def _search(
-    tokens: list[Token], start: int, convention: str, board: chess.Board, pins: dict[int, chess.Move]
-) -> list[_State]:
+    tokens: list[Token],
+    start: int,
+    convention: str,
+    board: chess.Board,
+    pins: dict[int, chess.Move],
+    deadline: float,
+) -> tuple[list[_State], int | None]:
+    """Final beam, and the ply from which the time budget forced a narrow search (None if never)."""
     beam = [_State(0.0, board.copy(stack=False))]
+    budget_ply: int | None = None
     for index in range(start, len(tokens)):
         token = tokens[index]
+        if budget_ply is None and time.monotonic() > deadline:
+            budget_ply = len(beam[0].moves) + 1
         if token.number is not None:
             beam = [_apply_number(s, token) for s in beam]
         elif RESULT.match(token.text) is None and token.text != "=":
-            beam = _expand(beam, token, index, convention, pins)
-    return beam
+            beam = _expand(beam, token, index, convention, pins, hurried=budget_ply is not None)
+    return beam, budget_ply
 
 
 def _apply_number(state: _State, token: Token) -> _State:
@@ -144,7 +195,9 @@ def _apply_number(state: _State, token: Token) -> _State:
     return state.but(cost=state.cost + COST_NUMBER_MISMATCH)  # numbers are OCR'd and misprinted too
 
 
-def _expand(beam: list[_State], token: Token, index: int, convention: str, pins: dict[int, chess.Move]) -> list[_State]:
+def _expand(
+    beam: list[_State], token: Token, index: int, convention: str, pins: dict[int, chess.Move], *, hurried: bool
+) -> list[_State]:
     readings = _readings(token.text, convention)
     near_reading = any(group[0][1] <= COST_SUBSTITUTION for group in readings.values())
     junk = sum(not ch.isalnum() and ch not in "-+/" for ch in token.text) * 2 >= len(token.text)
@@ -172,9 +225,9 @@ def _expand(beam: list[_State], token: Token, index: int, convention: str, pins:
         if looks_like_move and not matched:
             for move in state.board.legal_moves:
                 offer(_play(state, move, COST_WILDCARD, token, "unreadable", index, state.mapping))
-            if rank < MISSING_MOVE_TOP_STATES:
+            if rank < MISSING_MOVE_TOP_STATES and not hurried:
                 _offer_missing_move(state, token, readings, index, offer)
-    return sorted(best.values())[:BEAM_WIDTH]
+    return sorted(best.values())[: BEAM_WIDTH_OVER_BUDGET if hurried else BEAM_WIDTH]
 
 
 def _offer_missing_move(state: _State, token: Token, readings, index: int, offer) -> None:
