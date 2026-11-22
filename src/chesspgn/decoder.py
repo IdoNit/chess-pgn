@@ -53,6 +53,18 @@ class Decoded:
     mapping: tuple[int, ...]
 
 
+@dataclass
+class Line:
+    """A side line decoded strictly from a given position."""
+
+    moves: list[chess.Move]
+    annotations: list[str]
+    token_index: list[int]
+    cost: float
+    cut_at: int | None  # index of the first token the board rejected, else None
+    flags: list[Flag]
+
+
 @dataclass(order=True)
 class _State:
     cost: float
@@ -139,6 +151,16 @@ def game_start(tokens: list[Token], convention: str) -> int:
     return 0
 
 
+def decode_line(tokens: list[Token], convention: str, board: chess.Board, mapping: tuple[int, ...]) -> Line:
+    """Decode a side line from `board`. Strict: a move is never skipped or invented; stop at the first
+    move the board rejects."""
+    beam, _budget_ply, cut_at = _search(
+        tokens, 0, convention, board, {}, time.monotonic() + DEFAULT_TIME_BUDGET_S, strict=True, mapping=mapping
+    )
+    best = beam[0]
+    return Line(list(best.moves), list(best.annotations), list(best.token_index), best.cost, cut_at, list(best.flags))
+
+
 def looks_like_a_move(token: Token, convention: str) -> bool:
     if token.number is not None or not token.text:
         return False
@@ -158,7 +180,7 @@ def _decode_with_convention(
     deadline: float,
 ) -> Decoded:
     end = len(tokens) if stop is None else min(stop, len(tokens))
-    beam, budget_ply = _search(tokens[:end], start, convention, chess.Board(), pins, deadline)
+    beam, budget_ply, _cut = _search(tokens[:end], start, convention, chess.Board(), pins, deadline)
     decoded = _finish(beam, convention, _result(tokens[start:end], beam[0]))
     if budget_ply is not None:
         decoded.flags.append(Flag(min(budget_ply, max(1, len(decoded.moves))), "", "", "time_budget"))
@@ -173,9 +195,13 @@ def _search(
     board: chess.Board,
     pins: dict[int, chess.Move],
     deadline: float,
-) -> tuple[list[_State], int | None]:
-    """Final beam, and the ply from which the time budget forced a narrow search (None if never)."""
-    beam = [_State(0.0, board.copy(stack=False))]
+    *,
+    strict: bool = False,
+    mapping: tuple[int, ...] = _NO_MAPPING,
+) -> tuple[list[_State], int | None, int | None]:
+    """Final beam; the ply from which the time budget forced a narrow search (None if never); and in
+    strict mode the index of the token where decoding stopped (None if it reached the end)."""
+    beam = [_State(0.0, board.copy(stack=False), mapping=mapping)]
     budget_ply: int | None = None
     for index in range(start, len(tokens)):
         token = tokens[index]
@@ -184,8 +210,13 @@ def _search(
         if token.number is not None:
             beam = [_apply_number(s, token) for s in beam]
         elif RESULT.match(token.text) is None and token.text != "=":
-            beam = _expand(beam, token, index, convention, pins, hurried=budget_ply is not None)
-    return beam, budget_ply
+            new_beam, unmatched_move = _expand(
+                beam, token, index, convention, pins, hurried=budget_ply is not None, strict=strict
+            )
+            if strict and unmatched_move:
+                return beam, budget_ply, index
+            beam = new_beam
+    return beam, budget_ply, None
 
 
 def _apply_number(state: _State, token: Token) -> _State:
@@ -196,8 +227,16 @@ def _apply_number(state: _State, token: Token) -> _State:
 
 
 def _expand(
-    beam: list[_State], token: Token, index: int, convention: str, pins: dict[int, chess.Move], *, hurried: bool
-) -> list[_State]:
+    beam: list[_State],
+    token: Token,
+    index: int,
+    convention: str,
+    pins: dict[int, chess.Move],
+    *,
+    hurried: bool,
+    strict: bool,
+) -> tuple[list[_State], bool]:
+    """New beam, and whether this token looked like a move that no state could play."""
     readings = _readings(token.text, convention)
     near_reading = any(group[0][1] <= COST_SUBSTITUTION for group in readings.values())
     junk = sum(not ch.isalnum() and ch not in "-+/" for ch in token.text) * 2 >= len(token.text)
@@ -209,12 +248,15 @@ def _expand(
         if key not in best or state.cost < best[key].cost:
             best[key] = state
 
+    any_matched = False
     for rank, state in enumerate(beam):
-        offer(state.but(cost=state.cost + (COST_SKIP_MOVELIKE if looks_like_move else 0.0)))
+        if not (strict and looks_like_move):  # a side line never skips a move: it matches or is cut
+            offer(state.but(cost=state.cost + (COST_SKIP_MOVELIKE if looks_like_move else 0.0)))
         pinned = pins.get(len(state.moves) + 1)
         if pinned is not None:
             if looks_like_move and state.board.is_legal(pinned):
                 offer(_play(state, pinned, 0.0, token, "", index, state.mapping))
+                any_matched = True
             continue
         matched = False
         for move in state.board.legal_moves:
@@ -222,12 +264,16 @@ def _expand(
             if found is not None:
                 matched = True
                 offer(_play(state, move, found[0], token, _reason(found[0]), index, found[1]))
+        any_matched = any_matched or matched
+        if strict:
+            continue
         if looks_like_move and not matched:
             for move in state.board.legal_moves:
                 offer(_play(state, move, COST_WILDCARD, token, "unreadable", index, state.mapping))
             if rank < MISSING_MOVE_TOP_STATES and not hurried:
                 _offer_missing_move(state, token, readings, index, offer)
-    return sorted(best.values())[: BEAM_WIDTH_OVER_BUDGET if hurried else BEAM_WIDTH]
+    width = BEAM_WIDTH_OVER_BUDGET if hurried else BEAM_WIDTH
+    return sorted(best.values())[:width], looks_like_move and not any_matched
 
 
 def _offer_missing_move(state: _State, token: Token, readings, index: int, offer) -> None:
