@@ -53,3 +53,7 @@ def test_review_fix_features_present():
     assert "/dismiss" in js  # confirm a flagged move (I3)
     s = strings()
     assert "error.timeout" in s and "error.illegal_pin" in s
+
+
+def test_page_incomplete_message():
+    assert "error.page_incomplete" in strings()

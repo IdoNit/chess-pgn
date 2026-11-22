@@ -79,7 +79,7 @@ def _title_lines(segment: str) -> list[str]:
     if not starts:
         return []
     above = segment[: starts[0]].splitlines()
-    lines = [line.strip() for line in reversed(above) if line.strip()]
+    lines = [line.strip().strip("{}").strip() for line in reversed(above) if line.strip().strip("{}").strip()]
     return lines[:MAX_TITLE_LINES]
 
 
@@ -89,11 +89,19 @@ def extract_headers(segment: str) -> dict[str, str]:
     for line in _title_lines(segment):
         year = _YEAR.search(line)
         players = _PLAYERS.match(line)
+        first, _, rest = line.partition(",")
+        if year is not None and rest and headers["White"] == "?" and _PLAYERS.match(first):
+            # "Fox–Marshall, match, New York, circa 1897": players, event, place and year on one line
+            pair = _PLAYERS.match(first)
+            headers["White"], headers["Black"] = pair["white"].strip(), pair["black"].strip()
+            line = rest
+            year = _YEAR.search(line)
+            players = None
         if headers["White"] == "?" and players is not None and year is None:
             headers["White"], headers["Black"] = players["white"].strip(), players["black"].strip()
         elif headers["Date"].startswith("????") and year is not None:
             headers["Date"] = f"{year.group(1)}.??.??"
-            place = (line[: year.start()] + line[year.end():]).strip(" ,.")
+            place = re.sub(r"\bcirca\b", "", line[: year.start()] + line[year.end():]).strip(" ,.")
             if "," in place:
                 event, site = place.rsplit(",", 1)
                 headers["Event"], headers["Site"] = event.strip(), site.strip()

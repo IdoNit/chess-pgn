@@ -430,6 +430,8 @@ def _result(tokens: list[Token], best: _State) -> str:
         return "1-0"
     if "white resigned" in words or "white resigns" in words:
         return "0-1"
+    if re.search(r"\bresign(s|ed)?\b", words):  # a bare "Resigns": the side that just moved won
+        return "0-1" if best.board.turn == chess.WHITE else "1-0"
     if "and won" in words or "and wins" in words or best.board.is_checkmate():
         return "0-1" if best.board.turn == chess.WHITE else "1-0"  # the side that moved last won
     return "*"

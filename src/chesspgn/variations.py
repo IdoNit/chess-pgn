@@ -13,6 +13,7 @@ import chess.pgn
 
 from chesspgn import decoder
 from chesspgn.decoder import Decoded, Flag
+from chesspgn.layout import mark_commentary
 from chesspgn.tokens import Token, tokenize
 
 NAGS = {"!": 1, "?": 2, "!!": 3, "??": 4, "!?": 5, "?!": 6}
@@ -21,7 +22,7 @@ BONUS_SAME_FROM_SQUARE = 0.6  # "9 Bb3? ...; 9 Be2": both alternatives move the 
 BONUS_SAME_PIECE_TYPE = 0.3
 BONUS_RECENT_SIBLING = 0.05
 PENALTY_NOT_AN_ALTERNATIVE = 5.0  # first move equals the move already played there
-_OPEN, _CLOSE = "([{", ")]}"
+_OPEN, _CLOSE = "([", ")]"
 
 
 @dataclass
@@ -47,7 +48,7 @@ def build_game(
     text: str, pins: dict[int, chess.Move] | None = None, time_budget_s: float = decoder.DEFAULT_TIME_BUDGET_S
 ) -> BuiltGame:
     deadline = time.monotonic() + time_budget_s
-    tree = _parse_tree(text)
+    tree = _parse_tree(mark_commentary(text))
     tokens, groups = _split(tree.alternatives[0])
     decoded = decoder.decode_tokens(tokens, pins=pins, time_budget_s=time_budget_s)
     decoded.deadline = deadline
@@ -76,7 +77,17 @@ def _parse_tree(text: str) -> _Group:
             stack[-1].alternatives[-1].extend(tokenize("".join(buffer)))
             buffer.clear()
 
+    comment_depth = 0
     for ch in text:
+        # { } is a comment (PGN convention; also how layout marks commentary): never a side line.
+        if ch == "{":
+            if comment_depth == 0:
+                flush()
+            comment_depth += 1
+            continue
+        if comment_depth:
+            comment_depth -= ch == "}"
+            continue
         if ch in _OPEN:
             flush()
             group = _Group()

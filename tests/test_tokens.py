@@ -47,3 +47,7 @@ def test_variants_confusions_and_insertions():
 
 def test_variants_bounded():
     assert len(variants("QR-KB1+")) < 2500
+
+
+def test_black_move_number_before_line_break():
+    assert tokenize("8...\nNxd4?") == [Token("", number=8, black_to_move=True), Token("Nxd4", "?")]

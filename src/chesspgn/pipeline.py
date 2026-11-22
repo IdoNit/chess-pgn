@@ -7,7 +7,10 @@ import chess.pgn
 
 from chesspgn.decoder import Flag
 from chesspgn.games import continues_on_next_page, extract_headers, pgn_filename, split_games
+import re
+
 from chesspgn.icons import annotate, find_icons
+from chesspgn.layout import mark_commentary
 from chesspgn.reader import Reader
 from chesspgn.variations import BuiltGame, build_game
 
@@ -31,12 +34,22 @@ class ConvertedGame:
 
 def convert(images: list[Path], reader: Reader) -> list[ConvertedGame]:
     text = "\n".join(reader.read(image) for image in images)
-    annotated = annotate(text, find_icons(images))
-    games = [game_from_text(segment) for segment in split_games(annotated)]
+    if not uses_piece_letters(text):  # figurines lose their symbols in OCR; letters don't
+        text = annotate(text, find_icons(images))
+    games = [game_from_text(segment) for segment in split_games(mark_commentary(text))]
     games = [g for g in games if g.move_count > 0]
     if not games:
         raise NoGameFound("No chess game found in the images")
     return games
+
+
+_LETTER_MOVE = re.compile(r"(?<![A-Za-z])[KQRBN][a-h]?[1-8]?[x×:]?[a-h][1-8]|\b[KQRBNP]-[QK]?[RNB]?[1-8]")
+MIN_LETTER_MOVES = 5
+
+
+def uses_piece_letters(text: str) -> bool:
+    """Whether the page prints pieces as letters (Nc3, N×d5, N-KB3): then there are no figurines to find."""
+    return len(_LETTER_MOVE.findall(text)) >= MIN_LETTER_MOVES
 
 
 def game_from_text(segment: str, pins: dict[int, chess.Move] | None = None, headers: dict[str, str] | None = None) -> ConvertedGame:

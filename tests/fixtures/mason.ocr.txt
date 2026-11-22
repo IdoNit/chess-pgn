@@ -1,0 +1,51 @@
+16 FRANK MARSHALL
+
+with queens off the board. In each of his first five games Marshall traded
+queens by the twenty-first move, as he did in this fourth round encounter:
+
+7. Petroff Defense, Marshall Variation
+Mason–Marshall, Paris 1900
+
+1 e4 e5 2 Nf3 Nf6 3 N×e5 d6 4 Nf3 N×e4 5 d4 d5 6 Bd3 Bd6
+
+At the time this ancient, symmetrical continuation was considered quite in-
+ferior to 6 ... Be7, and Marshall would spend most of his career reviving it.
+
+7 0–0 0–0 8 c4 Be6 9 c×d5 B×d5 10 Nc3 N×c3 ll b×c3 Nd7!
+
+A theoretical novelty, 1900 style. The old move, ll ... c5?, had been thor-
+oughly discredited by 12 d×c5 B×c5 13 B×h7+! K×h7 14 Ng5+ and so on.
+After Marshall’s ll ... Nd7 the young Austrian analyst Karl Schlechter recom-
+mended 12 Rel and his older Viennese colleague Marco liked 12 Be3 but
+neither move promises much. As played, however, Marshall eagerly enters an
+endgame in which White’s pawn problems are more significant than his bishop
+assets.
+
+12 c4? B×f3! 13 Q×f3 Qh4 14 Qh3 Q×h3 15 g×h3 c5! 16 d5 Ne5
+17 Be2 Rae8 18 f4 b6!
+
+Almost forced play since move 12. Black’s last is a little finesse designed to
+get his N to d4. The immediate 18 ... Nc6 19 d×c6 R×e2 20 c×b7 is not so
+clear. But now 19 f×e5 B×e5 20 Rbl Bd4+ and 21 ... R×e2 loses for
+White.
+
+19 Bd2 Nc6 20 Bd3 Nd4 21 Kg2 Re7 22 Rael Rfe8 23 R×e7 R×e7
+24 Kf2 Kf8 25 h4 f5!
+
+In the Wiener Schachzeitung, Marco offered a long analysis of the bishop-of-
+opposite-color endgame White could force with 26 Be3 g6 27 B×d4 c×d4
+28 Kg3! (28 ... Re3+ 29 Rf3 Rel 30 Rfl R×fl! 31 B×fl Ke7) and which he
+concluded may be lost because Black’s more mobile king could penetrate to d4
+or c3.
+For example, 32 Bd3 Bc7! 33 h5 Kd6 34 h×g6 h×g6 35 h4 (35 Kh4 Bd8+)
+Kc5 36 B×f5!? g×f5 37 h5 d3 38 Kf3 B×f4! or 36 h5 g×h5! 37 B×f5 K×c4
+38 Bg6 h4+ and now 39 Kg4 h3 or 39 K×h4 B×f4 wins.
+
+26 h3 h5 27 Rgl Kf7 28 Rg5 g6 29 Rgl Re8 30 Rbl?
+(see diagram)
+
+To stop ... a6 and ... b5, White overlooks the main enemy threat.
+
+30 ... Be7! 31 Kg3 B×h4+ 32 K×h4 Nf3+ 33 Kg3 N×d2 34 Rdl
+Re3+ 35 Kf2 R×d3 36 Ke2 R×h3 37 K×d2 Rf3 38 d6 R×f4 White
+resigns

@@ -1,0 +1,27 @@
+1. French Defense, Tarrasch Variation
+Steinitz–Marshall, simultaneous exhibition, Montreal 1893
+
+1 e4 e6 2 d4 d5 3 Nd2 Ne7 4 Bd3 Nbc6?
+
+Marshall considered both his third and fourth moves bad (but actually the
+position after 4 ... Nd7 is perfectly reasonable and has been played by the
+modern grandmaster Yakov Murey). Now Black opens the center prematurely.
+
+5 c3 Ng6 6 Nb3 e5 7 Qe2! Be6 8 Nf3 Bd6?
+
+Made, he wrote later, with the “deliberate intention of sacrificing a piece!”
+But Marshall had to admit he overlooked that the sacrifice is refuted by
+White’s eleventh move, which drew a smile from the world champion.
+
+9 e×d5 B×d5 10 d×e5 0–0?
+(see diagram)
+
+Marshall expected ll e×d6 Re8 12 Be3 Nf4! But...
+
+ll B×g6! Re8 12 Bc2 N×e5 13 N×e5 R×e5 14 Be3 Qh4 15 0–0–0
+
+Nor does White fall for 15 0–0?? R×e3 16 f×e3 B×h2+ and mates. With
+minuscule compensation for a knight Marshall now displays a lifelong char-
+acteristic: a refusal to go away meekly.
+
+15 ... Qa4 16 Kbl Rd8 17 f4 Bc4 18 Qf3 Ra5 19 N×a5!
