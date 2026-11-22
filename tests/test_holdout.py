@@ -36,10 +36,10 @@ def test_holdout_page(name, images, expected_pgn):
     games = convert(images, OllamaReader("http://localhost:11434"))
     game = max(games, key=lambda g: g.move_count)
     moves = list(read(game.pgn).mainline_moves())
-    wrong_at = next((i for i, (a, b) in enumerate(zip(moves, expected), start=1) if a != b), None)
-    if wrong_at is None and len(moves) != len(expected):
-        wrong_at = min(len(moves), len(expected)) + 1
+    wrong = [i for i, (a, b) in enumerate(zip(moves, expected), start=1) if a != b]
+    if len(moves) != len(expected):
+        wrong.append(min(len(moves), len(expected)) + 1)
     flagged = sorted(f.ply for f in game.flags if not f.reason.startswith("side:"))
-    print(f"\n{name}: {len(moves)}/{len(expected)} moves, first wrong ply {wrong_at}, flags at {flagged}")
-    if wrong_at is not None:
-        assert any(p <= wrong_at + 1 for p in flagged), f"{name}: unflagged wrong move at ply {wrong_at}"
+    print(f"\n{name}: {len(moves)}/{len(expected)} moves, wrong plies {wrong}, flags at {flagged}")
+    unflagged = [w for w in wrong if not any(abs(p - w) <= 1 for p in flagged)]
+    assert not unflagged, f"{name}: wrong moves with no flag within one ply: {unflagged}"

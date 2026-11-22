@@ -1,6 +1,8 @@
 @echo off
 chcp 65001 >nul
-set "CHESSPGN_DIR=%USERPROFILE%\Documents\Chess PGN"
+for /f "usebackq delims=" %%d in (`powershell -NoProfile -Command "[Environment]::GetFolderPath('MyDocuments')"`) do set "DOCS=%%d"
+if not defined DOCS set "DOCS=%USERPROFILE%\Documents"
+set "CHESSPGN_DIR=%DOCS%\Chess PGN"
 if not exist "%CHESSPGN_DIR%" mkdir "%CHESSPGN_DIR%"
 cd /d "%~dp0"
 docker compose up -d --no-build

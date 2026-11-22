@@ -4,12 +4,12 @@ import re
 
 import chess
 
-from chesspgn import decoder, notation
+from chesspgn import decoder
 from chesspgn.tokens import tokenize
 from chesspgn.variations import BuiltGame
 
 MAX_TITLE_LINES = 4
-_GAME_START = re.compile(r"(?<![\d.])1\.?\s+(?P<move>\S+)")
+_GAME_START = re.compile(r"(?<![\w.])[1lI|]\.?\s+(?P<move>\S+)")
 _YEAR = re.compile(r"\b(1[5-9]\d\d|20\d\d)\b")
 _PLAYERS = re.compile(r"^(?:Game\s+\d+\s*[:.]\s*)?(?P<white>[^\d\-–—(]+?)\s*[-–—]\s*(?P<black>[^\d\-–—(]+?)\s*(?:\(.*)?$")
 _OPENING_WORDS = ("Defence", "Defense", "Opening", "Gambit", "Game", "Attack", "Variation", "System")
@@ -38,13 +38,7 @@ def _game_starts(text: str) -> list[int]:
 
 def _is_first_move(word: str, board: chess.Board) -> bool:
     tokens = [t for t in tokenize(word) if t.text]
-    if not tokens:
-        return False
-    for convention in notation.CONVENTIONS:
-        clues = notation.read_clues(tokens[0].text, convention)
-        if clues is not None and any(notation.match_cost(board, m, clues) == 0.0 for m in board.legal_moves):
-            return True
-    return False
+    return bool(tokens) and decoder.is_first_move(tokens[0].text)
 
 
 def _bracket_depth(text: str) -> list[int]:
@@ -120,7 +114,8 @@ def pgn_filename(headers: dict[str, str]) -> str:
     name = f"{known('White') or 'White'}-{known('Black') or 'Black'}"
     year = known("Date")[:4] if known("Date") else ""
     tail = " ".join(part for part in (known("Site"), year) if part)
-    return f"{name} - {tail}.pgn" if tail else f"{name}.pgn"
+    name = f"{name} - {tail}" if tail else name
+    return f"{name.rstrip('. ')[:150]}.pgn"  # Windows can't open names ending in "." or a space
 
 
 def continues_on_next_page(built: BuiltGame) -> bool:

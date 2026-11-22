@@ -51,6 +51,7 @@ class Decoded:
     flags: list[Flag]
     result: str
     mapping: tuple[int, ...]
+    deadline: float | None = None  # set by build_game: the page's deadline, shared with side lines
 
 
 @dataclass
@@ -74,6 +75,7 @@ class _State:
     flags: tuple[Flag, ...] = field(compare=False, default=())
     token_index: tuple[int, ...] = field(compare=False, default=())
     mapping: tuple[int, ...] = field(compare=False, default=_NO_MAPPING)
+    numbers_in_sync: bool = field(compare=False, default=True)
 
     def but(self, **changes) -> "_State":
         values = {f: getattr(self, f) for f in self.__dataclass_fields__}
@@ -139,24 +141,37 @@ def strip_brackets(text: str) -> str:
 
 def game_start(tokens: list[Token], convention: str) -> int:
     """Index of the first "1" followed by a legal first move; earlier text (prose, tables) is ignored."""
-    start_board = chess.Board()
-    for i, token in enumerate(tokens[:-1]):
-        if token.number != 1 or token.black_to_move:
-            continue
-        readings = _readings(tokens[i + 1].text, convention)
-        for move in start_board.legal_moves:
-            found = _reading_match(start_board, move, readings, _NO_MAPPING)
-            if found is not None and found[0] == 0.0:
+    for exact in (True, False):
+        for i, token in enumerate(tokens[:-1]):
+            is_one = (token.number == 1 and not token.black_to_move) or token.text in OCR_ONES
+            if is_one and _first_move_cost(tokens[i + 1].text, convention) <= (0.0 if exact else COST_SUBSTITUTION):
                 return i
     return 0
 
 
-def decode_line(tokens: list[Token], convention: str, board: chess.Board, mapping: tuple[int, ...]) -> Line:
+OCR_ONES = {"l", "I", "l.", "I.", "|"}
+
+
+def is_first_move(text: str) -> bool:
+    """Whether `text` reads, in some convention and with at most one OCR correction, as a legal first move."""
+    return any(_first_move_cost(text, c) <= COST_SUBSTITUTION for c in notation.CONVENTIONS)
+
+
+def _first_move_cost(text: str, convention: str) -> float:
+    start_board = chess.Board()
+    readings = _readings(text, convention)
+    costs = [found[0] for m in start_board.legal_moves if (found := _reading_match(start_board, m, readings, _NO_MAPPING))]
+    return min(costs, default=float("inf"))
+
+
+def decode_line(
+    tokens: list[Token], convention: str, board: chess.Board, mapping: tuple[int, ...], deadline: float | None = None
+) -> Line:
     """Decode a side line from `board`. Strict: a move is never skipped or invented; stop at the first
-    move the board rejects."""
-    beam, _budget_ply, cut_at = _search(
-        tokens, 0, convention, board, {}, time.monotonic() + DEFAULT_TIME_BUDGET_S, strict=True, mapping=mapping
-    )
+    move the board rejects. `deadline` is the page's (time.monotonic()) deadline."""
+    if deadline is None:
+        deadline = time.monotonic() + DEFAULT_TIME_BUDGET_S
+    beam, _budget_ply, cut_at = _search(tokens, 0, convention, board, {}, deadline, strict=True, mapping=mapping)
     best = beam[0]
     return Line(list(best.moves), list(best.annotations), list(best.token_index), best.cost, cut_at, list(best.flags))
 
@@ -209,7 +224,10 @@ def _search(
             budget_ply = len(beam[0].moves) + 1
         if token.number is not None:
             beam = [_apply_number(s, token) for s in beam]
-        elif RESULT.match(token.text) is None and token.text != "=":
+        elif RESULT.match(token.text) is not None:
+            if not strict:
+                break  # the game is over; anything after it belongs to the next game
+        elif token.text != "=":
             new_beam, unmatched_move = _expand(
                 beam, token, index, convention, pins, hurried=budget_ply is not None, strict=strict
             )
@@ -222,8 +240,11 @@ def _search(
 def _apply_number(state: _State, token: Token) -> _State:
     black_to_move = state.board.turn == chess.BLACK
     if state.board.fullmove_number == token.number and black_to_move == token.black_to_move:
-        return state
-    return state.but(cost=state.cost + COST_NUMBER_MISMATCH)  # numbers are OCR'd and misprinted too
+        return state if state.numbers_in_sync else state.but(numbers_in_sync=True)
+    flags = state.flags
+    if state.numbers_in_sync:  # flag the first mismatch of a run; numbers are OCR'd and misprinted too
+        flags = flags + (Flag(len(state.moves) + 1, str(token.number), "", "number"),)
+    return state.but(cost=state.cost + COST_NUMBER_MISMATCH, flags=flags, numbers_in_sync=False)
 
 
 def _expand(
@@ -240,7 +261,13 @@ def _expand(
     readings = _readings(token.text, convention)
     near_reading = any(group[0][1] <= COST_SUBSTITUTION for group in readings.values())
     junk = sum(not ch.isalnum() and ch not in "-+/" for ch in token.text) * 2 >= len(token.text)
-    looks_like_move = near_reading or (len(token.text) <= 7 and (bool(_MOVEISH.search(token.text)) or junk))
+    # "Nb&", "Nbe": a piece letter followed by file letters/junk is a damaged move; "Black", "Both" are words.
+    piece_led = (
+        token.text[:1] in _piece_starts(convention)
+        and len(token.text) <= 5
+        and not re.search(r"[i-z]", token.text[1:])
+    )
+    looks_like_move = near_reading or (len(token.text) <= 7 and (bool(_MOVEISH.search(token.text)) or junk or piece_led))
     best: dict[tuple, _State] = {}
 
     def offer(state: _State) -> None:
@@ -250,30 +277,40 @@ def _expand(
 
     any_matched = False
     for rank, state in enumerate(beam):
-        if not (strict and looks_like_move):  # a side line never skips a move: it matches or is cut
-            offer(state.but(cost=state.cost + (COST_SKIP_MOVELIKE if looks_like_move else 0.0)))
+        if not looks_like_move:
+            offer(state.but())
+        elif not strict:  # a side line never skips a move: it matches or is cut
+            skipped = Flag(len(state.moves) + 1, token.text, "", "skipped")
+            offer(state.but(cost=state.cost + COST_SKIP_MOVELIKE, flags=state.flags + (skipped,)))
         pinned = pins.get(len(state.moves) + 1)
-        if pinned is not None:
-            if looks_like_move and state.board.is_legal(pinned):
+        if pinned is not None and state.board.is_legal(pinned):  # an illegal (stale) pin is ignored here
+            if looks_like_move:
                 offer(_play(state, pinned, 0.0, token, "", index, state.mapping))
                 any_matched = True
             continue
-        matched = False
+        matched, matched_cleanly = False, False
         for move in state.board.legal_moves:
             found = _reading_match(state.board, move, readings, state.mapping)
             if found is not None:
                 matched = True
+                matched_cleanly = matched_cleanly or found[0] < COST_SUBSTITUTION
                 offer(_play(state, move, found[0], token, _reason(found[0]), index, found[1]))
         any_matched = any_matched or matched
         if strict:
             continue
-        if looks_like_move and not matched:
+        if looks_like_move and not matched_cleanly:
             for move in state.board.legal_moves:
                 offer(_play(state, move, COST_WILDCARD, token, "unreadable", index, state.mapping))
             if rank < MISSING_MOVE_TOP_STATES and not hurried:
                 _offer_missing_move(state, token, readings, index, offer)
     width = BEAM_WIDTH_OVER_BUDGET if hurried else BEAM_WIDTH
     return sorted(best.values())[:width], looks_like_move and not any_matched
+
+
+@lru_cache(maxsize=None)
+def _piece_starts(convention: str) -> frozenset[str]:
+    letters = {"K", "Q", "R", "B", "N", "P"} if convention == "descriptive" else {k[0] for k in notation.PIECE_BY_LETTER[convention]}
+    return frozenset(letters | set(notation.FIGURINES) | set(notation.GROUP_SYMBOLS))
 
 
 def _offer_missing_move(state: _State, token: Token, readings, index: int, offer) -> None:
@@ -304,7 +341,7 @@ def _play(
     board.push(move)
     return _State(
         state.cost + cost, board, state.moves + (move,), state.annotations + (token.annotation,), flags,
-        state.token_index + (index,), mapping,
+        state.token_index + (index,), mapping, state.numbers_in_sync,
     )
 
 

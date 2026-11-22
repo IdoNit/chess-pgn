@@ -6,6 +6,8 @@ board: each alternative is tried at every line where its move number fits, and k
 
 from dataclasses import dataclass, field
 
+import time
+
 import chess
 import chess.pgn
 
@@ -41,10 +43,14 @@ class _Line:
     token_index: list[int]
 
 
-def build_game(text: str, pins: dict[int, chess.Move] | None = None) -> BuiltGame:
+def build_game(
+    text: str, pins: dict[int, chess.Move] | None = None, time_budget_s: float = decoder.DEFAULT_TIME_BUDGET_S
+) -> BuiltGame:
+    deadline = time.monotonic() + time_budget_s
     tree = _parse_tree(text)
     tokens, groups = _split(tree.alternatives[0])
-    decoded = decoder.decode_tokens(tokens, pins=pins)
+    decoded = decoder.decode_tokens(tokens, pins=pins, time_budget_s=time_budget_s)
+    decoded.deadline = deadline
     game = chess.pgn.Game()
     game.headers["Result"] = decoded.result
     main = _Line(0, _add_moves(game, decoded.moves, decoded.annotations), decoded.token_index)
@@ -133,7 +139,7 @@ def _place(
         if j < 0 or j >= len(line.nodes):
             continue
         branch = line.nodes[j]
-        result = decoder.decode_line(tokens, decoded.convention, branch.board(), decoded.mapping)
+        result = decoder.decode_line(tokens, decoded.convention, branch.board(), decoded.mapping, decoded.deadline)
         if not result.moves:
             continue
         score = result.cost - bonus - 2.0 * len(result.moves) + _replacement_score(line, j, result.moves[0])
@@ -145,7 +151,8 @@ def _place(
     nodes = _add_moves(line.nodes[j], result.moves, result.annotations)
     placed = _Line(line.start_ply + j, nodes, result.token_index)
     _mark_equal(tokens, placed)
-    flags.extend(Flag(f.ply, f.token, f.chosen, f"side:{f.reason}") for f in result.flags)
+    # Side-line flags carry the absolute ply (1-based), so the review screen can say which move it is.
+    flags.extend(Flag(placed.start_ply + f.ply, f.token, f.chosen, f"side:{f.reason}") for f in result.flags)
     if result.cut_at is not None:
         # The book's own side line has an impossible move here: keep the rest as text.
         cut = result.cut_at - 1 if result.cut_at > 0 and tokens[result.cut_at - 1].number is not None else result.cut_at

@@ -60,3 +60,10 @@ def test_unknown_or_escaping_id(tmp_path):
         store.load("../etc")
     with pytest.raises(GameNotFound):
         store.load("nope")
+
+
+def test_folder_name_has_no_trailing_dot(tmp_path):
+    game = stein_game()
+    game.headers = {"White": "Smith", "Black": "Jones J."}
+    record = GameStore(tmp_path).save(game, [fixture_path("stein.jpg")])
+    assert not record.folder.name.endswith((".", " "))

@@ -105,3 +105,47 @@ def test_delete_game(tmp_path):
     assert client.delete(f"/api/games/{game_id}").status_code == 200
     assert client.get("/api/games").json() == []
     assert client.get(f"/api/games/{game_id}").status_code == 404
+
+
+# C3: illegal pins are refused; pins that no longer apply are dropped and reported
+def test_c3_illegal_pin_refused(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    for body in ({"ply": 49, "uci": "a1a8"}, {"ply": 999, "uci": "e2e4"}, {"ply": "x", "uci": "zz"}, {}):
+        response = client.post(f"/api/games/{game_id}/pin", json=body)
+        assert response.status_code == 422 and response.json() == {"error": "illegal_pin"}
+
+
+def test_c3_unhonoured_pin_dropped_and_flagged(tmp_path):
+    from chesspgn.storage import GameStore
+
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    store = GameStore(tmp_path)
+    _record, state = store.load(game_id)
+    state["pins"] = {"60": "a1a8"}  # stale pin that cannot be played
+    store.update(game_id, state)
+    detail = client.post(f"/api/games/{game_id}/pin", json={"ply": 49, "uci": "d3g6"}).json()
+    assert detail["pins"] == {"49": "d3g6"}
+    assert any(f["ply"] == 60 and f["reason"] == "pin_dropped" for f in detail["flags"])
+    assert detail["move_count"] > 60
+
+
+# I3: a side-line flag can be confirmed (dismissed)
+def test_i3_dismiss_flag(tmp_path):
+    text = fixture("stein.ocr.txt").replace("47 QxP+", "47 QXP+")
+    client = TestClient(create_app(tmp_path, SequenceReader(text)))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    detail = client.post(f"/api/games/{game_id}/dismiss", json={"ply": 93, "reason": "ocr"}).json()
+    assert not any(f["ply"] == 93 for f in detail["flags"])
+    assert client.get("/api/games").json()[0]["flags_open"] == 0
+
+
+# I4: several games download as one combined PGN
+def test_i4_combined_download(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("razov.letters.txt") + "\n" + fixture("zikov.letters.txt"))))
+    games = upload(client, "razov.jpg").json()["games"]
+    assert len(games) == 2
+    ids = ",".join(g["id"] for g in games)
+    response = client.get(f"/api/download?ids={ids}")
+    assert response.status_code == 200 and response.text.count("[Event ") == 2

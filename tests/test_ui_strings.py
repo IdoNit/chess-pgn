@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 
 STATIC = Path(__file__).parent.parent / "src" / "chesspgn" / "web" / "static"
-REASONS = ["ocr", "icon", "unreadable", "missing", "close_call", "time_budget"]
+REASONS = ["ocr", "icon", "unreadable", "missing", "close_call", "time_budget", "skipped", "number", "pin_dropped"]
 
 
 def strings() -> dict[str, str]:
@@ -44,3 +44,12 @@ def test_moves_and_board_are_ltr():
     js = (STATIC / "app.js").read_text(encoding="utf-8")
     assert 'id="moves" dir="ltr"' in html and 'id="board" dir="ltr"' in html
     assert "<bdi" in js  # Latin names inside Hebrew text are isolated
+
+
+def test_review_fix_features_present():
+    js = (STATIC / "app.js").read_text(encoding="utf-8")
+    assert "AbortController" in js  # a hung conversion ends with a message (I5)
+    assert "/api/download?ids=" in js  # combined download (I4)
+    assert "/dismiss" in js  # confirm a flagged move (I3)
+    s = strings()
+    assert "error.timeout" in s and "error.illegal_pin" in s

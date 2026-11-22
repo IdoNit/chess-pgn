@@ -58,5 +58,16 @@
   "flags.side_title": "הערות בווריאנטים",
   "error.no_game": "לא נמצא משחק בתמונה",
   "error.engine_down": "מנוע הקריאה לא פועל – הפעילו את Docker ונסו שוב",
-  "error.generic": "משהו השתבש. נסו שוב"
+  "error.generic": "משהו השתבש. נסו שוב",
+  "reason.skipped": "נראה כמו מסע שלא הצלחנו לקרוא, ודילגנו עליו – כדאי לוודא",
+  "reason.number": "מספר המסע בספר לא מתאים – אולי מסע חסר או מיותר כאן",
+  "reason.pin_dropped": "תיקון קודם שלך כבר לא חוקי אחרי שינוי אחר, ולכן בוטל",
+  "reason.side:skipped": "בווריאנט: מסע שלא נקרא",
+  "reason.side:number": "בווריאנט: מספר מסע לא מתאים",
+  "reason.side:pin_dropped": "בווריאנט: תיקון בוטל",
+  "review.confirm": "המסע נכון",
+  "review.in_variation": "בווריאנט, מסע",
+  "result.download_all": "הורדת כל המשחקים לקובץ אחד",
+  "error.timeout": "ההמרה לקחה יותר מדי זמן. נסו עמוד אחד בכל פעם",
+  "error.illegal_pin": "המסע הזה אינו חוקי בעמדה הזו"
 }

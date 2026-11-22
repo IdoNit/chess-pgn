@@ -2,6 +2,7 @@ import {Chessboard, COLOR, INPUT_EVENT_TYPE} from "/static/vendor/cm-chessboard/
 import {Chess} from "/static/vendor/chess.js"
 
 const HEADER_FIELDS = ["White", "Black", "Event", "Site", "Date", "Round", "Opening"]
+const CONVERT_TIMEOUT_MS = 15 * 60 * 1000
 let STRINGS = {}
 const state = {files: [], game: null, selectedPly: null, board: null}
 
@@ -14,13 +15,23 @@ function applyI18n(root = document) {
     root.querySelectorAll("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n) })
 }
 
-async function api(method, url, body, isForm = false) {
+async function api(method, url, body, isForm = false, timeoutMs = 0) {
     const options = {method}
+    if (timeoutMs) {
+        const controller = new AbortController()
+        setTimeout(() => controller.abort(), timeoutMs)
+        options.signal = controller.signal
+    }
     if (body !== undefined) {
         options.body = isForm ? body : JSON.stringify(body)
         if (!isForm) options.headers = {"Content-Type": "application/json"}
     }
-    const response = await fetch(url, options)
+    let response
+    try {
+        response = await fetch(url, options)
+    } catch (error) {
+        throw new Error(error.name === "AbortError" ? "timeout" : "generic")
+    }
     const data = await response.json().catch(() => ({}))
     if (!response.ok) throw new Error(data.error || "generic")
     return data
@@ -88,11 +99,18 @@ async function runConvert() {
     status.textContent = t("convert.working")
     $("results").innerHTML = ""
     try {
-        const data = await api("POST", "/api/convert", form, true)
+        const data = await api("POST", "/api/convert", form, true, CONVERT_TIMEOUT_MS)
         status.textContent = ""
         state.files = []
         renderPages()
         data.games.forEach((game) => $("results").appendChild(resultCard(game, data.games.length > 1)))
+        if (data.games.length > 1) {
+            const all = document.createElement("a")
+            all.className = "button primary"
+            all.href = `/api/download?ids=${data.games.map((g) => encodeURIComponent(g.id)).join(",")}`
+            all.textContent = t("result.download_all")
+            $("results").prepend(all)
+        }
     } catch (error) {
         status.textContent = errorText(error)
         status.classList.add("error")
@@ -149,9 +167,14 @@ function renderReview() {
     renderBoardAndPanel()
     const side = game.flags.filter((f) => f.reason.startsWith("side:"))
     $("side-flags").innerHTML = side.length
-        ? `<strong>${esc(t("flags.side_title"))}</strong><ul>${side.map((f) =>
-            `<li>${esc(t(`reason.${f.reason}`))}: ${ltr(f.token)} → ${ltr(f.chosen)}</li>`).join("")}</ul>`
+        ? `<strong>${esc(t("flags.side_title"))}</strong><ul>${side.map((f, i) =>
+            `<li>${esc(t("review.in_variation"))} ${Math.ceil(f.ply / 2)} (${esc(t(f.ply % 2 ? "review.white" : "review.black"))}): ${esc(t(`reason.${f.reason}`))}
+             <span dir="ltr" class="move-text">${esc(f.token)} → ${esc(f.chosen)}</span>
+             <button class="button secondary" type="button" data-side="${i}">${esc(t("review.confirm"))}</button></li>`).join("")}</ul>`
         : ""
+    $("side-flags").querySelectorAll("[data-side]").forEach((button) => {
+        button.onclick = () => dismiss(side[Number(button.dataset.side)])
+    })
 }
 
 function renderMoves() {
@@ -213,7 +236,10 @@ function renderPanel(move) {
         ${options.length ? `<div>${esc(t("review.which"))}</div><div class="suggestions">${options.map((san) =>
             `<button class="button ${san === move.san ? "primary" : "secondary"}" type="button" data-san="${esc(san)}">${esc(san)}</button>`).join("")}</div>` : ""}
         <div class="hint">${esc(t("review.or_drag"))}</div>
+        ${flag ? `<button class="button secondary confirm" type="button">✓ ${esc(t("review.confirm"))}</button>` : ""}
         <div class="status panel-status"></div>`
+    const confirm = panel.querySelector(".confirm")
+    if (confirm) confirm.onclick = () => dismiss(flag)
     panel.querySelectorAll("[data-san]").forEach((button) => {
         button.onclick = () => {
             const chess = new Chess(move.fen_before)
@@ -231,6 +257,16 @@ async function pin(ply, uci) {
         renderReview()
     } catch (error) {
         $("panel").querySelector(".panel-status").textContent = errorText(error)
+    }
+}
+
+async function dismiss(flag) {
+    try {
+        state.game = await api("POST", `/api/games/${encodeURIComponent(state.game.id)}/dismiss`, {ply: flag.ply, reason: flag.reason})
+        if (!flag.reason.startsWith("side:")) state.selectedPly = firstOpenFlag(flag.ply)
+        renderReview()
+    } catch (error) {
+        $("side-flags").textContent = errorText(error)
     }
 }
 

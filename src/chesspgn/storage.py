@@ -84,7 +84,8 @@ class GameStore:
         return folder
 
     def _new_folder(self, headers: dict[str, str]) -> Path:
-        players = _UNSAFE.sub("", f"{headers.get('White', '?')}-{headers.get('Black', '?')}").strip() or "game"
+        players = _UNSAFE.sub("", f"{headers.get('White', '?')}-{headers.get('Black', '?')}")
+        players = players[:100].rstrip(". ").strip() or "game"  # Windows can't open names ending in "." or a space
         base = f"{datetime.now():%Y-%m-%d} {players}"
         folder, n = self.root / base, 1
         while folder.exists():

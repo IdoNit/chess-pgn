@@ -82,10 +82,26 @@ def create_app(store_root: Path, reader: Reader) -> FastAPI:
     @app.post("/api/games/{game_id}/pin")
     def pin(game_id: str, body: dict):
         _record, state = store.load(game_id)
-        ply, uci = int(body["ply"]), str(body["uci"])
-        pins = {**state["pins"], str(ply): uci}
-        _redecode(store, game_id, state, pins, state["headers"])
+        move = _legal_pin(state["pgn"], body)
+        if move is None:
+            return JSONResponse({"error": "illegal_pin"}, status_code=422)
+        ply, uci = move
+        _redecode(store, game_id, state, {**state["pins"], str(ply): uci}, state["headers"])
         return _detail(store, game_id)
+
+    @app.post("/api/games/{game_id}/dismiss")
+    def dismiss(game_id: str, body: dict):
+        """The user checked a flagged move and confirms it as is."""
+        _record, state = store.load(game_id)
+        state["flags"] = [f for f in state["flags"] if not (f["ply"] == body.get("ply") and f["reason"] == body.get("reason"))]
+        store.update(game_id, state)
+        return _detail(store, game_id)
+
+    @app.get("/api/download")
+    def download_several(ids: str):
+        pgns = [store.load(game_id)[1]["pgn"].strip() for game_id in ids.split(",") if game_id]
+        disposition = f"attachment; filename*=UTF-8''{quote('games.pgn')}"
+        return Response("\n\n".join(pgns) + "\n", media_type="text/plain; charset=utf-8", headers={"Content-Disposition": disposition})
 
     @app.put("/api/games/{game_id}/headers")
     def set_headers(game_id: str, body: dict):
@@ -129,18 +145,41 @@ class _FixtureReader:
         return text
 
 
+def _legal_pin(pgn: str, body: dict) -> tuple[int, str] | None:
+    """(ply, uci) if `body` names a legal move at that ply of the current main line, else None."""
+    ply, uci = body.get("ply"), body.get("uci")
+    if not isinstance(ply, int) or not isinstance(uci, str):
+        return None
+    game = chess.pgn.read_game(io.StringIO(pgn))
+    moves = list(game.mainline_moves())
+    if not 1 <= ply <= len(moves) + 1:
+        return None
+    board = game.board()
+    for move in moves[: ply - 1]:
+        board.push(move)
+    try:
+        move = chess.Move.from_uci(uci)
+    except ValueError:
+        return None
+    return (ply, uci) if board.is_legal(move) else None
+
+
 def _redecode(store: GameStore, game_id: str, state: dict, pins: dict[str, str], headers: dict[str, str]) -> None:
     game = game_from_text(store.text(game_id), {int(p): chess.Move.from_uci(u) for p, u in pins.items()}, headers)
-    pinned = {int(p) for p in pins}
+    played = list(chess.pgn.read_game(io.StringIO(game.pgn)).mainline_moves())
+    honoured = {p: u for p, u in pins.items() if int(p) <= len(played) and played[int(p) - 1].uci() == u}
+    flags = [
+        {"ply": f.ply, "token": f.token, "chosen": f.chosen, "reason": f.reason}
+        for f in game.flags
+        if f.reason.startswith("side:") or str(f.ply) not in honoured
+    ]
+    # A pin the new decode could not play is dropped and reported, never silently ignored.
+    flags += [{"ply": int(p), "token": u, "chosen": "", "reason": "pin_dropped"} for p, u in pins.items() if p not in honoured]
     state.update(
         pgn=game.pgn,
         headers=game.headers,
-        flags=[
-            {"ply": f.ply, "token": f.token, "chosen": f.chosen, "reason": f.reason}
-            for f in game.flags
-            if f.reason.startswith("side:") or f.ply not in pinned
-        ],
-        pins=pins,
+        flags=sorted(flags, key=lambda f: f["ply"]),
+        pins=honoured,
         filename=game.filename,
         move_count=game.move_count,
         continues=game.continues,
