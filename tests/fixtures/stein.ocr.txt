@@ -1,0 +1,28 @@
+Stein Leonid - master of attack.pdf
+
+Stein–Korchnoi (USSR International Grandmaster)
+Zonal, Moscow 1964
+Sicilian Defence
+1 P–K4 P–QB4 2 N–KB3 P–Q3 3 P–Q4 PxP 4 NxP N–KB3 5 N–QB3
+P–QR3 6 B–K2 P–K3 7 0–0 B–K2 8 P–B4 Q–B2 9 Q–K1 0–0
+10 Q–N3 Q–N3 (Korchnoi has often shown his readiness to submit to an
+attack in return for slight material gain. Even in this ultimately disastrous
+case it is not clear that his decision was incorrect.) 11 B–K3 QxP 12 B–B2
+Q–N5 13 P–K5 PxP 14 PxP N–K1 15 B–Q3 Q–R4 16 N–K4 (Stein’s
+pieces converge menacingly against Black’s King.) 16 ... N–Q2 17 N–KB3
+P–KN3 18 B–Q4 N–N2 19 N–B6+ BxN 20 PxB N–R4 21 Q–R4 Q–Q1
+22 QR–K1 N/2xP 23 N–N5 (Threatening 24 RxN NxR 25 BxN Q-N3+ 26
+K-R1 P–KR4 27 QxP! PxQ 28 B–R7 mate. “With Steinitzian skill
+Korchnoi returns both his extra pawns to demonstrate that his position is
+still tenable,”—Cozens.) 23...P-K4! 24 BxKP P-R3 BxN PxN 26 QxP
+NxB 27 RxN Q–Q5+ 28 K-R1 Q–KN5 29 Q–R6 B–B4 30 P–KR3
+Q–Q5? (The Great Defender goes astray. Correct was 30 ... Q–N5! gaining
+an important tempo.) 31 RxB!! PxR 32 R–K3 Q–N2 33 Q–R4 Q–R8+
+34 K-R2 KR-K1 (Staving off immediate calamity, but for the next
+twelve moves until the end of the game Korchnoi is only permitted to
+move his King.) 35 R–N3+ K–B1 36 Q–R6+ K–K2 37 R–K3+ K–Q2 38
+BxP+ K–B2 39 Q–B4+ K–B3 40 Q–B4+ K–Q3 41 Q–N4+ K–Q4 42
+R–Q3+ K–K4 43 Q–Q6+
+
+43...KxB 44 R–B3+ K–N4 45 Q–B4+ K–R4 46 P–N4+ K–N3 47 QxP+
+and Black resigned.

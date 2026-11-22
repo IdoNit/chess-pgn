@@ -1,0 +1,34 @@
+“Sometimes I deliberately cede the initiative to my opponent; I “egg him on”. Emanuel Lasker in his time had remarked that with the balance of forces as they were on the board, games were rarely rich in content and too often ended as draws. A player who does not like draws (and I count myself among them) must somehow upset the equilibrium. Either he sacrifices something and, thanks to this, seizes the initiative or he allows the opponent to attack in such a way the latter leaves some weakness which can be exploited later.
+
+“To tempt the opponent, to permit him the taste of attack (in the course of which he can get carried away, diminish his vigilance or sacrifice too much material) this is all quite after my own heart. Often such moments can be used for going over to the counter-attack. Then see what a good struggle rages!”
+
+In the 1948 USSR Junior Championship, Korchnoi convincingly won the semi-final tournament. Scores: Korchnoi 8 - 3, Chaplinsky 7½, Gorshkov 7, Zurakhov and Kogan 6½, Akkerman, Krikheli and Landsbergris 6, A.Geller and Giterman 4½, Poliak 3½ and Roisman 0. But in the final (see Table) he could only share first place.
+
+USSR Junior Ch, Tallinn 1948
+
+1 Korchnoi x 0 1 1 0 1 1 1 5
+2 Nei 1 x 0 = = 1 1 1 5
+3 Zurakhov 0 1 x 0 1 = 1 1 4½
+4 Sudoplatov 0 = 1 x = = 1 1 4½
+5 Zeinally 1 = 0 = x = = 1 4
+6 Gorshkov 0 0 = = = x = = 2½
+7 Chaplinsky 0 0 0 0 = = x = 1½
+8 Kostiuchenko 0 0 0 0 0 = = x 1
+
+Game 1: VK-Razov
+Leningrad Junior Ch 1946
+Hungarian Defence
+1 e4 e5 2 f3 c6 3 c4 e7 4 d4 ed
+[4...d6] 5 xd4 [5 c3?! dc? 6 b3 h6
+7 xh6 cb 8 xg7!; 5...a5!] 5...f6 6
+c3 d6 7 e3 0-0 8 f3 [8 0-0!] 8...
+xd4? [8...e5! 9 b3? c5 10 de2 c4
+11 a4 a6; 9 e2 d5 =] 9 xd4! e6
+10 0-0-0 d7 11 d5 xd5 12 xd5
+e5 13 e2 f6 14 g4 [14 xb7? b8
+15 d5 xb2! 16 xb2 c4++] 14...
+c8 15 g5 e7 16 dg1 [16 f4 c6 17 h3!] 16...e6 17 xe6 fe 18 f4 g6 19
+g4 f7 20 c4! f8 21 f5 d5 22 ed
+ef?
+
+23 d6! fg 24 de g6 25 d1 xe7 26 f1 af8 27 c5! 1:0
