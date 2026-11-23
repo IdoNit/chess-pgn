@@ -1,0 +1,210 @@
+{
+ "title": "Chess Fundamentals (J. R. Capablanca, 1921)",
+ "source": "archive.org/details/chessfundamental00capa",
+ "split": "dev",
+ "notation": "English descriptive, spaced (Kt - K B 3), one column, notes as prose",
+ "expected_from": "Project Gutenberg #33870 (proofread transcription), every move played on a board; disagreements with the tool are checked against the page image",
+ "games": [
+  {
+   "id": "game01",
+   "pages": [
+    "p175.jpg",
+    "p176.jpg",
+    "p177.jpg",
+    "p178.jpg",
+    "p179.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game02",
+   "pages": [
+    "p179.jpg",
+    "p180.jpg",
+    "p181.jpg",
+    "p182.jpg",
+    "p183.jpg",
+    "p184.jpg",
+    "p185.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game03",
+   "pages": [
+    "p185.jpg",
+    "p186.jpg",
+    "p187.jpg",
+    "p188.jpg",
+    "p189.jpg",
+    "p190.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game04",
+   "pages": [
+    "p190.jpg",
+    "p191.jpg",
+    "p192.jpg",
+    "p193.jpg",
+    "p194.jpg",
+    "p195.jpg",
+    "p196.jpg",
+    "p197.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game05",
+   "pages": [
+    "p197.jpg",
+    "p198.jpg",
+    "p199.jpg",
+    "p200.jpg",
+    "p201.jpg",
+    "p202.jpg",
+    "p203.jpg",
+    "p204.jpg",
+    "p205.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game06",
+   "pages": [
+    "p205.jpg",
+    "p206.jpg",
+    "p207.jpg",
+    "p208.jpg",
+    "p209.jpg",
+    "p210.jpg",
+    "p211.jpg",
+    "p212.jpg",
+    "p213.jpg"
+   ],
+   "notes": [
+    "ply 27 (14. Qxe4): the book prints 'Q x P', which fits Qxe4 and Qxe6"
+   ]
+  },
+  {
+   "id": "game07",
+   "pages": [
+    "p213.jpg",
+    "p214.jpg",
+    "p215.jpg",
+    "p216.jpg",
+    "p217.jpg"
+   ],
+   "notes": [
+    "ply 35 (18. cxb4): printed 'P x P' fits axb4 and cxb4",
+    "ply 36 (18... Bxb4): printed 'B x P' fits Bxb4 and Bxf2+",
+    "ply 61 (31. g3): printed 'P - Kt 3' fits b3 and g3"
+   ]
+  },
+  {
+   "id": "game08",
+   "pages": [
+    "p217.jpg",
+    "p218.jpg",
+    "p219.jpg",
+    "p220.jpg",
+    "p221.jpg",
+    "p222.jpg",
+    "p223.jpg",
+    "p224.jpg",
+    "p225.jpg"
+   ],
+   "notes": [
+    "ply 72 (36... Qxb4): printed 'Q x P' fits Qxb4 and Qxa2"
+   ]
+  },
+  {
+   "id": "game09",
+   "pages": [
+    "p225.jpg",
+    "p226.jpg",
+    "p227.jpg",
+    "p228.jpg",
+    "p229.jpg",
+    "p230.jpg",
+    "p231.jpg"
+   ],
+   "notes": [
+    "ply 21 (11. Ba4): printed 'B - R 4' fits Ba4 and Bh4"
+   ]
+  },
+  {
+   "id": "game10",
+   "pages": [
+    "p231.jpg",
+    "p232.jpg",
+    "p233.jpg",
+    "p234.jpg",
+    "p235.jpg",
+    "p236.jpg",
+    "p237.jpg"
+   ],
+   "notes": [
+    "ply 87 (44. Rc7): printed 'R - B 7' fits Rc7 and Rf7",
+    "ply 118 (59... Rxg7): printed 'R x P' fits Rxg7 and Rxa6"
+   ]
+  },
+  {
+   "id": "game11",
+   "pages": [
+    "p237.jpg",
+    "p238.jpg",
+    "p239.jpg",
+    "p240.jpg",
+    "p241.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game12",
+   "pages": [
+    "p241.jpg",
+    "p242.jpg",
+    "p243.jpg",
+    "p244.jpg",
+    "p245.jpg",
+    "p246.jpg",
+    "p247.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game13",
+   "pages": [
+    "p247.jpg",
+    "p248.jpg",
+    "p249.jpg",
+    "p250.jpg",
+    "p251.jpg",
+    "p252.jpg",
+    "p253.jpg",
+    "p254.jpg"
+   ],
+   "notes": [
+    "ply 45 (23. g3): printed 'P - Kt 3' fits b3 and g3"
+   ]
+  },
+  {
+   "id": "game14",
+   "pages": [
+    "p254.jpg",
+    "p255.jpg",
+    "p256.jpg",
+    "p257.jpg",
+    "p258.jpg",
+    "p259.jpg",
+    "p260.jpg",
+    "p261.jpg",
+    "p262.jpg",
+    "p263.jpg"
+   ],
+   "notes": []
+  }
+ ]
+}

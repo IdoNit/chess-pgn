@@ -6,3 +6,4 @@ spike/results/
 .superpowers/
 .pytest_cache/
 dist/
+bench/results/

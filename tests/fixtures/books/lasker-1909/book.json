@@ -1,0 +1,115 @@
+{
+ "title": "The International Chess Congress, St. Petersburg 1909 (E. Lasker, 1910)",
+ "source": "archive.org/details/internationalche00lask",
+ "split": "test",
+ "notation": "English descriptive (Kt-KB3, Ktsq, o-o), two columns, diagrams, side lines as '15) .... Q-KKt3; 16) ...'",
+ "expected_from": "transcribed from the page images (150-300 dpi), every move played on a board; disagreements with the tool are checked against the page image",
+ "games": [
+  {
+   "id": "game01",
+   "pages": [
+    "p021.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game02",
+   "pages": [
+    "p022.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game03",
+   "pages": [
+    "p022.jpg",
+    "p023.jpg"
+   ],
+   "notes": [
+    "ply 42 (21... Rdc8): the book misprints 'R(Bsq)-Bsq'; the rook on Q1 went to QB1 (24... RxR needs it on c8)",
+    "ply 83 (42. Rb1): printed 'R-Ktsq' fits Rb1 and Rg1 (43. R-Kt2 needs b1)"
+   ]
+  },
+  {
+   "id": "game04",
+   "pages": [
+    "p024.jpg"
+   ],
+   "notes": [
+    "ply 27 (14. Bxc6): printed 'BxKt' fits Bxc6 and Bxf6 (15. KtxKtch needs the f6 knight)",
+    "ply 37 (19. c4): printed 'P-B4' fits c4 and f4 (the final diagram shows c4)"
+   ]
+  },
+  {
+   "id": "game05",
+   "pages": [
+    "p024.jpg",
+    "p025.jpg",
+    "p026.jpg"
+   ],
+   "notes": [
+    "ply 35 (18. Ncxd5): the book misprints 'Kt(B3)xB'; the piece on d5 is a knight",
+    "ply 63 (32. f4): the book misprints the move number as 33",
+    "the book prints '71. P-R4' after '70. P-R4', which is impossible; the expected game stops at 70... c3"
+   ]
+  },
+  {
+   "id": "game06",
+   "pages": [
+    "p026.jpg",
+    "p027.jpg"
+   ],
+   "notes": [
+    "ply 45 (23. Nxd2): printed 'KtxQ' fits Ncxd2 and Nfxd2, and both lead to the same position; either is accepted",
+    "ply 79 (40. Rb1): the book misprints 'R-QKt' (no rank)",
+    "ply 96 (48... Rc2): printed 'R-B7' fits Rc2 and Rf2 (52... RxPch needs c2)"
+   ],
+   "accept": {
+    "45": [
+     "Ncxd2",
+     "Nfxd2"
+    ]
+   }
+  },
+  {
+   "id": "game07",
+   "pages": [
+    "p027.jpg",
+    "p028.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game08",
+   "pages": [
+    "p028.jpg",
+    "p029.jpg"
+   ],
+   "notes": [
+    "ply 23 (12. Rc1): printed 'R-Bsq' fits Rc1 and Rf1",
+    "ply 30 (15... Bxf3): printed 'BxKt (B3)' names the knight's square from White's side",
+    "ply 59 (30. Rxa6): printed 'RxP' fits Rxa6 and Rxg7",
+    "ply 62 (31... Qb4): the book misprints 'Q-Qt5'",
+    "ply 75 (38. Rxb3): printed 'RxP' fits Rxb3 and Rxf6 (44. R-Kt8 needs the rook on the b-file)"
+   ]
+  },
+  {
+   "id": "game09",
+   "pages": [
+    "p029.jpg",
+    "p030.jpg"
+   ],
+   "notes": []
+  },
+  {
+   "id": "game10",
+   "pages": [
+    "p030.jpg",
+    "p031.jpg"
+   ],
+   "notes": [
+    "plies 59 and 67: the book misprints move numbers 30 and 34 as 20 and 24"
+   ]
+  }
+ ]
+}
