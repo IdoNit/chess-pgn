@@ -1,0 +1,39 @@
+Marshall Frank - United States chess champion.pdf
+
+When Chess Was Young 9
+
+3. Vienna Game, Paulsen Variation
+Fox–Marshall, match, New York, circa 1897
+
+1 e4 e5 2 Nc3 Nf6 3 g3 d5
+
+White’s third move was also adopted by Jacques Mieses, a Marshall contem-
+porary, and, many years later, by Vasily Smyslov, with considerable success.
+Marshall faced Mieses’ system in a 1908 match but regularly kept the center
+closed.
+
+4 e×d5 N×d5 5 Bg2 Be6 6 Nge2?!
+
+With 6 Nf3 followed by castling and Rel, White gets an edge.
+
+6 ... h5!? 7 d4 e×d4 8 N×d4 N×c3 9 b×c3 Bd5!
+
+If it weren’t for this move White’s dissolution of the center would have
+made Marshall’s 6 ... h5 look silly. Now Fox sees a combinational way out.
+
+10 Qe2+ Be7 ll B×d5? Q×d5 12 Ba3?
+
+After 12 Ba3
+
+The point is that 12 ... Q×hl+ l3 Kd2 leaves both king and queen hanging.
+
+12 ... 0–0! l3 Q×e7 Nc6 14 N×c6
+
+White’s last two moves were unfortunately forced.
+
+14 ... Q×hl+ 15 Kd2 Q×al 16 Ne5 Rad8+ White resigns
+
+In 1899 Marshall was on the winning side in a New York–Penn-
+sylvania match. In his seven games, Marshall scored 4½–2½, the second
+best result of the match players, behind Lipschütz’s 6½–½. He also won
+a 1900 tournament at Thousand Islands, in upstate New York.

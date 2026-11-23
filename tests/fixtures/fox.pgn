@@ -1,0 +1,12 @@
+[Event "Fox-Marshall match"]
+[Site "New York"]
+[Date "1897.??.??"]
+[Round "?"]
+[White "Fox"]
+[Black "Marshall, Frank"]
+[Result "0-1"]
+[ECO "C26"]
+[Opening "Vienna Game"]
+[Variation "Paulsen Variation"]
+
+1. e4 e5 2. Nc3 Nf6 3. g3 d5 4. exd5 Nxd5 5. Bg2 Be6 6. Nge2?! {Nf3 was the more natural developing move.} 6... h5!? 7. d4 exd4 8. Nxd4 Nxc3 9. bxc3 Bd5! {The bishop eyes g2 with the rook on h1 behind it.} 10. Qe2+ Be7 11. Bxd5? {Wins a bishop for a bishop but walks into a tactic.} 11... Qxd5 12. Ba3? {Attacks e7, but the position of the white king and rook is the real issue.} 12... O-O! {Black ignores the attack on e7; Qxh1+ is threatened.} 13. Qxe7 Nc6 14. Nxc6 Qxh1+ 15. Kd2 Qxa1 {The queen collects the rook and the rest is decisive.} 16. Ne5 Rad8+ 0-1

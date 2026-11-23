@@ -14,7 +14,7 @@ from fastapi.staticfiles import StaticFiles
 
 from chesspgn.decoder import suggest_moves
 from chesspgn.pipeline import NoGameFound, convert, game_from_text
-from chesspgn.reader import OllamaReader, Reader, ReaderUnavailable
+from chesspgn.reader import OllamaReader, PageIncomplete, Reader, ReaderUnavailable
 from chesspgn.storage import GameNotFound, GameStore
 
 STATIC = Path(__file__).parent / "static"
@@ -42,6 +42,8 @@ def create_app(store_root: Path, reader: Reader) -> FastAPI:
                 games = convert(paths, reader)
             except NoGameFound:
                 return JSONResponse({"error": "no_game"}, status_code=422)
+            except PageIncomplete:
+                return JSONResponse({"error": "page_incomplete"}, status_code=422)
             except ReaderUnavailable:
                 return JSONResponse({"error": "engine_down"}, status_code=503)
             records = [store.save(game, paths) for game in games]

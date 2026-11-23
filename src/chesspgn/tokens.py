@@ -25,7 +25,10 @@ for _a, _b in _CONFUSIONS:
 _DASHES = re.compile(r"[–—−‒]+|-{2,}")
 _SPACED_DOTS = re.compile(r"\.\s+\.\s*\.")
 _NUMBER = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.{1,3})?$")
-_NUMBER_GLUED = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.{1,3})(?P<rest>\S+)$")
+# Rank "1" read as "l" at the end of a move ("Rgl", "Q×hl+", "Rael"): a routine OCR quirk, fixed silently.
+_L_FOR_ONE = re.compile(r"^([KQRBN♔♕♖♗♘♚♛♜♝♞]?[a-h]?x?[a-h])l([+#]*)$")
+_OCR_NUMBER = re.compile(r"^(?=.*\d|[lI]{2})[\dlI]{2,3}(?P<dots>\.{0,3})$")  # "ll" = 11, "l3" = 13
+_NUMBER_GLUED = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.{1,3})(?P<rest>[^.\s]\S*)$")
 _ANNOTATION = re.compile(r"[!?]+$")
 RESULT = re.compile(r"^(1-0|0-1|1:0|0:1|½-½|1/2-1/2)$")
 
@@ -39,7 +42,7 @@ class Token:
 
 
 def tokenize(text: str) -> list[Token]:
-    text = _DASHES.sub("-", text).replace("…", "...")
+    text = _DASHES.sub("-", text).replace("…", "...").replace("×", "x")  # "e×d5" is how many books print captures
     text = _SPACED_DOTS.sub("...", text)  # "16 . . . N-Q2"
     tokens: list[Token] = []
     for raw in text.split():
@@ -51,6 +54,8 @@ def _split_word(raw: str) -> list[Token]:
     if not raw or raw in ("...", ".."):
         return [Token("...")] if raw else []
     out: list[Token] = []
+    if _OCR_NUMBER.match(raw):
+        raw = raw.replace("l", "1").replace("I", "1")
     glued = _NUMBER_GLUED.match(raw)
     if glued is not None and RESULT.match(raw) is None:
         out.append(Token("", number=int(glued["n"]), black_to_move=len(glued["dots"]) >= 2))
@@ -61,6 +66,7 @@ def _split_word(raw: str) -> list[Token]:
         return out
     annotation = _ANNOTATION.search(raw)
     body = raw[: annotation.start()] if annotation else raw
+    body = _L_FOR_ONE.sub(r"\g<1>1\g<2>", body)
     if body:
         out.append(Token(body, annotation=annotation.group(0) if annotation else ""))
     return out

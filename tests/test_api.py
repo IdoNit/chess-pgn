@@ -149,3 +149,16 @@ def test_i4_combined_download(tmp_path):
     ids = ",".join(g["id"] for g in games)
     response = client.get(f"/api/download?ids={ids}")
     assert response.status_code == 200 and response.text.count("[Event ") == 2
+
+
+class CutOffReader:
+    def read(self, image: Path) -> str:
+        from chesspgn.reader import PageIncomplete
+
+        raise PageIncomplete("cut off")
+
+
+def test_cut_off_page_is_422(tmp_path):
+    client = TestClient(create_app(tmp_path, CutOffReader()))
+    response = upload(client, "stein.jpg")
+    assert response.status_code == 422 and response.json() == {"error": "page_incomplete"}
