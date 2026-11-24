@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 
 STATIC = Path(__file__).parent.parent / "src" / "chesspgn" / "web" / "static"
-REASONS = ["ocr", "icon", "unreadable", "missing", "close_call", "time_budget", "skipped", "number", "pin_dropped", "ai_read"]
+REASONS = ["ocr", "icon", "unreadable", "missing", "close_call", "time_budget", "skipped", "number", "pin_dropped", "ai_read", "depends"]
 
 
 def strings() -> dict[str, str]:

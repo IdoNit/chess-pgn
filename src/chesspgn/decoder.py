@@ -46,7 +46,7 @@ class Flag:
     ply: int  # 1-based within its line
     token: str
     chosen: str  # SAN of the move that was played there
-    reason: str  # ocr | icon | unreadable | missing | close_call | time_budget (side lines: "side:" prefix)
+    reason: str  # ocr | icon | unreadable | missing | close_call | depends | time_budget (side lines: "side:" prefix)
 
 
 @dataclass
@@ -454,6 +454,28 @@ def _san_at(moves: tuple[chess.Move, ...], ply: int) -> str:
     return board.san(moves[ply - 1])
 
 
+# A guessed or doubtful move decides where the pieces stand, so a later move that uses one of its squares
+# (moving from it, capturing on it) may be wrong even when its own text reads perfectly: flag it as well,
+# and follow the chain. Same reach as the ambiguity window.
+DEPEND_WINDOW = AMBIGUITY_WINDOW
+_DOUBTFUL = ("missing", "unreadable", "skipped", "close_call")
+
+
+def _with_dependents(moves: tuple[chess.Move, ...], flags: list[Flag]) -> list[Flag]:
+    flags = list(flags)
+    flagged = {f.ply for f in flags}
+    for source in sorted({f.ply for f in flags if f.reason in _DOUBTFUL and f.ply <= len(moves)}):
+        squares = {moves[source - 1].from_square, moves[source - 1].to_square}
+        for ply in range(source + 1, min(len(moves), source + DEPEND_WINDOW) + 1):
+            move = moves[ply - 1]
+            if move.from_square in squares or move.to_square in squares:
+                squares |= {move.from_square, move.to_square}
+                if ply not in flagged:
+                    flagged.add(ply)
+                    flags.append(Flag(ply, "", _san_at(moves, ply), "depends"))
+    return flags
+
+
 def _finish(beam: list[_State], convention: str, result: str) -> Decoded:
     best = beam[0]
     flags = list(best.flags)
@@ -469,6 +491,7 @@ def _finish(beam: list[_State], convention: str, result: str) -> Decoded:
             for move in best.moves[: ply - 1]:
                 board.push(move)
             flags.append(Flag(ply, "", board.san(best.moves[ply - 1]), "close_call"))
+    flags = _with_dependents(best.moves, flags)
     return Decoded(
         convention=convention,
         moves=list(best.moves),

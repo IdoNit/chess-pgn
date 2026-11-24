@@ -25,7 +25,6 @@ def test_numbered_analysis_between_game_lines_is_not_followed():
     assert san(decode_text(text)) == MAIN
 
 
-@pytest.mark.xfail(reason="analysis printed like game rows can still pull the decoder off the game: next step", strict=True)
 def test_a_move_away_from_its_number_is_never_silent():
     # Whatever the decoder makes of a stray line, every move it plays out of its numbered place is flagged.
     text = "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6\n3 Bc4 Bc5 4 c3 Nf6\n4. Ba4 Nf6 5. O-O Be7 6. Re1 b5"
@@ -57,3 +56,20 @@ def test_a_note_that_continues_the_numbers_loses_to_the_longer_game():
     text = ("1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4\n4. ... Bc5 5. c3\n"
             "4. ... Nf6 5. O-O Be7 6. Re1 b5")
     assert san(decode_text(text)) == MAIN
+
+
+# A guessed move (a missing row) decides where later captures land, so the moves that use its squares are
+# flagged too, even when their own text reads perfectly.
+GUESSED_ROW = "1. e4 e5 2. Nf3 Nc6 4. Bxc6 dxc6 5. O-O f6 6. d4 exd4"
+
+
+def test_moves_that_use_a_guessed_moves_squares_are_flagged():
+    decoded = decode_text(GUESSED_ROW)
+    reasons = {f.ply: f.reason for f in decoded.flags}
+    assert san(decoded)[6:8] == ["Bxc6", "dxc6"]  # the bishop came from the guessed square, the pawn retakes there
+    assert reasons.get(7) == "depends" and reasons.get(8) == "depends"
+
+
+def test_moves_away_from_a_guess_are_not_flagged():
+    decoded = decode_text(GUESSED_ROW)
+    assert {f.ply for f in decoded.flags} == {5, 6, 7, 8}
