@@ -1,0 +1,71 @@
+Black could here give the game a turn in his favor by 19)... B×P; 20) P×B, Kt×Pch; 21) K—R2, Q—R5; 22) Q—Bsq, (Q—K3, Kt—B5ch; K—Ktsq, Q—Kt5), Kt×Pch; 23) K—Kt2, Kt—Kt5; 24) Q—Rsq, Q—Q7ch and P—R5.
+
+20. Kt—B4 P—R5
+
+B×P would still have been strong, for Black would rather easily get four Pawns for the Piece with a good position.
+
+21. Kt—Bsq Q—B5
+22. Q—Q2 Q×Q
+23. Kt×Q Kt—K3
+24. Kt—B3 P—Kt4
+25. Kt—K3 P—B3
+26. Kt—Kt4 K—Kt2
+27. Kt—Q4 K—Kt3
+28. P—KB3 Kt—Kt2
+29. Kt—K3 P—KB4
+30. P×Pch K—B2
+31. P—QKt4 P—B4
+32. P×P P×P
+33. Kt—Kt3 Kt×P
+34. Kt—Kt4
+
+After 34) Kt×Kt, B×Kt; 35) Kt×P, R×Rch; 36) R×R, R—Q7; 37) P—QR4, R—B7; 38) R—K3, K—B3 White cannot win, as his King cannot come into play.
+
+It would have given better chances, to keep the minor pieces: 42) Kt—Kt3, R—Q6; 43) Kt—K3 to White's advantage.
+
+42. B×Kt
+43. R×BP B×Kt
+44. R×B R—Q7ch
+45. K—K3 R×RP
+46. R—KKt4 P—R4
+47. P—KB4 P×Pch
+48. K—B3
+
+48) K×P would have led to nothing, e.g. 48) ... R—R5ch; 49) K—K3, R×R; 50) P×R, K—Kt4; 51) P—B4, K×P.
+
+48. R—B7
+49. R×Pch K—Kt4
+50. R—Kt4ch K—R4
+51. R—QB4 P—R5
+52. R×P R×Pch
+53. K—B4 R—KKt6
+54. R—R8 K—R3
+
+Drawn.
+
+Game No. 7.
+Queen's Gambit Declined.
+
+White: Black:
+Rubinstein. Snosko-Borowski.
+
+1. P—Q4 P—Q4
+2. P—QB4 P—K3
+3. Kt—QB3 Kt—KB3
+4. B—Kt5 B—K2
+5. P—K3 QKt—Q2
+6. Kt—B3 o-o
+7. Q—B2 P—QKt3
+8. P×P P×P
+9. B—Q3 B—Kt2
+10. o-o-o Kt—K5
+11. P—KR4 P—KB4
+12. K—Ktsq P—B4
+
+12. ... R—Bsq should have been played instead. 13) Q—Kt3 would then be met simply by Kt×Ktch and P—B4.
+
+13. P×P P×P
+
+After 13) ... Kt(Q2)×P, White continues 14. Kt×P, B×Kt; 15) B—QB4. In this variation Black must not be able to take the Bishop at Q3 with a check, hence White's 12th move. After 13) ... Kt(Q2)×P; 14) Kt×P, B×B White would win by 15) B—B4.
+
+14. Kt×Kt BP×Kt

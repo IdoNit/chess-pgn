@@ -1,0 +1,15 @@
+Notice the remarkable position of the pieces. White cannot move anything without incurring some loss. His best chance would have been to play 29 P—K 6, but that would only have prolonged the game, which is lost in any case.
+
+29. K—Kt 1 P—R 6
+30. P—Kt 3 P—Q R 3
+
+Again forcing White to move and to lose something thereby, as all his pieces are tied up.
+
+31. P—K 6 R×K P
+
+Not even now can White move the Knight because of P—R 7 ch; K×P, R—R 3 ch; K—Kt 1, R—R 8 mate.
+
+32. P—Kt 4 R—R 3
+33. P—B 3
+
+If 33 P—Kt 5, P—R 7 ch; 34 K—R 1, R×Kt; 35 R×R, R×P, winning easily.

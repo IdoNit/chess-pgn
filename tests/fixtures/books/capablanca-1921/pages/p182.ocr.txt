@@ -1,0 +1,18 @@
+16. K—Kt 2!
+
+This is the move which I had not considered. I thought that Rubinstein would have to play B—Kt 2, when I had in mind the following winning combination:
+
+16 B—Kt 2, Kt—K 4! 17 Kt—B 4 (if R—B 1, Q × R !! Q × Q, B × P ch wins), Kt—Kt 5; 18 P—K R 3 (if Kt—R 3, B × P ch wins the exchange), Kt × P; 19 R × Kt, B × R ch; 20 K × B, P—K Kt 4, and Black should win. It is curious that this combination has been overlooked. It has been taken for granted that I did not see the 17th move Q—B 1.
+
+16. ... Q R—Q 1
+
+After White's last move there was nothing for me to do but submit to the inevitable.
+
+17. Q—B 1! P × Kt
+18. Q × B Q—Q 7
+19. Q—Kt 5 Kt—Q 5
+20. Q—Q 3 Q × Q
+21. P × Q K R—K 1
+22. B—Kt 4
+
+This gives Black a chance. He should have played K R—K 1. If then Kt—B 7; R × R ch, R × R; R—Q B 1, R—K 7; K—B 1, Kt—Q 5 (if R—Q 7; B—K 6 ch, K—B 1; B × P would win); R—B 8 ch, K—B 2; R—B 7 ch, R—K 2; R—B 5 wins.

@@ -1,0 +1,32 @@
+31. ... R — K 8 ch
+32. R × R R × R ch
+33. K — R 2 B — B 2
+34. K — Kt 3 P — Q 4
+
+the quickest way to finish the game.
+
+35. B × P P × P ch
+36. K — Kt 4 P — B 6
+37. P × P R — K 5 ch
+38. P — B 4 R × P ch
+39. K — R 5 R × B
+40. R — Q 8 ch K — R 2
+41. R — Q 7 B — K 3
+Resigns.
+
+A very lively game.
+
+GAME 14. QUEEN'S GAMBIT DECLINED
+(New York, 1918)
+
+White: F. J. Marshall. Black: J. R. Capablanca.
+
+1. P — Q 4 P — Q 4
+2. Kt — K B 3 Kt — K B 3
+3. P — B 4 P — K 3
+4. Kt — B 3 Q Kt — Q 2
+5. B — Kt 5 B — K 2
+6. P — K 3 O — O
+7. R — B 1 P — B 3
+
+This is one of the oldest systems of defence against the Queen's Gambit. I had played it before in this Tournament against Kostic, and no doubt Marshall expected it. At times I change my defences,

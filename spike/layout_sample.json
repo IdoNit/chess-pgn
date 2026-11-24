@@ -1,0 +1,710 @@
+[
+ {
+  "page": "capablanca-1921/p225.jpg",
+  "number": 5,
+  "ocr": "5. Kt \u2014 B 3 Q Kt \u2014 Q 2",
+  "box": [
+   210,
+   455,
+   528,
+   478
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p200.jpg",
+  "number": 12,
+  "ocr": "12. ... P\u2014Q Kt 3",
+  "box": [
+   246,
+   289,
+   559,
+   312
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p236.jpg",
+  "number": 41,
+  "ocr": "41. R\u00d7P R\u2014Q 8 ch",
+  "box": [
+   441,
+   245,
+   557,
+   267
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p183.jpg",
+  "number": 27,
+  "ocr": "27. B\u2014K 6 ch K\u2014B 1",
+  "box": [
+   236,
+   300,
+   521,
+   324
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p185.jpg",
+  "number": 9,
+  "ocr": "9. K R\u2014Q 1 B\u2014Kt 5",
+  "box": [
+   233,
+   1057,
+   249,
+   1074
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p255.jpg",
+  "number": 11,
+  "ocr": "11. O \u2014 O Kt \u00d7 Kt",
+  "box": [
+   210,
+   342,
+   500,
+   375
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p190.jpg",
+  "number": 32,
+  "ocr": "32. Q \u2014 Kt 4 ch! K \u2014 K 2",
+  "box": [
+   225,
+   408,
+   252,
+   424
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p232.jpg",
+  "number": 8,
+  "ocr": "8. Kt\u2014B 3 P\u2014K R 3",
+  "box": [
+   266,
+   421,
+   568,
+   444
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p184.jpg",
+  "number": 37,
+  "ocr": "37. R \u2014 R 5 ch K \u2014 Kt 3",
+  "box": [
+   232,
+   433,
+   535,
+   456
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p253.jpg",
+  "number": 23,
+  "ocr": "23. ... Kt \u00d7 P",
+  "box": [
+   219,
+   154,
+   499,
+   185
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p211.jpg",
+  "number": 38,
+  "ocr": "38. B \u2014 Q 4 R \u2014 K R 1",
+  "box": [
+   215,
+   684,
+   534,
+   706
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p182.jpg",
+  "number": 16,
+  "ocr": "16. ... Q R\u2014Q 1",
+  "box": [
+   444,
+   554,
+   552,
+   577
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p190.jpg",
+  "number": 24,
+  "ocr": "24. ... P \u00d7 P",
+  "box": [
+   427,
+   496,
+   489,
+   514
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p240.jpg",
+  "number": 21,
+  "ocr": "21. R \u2014 Q 1 K \u2014 Kt 2",
+  "box": [
+   265,
+   846,
+   549,
+   870
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p237.jpg",
+  "number": 4,
+  "ocr": "4. B \u00d7 Kt Q P \u00d7 B",
+  "box": [
+   224,
+   384,
+   511,
+   407
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p185.jpg",
+  "number": 6,
+  "ocr": "6. B\u2014Q 3 B\u2014K 2",
+  "box": [
+   232,
+   958,
+   520,
+   980
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p213.jpg",
+  "number": 5,
+  "ocr": "5. P \u2014 Q 3",
+  "box": [
+   216,
+   444,
+   328,
+   466
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p190.jpg",
+  "number": 28,
+  "ocr": "28. Q \u00d7 P Q \u2014 Q 3",
+  "box": [
+   226,
+   276,
+   253,
+   293
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p260.jpg",
+  "number": 26,
+  "ocr": "26. P\u2014Q Kt 4 P\u2014Kt 4",
+  "box": [
+   217,
+   581,
+   583,
+   603
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p238.jpg",
+  "number": 11,
+  "ocr": "11. R\u2014Kt 1! P\u2014B 3",
+  "box": [
+   259,
+   840,
+   544,
+   871
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p184.jpg",
+  "number": 38,
+  "ocr": "38. B \u2014 Q 5",
+  "box": [
+   232,
+   464,
+   361,
+   487
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p195.jpg",
+  "number": 25,
+  "ocr": "25. Kt \u2014 R 5 ch K \u2014 R 1",
+  "box": [
+   211,
+   397,
+   510,
+   428
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p211.jpg",
+  "number": 47,
+  "ocr": "47. P \u2014 B 6 R \u2014 R 2",
+  "box": [
+   214,
+   966,
+   506,
+   987
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p185.jpg",
+  "number": 40,
+  "ocr": "40. B \u00d7 Kt R \u00d7 Kt P",
+  "box": [
+   232,
+   357,
+   537,
+   378
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p236.jpg",
+  "number": 43,
+  "ocr": "43. P\u2014R 5 R\u2014Q B 8",
+  "box": [
+   298,
+   310,
+   381,
+   332
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p183.jpg",
+  "number": 28,
+  "ocr": "28. R\u2014B 5 ch K\u2014K 1",
+  "box": [
+   236,
+   331,
+   524,
+   354
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p211.jpg",
+  "number": 45,
+  "ocr": "45. P \u2014 K B 5 R \u2014 R 8 ch",
+  "box": [
+   214,
+   903,
+   538,
+   926
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p183.jpg",
+  "number": 24,
+  "ocr": "24. R\u00d7R R\u2014Q Kt 3",
+  "box": [
+   235,
+   266,
+   531,
+   298
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p261.jpg",
+  "number": 32,
+  "ocr": "32. P\u2014Kt 4 R\u2014R 3",
+  "box": [
+   153,
+   941,
+   507,
+   965
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p196.jpg",
+  "number": 35,
+  "ocr": "35. R \u00d7 P",
+  "box": [
+   238,
+   836,
+   347,
+   859
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p217.jpg",
+  "number": 9,
+  "ocr": "9. Kt \u00d7 Kt R \u00d7 Kt",
+  "box": [
+   229,
+   1029,
+   495,
+   1052
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p237.jpg",
+  "number": 5,
+  "ocr": "5. Kt \u2014 B 3",
+  "box": [
+   224,
+   415,
+   350,
+   438
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p198.jpg",
+  "number": 6,
+  "ocr": "6. Q \u00d7 P Q \u00d7 Q",
+  "box": [
+   252,
+   435,
+   513,
+   458
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p257.jpg",
+  "number": 16,
+  "ocr": "16. P \u00d7 K P",
+  "box": [
+   167,
+   140,
+   571,
+   179
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p194.jpg",
+  "number": 21,
+  "ocr": "21. P \u2014 Q B 5! P \u2014 B 3",
+  "box": [
+   240,
+   390,
+   522,
+   413
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p222.jpg",
+  "number": 30,
+  "ocr": "30. R\u2014Q 1 P\u2014B 4",
+  "box": [
+   244,
+   369,
+   524,
+   392
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p262.jpg",
+  "number": 34,
+  "ocr": "34. Kt\u2014K 7 R (Q 3)\u2014Q 7",
+  "box": [
+   481,
+   167,
+   626,
+   192
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p205.jpg",
+  "number": 3,
+  "ocr": "3. Kt \u2014 Q B 3 Kt \u2014 K B 3",
+  "box": [
+   218,
+   385,
+   541,
+   410
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p191.jpg",
+  "number": 5,
+  "ocr": "5. $P \\times P$",
+  "box": [
+   222,
+   243,
+   315,
+   266
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p206.jpg",
+  "number": 11,
+  "ocr": "11. Kt \u2014 K 2 P \u00d7 P",
+  "box": [
+   235,
+   393,
+   499,
+   412
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p234.jpg",
+  "number": 15,
+  "ocr": "15. Q \u2014 K 4 Q \u2014 Kt 2",
+  "box": [
+   261,
+   177,
+   554,
+   200
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p190.jpg",
+  "number": 35,
+  "ocr": "35. P \u2014 K 5 P \u00d7 P",
+  "box": [
+   269,
+   496,
+   353,
+   518
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p259.jpg",
+  "number": 23,
+  "ocr": "23. P\u2014KR 4",
+  "box": [
+   154,
+   709,
+   307,
+   731
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p185.jpg",
+  "number": 41,
+  "ocr": "41. B\u2014Q 5 P\u2014R 7",
+  "box": [
+   231,
+   467,
+   519,
+   489
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p262.jpg",
+  "number": 38,
+  "ocr": "38. K\u2014B 1 P\u2014R 7",
+  "box": [
+   481,
+   297,
+   564,
+   318
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p184.jpg",
+  "number": 38,
+  "ocr": "38. P \u2014 Kt 6",
+  "box": [
+   234,
+   981,
+   531,
+   1006
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p209.jpg",
+  "number": 28,
+  "ocr": "28. Kt \u2014 B 5 ch P \u00d7 Kt",
+  "box": [
+   214,
+   721,
+   477,
+   745
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p249.jpg",
+  "number": 13,
+  "ocr": "13. B \u2014 Kt 3 Kt \u2014 KR 4",
+  "box": [
+   216,
+   806,
+   541,
+   837
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p254.jpg",
+  "number": 7,
+  "ocr": "7. R \u2014 B 1 P \u2014 B 3",
+  "box": [
+   247,
+   937,
+   534,
+   959
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p239.jpg",
+  "number": 14,
+  "ocr": "14. $R \\times B$",
+  "box": [
+   217,
+   147,
+   323,
+   168
+  ],
+  "truth": "A"
+ },
+ {
+  "page": "capablanca-1921/p197.jpg",
+  "number": 38,
+  "ocr": "38 Q \u00d7 B P and White will at least have a draw.",
+  "box": [
+   91,
+   218,
+   618,
+   241
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p229.jpg",
+  "number": 27,
+  "ocr": "27...P \u00d7 Kt would be worse, as White would then be able to post his Bishop at K 5.",
+  "box": [
+   82,
+   244,
+   634,
+   268
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p258.jpg",
+  "number": 21,
+  "ocr": "21 Kt \u2014 K 7 ch K \u2014 B 1; 22 R \u2014 B 7 R \u2014 K 1 (not B \u00d7 P; because P \u2014 B 3 would give White the best of it); 23 R \u00d7 B (best; not Kt \u2014 Kt 6 ch, because of B P \u00d7 Kt; followed by R \u00d7 K P), R \u00d7 Kt; 24 R \u2014 Kt 8 ch, R \u2014 K 1; 25 R \u00d7 R ch, K \u00d7 R, and with proper play White will draw.",
+  "box": [
+   142,
+   640,
+   696,
+   665
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p185.jpg",
+  "number": 42,
+  "ocr": "42 P\u2014R 5, P\u2014R 7; 43 B \u00d7 P, R \u00d7 B, and if there is a win it is very difficult to find it, as against 44 P\u2014R 6, R\u2014R 3! offers excellent chances for a draw.",
+  "box": [
+   118,
+   204,
+   670,
+   228
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p185.jpg",
+  "number": 40,
+  "ocr": "40 R\u2014Kt 5 ch, K\u2014B 2; 41 B\u2014Kt 8, P\u2014R 6;",
+  "box": [
+   118,
+   169,
+   671,
+   200
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p246.jpg",
+  "number": 39,
+  "ocr": "39...P\u2014K Kt 4 would be answered by Q\u2014B 5, with a winning game.",
+  "box": [
+   160,
+   583,
+   711,
+   608
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p197.jpg",
+  "number": 36,
+  "ocr": "36 Q \u00d7 Q P! R \u2014 Q 1; 37 Q \u2014 R 6, K \u2014 Kt 1 best (if Q \u2014 Q 5 ch; K \u2014 R 1, K \u2014 Kt 1; R \u2014 Q Kt 1 wins);",
+  "box": [
+   92,
+   156,
+   643,
+   179
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p182.jpg",
+  "number": 16,
+  "ocr": "16 B\u2014Kt 2, Kt\u2014K 4! 17 Kt\u2014B 4 (if R\u2014B 1, Q \u00d7 R !! Q \u00d7 Q, B \u00d7 P ch wins), Kt\u2014Kt 5; 18 P\u2014K R 3 (if Kt\u2014R 3, B \u00d7 P ch wins the exchange), Kt \u00d7 P; 19 R \u00d7 Kt, B \u00d7 R ch; 20 K \u00d7 B, P\u2014K Kt 4, and Black should win. It is curious that this combination has been overlooked. It has been taken for granted that I did not see the 17th move Q\u2014B 1.",
+  "box": [
+   126,
+   276,
+   677,
+   308
+  ],
+  "truth": "B"
+ },
+ {
+  "page": "capablanca-1921/p212.jpg",
+  "number": 51,
+  "ocr": "51 Q \u00d7 P ch, K \u2014 R 2; 52 Q \u2014 R 5, R \u00d7 P; 53 B \u2014 Kt 5 ch, K \u2014 Kt 2; 54 B \u00d7 R ch, K \u00d7 B; and while White has a won game it is by no means easy. If the reader does not believe it, let him take the White pieces against a master and see what happens. My opponent, who decided to take no chances, played 51 B \u2014 Kt 7, and finally won as shown below.",
+  "box": [
+   129,
+   276,
+   683,
+   300
+  ],
+  "truth": "B"
+ }
+]

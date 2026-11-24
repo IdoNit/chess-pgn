@@ -1,0 +1,73 @@
+R—B8ch; 29) K—B2, R—B7ch; 30)
+K—Bsq, R×R; 31) R×R (necessary to cover the mate) Q—K5.
+
+28. . . . . . . . . . . . . . . . . . K—Rsq
+29. Kt—B2 R(R2)—B2
+30. R×P R—B7
+31. R—K6 Q—Qt5
+32. R—B3 R×P
+33. K—Kt2 R(Kt7)—B7
+34. R—R3 P—R3
+35. R—Kt3 Q—K8
+36. R—B3 P—Kt5
+37. R—Kt6 P—Kt6
+
+A pretty combination, which decides the game at once.
+
+38. R×P Q—Q8
+39. R—Kt6 R×Ktch
+40. K×R R—B7ch
+41. K—Kt3 Q—Kt8ch
+42. K—B4 R×P
+43. Q—Kt4
+
+Or 43) R—R3, Q—B8ch; 44) R—B3, Q—KR8.
+
+Position after Black's 37th move.
+
+43. . . . . . . . . . . . . . . . . Q—KR8
+44. R—Kt8 K—Ktsq
+45. P—K4 R—R5
+46. P—K5 P—R4
+
+Resigns.
+
+2h 50. 1h 50.
+
+Game No. 9.
+Ruy Lopez.
+
+White: Black:
+Spielmann. Salwe.
+1. P—K4 P—K4
+2. Kt—KB3 Kt—QB3
+3. B—Kt5 Kt—B3
+4. o—o P—Q3
+5. P—Q4 B—Q2
+6. Kt—B3 B—K2
+7. R—Ksq P×P
+8. Kt×P o—o
+9. B×Kt
+
+This exchange leads to nothing, except, perhaps, that it prevents Black from exchanging both Knight and Bishop. This, however, need not be feared.
+
+9. . . . . . . . . P×B
+10. P—QKt3 R—Ksq
+11. B—Kt2 B—KBsq
+12. Q—Q3. P—Kt3
+13. Kt (Q4)—K2
+
+This strategical manoeuvre is altogether wrong. White might, at this juncture, play QR—Qsq, and answer B—Kt2 with P—B4. Though the Pawns at K4 and KB4 are then exposed to attacks, yet they are not weak, and assist in maintaining the balance of position.
+
+13. . . . . . . . . B—Kt2
+14. Kt—Kt3
+
+Since Black already has moved the Pawn to Kt3, the Knight is not favorably posted on this square.
+
+14. . . . . . . . . P—KR4
+
+A splendid strategical idea. From this insignificant beginning Black obtains a strong pressure on the King's side.
+
+15. QR—Qsq P—R5
+16. Kt—Bsq Kt—R4
+17. B—Bsq B—K4

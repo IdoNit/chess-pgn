@@ -1,0 +1,25 @@
+CENTRE GAME
+
+43. P — Kt 5 R — R 3
+44. P — R 5 R × Kt
+45. P × R R — B 3
+46. P — Kt 6 Resigns.
+
+GAME 8. CENTRE GAME
+(Berlin, 1913)
+
+White: J. Mieses. Black: J. R. Capablanca.
+
+1. P — K 4 P — K 4
+2. P — Q 4 P × P
+3. Q × P Kt — Q B 3
+4. Q — K 3 Kt — B 3
+5. Kt — Q B 3 B — Kt 5
+6. B — Q 2 O — O
+7. O — O — O R — K 1
+
+In this position, instead of the text move, P — Q 3 is often played in order to develop the Q B. My idea was to exert sufficient pressure against the K P to win it, and thus gain a material advantage, which would, at least, compensate whatever slight advantage of position White might have. The plan, I think, is quite feasible, my subsequent difficulties being due to faulty execution of the plan.
+
+8. Q — Kt 3 Kt × P
+9. Kt × Kt R × Kt
+10. B — K B 4

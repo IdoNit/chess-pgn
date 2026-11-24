@@ -1,0 +1,15 @@
+R—K 3, Black could now play Q—Kt 1 defending the Rook.
+
+21. ... P—Q B 4
+22. K—B 2 P—Kt 3
+23. P—R 4
+
+White's plan now is to fix the Queen's side in order to be able to maneuver freely on the other side, where he has the advantage of material.
+
+23. ... Q—Q 2
+24. R—Q 3 Q—B 1
+25. Q—K 4 Q—K 3
+26. R—Q 5 K—B 1
+27. P—B 4 K—Kt 1
+
+Black sees that he now stands in his best defensive position, and therefore waits for White to show how he intends to break through. He notices, of course, that the White Knight is in the way of the K B P, which cannot advance to K B 4 to defend, or support rather, the Pawn at K 5.

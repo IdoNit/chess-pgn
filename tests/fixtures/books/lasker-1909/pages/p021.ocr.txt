@@ -1,0 +1,61 @@
+Games of the Tournament.
+
+Game No. 1.
+Queen's Pawn Opening.
+
+White: Black:
+Dus-
+Mieses.
+Chotimirski.
+
+1. P—Q4 Kt—KB3
+2. P—QB4 P—Q3
+3. Kt—QB3 QKt—Q2
+4. P—K3
+
+After 4) P—K4 the continuation might be: 4) ... P—K4; 5) Kt—B3, P—KKt3; 6) B—Kt5, P—KR3; 7) B—R4, B—Kt2; 8) B—Kt3.
+
+4. ... P—K4
+5. B—Q3 P—KKt3
+6. P—B4 Q—K2
+7. KKt—K2 P—K5
+
+A premature attempt at attack. B—Kt2 followed by o—o and using the KR on the K file, was indicated.
+
+8. B—Ktsq P—B3
+9. Q—B2 Kt—Kt3
+10. P—QKt3 B—B4
+11. P—QR4
+
+11) Kt—Kt3 would have been simply met by o—o—o.
+
+11. ... R—Bsq
+12. P—R5 Kt—Rsq
+13. B—R3 Q—K3
+14. Q—Q2 P—Q4
+15. B×B K×B
+16. P×P
+
+This exchange was unnecessary; White ought to have continued at once with Kt—R4; if then P×P, Kt—B5 would follow with an excellent game.
+
+16. ... P×P
+17. Kt—R4 K—Kt2
+18. o—o Kt—B2
+19. Kt—B5 Q—B3
+20. R—Bsq Q—Kt4
+21. Kt—B3 Q—B3
+22. Kt—K2
+
+White might very well have continued 22) P—QKt4; threatening to bring the KB into action via B2 and QR4; a plausible continuation would have been 22) ... P—Kt3 23) P×P, RP×P; 24) Kt(B5)—R4, Kt—Kt4; 25) Kt—K2, Q—Q3; 26) P—KR3 and White has a slight advantage.
+
+22. ... Q—Kt4
+23. Kt—B3 Q—B3
+24. Kt—K2 Q—Kt4
+25. Kt—B3 Q—B3
+26. Kt—R2 Q—Kt4
+27. Kt—B3 Q—B3
+28. Kt—K2 Q—Kt4
+
+Drawn.
+
+1h 15. 1h 15.

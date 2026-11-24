@@ -1,0 +1,15 @@
+12. B — Q 3  Kt — Q 5
+
+This complicates the game unnecessarily. R — K 1; was simple, and perfectly safe.
+
+13. B — K 3
+
+13. ... B — Kt 5
+
+This is a serious mistake. The position was most interesting, and though in appearance dangerous for Black, not so in reality. The right move would have been 13...R — Kt 5, when we would have 14 B × Kt, R × B; 15 P — Q B 3, B × P; 16 P × B, R — K Kt 5; 17 Q — K 3 (best), Q × P ch; 18 B — B 2, Q × Q; 19 P × Q, R × P, and Black has the best of the game with four Pawns for a Knight, besides the fact that all the White Pawns are isolated.
+
+14. Kt — Kt 5!  R × B
+
+There was nothing better.
+
+15. Q × B!  Kt — K 7 ch

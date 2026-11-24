@@ -1,0 +1,180 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 18,
+   "ocr": "18. ... Kt \u2014 Kt 4",
+   "box": [
+    263,
+    492,
+    558,
+    514
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 19,
+   "ocr": "19. R \u2014 B 2 Kt \u2014 K 3",
+   "box": [
+    262,
+    261,
+    557,
+    284
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014B 2\",\n  \"black\": \"Kt\u2014K 3\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 20,
+   "ocr": "20. Q \u2014 B 3 R \u2014 Q 2",
+   "box": [
+    262,
+    292,
+    544,
+    315
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014B 3\",\n  \"black\": \"R\u2014Q 2\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 21,
+   "ocr": "21. R \u2014 Q 1 K \u2014 Kt 2",
+   "box": [
+    265,
+    846,
+    549,
+    870
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.0
+  },
+  {
+   "number": 22,
+   "ocr": "22. P \u2014 Q 4 Q \u2014 Q 3",
+   "box": [
+    263,
+    627,
+    544,
+    649
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q 4\",\n  \"black\": \"Q\u2014Q 3\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 23,
+   "ocr": "23. R \u2014 B 2 P \u00d7 P",
+   "box": [
+    263,
+    654,
+    527,
+    687
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014B 2\",\n  \"black\": \"P \u00d7 P\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 24,
+   "ocr": "24. P \u00d7 P Kt \u2014 B 5",
+   "box": [
+    263,
+    689,
+    556,
+    712
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P\",\n  \"black\": \"Kt \u2014 B 5\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 25,
+   "ocr": "25. P \u2014 B 5 Kt \u00d7 Kt",
+   "box": [
+    264,
+    717,
+    555,
+    748
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B 5\",\n  \"black\": \"Kt \u00d7 Kt\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 26,
+   "ocr": "26. P \u00d7 Kt Q \u00d7 Q P",
+   "box": [
+    263,
+    752,
+    550,
+    774
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 Kt\",\n  \"black\": \"Q \u00d7 Q P\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 27,
+   "ocr": "27. P \u2014 B 6 ch K \u2014 Kt 1",
+   "box": [
+    264,
+    784,
+    558,
+    806
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B 6 ch\",\n  \"black\": \"K\u2014Kt 1\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 28,
+   "ocr": "28. P \u00d7 R Q \u00d7 P (Q 2)",
+   "box": [
+    264,
+    808,
+    589,
+    841
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 R\",\n  \"black\": \"Q \u00d7 P (Q 2)\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 29,
+   "ocr": "29. P \u2014 Q 5 R \u2014 K 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 30,
+   "ocr": "30. P \u2014 Q 6 P \u00d7 P",
+   "box": [
+    263,
+    873,
+    529,
+    905
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q 6\",\n  \"black\": \"P \u00d7 P\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 31,
+   "ocr": "31. Q \u2014 B 6 Resigns.",
+   "box": [
+    264,
+    908,
+    544,
+    932
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014B 6\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 9.7
+  }
+ ]
+}

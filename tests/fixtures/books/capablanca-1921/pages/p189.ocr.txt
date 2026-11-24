@@ -1,0 +1,15 @@
+make Black's position secure. Unfortunately for Black, he did not carry out his original plan.
+
+21. P—B 4 R×R
+
+P—K Kt 3 would have left Black with a perfectly safe game.
+
+22. R×R R—Q 1
+
+A very serious mistake, which loses a Pawn. P—K Kt 3 was the right move, and would have left Black with a very good game. In fact, if it should come to a simple ending, the position of the Black King would be an advantage.
+
+23. R×R Kt×R
+
+24. P—K R 4
+
+This wins a Pawn, as will soon be seen. Black cannot reply 24...Kt—K 3; because 25 P×P ch, Kt×P; 26 Q—R 4 wins the Knight.

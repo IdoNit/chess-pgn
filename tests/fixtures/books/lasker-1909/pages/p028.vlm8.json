@@ -1,0 +1,563 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 15,
+   "ocr": "15. B\u00d7P P\u00d7B",
+   "box": [
+    108,
+    112,
+    632,
+    133
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u00d7P\",\n  \"black\": \"P\u00d7B\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 16,
+   "ocr": "16. Q\u2014Kt3ch K\u2014Rsq",
+   "box": [
+    108,
+    131,
+    610,
+    158
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Kt3ch\",\n  \"black\": \"K\u2014Rsq\"\n}",
+   "seconds": 9.0
+  },
+  {
+   "number": 17,
+   "ocr": "17. Q\u00d7B P\u00d7Kt",
+   "box": [
+    487,
+    868,
+    713,
+    887
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 18,
+   "ocr": "18. R\u00d7Kt Q\u2014Ksq",
+   "box": [
+    108,
+    178,
+    566,
+    199
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u00d7Kt\",\n  \"black\": \"Q\u2014Ksq\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 19,
+   "ocr": "19. R\u00d7B Q\u2014Kt3ch",
+   "box": [
+    487,
+    696,
+    736,
+    715
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B4\",\n  \"black\": \"Q\u2014Kt3\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 20,
+   "ocr": "20. K\u2014Rsq QR\u2014Ktsq",
+   "box": [
+    105,
+    219,
+    603,
+    241
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Rsq\",\n  \"black\": \"QR\u2014Ktsq\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 21,
+   "ocr": "21. Q\u2014K4",
+   "box": [
+    119,
+    813,
+    347,
+    833
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 21,
+   "ocr": "21. . . . Q\u00d7Q",
+   "box": [
+    712,
+    350,
+    737,
+    365
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"2h.\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 22,
+   "ocr": "22. R\u00d7Q P\u00d7P",
+   "box": [
+    106,
+    349,
+    576,
+    370
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u00d7Q\",\n  \"black\": \"P\u00d7P\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 1,
+   "ocr": "1. P\u2014Q4 P\u2014QB4",
+   "box": [
+    120,
+    543,
+    603,
+    565
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-Q4\",\n  \"black\": \"P-QB4\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 2,
+   "ocr": "2. P\u2014K3 P\u2014Q4",
+   "box": [
+    663,
+    219,
+    741,
+    239
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Ksq\",\n  \"black\": \"\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 3,
+   "ocr": "3. P\u2014QB4 P\u2014K3",
+   "box": [
+    117,
+    834,
+    346,
+    855
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014QB4\",\n  \"black\": \"P\u2014K3\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 4,
+   "ocr": "4. Kt\u2014KB3 Kt\u2014KB3",
+   "box": [
+    117,
+    856,
+    371,
+    876
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014KB3\",\n  \"black\": \"Kt\u2014KB3\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 5,
+   "ocr": "5. Kt\u2014B3 P\u2014QR3",
+   "box": [
+    118,
+    878,
+    362,
+    898
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B3\",\n  \"black\": \"P\u2014QR3\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 6,
+   "ocr": "6. P\u00d7QP Kt\u00d7P",
+   "box": [
+    117,
+    900,
+    344,
+    920
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7QP\",\n  \"black\": \"Kt\u00d7P\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 7,
+   "ocr": "7. B\u2014Q3 Kt\u2014QB3",
+   "box": [
+    118,
+    921,
+    371,
+    942
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q3\",\n  \"black\": \"Kt\u2014QB3\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 8,
+   "ocr": "8. o\u2014o P\u00d7P",
+   "box": [
+    118,
+    943,
+    334,
+    961
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"o-o\",\n  \"black\": \"PxP\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 9,
+   "ocr": "9. P\u00d7P B\u2014K2",
+   "box": [
+    119,
+    965,
+    348,
+    985
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7P\",\n  \"black\": \"B\u2014K2\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 10,
+   "ocr": "10. R\u2014Ksq o\u2014o",
+   "box": [
+    109,
+    986,
+    327,
+    1006
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Ksq\",\n  \"black\": \"o\u2014o\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 11,
+   "ocr": "11. B\u2014K3 P\u2014QKt4",
+   "box": [
+    111,
+    1008,
+    370,
+    1028
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014K3\",\n  \"black\": \"P\u2014QKt4\"\n}",
+   "seconds": 10.1
+  },
+  {
+   "number": 12,
+   "ocr": "12. R\u2014Bsq B\u2014Kt2",
+   "box": [
+    111,
+    1193,
+    356,
+    1213
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Bsq\",\n  \"black\": \"B\u2014Kt2\"\n}",
+   "seconds": 8.9
+  },
+  {
+   "number": 23,
+   "ocr": "23. R\u2014KKtsq R\u00d7BP",
+   "box": [
+    486,
+    1107,
+    604,
+    1127
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 24,
+   "ocr": "24. R\u2014KB4 R\u2014B7",
+   "box": [
+    663,
+    241,
+    735,
+    261
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Ksq\",\n  \"black\": \"\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 25,
+   "ocr": "25. P\u2014Kt3 P\u2014KR3",
+   "box": [
+    487,
+    912,
+    729,
+    932
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 26,
+   "ocr": "26. B\u2014K7 R\u2014Ksq",
+   "box": [
+    486,
+    890,
+    736,
+    911
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 27,
+   "ocr": "27. K\u2014Ktsq R\u2014K7",
+   "box": [
+    487,
+    1085,
+    734,
+    1105
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Kt4\",\n  \"black\": \"R\u2014Bsq\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 28,
+   "ocr": "28. B\u00d7P R\u2014Qsq",
+   "box": [
+    664,
+    284,
+    735,
+    305
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Qsq\",\n  \"black\": \"R\u2014QBs q\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 29,
+   "ocr": "29. B\u2014Q4 R\u2014QBsq",
+   "box": [
+    664,
+    306,
+    750,
+    326
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"R\u2014QBs q\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 30,
+   "ocr": "30. R\u2014KKt4 Resigns.",
+   "box": [
+    664,
+    328,
+    739,
+    347
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 9.0
+  },
+  {
+   "number": 1,
+   "ocr": "1h 47. 2h.",
+   "box": [
+    108,
+    190,
+    631,
+    224
+   ],
+   "kind": "A",
+   "reading": "{\"white\": \"\", \"black\": \"\"}",
+   "seconds": 9.2
+  },
+  {
+   "number": 15,
+   "ocr": "15. . . . B\u00d7Kt (B3)",
+   "box": [
+    488,
+    609,
+    775,
+    629
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"B\u00d7Kt (B3)\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 16,
+   "ocr": "16. P\u00d7B Kt\u00d7P",
+   "box": [
+    487,
+    630,
+    722,
+    648
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7B\",\n  \"black\": \"Kt\u00d7P\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 17,
+   "ocr": "17. R\u2014Rsq Kt\u2014Kt5",
+   "box": [
+    487,
+    652,
+    742,
+    673
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Rsq\",\n  \"black\": \"Kt\u2014Kt5\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 18,
+   "ocr": "18. B\u2014K4 R\u2014R2",
+   "box": [
+    489,
+    674,
+    726,
+    693
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014K4\",\n  \"black\": \"R\u2014R2\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 19,
+   "ocr": "19. P\u2014B4 Q\u2014Kt3",
+   "box": [
+    486,
+    1063,
+    728,
+    1084
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 8.7
+  },
+  {
+   "number": 20,
+   "ocr": "20. Kt\u2014Q3 Kt\u2014Q4",
+   "box": [
+    487,
+    847,
+    736,
+    867
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Q3\",\n  \"black\": \"Kt\u2014Q4\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 21,
+   "ocr": "21. B\u00d7Kt P\u00d7B",
+   "box": [
+    664,
+    500,
+    722,
+    518
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u00d7B\",\n  \"black\": \"Kt\u2014Kt.5\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 22,
+   "ocr": "22. R\u2014K2 R\u2014Ksq",
+   "box": [
+    663,
+    263,
+    726,
+    282
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014K7\",\n  \"black\": \"\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 23,
+   "ocr": "23. R\u2014Kt2 Q\u2014K3",
+   "box": [
+    664,
+    522,
+    742,
+    541
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Kt\u2014Kt5\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 24,
+   "ocr": "24. Kt\u2014K5 P\u2014B3",
+   "box": [
+    485,
+    934,
+    723,
+    954
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K5\",\n  \"black\": \"P\u2014B3\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 25,
+   "ocr": "25. Q\u2014R5 B\u2014Bsq",
+   "box": [
+    486,
+    1042,
+    733,
+    1062
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q.\u2014R5\",\n  \"black\": \"B\u2014Bsq\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 26,
+   "ocr": "26. P\u2014B5 Q\u2014K2",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 27,
+   "ocr": "27. Kt\u2014Kt4 R\u2014Bsq",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 28,
+   "ocr": "28. R\u2014Kt3",
+   "box": [
+    663,
+    135,
+    724,
+    154
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014B7\",\n  \"black\": \"Ktsq)\u00d7P,\"\n}",
+   "seconds": 9.9
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+36 Q × Q P! R — Q 1; 37 Q — R 6, K — Kt 1 best (if Q — Q 5 ch; K — R 1, K — Kt 1; R — Q Kt 1 wins);
+38 Q × B P and White will at least have a draw.
+
+35. ... ... ... R — K 7
+36. Q — Q 4 R — Q 1
+37. Q — R 4 Q — K 5
+38. Q — R 6 K — Kt 1
+
+There is nothing to be done against this simple move, since White cannot play Kt — Q 4, because Q — R 8 mates.
+
+39. K — B 1 R × Q P
+40. Kt — Q 4 R — K 8 ch
+Resigns.
+
+A very interesting battle.
+
+GAME 5. RUY LOPEZ
+(St. Petersburg, 1914)
+
+White: Dr. E. Lasker. Black: J. R. Capablanca.
+
+1. P — K 4 P — K 4
+2. Kt — K B 3 Kt — Q B 3
+3. B — Kt 5 P — Q R 3
+4. B × Kt
+
+The object of this move is to bring about speedily a middle-game without Queens, in which White

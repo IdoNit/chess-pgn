@@ -1,0 +1,19 @@
+GAME 12. FRENCH DEFENCE
+(New York, 1918)
+
+White: J. R. Capablanca. Black: O. Chajes.
+
+1. P — K 4 P — K 3
+2. P — Q 4 P — Q 4
+3. Kt — Q B 3 Kt — K B 3
+4. B — Q 3
+
+Not the most favoured move, but a perfectly natural developing one, and consequently it cannot be bad.
+
+4. ... P × P
+
+P — Q B 4 is generally played in this case instead of the text move.
+
+5. Kt × P Q Kt — Q 2
+6. Kt × Kt ch Kt × Kt
+7. Kt — B 3 B — K 2

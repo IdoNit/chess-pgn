@@ -1,0 +1,70 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 39,
+   "ocr": "39. P\u2014K R 5 'P \u00d7 P",
+   "box": [
+    274,
+    543,
+    534,
+    568
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014KR 5 'P\u00d7P\",\n  \"black\": \"K Kt 4\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 39,
+   "ocr": "39...P\u2014K Kt 4 would be answered by Q\u2014B 5, with a winning game.",
+   "box": [
+    160,
+    583,
+    711,
+    608
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"P - K Kt 4\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 40,
+   "ocr": "40. P \u00d7 P Q\u2014K 2",
+   "box": [
+    274,
+    655,
+    558,
+    678
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7P\",\n  \"black\": \"Q\u2014K 2\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 41,
+   "ocr": "41. Q\u2014B 5 K\u2014Kt 1",
+   "box": [
+    276,
+    869,
+    570,
+    892
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014B 5\",\n  \"black\": \"K\u2014Kt r\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 42,
+   "ocr": "42. R\u2014Q 7 B \u00d7 P ch",
+   "box": [
+    276,
+    1047,
+    568,
+    1078
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Q7\",\n  \"black\": \"B\u00d7P ch\"\n}",
+   "seconds": 9.0
+  }
+ ]
+}

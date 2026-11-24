@@ -1,0 +1,22 @@
+This loses a piece, but Black's position was altogether hopeless.
+
+43. K — Kt 4 Q — B 3
+44. Kt × B Q — Kt 2 ch
+45. K — B 4 Resigns.
+
+The interest of this game centres mainly on the opening and on the march of the White King during the final stage of the game. It is an instance of the King becoming a fighting piece, even while the Queens are still on the board.
+
+**GAME 13. RUY LOPEZ**
+
+(New York, 1918)
+
+White: J. S. Morrison. Black: J. R. Capablanca.
+
+1. P — K 4 P — K 4
+2. Kt — K B 3 Kt — Q B 3
+3. B — Kt 5 P — Q 3
+4. Kt — B 3 B — Q 2
+5. P — Q 4 P × P
+6. Kt × P P — K Kt 3
+
+In this form of defence of the Ruy Lopez the development of the K B via Kt 2 is, I think, of great importance. The Bishop at Kt 2 exerts great pressure along the long diagonal. At the same time the position of the Bishop and Pawns in front of the King, once it is Castled, is one of great defensive strength. Therefore, in this form of development, the Bishop,

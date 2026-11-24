@@ -1,0 +1,26 @@
+QUEEN'S GAMBIT DECLINED
+
+GAME 9. QUEEN'S GAMBIT DECLINED
+(Berlin, 1913)
+
+White: J. R. Capablanca. Black: R. Teichmann.
+
+1. P — Q 4 P — Q 4
+2. Kt — KB 3 Kt — KB 3
+3. P — B 4 P — K 3
+4. B — Kt 5 B — K 2
+5. Kt — B 3 Q Kt — Q 2
+6. P — K 3 O — O
+7. R — B 1 P — Q Kt 3
+8. P × P P × P
+9. B — Kt 5
+
+An invention of my own, I believe. I played it on the spur of the moment simply to change the normal course of the game. Generally the Bishop goes to Q 3, or to R 6, after Q — R 4. The text move is in the nature of an ordinary developing move, and as it violates no principle it cannot be bad.
+
+9. ... B — Kt 2
+10. O — O P — Q R 3
+11. B — R 4 R — B 1
+12. Q — K 2 P — B 4
+13. P × P Kt × P
+
+If P × P; K R — Q 1, and White would play to win one of Black's centre Pawns. The drawback to the

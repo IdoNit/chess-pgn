@@ -1,0 +1,14 @@
+28. P — Q Kt 3 K — B 1
+29. K — Q 3 K — Kt 1
+30. R — Q 6 Q — B 1
+31. R — Q 5 Q — K 3
+32. P — K Kt 4 K — B 1
+33. Q — B 4 K — Kt 1
+34. Q — K 4 K — B 1
+
+Black persists in waiting for developments. He sees that if P — K R 5, P × P; P × P, the Queen goes to R 6, and White will have to face serious difficulties. In this situation White decides that the only course is to bring his King to K Kt 3, so as to defend the squares K R 3 and K Kt 4, where the Black Queen might otherwise become a source of annoyance.
+
+35. K — K 2 K — Kt 1
+36. K — B 1 K — B 1
+37. K — Kt 2 K — Kt 1
+38. K — Kt 3 K — B 1

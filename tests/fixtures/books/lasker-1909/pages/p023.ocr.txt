@@ -1,0 +1,73 @@
+12) Q—K2; 13) B—Kt5, KR—Qsq;; 14) Q—Q3, P—KR3, was a feasible line of play. The checks would have done Black no harm.
+
+13. B—Kt5 B—K2
+14. Kt—Q4 P—KKt3
+15. Q—K2
+
+White might have played P—B4, followed by P—B5; e.g. 15) P—B4, B—KKt5; 16) Q—Ksq, Kt—B5; 17) P—B5, Kt×KtP; 18) P—KR3 and White would have an irresistible attack.
+
+15. Kt—B3
+16. Kt—B3 Q—Kt3
+17. P—KR3 KR—Qsq
+18. KR—Qsq K—Kt2
+19. Kt—Q4 Kt×Kt
+20. PxKt R—B5
+21. B—K3 R(Bsq)—Bsq
+22. B—Q3 R—Kt5
+23. P—QKt3 Q—Qsq
+24. Kt—R4 R×R
+25. R×R B—Q2
+26. Kt—B5 R—Kt3
+27. B—KB4 B×Kt
+28. P×B R—K3
+29. Q—Kt2 Q—K2
+30. B—Q6 Q—Ksq
+31. Q—Q2 B—B3
+32. B—KB4 Kt—Ktsq
+33. Q—B3ch P—B3
+34. K—R2 K—B2
+35. Q—Q2 P—QR3
+36. B—Q6 K—Kt2
+37. B—KB4 Q—K2
+
+Adjourned.
+
+38. B—Q6 Q—Ksq
+39. B—KB4 Q—K2
+40. P—QKt4 Q—Ksq
+41. P—R3 K—B2
+42. R—Ktsq P—B4
+43. R—Kt2 Kt—B3
+44. B—Ktsq Q—K2
+45. P—B3 Kt—R4
+46. B—Q6 Q—R5
+47. P—Kt3
+
+Both parties have taken care not to alter the position to any considerable extent. Black here lays a trap. If Q—R6, Black would have answered R×B.
+
+47. Q—Qsq
+48. B—QR2 Kt—B3
+49. K—Kt2 Q—Ksq
+50. K—B2 K—Kt2
+51. B—KB4 B—Kt4
+
+An altogether faulty manoeuvre; the attack thus imitated is easily parried, whilst the QP is left without support.
+
+52. B—R6ch K—Rsq
+53. Q—Qsq Kt—Ktsq
+
+Somewhat better would have been B—B3.
+
+54. Q—Q4ch Kt—B3
+55. P—KR4
+
+This was calculated to a nicety.
+
+55. R—K7ch
+56. K—Ktsq R—K8ch
+57. K—R2 R—K7ch
+58. K—R3 Q—K3
+59. B—Kt5 P—B5ch
+60. P—Kt4 R—K4
+
+Black here lost the game by exceeding the time limit. The game might have gone on as follows: 61) Q×BP, B—B8ch; 62) K—R2, Kt—Q2; 63) Q—Q4 to White's advantage.

@@ -1,0 +1,15 @@
+Now it is not so effective, because White’s Q B is out, and the Knight, in going to K 3 to defend the square Q B 4, does not block the Q B.
+
+13. Kt — K 3 R — K 1
+14. O — O Q — K 2
+
+This is bad. Black’s game was already not good. He probably had no choice but to take the Knight with the Bishop before making this move.
+
+15. Kt — Q 5 B × Kt
+16. P × B Kt — Kt 1
+
+in order to bring it to Q 2, to support the other Knight and also his King’s Pawn. White, however, does not allow time for this, and by taking advantage of his superior position is able to win a Pawn.
+
+17. P — Q R 4 P — Kt 5
+
+Since he had no way to prevent the loss of a Pawn, he should have given it up where it is, and played Q Kt — Q 2, in order to make his position more solid.

@@ -1,0 +1,27 @@
+24. ... P × P
+25. Q × P ch K — K 3
+26. Q — Kt 4 ch K — B 3
+27. Q — Kt 5 ch K — K 3
+28. Q × P Q — Q 3
+29. P — B 5 Q — Q 4
+30. P — K 4! Q — Q 8 ch
+31. K — R 2 P — B 3
+32. Q — Kt 4 ch! K — K 2
+33. Kt × P Q × Q
+34. Kt × Q Kt — K 3
+35. P — K 5 P × P
+36. Kt × P Kt — Q 5
+
+The game went on for a few more moves, and, there being no way to counteract the advance of White's two passed Pawns, Black resigned.
+
+GAME 4. FRENCH DEFENCE
+(St. Petersburg, 1913)
+
+White: J. R. Capablanca. Black: E. A. Snosko-Borovski.
+
+1. P — Q 4 P — K 3
+2. P — K 4 P — Q 4
+3. Kt — Q B 3 Kt — K B 3
+4. B — Kt 5 B — Kt 5
+
+This constitutes the McCutcheon Variation. It aims at taking the initiative away from White. Instead

@@ -1,0 +1,15 @@
+same Knight is moved three times in the opening, although it involves the exchange of two pieces. In reality the difficulty in this variation, as well as in nearly all the variations of the Queen's gambit, lies in the slow development of Black's Queen Bishop. However, whether this variation can or cannot be safely played is a question still to be decided, and it is outside the scope of this book. I may add that at present my preference is for a different system of development, but it is not unlikely that I should some time come back to this variation.
+
+6. B × B Q × B
+7. B — Q 3
+
+P × P is preferable for reasons that we shall soon see.
+
+7. ... Kt × Kt
+8. P × Kt Kt — Q 2
+
+Now P × P would be a better way to develop the game. The idea is that after 8...P × P; 9 B × B P, P — Q Kt 3, followed by B — Kt 2, would give Black's Bishop a powerful range. For this variation see the eleventh game of the match.
+
+9. Kt — B 3 O — O
+
+No longer would 9...P × P; 10 B × P, P — Q Kt 3 be good, because 11 B — Kt 5 would prevent B — Kt 2 on account of Kt — K 5.

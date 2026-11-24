@@ -1,0 +1,9 @@
+course of this variation, but with very poor success. The move in theory ought to be unsound, since Black's K Kt is yet undeveloped. I had not yet learned of the attack founded on Kt—Kt 5 and the exchange of the B at K 3. Either Kt—B 3 or P—K R 3; to prevent either B or Kt—K Kt 5, was right.
+
+9. P × P B × P
+10. Kt—K Kt 5 Kt—B 3
+11. Kt × B P × Kt
+12. B—R 3 Q—K 2
+13. B—Kt 5 O—O
+
+This is a mistake. The right move was R—Q 1 in order to get the Rook away from the line of the Bishop at R 3 and at the same time to support the Q P. Incidentally it shows that White failed to take proper advantage of Black's weak opening moves. Against the text move White makes a very fine combination

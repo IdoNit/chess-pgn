@@ -1,0 +1,68 @@
+19. Q—B2 Q—R4
+20. Kt—K2
+
+If 20) Kt—Q5, B×Kt; 21) BP×B, Q—B6; 22) R(Ktsq)—Bsq, Q×Q; 23) R×Q, P—Kt4; 24) B—Kt3, P—B4; 25) P—B3, P—KB5; 26) B—B2, Kt—K4 and Black's game would, at least, not have been inferior. After the text, however, White appears to be irretrievably lost.
+
+20. . . . . Kt—Bsq
+21. P—B3 Kt—K3
+22. B—B2 B—Q2
+
+Intending to play Kt—Q5. But first he renders the QBP mobile.
+
+23. Kt—KBsq Kt—Q5
+24. Q—Q3 Kt—B3
+25. Kt—Bsq Q—R6
+
+Brilliant play. The QRP is thus fixed in its weak position.
+
+26. Kt—K3 Kt—Kt5
+27. Q—Q2 P—QR4
+28. Kt—Q5 Kt×Kt
+29. KP×Kt
+
+This loses forthwith. If he had retaken BP×Kt, Black would have continued 29)... P—B5, threatening to establish a most dangerous passed Pawn at QB6. 30) B—Q4 would then have been a mistake, as
+
+Position after Black's 25th move.
+
+after 30) ... Q—Kt5 (Q×Q?, B×Bch) 31) R—Qsq, P—B6 Black would have won at once. Black's play in this game is of the highest order.
+
+29. . . . . R×Rch
+20. B×R B—B4
+31. Kt—Q3 B×Kt
+32. Q×B Q×RP
+33. P—R3 P—R5
+24. P—QKt4 P×P
+35. R×P R×R
+36. B×R O—Kt6
+37. Q—Q2 P—R6
+38. B×P Q×B
+
+Resigns.
+
+2h 4. 1h 19.
+
+Game No. 11.
+Queen's Pawn Opening.
+
+White: Black:
+Tartakower.
+1. P—Q4 P—Q4
+2. B—B4 Kt—KB3
+3. P—K3 P—K3
+4. Kt—KB3 B—Q3
+5. B—Q3 B×B
+6. P×B Q—Q3
+7. Q—Q2 P—B4
+8. P×P Q×P
+9. 0—0 Kt—B3
+10. P—B3
+
+10) Kt—B3 followed by the development of the Rooks, would be sounder play.
+
+10. . . . . 0—0
+11. P—QKt4 Q—Kt3
+12. P—QR4 P—QR3
+
+The purpose of this move is not clear. The advance of White's QRP and QKtP can do Black no harm.
+
+12) ... R—Qsq, followed by B—Q2 and QR—Bsq was indicated. The Bishop could afterwards take up a waiting position at Ksq.

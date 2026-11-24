@@ -1,0 +1,18 @@
+Most players will be wondering, as the spectators did, why I did not resign. The reason is that while I knew the game to be lost, I was hoping for the following variation, which Chajes came very near playing:
+
+51 Q × P ch, K — R 2; 52 Q — R 5, R × P; 53 B — Kt 5 ch, K — Kt 2; 54 B × R ch, K × B; and while White has a won game it is by no means easy. If the reader does not believe it, let him take the White pieces against a master and see what happens. My opponent, who decided to take no chances, played 51 B — Kt 7, and finally won as shown below.
+
+51. B — Kt 7 P — Kt 6
+52. K — K 2 P — Kt 7
+53. K — B 2 Kt — B 1
+54. Q — Kt 4 Kt — Q 2
+55. K — Kt 1 P — R 4
+56. P — R 4 B × P
+57. Q — R 3 R × P
+58. B × R Kt × B
+59. Q × P ch K — B 1
+60. Q × P
+
+and after a very few more moves Black resigned.
+
+A very fine game on Chajes' part from move 25 on, for while Black, having the best of the position, missed several chances, White, on the other hand, missed none.

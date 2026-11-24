@@ -1,0 +1,17 @@
+Black's position was bad and perhaps lost in any case, but the text move makes matters worse. As a matter of fact I never saw White's reply B—B 5. It never even passed through my mind that this was threatened. Black's best move would have been 16...K R—Kt 1. If that loses, then any other move would lose as well.
+
+17. B—B 5 K R—B 1
+
+From bad to worse. Kt—B 3 offered the only hope.
+
+18. B × Kt Q × B
+19. P—R 6 B—B 3
+20. P × P P × P
+21. Q × P Q R—Kt 1
+
+The game was lost. One move was as good as another.
+
+22. R × R R × R
+23. Kt—K 5 Q—B 4
+24. P—K B 4 R—Kt 3
+25. Q × R! Resigns.

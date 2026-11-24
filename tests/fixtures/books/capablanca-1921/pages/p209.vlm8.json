@@ -1,0 +1,76 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 25,
+   "ocr": "25. P \u00d7 P e.p. Kt \u00d7 P (B 3)",
+   "box": [
+    220,
+    220,
+    541,
+    255
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P e.p.\",\n  \"black\": \"Kt \u00d7 P (B 3)\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 26,
+   "ocr": "26. P \u00d7 P ch R \u00d7 P",
+   "box": [
+    219,
+    252,
+    471,
+    287
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P ch\",\n  \"black\": \"R \u00d7 P\"\n}",
+   "seconds": 8.9
+  },
+  {
+   "number": 27,
+   "ocr": "27. R \u00d7 P ch",
+   "box": [
+    216,
+    611,
+    356,
+    632
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u00d7P ch\",\n  \"black\": \"the Queen.\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 27,
+   "ocr": "27. ... K \u00d7 R",
+   "box": [
+    214,
+    692,
+    471,
+    712
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u00d7R\",\n  \"black\": \"\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 28,
+   "ocr": "28. Kt \u2014 B 5 ch P \u00d7 Kt",
+   "box": [
+    214,
+    721,
+    477,
+    745
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B 5 ch\",\n  \"black\": \"P\u00d7Kt\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 29,
+   "ocr": "29. Q \u00d7 Q",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

@@ -1,0 +1,70 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 27,
+   "ocr": "27. Kt \u00d7 Kt K \u00d7 Kt",
+   "box": [
+    197,
+    205,
+    476,
+    227
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt \u00d7 Kt\",\n  \"black\": \"K \u00d7 Kt\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 27,
+   "ocr": "27...P \u00d7 Kt would be worse, as White would then be able to post his Bishop at K 5.",
+   "box": [
+    82,
+    244,
+    634,
+    268
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"P \u00d7 Kt\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 28,
+   "ocr": "28. R\u2014Q 2 R\u2014K R 1",
+   "box": [
+    195,
+    315,
+    510,
+    339
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Q 2\",\n  \"black\": \"R\u2014K R 1\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 29,
+   "ocr": "29. R\u2014Q B 2! R\u2014Q B 1",
+   "box": [
+    199,
+    955,
+    506,
+    978
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Q B 2!\",\n  \"black\": \"R\u2014Q B 1\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 30,
+   "ocr": "30. R \u00d7 R B \u00d7 R",
+   "box": [
+    198,
+    987,
+    465,
+    1009
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u00d7R\",\n  \"black\": \"B\u00d7R\"\n}",
+   "seconds": 9.8
+  }
+ ]
+}

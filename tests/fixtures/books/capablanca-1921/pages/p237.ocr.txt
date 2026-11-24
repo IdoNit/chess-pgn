@@ -1,0 +1,26 @@
+GAME 11. RUY LOPEZ
+(St. Petersburg, 1914)
+
+White: J. R. Capablanca. Black: D. Janowski.
+
+1. P — K 4 P — K 4
+2. Kt — K B 3 Kt — Q B 3
+3. B — Kt 5 P — Q R 3
+4. B × Kt Q P × B
+5. Kt — B 3
+
+I played this move after having discussed it with Alechin on several occasions. Alechin considered it, at the time, superior to P — Q 4, which is generally played. He played it himself later on in the Tournament, in one of his games against Dr. E. Lasker, and obtained the superior game, which he only lost through a blunder.
+
+5. ... B — Q B 4
+
+P — B 3 is probably the best move in this position. I do not like the text move.
+
+6. P — Q 3 B — K Kt 5
+7. B — K 3 B × B
+
+This opens the K B file for White, and also reinforces his centre, but Black naturally did not want to make a second move with this Bishop.
+
+8. P × B Q — K 2
+9. O — O O — O — O
+
+Bold play, typical of Janowski.

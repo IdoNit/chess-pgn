@@ -1,0 +1,24 @@
+38. P—R 4 K—Kt 2
+39. R—B 6 R—Q 4
+40. R—B 7 ch K×P
+41. R×P R—Q 8 ch
+42. K—R 2 P—Q 4
+43. P—R 5 R—Q B 8
+44. R—B 7 R—Q R 8
+45. P—Q Kt 4 R—R 5
+46. P—B 3 P—Q 5
+47. R—B 6 P×P
+48. R×P R×Kt P
+49. R—Q R 3 R—Kt 2
+50. P—R 6 R—Q R 2
+51. R—R 5 K—B 3
+52. P—Kt 4 K—K 2
+53. K—Kt 3 K—Q 3
+54. K—B 4 K—B 2
+55. K—K 5 K—Q 2
+56. P—Kt 5 K—K 2
+57. P—Kt 6 K—B 1
+58. K×P K—K 1
+59. P—Kt 7 R×P
+60. P—R 7 R—Kt 3 ch
+61. K—B 5 Resigns.

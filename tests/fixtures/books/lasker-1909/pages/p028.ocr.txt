@@ -1,0 +1,75 @@
+15. B×P P×B
+16. Q—Kt3ch K—Rsq
+17. Q×B P×Kt
+18. R×Kt Q—Ksq
+19. R×B Q—Kt3ch
+20. K—Rsq QR—Ktsq
+21. Q—K4
+
+White calculates every possibility with the utmost accuracy.
+
+21. . . . Q×Q
+22. R×Q P×P
+
+Game No. 8.
+Queen's Pawn Opening.
+
+White: Black:
+v. Freymann. Tartakower.
+1. P—Q4 P—QB4
+
+After this White does not seem to have anything better than to turn into the Sicilian Defense by 2) P—K4. After 2) P—K4, P×P; 3) Kt—KB3, P—K4?; 4) P—B3 White gets sufficient compensation for the Pawn sacrificed. 2) P—Q5 also deserves consideration, as the Pawn is here in a secure position, and White succeeds in hampering Black's game a little, without having lost time.
+
+2. P—K3 P—Q4
+3. P—QB4 P—K3
+4. Kt—KB3 Kt—KB3
+5. Kt—B3 P—QR3
+6. P×QP Kt×P
+7. B—Q3 Kt—QB3
+8. o—o P×P
+9. P×P B—K2
+10. R—Ksq o—o
+11. B—K3 P—QKt4
+
+A venturesome move. He risks 12) Q—B2, QKt—Kt5; 13) B×Pch, K—Rsq; 14) Q—Ktsq, P—Kt3; 15) B×P, P×B; 16) Q×P, whereupon White would have already three Pawns for the Piece with good attack.
+
+12. R—Bsq B—Kt2
+
+23. R—KKtsq R×BP
+24. R—KB4 R—B7
+
+If 24) ... R(Ktsq)×P, White wins by R—B8ch.
+
+25. P—Kt3 P—KR3
+26. B—K7 R—Ksq
+27. K—Ktsq R—K7
+28. B×P R—Qsq
+29. B—Q4 R—QBsq
+30. R—KKt4 Resigns.
+
+1h 47. 2h.
+
+After 15) Kt—B3 White would have quite a good position.
+
+15. . . . B×Kt (B3)
+16. P×B Kt×P
+17. R—Rsq Kt—Kt5
+18. B—K4 R—R2
+19. P—B4 Q—Kt3
+
+The logical winning continuation was 19) ... B×Kt; 20) P×B, Q×Q; 21. QR×Q, P—B4. White's QBP could not be held, whilst Black would defend his KP comfortably with King.
+
+20. Kt—Q3 Kt—Q4
+21. B×Kt P×B
+22. R—K2 R—Ksq
+23. R—Kt2 Q—K3
+24. Kt—K5 P—B3
+
+This move required exact calculation. It was necessary to dislodge the Knight, or else White would have played Q—B3 and P—B5.
+
+25. Q—R5 B—Bsq
+26. P—B5 Q—K2
+27. Kt—Kt4 R—Bsq
+28. R—Kt3
+
+If 28) R×P, Black would not, by any means, reply R×R, on account of 29) Kt—R6ch and Kt—B7ch giving perpetual check, but 28) ...

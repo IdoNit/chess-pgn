@@ -1,0 +1,11 @@
+The student should examine this position carefully. There seems to be no particular danger, yet, as White will demonstrate, Black may be said to be lost. If the game is not altogether lost, the defence is at least of the most difficult kind; indeed, I must confess that I can see no adequate defence against White's next move.
+
+20. Kt—B 5! K—B 1
+
+If 20...B—Q 1; 21 Kt—Q 6, R—B 2; 22 Kt×B, R×Kt; 23 B×Kt, B×B; 24 R×P, R—B 2; 25 R—Q 2, and White is a Pawn ahead. If 20...B moves anywhere else, then B×Kt, doubling the K B P and isolating all of Black's King's side Pawns.
+
+21. Kt×B K×Kt
+
+22. Kt—Q 4 P—Kt 3
+
+This is practically forced, as White threatened Kt—B 5 ch. Notice that the Black Knight is pinned in such a way that no relief can be afforded except by giving up the K R P or abandoning the open file

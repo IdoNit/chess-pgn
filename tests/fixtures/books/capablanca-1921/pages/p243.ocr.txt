@@ -1,0 +1,24 @@
+any compensation for his Pawn, the move is bad. He should have played Q—Q 4 and tried to fight the game out that way. It might have continued thus: 13 Q—B 4, B—Kt 2; 14 Q×B P, B×P; 15 Kt×B, Q×Kt; 16 O—O—O with considerable advantage of position for White. The text move might be considered a mild form of suicide.
+
+13. P×P B—B 4
+14. Q—K B 4 B×B
+15. O—O—O B—Kt 2
+16. R×B Q—K 2
+17. Q—B 4
+
+In order to keep the Black Queen from coming into the game.
+
+17. ... QR—Q 1
+18. KR—Q 1
+
+A better plan would have been to play R—K 1, threatening P—K 6.
+
+18. ... R×R
+19. R×R R—K 1
+20. P—B 3 P—QB 3
+
+Of course if B×P; Kt×B, Q×Kt; R—K 3. Black with a Pawn minus fights very hard.
+
+21. R—K 3
+
+The Pawn had now to be defended after Black's last move, because after B×P; Kt×B, Q×Kt;

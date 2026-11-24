@@ -1,0 +1,31 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 12,
+   "ocr": "12. ... P - Kt 4",
+   "box": [
+    219,
+    731,
+    514,
+    752
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"...\",\n  \"black\": \"P\u2014Kt 4\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 13,
+   "ocr": "13. P - KR 3 O - O",
+   "box": [
+    219,
+    854,
+    483,
+    877
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-KR3\",\n  \"black\": \"O-O\"\n}",
+   "seconds": 10.1
+  }
+ ]
+}

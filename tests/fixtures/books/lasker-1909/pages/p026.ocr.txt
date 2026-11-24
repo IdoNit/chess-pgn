@@ -1,0 +1,77 @@
+Q×Qch, R×Q; 44) B—B3 White would have taken up a strong defensive position.
+
+43. Q×Q R×Q
+44. B×Bch K×B
+45. R×P R×P
+
+Black certainly remains with a Pawn to the good, but White threatens to break up the Pawns by P—QR4. After an end game, which is played by White in a sensible manner, and which needs no comment, the game now ends in a draw.
+
+46. K—Kt3 R—K5
+47. K—B3 R—K8
+48. R—Q7ch K—B3
+49. R—Q6ch K—K4
+50. R×QRP R—QKt8
+51. R×P R×P
+52. K—K3 R—Kt6ch
+53. K—Q2 K—Q5
+
+54. R—Q6ch K—B4
+55. R—QR6 R×KRP
+56. R—R8 R—R7ch
+57. K—B3 R—R7
+58. R—B8ch K—Kt3
+59. R—Kt8ch K—B3
+60. R—QR8 K—B4
+61. R—B8ch K—Kt3
+62. R—Kt8ch K—B3
+63. R—QR8 K—Kt2
+64. R—R5 K—Kt3
+65. R—R8 K—B3
+66. K—Q4 K—Kt2
+67. R—R5 R—O7ch
+68. K—B3 R—Q4
+69. K—Kt4 K—Kt3
+70. P—R4 P—B6
+71. P—R4 . . .
+
+If 71) . . . P—B7 then follows.
+72) R—R6ch and 73) R—B6. Drawn.
+
+4h 12. 4h 24.
+
+Game No. 6.
+Ruy Lopez.
+
+White: Black:
+Forgacs. Speijer.
+1. P—K4 P—K4
+2. Kt—KB3 Kt—QB3
+3. B—Kt5 Kt—B3
+4. o—o B—K2
+5. Kt—B3 P—Q3
+6. P—Q4 P×P
+7. B×Ktch P×B
+8. Kt×P B—Q2
+9. P—QKt3 . . .
+
+This development is a little too slow, as Mr. Speijer proves.
+9. . . . o—o
+10. B—Kt2 R—Ksq
+11. Q—B3 . . .
+
+Not a good conception.
+11. . . . B—KBsq
+12. P—KR3 P—Kt3
+
+Thus White's QB is counterbalanced by Black's KB, while, at the same time, the Pawn at Kt3 prevents the entry of the Knight at B5.
+13. Kt(Q4)— B—Kt2 K2
+
+Black was threatening Kt×P.
+14. . . . P—KR4
+
+Fine and energetic play.
+15. KR—Ksq Kt—R2
+16. Kt—R4 Kt—Kt4
+17. Q—Q3 B×B
+18. KtxB Q—B3
+19. P—QB3 QR—Qsq

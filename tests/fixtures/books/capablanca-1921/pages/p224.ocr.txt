@@ -1,0 +1,13 @@
+B × P would also win, which shows that White's game is altogether gone. In these cases, however, it is not the prettiest move that should be played, but the most effective one, the move that will make your opponent resign soonest.
+
+42. R — Q B 2
+P × P
+
+43. R — Q 3
+Q — K 5!
+
+44. R — Q 1
+R — Q B 6
+Resigns.
+
+Of course White must play Q — Q 2, and Black then plays R × P.

@@ -1,0 +1,15 @@
+opposite colours, which gives him the best chance to draw.
+
+27. Kt × Kt K × Kt
+
+27...P × Kt would be worse, as White would then be able to post his Bishop at K 5.
+
+28. R—Q 2 R—K R 1
+
+Black wants to force B—Kt 3. P—K Kt 3 would be bad, on account of P—Q 5; which would get the Black Bishop into the game, even though White could answer P—K 4. The text move is, however, weak, as will soon be seen. His best chance was to play P—Kt 5; and follow it up with P—R 4 and B—R 3. White meanwhile could play P—Kt 4 and R 5, obtaining a passed Pawn, which, with proper play, should win.
+
+29. R—Q B 2! R—Q B 1
+
+30. R × R B × R
+
+There are now Bishops of opposite colour, but nevertheless White has an easily-won game.

@@ -1,0 +1,128 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 23,
+   "ocr": "23. ... Kt \u00d7 P",
+   "box": [
+    219,
+    154,
+    499,
+    185
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"...\",\n  \"black\": \"Kt \u00d7 P\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 24,
+   "ocr": "24. B \u00d7 Kt R \u00d7 B",
+   "box": [
+    219,
+    189,
+    485,
+    211
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"R \u00d7 B\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 25,
+   "ocr": "25. P \u00d7 P P \u2014 B 3",
+   "box": [
+    219,
+    217,
+    503,
+    248
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7P\",\n  \"black\": \"P\u2014B3\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 26,
+   "ocr": "26. Kt \u2014 K 3",
+   "box": [
+    219,
+    569,
+    360,
+    592
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K 3\",\n  \"black\": \"4\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 26,
+   "ocr": "26. ... Q \u2014 R 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 27,
+   "ocr": "27. P \u2014 B 4 Q \u00d7 Q",
+   "box": [
+    221,
+    765,
+    489,
+    787
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B 4\",\n  \"black\": \"Q\u00d7Q\"\n}",
+   "seconds": 10.1
+  },
+  {
+   "number": 28,
+   "ocr": "28. R \u00d7 Q P \u00d7 P",
+   "box": [
+    221,
+    792,
+    490,
+    823
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 Q\",\n  \"black\": \"P \u00d7 P\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 29,
+   "ocr": "29. Kt \u2014 Kt 4 B \u2014 Kt 3",
+   "box": [
+    221,
+    825,
+    518,
+    856
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Kt 4\",\n  \"black\": \"B\u2014Kt 3\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 30,
+   "ocr": "30. K \u2014 R 1 Q R \u2014 K 1",
+   "box": [
+    221,
+    929,
+    534,
+    954
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014R1\",\n  \"black\": \"QR\u2014K1\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 31,
+   "ocr": "31. P \u2014 R 3",
+   "box": [
+    221,
+    1033,
+    347,
+    1055
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R 3\",\n  \"black\": \"R\u2014K 8 ch;\"\n}",
+   "seconds": 9.4
+  }
+ ]
+}

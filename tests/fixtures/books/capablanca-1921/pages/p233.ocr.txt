@@ -1,0 +1,11 @@
+White is also ready to Castle. White's position is evidently free from danger and his pieces can easily manœuvre.
+
+On Black's side the first thing we notice is that he has retained both his Bishops, unquestionably an advantage; but on the other hand we find his pieces bunched together too much, and the Queen in danger of being attacked without having any good square to go to. The Bishop at K 2 has no freedom and it blocks the Queen, which, in its turn, blocks the Bishop. Besides, Black cannot Castle on the King's side because $Q \times P$, $R - Kt 1$; $Q - K 4$ threatening mate, wins a Pawn. Nor can he Castle on the Queen's side because $Q - R 5$ would put Black's game in imminent danger, since he cannot play $P - R 3$ because of $B \times P$; nor can he play $K - Kt 1$ because of $Kt - Kt 5$. Consequently we must conclude that the opening is all in White's favour.
+
+12. ... P - Kt 4
+
+To make room for his Queen, threatening also $P - Kt 5$.
+
+13. P - KR 3 O - O
+
+giving up a Pawn in an attempt to free his game and take the initiative. It was difficult for him to find a move, as White threatened $Kt - K 4$, and should Black go with the Queen to $Kt 2$, then $P - Q 5$, $B - B 4$; $Kt \times P$ ch, followed by $B \times B$.

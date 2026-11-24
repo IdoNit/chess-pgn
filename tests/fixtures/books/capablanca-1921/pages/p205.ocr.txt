@@ -1,0 +1,22 @@
+GAME 6. FRENCH DEFENCE
+(Rice Memorial Tournament, 1916)
+
+White: O. Chajes. Black: J. R. Capablanca.
+
+1. P — K 4 P — K 3
+2. P — Q 4 P — Q 4
+3. Kt — Q B 3 Kt — K B 3
+4. B — Kt 5 B — Kt 5
+
+Of all the variations of the French Defence I like this best, because it gives Black more chances to obtain the initiative.
+
+5. P — K 5
+
+Though I consider $P \times P$ the best move, there is much to be said in favour of this move, but not of the variation as a whole, which White adopted in this game.
+
+5. ... P — K R 3
+6. B — Q 2 B × Kt
+7. $P \times B$ Kt — K 5
+8. Q — Kt 4 K — B 1
+
+The alternative, P — K Kt 3; leaves Black's King's side very weak. White by playing P — K R 4 would force Black to play P — K R 4; and later, on White's Bishop by going to Q 3, would threaten the weakened K Kt P. By the text move Black gives up Castling, but gains time for an attack against White's centre and Queen's side.

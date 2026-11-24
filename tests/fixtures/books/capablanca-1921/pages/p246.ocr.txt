@@ -1,0 +1,15 @@
+Now that he has completed his march with the King, White is ready to advance.
+
+39. P—K R 5 'P × P
+
+39...P—K Kt 4 would be answered by Q—B 5, with a winning game.
+
+40. P × P Q—K 2
+
+Against K—Kt 1; White would play Q—Kt 4, practically forcing the exchange of Queens, after which White would have little trouble in winning the ending, since Black's Bishop could not do much damage in the resulting position.
+
+41. Q—B 5 K—Kt 1
+
+Black overlooks the force of 42 R—Q 7. His best defence was R—Q 1; against which White could either advance the King or play Kt—R 4, threatening Kt—Kt 6 ch.
+
+42. R—Q 7 B × P ch

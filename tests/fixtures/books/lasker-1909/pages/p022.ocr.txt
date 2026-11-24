@@ -1,0 +1,53 @@
+Game No. 2.
+Vienna Opening.
+
+White: Black:
+E. Cohn. Burn.
+1. P—K4 P—K4
+2. Kt—QB3 B—B4
+3. P—KKt3 Kt—KB3
+4. B—Kt2 P—Q3
+Kt—B3 appears to be preferable, with a view to saving the important KB from being exchanged, by P—QR3.
+5. Kt—R4 Kt—B3
+6. Kt—K2 Q—K2
+7. P—Q3 B—K3
+8. o—o P—Q4
+9. Kt×B Q×Kt
+10. B—K3 Q—Q3
+11. P×P B×P
+12. Kt—B3 B×B
+13. KxB Kt—Q4
+14. Q—Q2
+
+Q—B3, taking possession of the diagonal, which the KB commanded before, seems more natural.
+14. o—o
+Black ought to Castle QR, in order to attack on the King's wing.
+15. Kt—K4
+
+15. Kt×Bch
+15) . . . . Q—KKt3; 16) P—KB4, P—B4; 17) Kt—B3, QR—Qsq; or 17) Kt—B5, Kt×Bch; 18) Q×Kt; Kt—Q5, would have created interesting complications, which would probably have turned out in Black's favor.
+16. Q×Kt Q—Q5
+17. P—QB3 Q×Q
+18. P×Q Drawn.
+19. 10. oh 40.
+
+Game No. 3.
+Queen's Gambit Declined.
+
+White: Black:
+Nenarokow. Dr. Perlis.
+1. P—Q4 P—Q4
+2. P—QB4 P—K3
+3. Kt—QB3 Kt—KB3
+4. Kt—B3 B—K2
+5. B—B4 o—o
+6. P—K3 P—B4
+7. B—Q3 Kt—B3
+8. P×QP KP×P
+
+9. P×P B×P
+10. o—o B—K3
+11. R—Bsq R—Bsq
+Better P—QR3; 12) B—Ktsq, P—Q5; 13) Kt—QR4, B—R2; the black King's Bishop should exert a pressure on Q5.
+12. B—Ktsq Kt—QR4
+There the Knight is out of play.

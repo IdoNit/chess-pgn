@@ -1,0 +1,81 @@
+White's reply would be 12) B—KKt5 threatening Kt—Q5. After this Black would have nothing better than 12) P—R3; 13) B—R4, B—K2.
+
+12. B—K3 B—KBsq
+13. Q—Q2 Kt—K4
+
+By this move Black frees his game.
+
+14. B—Kt3
+
+It was not good to retire the Bishop. White ought to have exchanged, and developed his game further by QR—Qsq.
+
+14. P—B4
+15. B—Q5 R—Ktsq
+16. Kt—B4 P—QKt4
+17. P—QR3 Kt×B
+18. Kt (B3)×P—B4
+
+The point of Black's strategy. After the exchange of the King's Pawn the weakness of the Queen's Pawn does not signify.
+
+19. P×P B×P
+20. B—B2 Q—Q2
+21. Kt—K3 B—R2
+22. Kt (B4)—Q—KB2
+23. QR—Qsq Kt—B3
+24. B—Kt3 QR—Qsq
+25. B—R4 R—Q2
+26. Kt—KKt4 R×Rch
+27. R×R Kt—Q5
+
+Decisive. White dare not reply Kt(Q5)—K3, as 28) ... P—Kt4; 29) B—Kt3, P—KR4 would get him into difficulties.
+
+28. Kt(Kt4) B×P—K3
+29. Kt×B Kt×Kt
+30. Kt—B6ch P×Kt
+31. Q×Kt ...
+
+Intending to take up a strong position by Q—B5.
+
+31. P—B4
+33. P—B4 B—Kt2
+32) ... P—Q4; 33) R—K5, P—Q5 and, whether Q or R take BP, P—Q6 would have decided the game at once. The text is therefore loss of time.
+
+33. P—KR3 P—B5
+34. P—KKt4 ...
+
+A desperate attempt to obtain an attack.
+
+34. P—Q4
+
+Simply P×P, P×P followed either by Q×P or P—Q4 was indicated.
+
+35. P×P P—Q5
+36. Q—K4 P—Q6
+37. P—B6 ...
+
+If 37) ... B×P; 38) B×B, Q×B; 39) Q—K8ch.
+
+37. ... B—Bsq
+38. K—R2 P—Q7
+
+Better 38) ... K—Rsq; 39) R—KKtsq, P—QR4, in order to play P—Kt5 and P—B6, which was feasible in spite of P—B5 and Q—K6.
+
+Adjourned.
+
+39. R—Qsq Q—R4
+
+K—Rsq was still the right move. If White play 40) Q—K2, then B—Q3; 41) K—Kt3, Q—Kt3ch; 42) Q—Kt4, B×Pch and wins; likewise after 39) ... K—Rsq; 40) Q—K2, B—Q3; 41) Q×P, B×Pch; 42) Q×B, R×R; 43) QxPch, K—Ktsq; 44) Q—Kt4ch, K—R2, White's checks would cease and Black should win.
+
+40. Q—K6ch K—Rsq
+41. P—B7 ...
+
+This clever move threatens B—B6ch.
+
+41. ... Q×P
+42. B—B6ch ...
+
+Far better than at once Q×Q, as White's QKtP is saved from attack by the exchange of the Bishops.
+
+42. B—Kt2
+
+To 42) ... K—R2, the reply would not have been 43) Q—B5ch, K—Ktsq; 44) R—Ktsq ch, as after 44) ... B—Kt2; 45) R×Bch, Q×Q; 46) B×Q, P—Q8Q Black would get out of the checks and win; but after 42) ... K—R2; 43)

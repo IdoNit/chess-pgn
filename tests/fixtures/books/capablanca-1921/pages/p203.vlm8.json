@@ -1,0 +1,135 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 19,
+   "ocr": "19. K R \u2014 Q 2 R (Q 2) \u2014 K 2",
+   "box": [
+    173,
+    154,
+    585,
+    178
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K R\u2014Q 2\",\n  \"black\": \"R (Q 2)\u2014K 2\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 20,
+   "ocr": "20. P \u2014 Q Kt 4 K \u2014 B 2",
+   "box": [
+    173,
+    186,
+    523,
+    208
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q Kt 4\",\n  \"black\": \"K\u2014B 2\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 21,
+   "ocr": "21. P \u2014 Q R 3 B \u2014 R 1",
+   "box": [
+    172,
+    217,
+    521,
+    240
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014QR3\",\n  \"black\": \"B\u2014R1\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 22,
+   "ocr": "22. K \u2014 B 2 R \u2014 R 2",
+   "box": [
+    172,
+    472,
+    522,
+    489
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B 2\",\n  \"black\": \"R\u2014R 2\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 23,
+   "ocr": "23. P \u2014 Kt 4 P \u2014 R 3",
+   "box": [
+    172,
+    503,
+    520,
+    525
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Kt 4\",\n  \"black\": \"P\u2014R 3\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 24,
+   "ocr": "24. R \u2014 Q 3 P \u2014 Q R 4",
+   "box": [
+    171,
+    534,
+    545,
+    556
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Q 3\",\n  \"black\": \"P\u2014Q R 4\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 25,
+   "ocr": "25. P \u2014 K R 4 P \u00d7 P",
+   "box": [
+    171,
+    565,
+    499,
+    587
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014KR4\",\n  \"black\": \"P\u00d7P\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 26,
+   "ocr": "26. P \u00d7 P R (R 2) \u2014 K 2",
+   "box": [
+    171,
+    591,
+    586,
+    623
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P\",\n  \"black\": \"R (R 2)\u2014K 2\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 27,
+   "ocr": "27. K \u2014 B 3 R \u2014 Kt 1",
+   "box": [
+    171,
+    825,
+    531,
+    847
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B 3\",\n  \"black\": \"R\u2014Kt 1\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 28,
+   "ocr": "28. K \u2014 B 4 P \u2014 Kt 3",
+   "box": [
+    171,
+    857,
+    529,
+    878
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B 4\",\n  \"black\": \"P\u2014Kt 3\"\n}",
+   "seconds": 9.9
+  }
+ ]
+}

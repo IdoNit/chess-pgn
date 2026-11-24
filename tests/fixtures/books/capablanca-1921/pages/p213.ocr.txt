@@ -1,0 +1,27 @@
+GAME 7. RUY LOPEZ
+(San Sebastian, 1911)
+
+White: J. R. Capablanca. Black: A. Burn.
+
+1. P — K 4 P — K 4
+2. Kt — K B 3 Kt — Q B 3
+3. B — Kt 5 P — Q R 3
+4. B — R 4 Kt — B 3
+5. P — Q 3
+
+This is a very solid development, to which I was much addicted at the time, because of my ignorance of the multiple variations of the openings.
+
+5. ... P — Q 3
+6. P — B 3 B — K 2
+
+In this variation there is the alternative of developing this Bishop via Kt 2, after P — K Kt 3.
+
+7. Q Kt — Q 2 O — O
+8. Kt — B 1 P — Q Kt 4
+9. B — B 2 P — Q 4
+10. Q — K 2 P × P
+11. P × P B — Q B 4
+
+Evidently to make room for the Queen at K 2, but I do not think the move advisable at this stage. B — K 3 is a more natural and effective move. It develops a piece and threatens B — B 5, which would have to be stopped.
+
+12. B — Kt 5 B — K 3

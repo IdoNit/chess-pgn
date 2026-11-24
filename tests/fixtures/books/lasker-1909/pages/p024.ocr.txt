@@ -1,0 +1,58 @@
+Game No. 4.
+Ruy Lopez.
+
+White: Black:
+Teichmann. Viidmar.
+1. P—K4 P—K4
+2. Kt—KB3 Kt—QB3
+3. B—Kt5 Kt—B3
+4. o—o P—Q3
+5. P—Q4 B—Q2
+6. Kt—B3 B—K2
+7. R—Ksq P×P
+8. Kt×P o—o
+9. Kt(Q4)—K2
+B—Kt5 looks the natural move.
+9. . . . R—Ksq
+10. Kt—Kt3 B—KBsq
+11. P—Kt3 P—KKt3
+12. B—Kt2 B—Kt2
+13. Kt—Q5 P—QR3
+14. B×Kt
+?, To 14) B—KBsq Black would have replied Kt—K4, and if 15) P—KB4?, he would have played Kt×Kt, followed by Kt—B6ch or Kt—B5 according to circumstances, with a good game.
+14. . . . B×B
+15. Kt×Ktch B×Kt
+
+16. B×B Q×B
+17. Q—Q3 R—K3
+18. P—KB3 QR—Ksq
+19. P—B4 Q—K2
+
+Threatening P—B4; White would probably reply KR—Qsq. After that it appears for both players an almost hopeless undertaking, to drive the opponent from his position.
+
+Drawn.
+
+(The final position.)
+
+Game No. 5.
+Ruy Lopez.
+
+White: Black:
+Schlechter. Dr. Lasker.
+1. P—K4 P—K4
+2. Kt—KB3 Kt—QB3
+3. B—Kt5 Kt—B3
+4. o—o P—Q3
+5. P—Q4 B—Q2
+6. Kt—B3 B—K2
+7. R—Ksq P×P
+8. Kt×P o—o
+9. Kt(Q4)—K2
+10. B—R4
+
+The retreat to Q3 appears stronger. It is true that Black can then change White's KB for a Knight, by playing, say Kt—K4; but in that case White would retake with the BP and would have two strong Pawns in the centre as compensation for Black's two Bishops.
+
+10. . . . R—Ksq
+11. P—B3 P—R3
+
+If Black played B—KBsq at once,

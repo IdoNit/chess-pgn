@@ -1,0 +1,122 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 16,
+   "ocr": "16. K\u2014Kt 2!",
+   "box": [
+    241,
+    139,
+    391,
+    158
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt 2!\",\n  \"black\": \"\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 16,
+   "ocr": "16 B\u2014Kt 2, Kt\u2014K 4! 17 Kt\u2014B 4 (if R\u2014B 1, Q \u00d7 R !! Q \u00d7 Q, B \u00d7 P ch wins), Kt\u2014Kt 5; 18 P\u2014K R 3 (if Kt\u2014R 3, B \u00d7 P ch wins the exchange), Kt \u00d7 P; 19 R \u00d7 Kt, B \u00d7 R ch; 20 K \u00d7 B, P\u2014K Kt 4, and Black should win. It is curious that this combination has been overlooked. It has been taken for granted that I did not see the 17th move Q\u2014B 1.",
+   "box": [
+    126,
+    276,
+    677,
+    308
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B\u2014Kt 2, Kt\u2014K 4!\",\n  \"black\": \"Kt\u2014B 4 (if R\u2014B 1, Q\u00d7R !! Q\u00d7Q, B\u00d7P ch wins), Kt\u2014Kt 5;\"\n}",
+   "seconds": 11.2
+  },
+  {
+   "number": 16,
+   "ocr": "16. ... Q R\u2014Q 1",
+   "box": [
+    444,
+    554,
+    552,
+    577
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"QR\u2014Qr\",\n  \"black\": \"\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 17,
+   "ocr": "17. Q\u2014B 1! P \u00d7 Kt",
+   "box": [
+    242,
+    691,
+    519,
+    713
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014B r!\",\n  \"black\": \"P\u00d7Kt\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 18,
+   "ocr": "18. Q \u00d7 B Q\u2014Q 7",
+   "box": [
+    242,
+    726,
+    527,
+    748
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u00d7B\",\n  \"black\": \"Q\u2014Q7\"\n}",
+   "seconds": 9.0
+  },
+  {
+   "number": 19,
+   "ocr": "19. Q\u2014Kt 5 Kt\u2014Q 5",
+   "box": [
+    242,
+    757,
+    539,
+    789
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Kt 5\",\n  \"black\": \"Kt\u2014Q 5\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 20,
+   "ocr": "20. Q\u2014Q 3 Q \u00d7 Q",
+   "box": [
+    241,
+    796,
+    509,
+    820
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q-Q3\",\n  \"black\": \"Q\u00d7Q\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 21,
+   "ocr": "21. P \u00d7 Q K R\u2014K 1",
+   "box": [
+    241,
+    832,
+    556,
+    855
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7Q\",\n  \"black\": \"KR\u2014K1\"\n}",
+   "seconds": 9.0
+  },
+  {
+   "number": 22,
+   "ocr": "22. B\u2014Kt 4",
+   "box": [
+    241,
+    869,
+    381,
+    889
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 4\",\n  \"black\": \"\"\n}",
+   "seconds": 10.2
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+To prevent P—K R 4, which I would answer with P—K Kt 3, winning the Queen. It can now be considered that my King is safe from attack. White will have to withdraw his Queen via R 3, and Black can use the time to begin his advance on the Queen's side.
+
+29. K—Kt 1 R—Q 1
+30. R—Q 1 P—B 4
+
+Notice that, on assuming the defensive, White has placed his Rooks correctly from the point of view of strategy. They are both on white squares free from the possible attack of the Black Bishop.
+
+31. Q—R 3 Q—R 5
+
+This gains time by attacking the Rook and holding the White Q at R 3 for the moment, on account of the K Kt P. Besides, the Queen must be in the middle of the fray now that the attack has to be brought home. White has actually more value in material, and therefore Black must utilise everything at his command in order to succeed.
+
+32. R (K 2)—Q 2 Q—K 5 ch
+33. K—R 1 P—Q Kt 4
+
+threatening P—Kt 5; which would open the line of action of the Bishop and also secure a passed Pawn.
+
+34. Q—Kt 2 Q—R 5
+
+indirectly defending the Q P, which White cannot take on account of Q × R ch.

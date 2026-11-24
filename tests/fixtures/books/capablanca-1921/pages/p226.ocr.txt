@@ -1,0 +1,22 @@
+text move is that it leaves Black's Q P isolated, and consequently weak and subject to attack.
+
+14. K R — Q 1 K t × B
+
+The alternative would have been 14...P — K t 4; 15 B — B 2, P — K t 5; 16 K t — Q R 4, K t (B 4) — K 5.
+
+15. K t × K t P — K t 4
+16. R × R Q × R
+17. K t — B 3 Q — B 5
+
+Black aims at the exchange of Queens in order to remain with two Bishops for the ending, but in this position such a course is a mistake, because the Bishop at K t 2 is inactive and cannot come into the game by any means, unless Black gives up the isolated Queen's Pawn which the Bishop must defend.
+
+18. K t — Q 4
+
+Not, of course, R — Q 4, because of Q × Q; K t × Q, R — B 1; and there would be no good way to prevent R — B 7.
+
+18. ... Q × Q
+19. K t (B 3) × Q!
+
+Notice the co-ordination of the Knights' moves. They are manoeuvred chain-like, so to speak, in order to maintain one of them, either at Q 4 or ready to go there. Now White threatens to take the open file, and therefore forces Black's next move.
+
+19. ... R — B 1

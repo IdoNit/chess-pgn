@@ -1,0 +1,63 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 18,
+   "ocr": "18. P \u00d7 P! P \u00d7 P!",
+   "box": [
+    217,
+    572,
+    493,
+    592
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7P!\",\n  \"black\": \"P\u00d7P!\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 19,
+   "ocr": "19. R \u2014 R 1 B \u2014 B 2",
+   "box": [
+    217,
+    730,
+    503,
+    754
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014R 1\",\n  \"black\": \"B\u2014B 2\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 20,
+   "ocr": "20. K \u2014 Kt 1",
+   "box": [
+    217,
+    759,
+    361,
+    790
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt 1\",\n  \"black\": \"\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 20,
+   "ocr": "20. ... Kt \u2014 K 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 21,
+   "ocr": "21. Kt \u00d7 Kt R \u00d7 Kt",
+   "box": [
+    217,
+    1016,
+    507,
+    1036
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt \u00d7 Kt\",\n  \"black\": \"R \u00d7 Kt\"\n}",
+   "seconds": 9.7
+  }
+ ]
+}

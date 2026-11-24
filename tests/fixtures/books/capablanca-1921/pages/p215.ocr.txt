@@ -1,0 +1,12 @@
+The text move not only loses a Pawn, but leaves Black's game very much weakened.
+
+18. P × P B × P
+19. B × Kt Q × B
+20. Q — K 4 B — Q 3
+21. Q × P ch K — B 1
+
+With a Pawn more and all his pieces ready for action, while Black is still backward in development, it only remains for White to drive home his advantage before Black can come out with his pieces, in which case, by using the open K R file, Black might be able to start a strong attack against White's King. White is able by his next move to eliminate all danger.
+
+22. Kt — R 4 Q — R 3
+
+This is practically forced. Black could not play P — Kt 3 because of B × P, and White meanwhile threatened Q — R 8 ch followed by Kt — B 5 ch and Q × P.

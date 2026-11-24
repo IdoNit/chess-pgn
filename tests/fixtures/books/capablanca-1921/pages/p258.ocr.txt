@@ -1,0 +1,13 @@
+19. Kt × P Q × Q
+20. R × Q R — Q 7
+21. R — Kt 1
+
+A very serious error of judgment. White is under the impression that he has the better game, because he is a Pawn ahead, but that is not so. The powerful position of the Black Rook at Q 7 fully compensates Black for the Pawn minus. Besides, the Bishop is better with Rooks than the Knight (see pages 48-56, where the relative values of the Knight and Bishop are compared), and, as already stated, with Pawns on both sides of the board the Bishop is superior because of its long range. Incidentally, this ending will demonstrate the great power of the Bishop. White's best chance was to take a draw at once, thus.
+
+21 Kt — K 7 ch K — B 1; 22 R — B 7 R — K 1 (not B × P; because P — B 3 would give White the best of it); 23 R × B (best; not Kt — Kt 6 ch, because of B P × Kt; followed by R × K P), R × Kt; 24 R — Kt 8 ch, R — K 1; 25 R × R ch, K × R, and with proper play White will draw.
+
+It is curious that, although a Pawn ahead, White is the one who is always in danger. It is only now, after seeing this analysis, that the value of Black's 18th move Q — K 4 can be fully appreciated.
+
+21. ... R — K 1
+
+With this powerful move Black begins, against White's centre, an assault which will soon be shifted against

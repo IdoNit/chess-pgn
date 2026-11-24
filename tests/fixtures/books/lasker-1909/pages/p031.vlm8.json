@@ -1,0 +1,415 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 19,
+   "ocr": "19. Q\u2014B2 Q\u2014R4",
+   "box": [
+    57,
+    112,
+    166,
+    133
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014B2\",\n  \"black\": \"\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 20,
+   "ocr": "20. Kt\u2014K2",
+   "box": [
+    58,
+    133,
+    177,
+    150
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K2\",\n  \"black\": \"\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 20,
+   "ocr": "20. . . . . Kt\u2014Bsq",
+   "box": [
+    54,
+    359,
+    313,
+    378
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"...\",\n  \"black\": \"Kt\u2014Bsq\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 21,
+   "ocr": "21. P\u2014B3 Kt\u2014K3",
+   "box": [
+    54,
+    380,
+    306,
+    401
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B3\",\n  \"black\": \"Kt\u2014K3\"\n}",
+   "seconds": 10.5
+  },
+  {
+   "number": 22,
+   "ocr": "22. B\u2014B2 B\u2014Q2",
+   "box": [
+    54,
+    403,
+    297,
+    422
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014B2\",\n  \"black\": \"B\u2014Q2\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 23,
+   "ocr": "23. Kt\u2014KBsq Kt\u2014Q5",
+   "box": [
+    53,
+    591,
+    671,
+    616
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 24,
+   "ocr": "24. Q\u2014Q3 Kt\u2014B3",
+   "box": [
+    60,
+    1023,
+    317,
+    1044
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 25,
+   "ocr": "25. Kt\u2014Bsq Q\u2014R6",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 26,
+   "ocr": "26. Kt\u2014K3 Kt\u2014Kt5",
+   "box": [
+    59,
+    1066,
+    292,
+    1087
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 27,
+   "ocr": "27. Q\u2014Q2 P\u2014QR4",
+   "box": [
+    57,
+    1131,
+    279,
+    1152
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 28,
+   "ocr": "28. Kt\u2014Q5 Kt\u00d7Kt",
+   "box": [
+    53,
+    635,
+    672,
+    660
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Q5\",\n  \"black\": \"Kt\u00d7Kt\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 29,
+   "ocr": "29. KP\u00d7Kt",
+   "box": [
+    53,
+    657,
+    661,
+    681
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"KP\u00d7Kt\",\n  \"black\": \"\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 29,
+   "ocr": "29. . . . . R\u00d7Rch",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 20,
+   "ocr": "20. B\u00d7R B\u2014B4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 31,
+   "ocr": "31. Kt\u2014Q3 B\u00d7Kt",
+   "box": [
+    50,
+    144,
+    272,
+    180
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 8.8
+  },
+  {
+   "number": 32,
+   "ocr": "32. Q\u00d7B Q\u00d7RP",
+   "box": [
+    53,
+    609,
+    680,
+    642
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u00d7B\",\n  \"black\": \"Q\u00d7RP\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 33,
+   "ocr": "33. P\u2014R3 P\u2014R5",
+   "box": [
+    61,
+    1044,
+    292,
+    1065
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 24,
+   "ocr": "24. P\u2014QKt4 P\u00d7P",
+   "box": [
+    63,
+    1001,
+    293,
+    1022
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 35,
+   "ocr": "35. R\u00d7P R\u00d7R",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 36,
+   "ocr": "36. B\u00d7R O\u2014Kt6",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 37,
+   "ocr": "37. Q\u2014Q2 P\u2014R6",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 38,
+   "ocr": "38. B\u00d7P Q\u00d7B",
+   "box": [
+    59,
+    1152,
+    281,
+    1174
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 2,
+   "ocr": "2h 4. 1h 19.",
+   "box": [
+    28,
+    245,
+    394,
+    267
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Kt\u2014K4\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 1,
+   "ocr": "1. P\u2014Q4 P\u2014Q4",
+   "box": [
+    438,
+    1045,
+    693,
+    1066
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 2,
+   "ocr": "2. B\u2014B4 Kt\u2014KB3",
+   "box": [
+    59,
+    1175,
+    300,
+    1195
+   ],
+   "kind": "A",
+   "reading": "{\"white\": \"\", \"black\": \"QxR\"}",
+   "seconds": 9.4
+  },
+  {
+   "number": 3,
+   "ocr": "3. P\u2014K3 P\u2014K3",
+   "box": [
+    439,
+    1023,
+    689,
+    1044
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 8.5
+  },
+  {
+   "number": 4,
+   "ocr": "4. Kt\u2014KB3 B\u2014Q3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 5,
+   "ocr": "5. B\u2014Q3 B\u00d7B",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 6,
+   "ocr": "6. P\u00d7B Q\u2014Q3",
+   "box": [
+    69,
+    1112,
+    293,
+    1130
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7B\",\n  \"black\": \"Q\u2014Q3\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 7,
+   "ocr": "7. Q\u2014Q2 P\u2014B4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 8,
+   "ocr": "8. P\u00d7P Q\u00d7P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 9,
+   "ocr": "9. 0\u20140 Kt\u2014B3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 10,
+   "ocr": "10. P\u2014B3",
+   "box": [
+    53,
+    1196,
+    312,
+    1216
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B3\",\n  \"black\": \"...\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 10,
+   "ocr": "10) Kt\u2014B3 followed by the development of the Rooks, would be sounder play.",
+   "box": [
+    431,
+    936,
+    759,
+    957
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014B3\",\n  \"black\": \"followed by the development of the Rooks, would be sounder play.\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 10,
+   "ocr": "10. . . . . 0\u20140",
+   "box": [
+    438,
+    1006,
+    659,
+    1019
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"...\",\n  \"black\": \"O-O\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 11,
+   "ocr": "11. P\u2014QKt4 Q\u2014Kt3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 12,
+   "ocr": "12. P\u2014QR4 P\u2014QR3",
+   "box": [
+    447,
+    244,
+    706,
+    404
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 12,
+   "ocr": "12) ... R\u2014Qsq, followed by B\u2014Q2 and QR\u2014Bsq was indicated. The Bishop could afterwards take up a waiting position at Ksq.",
+   "box": [
+    431,
+    1132,
+    757,
+    1152
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"...\",\n  \"black\": \"R\u2014Qsq, followed by B\u2014Q2 and QR\u2014Bsq\"\n}",
+   "seconds": 10.2
+  }
+ ]
+}

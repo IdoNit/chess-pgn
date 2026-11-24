@@ -1,0 +1,13 @@
+22. ... R—Q 3
+23. K R—K 1 R×R
+24. R×R R—Q Kt 3
+25. R—K 5 R×P
+26. R×P Kt—B 3
+27. B—K 6 ch K—B 1
+28. R—B 5 ch K—K 1
+29. B—B 7 ch K—Q 2
+30. B—B 4
+
+30. P—Q R 3
+
+A bad move, which gives away any legitimate chance Black had to draw. It loses a very important move. In fact, as the course of the game will show, it loses several moves. The proper way was to play K—Q 3. If then R—Q Kt 5, R×R; B×R, Kt—Q 5; followed by P—Q Kt 4; and White would have an exceedingly difficult game to draw on account of the dominating position of the Knight at

@@ -1,0 +1,22 @@
+The fact that he has to exchange Queens when he is a Pawn behind shows that Black’s game is lost.
+
+21. Kt × Q B × Kt
+22. B × B B — B 3
+23. Q R — Q I B × Kt
+
+The Knight was too threatening. But now the ending brought about is one in which the Bishop is stronger than the Knight; which makes Black’s plight a desperate one. The game has no further interest, and it is only because of its value as a study of this variation of the Petroff that I have given it. Black was able to fight it out until the sixtieth move on account of some poor play on White’s part. The rest of the moves are given merely as a matter of form.
+
+24. R × B K — Kt 2
+25. B — B 4 R — Kt 3
+26. R — K I K — B 3
+27. P — B 4 Kt — K 3
+28. P × P ch P × P
+29. R — B 1 ch K — K 2
+30. R — Kt 4 R — K Kt 1
+31. R — B 5 R — B 3
+32. P — K R 4 K R — Q B 1
+33. P × P R — B 4
+34. B × Kt P × B
+35. R × R R × R
+36. P — Kt 6 K — B 1
+37. R — Q B 4 R — Q R 4

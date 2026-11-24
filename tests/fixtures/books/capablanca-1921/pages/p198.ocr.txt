@@ -1,0 +1,12 @@
+has four Pawns to three on the King's side, while Black's superiority of Pawns on the other side is somewhat balanced by the fact that one of Black's Pawns is doubled. On the other hand, Black has the advantage of remaining with two Bishops while White has only one.
+
+4. ... Q P × B
+5. P — Q 4 P × P
+6. Q × P Q × Q
+7. Kt × Q B — Q 3
+
+Black's idea is to Castle on the King's side. His reason is that the King ought to remain on the weaker side to oppose later the advance of White's Pawns. Theoretically there is very much to be said in favour of this reasoning, but whether in practice that would be the best system would be rather difficult to prove. The student should notice that if now all the pieces were exchanged White would practically be a Pawn ahead, and would therefore have a won ending.
+
+8. Kt — Q B 3 Kt — K 2
+
+A perfectly sound form of development. In any other form adopted the Black Kt could not be developed either as quickly or as well. K 2 is the natural position for the Black Kt in this variation, in order not to obstruct Black's Pawns, and also, in some eventualities, in order to go to K Kt 3. There is

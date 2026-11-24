@@ -1,0 +1,44 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 11,
+   "ocr": "11. R\u2014Kt 1! P\u2014B 3",
+   "box": [
+    259,
+    840,
+    544,
+    871
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Kt 1!\",\n  \"black\": \"P\u2014B 3\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 12,
+   "ocr": "12. P\u2014Kt 4 Kt\u2014B 2",
+   "box": [
+    259,
+    874,
+    554,
+    896
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Kt 4\",\n  \"black\": \"Kt\u2014B 2\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 13,
+   "ocr": "13. P\u2014Q R 4 B \u00d7 Kt",
+   "box": [
+    260,
+    906,
+    536,
+    929
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q R 4\",\n  \"black\": \"B \u00d7 Kt\"\n}",
+   "seconds": 9.7
+  }
+ ]
+}

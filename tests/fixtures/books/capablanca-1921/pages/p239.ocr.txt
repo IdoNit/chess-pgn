@@ -1,0 +1,14 @@
+14. $R \times B$
+
+Taking with the Pawn would have opened a possibility for a counter attack.
+
+14. ... P—Q Kt 3
+
+He is forced to this in order to avoid the breaking up of his Queen's side Pawns. The only alternative would have been P—Q Kt 4; which on the face of it looks bad.
+
+15. P—Kt 5 B P×P
+16. P×P P—Q R 4
+17. Kt—Q 5 Q—B 4
+18. P—B 4
+
+The White Knight is now a tower of strength. Behind it White will be able to prepare an attack, which will begin with P—Q 4, to drive away the Black Queen and thus leave himself free to play P—B 5. There is only one thing to take care of and that

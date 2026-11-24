@@ -1,0 +1,13 @@
+since there is no good way to stop Black from playing Kt—B 3, followed by Kt—K 4, threatening Kt—B 5. And should White attempt to meet this maneuver by withdrawing the Kt at Kt 3; then the Black Knight can go to Q 5, and the White Pawn at K 4 will be the object of the attack. Taking Dr. Lasker's variation, however, whatever advantage there might be disappears at once if Black plays 19...Kt—B 3, threatening Kt—Kt 5 and also Kt—Q 5, neither of which can be stopped. If White answers 20 Kt—Q 5, Kt—Q 5 for Black will at least draw. In fact, after 19...Kt—B 3 Black threatens so many things that it is difficult to see how White can prevent the loss of one or more Pawns.
+
+14. B × B P × B
+15. Kt—Q 4
+
+It is a curious but true fact that I did not see this move when I played 13...B—Kt 2, otherwise I would have played the right move 13...B × B.
+
+15. ... Q R—Q 1
+
+The game is yet far from lost, as against the entry of the Knight, Black can later on play P—B 4, followed by P—Q 4.
+
+16. Kt—K 6 R—Q 2
+17. Q R—Q 1

@@ -1,0 +1,14 @@
+31. K—B 2
+
+31. ... P—Q 5
+
+Practically forced. Otherwise the White King would march up to Q 4 and then to B 5 and win Black's Queen's side Pawns. If Black attempted to stop this by putting his King at Q B 3 then the White King would enter through K 5 into Black's King's side and win just as easily.
+
+32. P × P K—Q 4
+33. K—K 3 B—K 3
+34. K—Q 3 K—B 3
+35. P—Q R 3 B—B 5 ch
+36. K—K 3 B—K 3
+37. B—R 6
+
+It is better not to hurry P—K Kt 4 because of P—B 4; for although White could win in any case, it would take longer. Now the White King threatens to help by going in through K B 4 after posting the Bishop

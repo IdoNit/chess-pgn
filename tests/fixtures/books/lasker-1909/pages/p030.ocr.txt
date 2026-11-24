@@ -1,0 +1,63 @@
+18. Kt—K2 P—Kt4
+19. P—Kt3 Q—B3
+20. Q—K3 P—Kt5
+21. Kt—Q2 P—Q4
+
+If Black had played B—K3 here, White would have been at a loss what to do. If, perchance, R—KBsq, to prepare P—BK4, Black replies K—Rsq, and the advance of the KBP would then only open the lines for Black's Rooks and Bishops.
+
+If 22) Q—Q3, then P—Q4; 23) Q—R6?, B—Bsq. In any case, White would have been in a precarious position.
+
+22. Kt—QB4
+
+By exchanging one of the two Bishops, White frees his game, and now forces the draw, with correct judgment of the situation.
+
+22. P×KtP
+23. BP×P Q—Kt3
+24. Kt×B R×Kt
+25. Kt—B4 Kt×Kt
+26. Q×Kt QR—Ksq
+27. B—Kt2 R×P
+28. R×R Q×R
+29. Q—Kt5ch Q—Kt3
+30. Q—R4 Q—R2
+31. Q—Kt5ch Drawn.
+
+1h 37. 1h 10.
+
+Game No. 10.
+
+Ruy Lopez.
+
+White. Black:
+Duras. Dr. Bernstein.
+
+1. P—K4 P—K4
+2. Kt—KB3 Kt—QB3
+3. B—Kt5 Kt—B3
+4. P—Q3 P—Q3
+5. P—B4
+
+A similar line of play to this was adopted by Anderssen against Steinitz, but refuted by the latter. It is clear, that the point Q4 becomes weak.
+
+5. P—KKt3
+6. P—Q4 P×P
+7. Kt×P B—Q2
+8. Kt—QB3 B—Kt2
+9. B×Kt P×B
+10. B—Kt5 P—KR3
+11. B—R4 o—o
+12. o—o R—Ksq
+13. R—Ksq R—Ktsq
+
+A surprisingly weak move. The Knight is here out of play. On KB3 he would have been of better use, as P—K5 was first of all threatened. At all events, Kt—B3 would have prevented Black's B—B3, for after 15) Kt—B3, B—B3; 16) P—K5, B×Kt?; 17) Q×B P×P; 18) QR—Qsq Black would be lost. 18) . . . Q—K2; 19) Kt—Q5).
+
+15. . . . B—B3
+
+Prevents Kt—Q5 because of P—Kt4 gaining the KP.
+
+16. Q—Q3 Q—Bsq
+
+The commencement of an attack conducted equally well from a strategic and tactical point of view.
+
+17. Kt—Q2 Kt—Q2
+18. P—QKt3 Q—R3

@@ -1,0 +1,13 @@
+defence. He could easily have gone wrong any number of times, but from move 22 onwards he always played the best move.
+
+28. ... P—K 4!
+29. Q—Kt 1 P—K 5
+30. P × Kt P × R
+31. P—Q 6 R—K 7
+32. P—Q 7 R—B 7 ch
+33. K—Kt 1 R—Kt 1 ch
+34. Kt—Kt 3 Q—K 2
+
+35. R × P
+
+The position is most interesting. I believe I lost here my last chance to win the game, and if that is true it would vindicate my judgment when, on move 28, I played P—B 4. The student can find out what would happen if White plays Q—Q 4! at once. I have gone over the following variations: 35 Q—Q 4, R × K R P (of course if R × B P, P—Q 8 wins);

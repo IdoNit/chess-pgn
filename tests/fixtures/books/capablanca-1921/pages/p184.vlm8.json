@@ -1,0 +1,122 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 31,
+   "ocr": "31. R \u2014 B 7 ch K \u2014 Q 3",
+   "box": [
+    234,
+    244,
+    524,
+    268
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014B 7 ch\",\n  \"black\": \"K\u2014Q 3\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 32,
+   "ocr": "32. R \u00d7 K Kt P P \u2014 Kt 4",
+   "box": [
+    233,
+    271,
+    532,
+    302
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 K Kt P\",\n  \"black\": \"P\u2014Kt 4\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 33,
+   "ocr": "33. B \u2014 Kt 8 P \u2014 Q R 4",
+   "box": [
+    233,
+    307,
+    547,
+    330
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 8\",\n  \"black\": \"P\u2014Q R 4\"\n}",
+   "seconds": 10.4
+  },
+  {
+   "number": 34,
+   "ocr": "34. R \u00d7 P P \u2014 R 5",
+   "box": [
+    233,
+    339,
+    522,
+    362
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 P\",\n  \"black\": \"P \u2014 R 5\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 35,
+   "ocr": "35. P \u2014 R 4 P \u2014 Kt 5",
+   "box": [
+    232,
+    370,
+    533,
+    393
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R 4\",\n  \"black\": \"P\u2014Kt 5\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 36,
+   "ocr": "36. R \u2014 R 6 ch K \u2014 B 4",
+   "box": [
+    233,
+    402,
+    525,
+    425
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014R 6 ch\",\n  \"black\": \"K\u2014B 4\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 37,
+   "ocr": "37. R \u2014 R 5 ch K \u2014 Kt 3",
+   "box": [
+    232,
+    433,
+    535,
+    456
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014R 5 ch\",\n  \"black\": \"K\u2014Kt 3\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 38,
+   "ocr": "38. B \u2014 Q 5",
+   "box": [
+    232,
+    464,
+    361,
+    487
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"B\u2014Q 5\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 38,
+   "ocr": "38. P \u2014 Kt 6",
+   "box": [
+    234,
+    981,
+    531,
+    1006
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"...\",\n  \"black\": \"P\u2014Kt 6\"\n}",
+   "seconds": 10.0
+  }
+ ]
+}

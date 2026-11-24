@@ -1,0 +1,13 @@
+A very serious mistake. I considered castling, which was the right move, but desisted because I was afraid that by playing $13 \times Kt$, $P \times B$; $14 \times Kt - Kt_3$, $B - Kt_3$; $15 \times Kt - B_5$, White would obtain a winning position for the end game. Whether right or wrong this shows how closely related are all parts of the game, and consequently how one will influence the other.
+
+$13. B \times B \quad K \times B$
+$14. B \times Kt \quad B - Kt_3$
+
+Not good. The natural and proper move would have been $Kt - K_3$, in order to bring all the Black pieces into play. $B \times Kt$ at once was also good, as it would have relieved the pressure against Black's King's Pawn, and at the same time have simplified the game.
+
+Here it is seen how failure to comply with the elementary logical reasons, that govern any given position, often brings the player into trouble. I was no doubt influenced in my choice of moves by the fear of $B - B_5$, which was a very threatening move.
+
+$15. Q - B_4 \quad Kt - K_3$
+$16. P - Q \times Kt_4 \quad Q - B_2$
+$17. B \times B \quad R \times B$
+$18. Q - K_4 \quad K - B_3$

@@ -1,0 +1,18 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 15,
+   "ocr": "15. P\u2014Q 5 Kt\u2014B 4!",
+   "box": [
+    258,
+    453,
+    566,
+    479
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q 5\",\n  \"black\": \"Kt\u2014B 4!\"\n}",
+   "seconds": 9.6
+  }
+ ]
+}

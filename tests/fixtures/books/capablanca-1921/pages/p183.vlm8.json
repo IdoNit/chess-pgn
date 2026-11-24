@@ -1,0 +1,121 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 22,
+   "ocr": "22. ... R\u2014Q 3",
+   "box": [
+    235,
+    206,
+    556,
+    228
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 8.7
+  },
+  {
+   "number": 23,
+   "ocr": "23. K R\u2014K 1 R\u00d7R",
+   "box": [
+    235,
+    175,
+    503,
+    198
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"KR\u2014K1\",\n  \"black\": \"R\u00d7R\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 24,
+   "ocr": "24. R\u00d7R R\u2014Q Kt 3",
+   "box": [
+    235,
+    266,
+    531,
+    298
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u2014 K 5\",\n  \"black\": \"R \u00d7 P\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 25,
+   "ocr": "25. R\u2014K 5 R\u00d7P",
+   "box": [
+    235,
+    234,
+    505,
+    266
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014K 5\",\n  \"black\": \"R \u00d7 P\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 26,
+   "ocr": "26. R\u00d7P Kt\u2014B 3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 27,
+   "ocr": "27. B\u2014K 6 ch K\u2014B 1",
+   "box": [
+    236,
+    300,
+    521,
+    324
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014K 6 ch\",\n  \"black\": \"K\u2014B 1\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 28,
+   "ocr": "28. R\u2014B 5 ch K\u2014K 1",
+   "box": [
+    236,
+    331,
+    524,
+    354
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014B 5 ch\",\n  \"black\": \"K\u2014K 1\"\n}",
+   "seconds": 10.0
+  },
+  {
+   "number": 29,
+   "ocr": "29. B\u2014B 7 ch K\u2014Q 2",
+   "box": [
+    236,
+    362,
+    523,
+    386
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014B 7 ch\",\n  \"black\": \"K\u2014Q 2\"\n}",
+   "seconds": 10.1
+  },
+  {
+   "number": 30,
+   "ocr": "30. B\u2014B 4",
+   "box": [
+    235,
+    395,
+    365,
+    418
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014B4\",\n  \"black\": \"\"\n}",
+   "seconds": 10.1
+  },
+  {
+   "number": 30,
+   "ocr": "30. P\u2014Q R 3",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

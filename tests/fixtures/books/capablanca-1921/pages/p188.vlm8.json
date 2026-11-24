@@ -1,0 +1,31 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 19,
+   "ocr": "19. ... Q R\u2014Q I",
+   "box": [
+    232,
+    478,
+    359,
+    502
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R-Q3\",\n  \"black\": \"\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 20,
+   "ocr": "20. Q R\u2014Q I P\u2014K Kt 4",
+   "box": [
+    233,
+    1018,
+    556,
+    1042
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"QR-Q1\",\n  \"black\": \"P-KKt4\"\n}",
+   "seconds": 9.9
+  }
+ ]
+}

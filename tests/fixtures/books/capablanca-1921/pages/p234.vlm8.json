@@ -1,0 +1,88 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 14,
+   "ocr": "14. Q \u00d7 P Q R \u2014 Kt 1",
+   "box": [
+    260,
+    146,
+    578,
+    168
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u00d7P\",\n  \"black\": \"QR\u2014Kt 1\"\n}",
+   "seconds": 10.1
+  },
+  {
+   "number": 15,
+   "ocr": "15. Q \u2014 K 4 Q \u2014 Kt 2",
+   "box": [
+    261,
+    177,
+    554,
+    200
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014K 4\",\n  \"black\": \"Q\u2014Kt 2\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 16,
+   "ocr": "16. P \u2014 Q Kt 3 P \u2014 Q B 4",
+   "box": [
+    261,
+    209,
+    567,
+    231
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-Q Kt 3\",\n  \"black\": \"P-Q B 4\"\n}",
+   "seconds": 9.2
+  },
+  {
+   "number": 17,
+   "ocr": "17. O \u2014 O P \u00d7 P",
+   "box": [
+    260,
+    462,
+    521,
+    485
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"O-O\",\n  \"black\": \"PxP\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 18,
+   "ocr": "18. Kt \u2014 Q 5!",
+   "box": [
+    259,
+    494,
+    406,
+    517
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Q 5!\",\n  \"black\": \"\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 18,
+   "ocr": "18. ... B \u2014 Q 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 19,
+   "ocr": "19. B \u2014 B 4 Kt \u2014 B 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 20,
+   "ocr": "20. Q \u00d7 P Q \u00d7 Q",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

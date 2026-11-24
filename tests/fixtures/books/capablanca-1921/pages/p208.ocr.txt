@@ -1,0 +1,18 @@
+19. R—Q 3
+20. Kt—Q 4
+21. R—Kt 3
+22. P—KR 4
+23. P—R 5
+B—Q 2
+QR—QB 1
+K—R 2
+KR—Kt 1
+Q—Kt 5
+
+In order to pin the Knight and be ready to come back to either K 2 or B 1. Also to prevent QR—Kt 1. In reality nearly all these precautions are unnecessary, since White's attack amounts to nothing. Probably Black should have left aside all these considerations, and played Q—R 5 now, in order to follow it up with P—B 4, as he did later, but under less favourable circumstances.
+
+24. R—R 3
+
+24. ... P—B 4
+
+Not the best, as White will soon prove. Q—B 1 would have avoided everything, but Black wants to assume the initiative at once and plunges into com-

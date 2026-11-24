@@ -1,0 +1,8 @@
+It has been wrongly claimed that this wins the game, but I would like nothing better than to have such a position again. It required several mistakes on my part finally to obtain a lost position.
+
+12. ... P—Q Kt 3
+13. B—B 4
+
+13. B—Kt 2
+
+Played against my better judgment. The right move of course was B × B. Dr. Lasker gives the following variation: 13...B × B; 14 R × B, P—B 4; 15 Q R—Q 1, B—Kt 2; 16 R—B 2, Q R—Q 1; 17 R × R, R × R; 18 R—Q 2, R × R; 19 Kt × R, and he claims that White has the best of it. But, as Niemzovitch pointed out immediately after the game, 16...Q R—Q 1 given in Dr. Lasker's variation, is not the best. If 16...Q R—B 1! then White will have great difficulty in drawing the game,

@@ -1,0 +1,154 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 36,
+   "ocr": "36 Q \u00d7 Q P! R \u2014 Q 1; 37 Q \u2014 R 6, K \u2014 Kt 1 best (if Q \u2014 Q 5 ch; K \u2014 R 1, K \u2014 Kt 1; R \u2014 Q Kt 1 wins);",
+   "box": [
+    92,
+    156,
+    643,
+    179
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Q\u00d7QP! R\u2014Q1;\",\n  \"black\": \"Q\u2014R6, K\u2014Kt1 best\"\n}",
+   "seconds": 10.4
+  },
+  {
+   "number": 38,
+   "ocr": "38 Q \u00d7 B P and White will at least have a draw.",
+   "box": [
+    91,
+    218,
+    618,
+    241
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Q\u00d7B P\",\n  \"black\": \"and White will at least have a draw.\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 35,
+   "ocr": "35. ... ... ... R \u2014 K 7",
+   "box": [
+    205,
+    298,
+    484,
+    321
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 36,
+   "ocr": "36. Q \u2014 Q 4 R \u2014 Q 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 37,
+   "ocr": "37. Q \u2014 R 4 Q \u2014 K 5",
+   "box": [
+    205,
+    333,
+    486,
+    356
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014R 4\",\n  \"black\": \"Q\u2014K 5\"\n}",
+   "seconds": 9.8
+  },
+  {
+   "number": 38,
+   "ocr": "38. Q \u2014 R 6 K \u2014 Kt 1",
+   "box": [
+    205,
+    369,
+    496,
+    391
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014R 6\",\n  \"black\": \"K\u2014Kt r\"\n}",
+   "seconds": 8.9
+  },
+  {
+   "number": 39,
+   "ocr": "39. K \u2014 B 1 R \u00d7 Q P",
+   "box": [
+    203,
+    506,
+    487,
+    528
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B 1\",\n  \"black\": \"R\u00d7Q P\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 40,
+   "ocr": "40. Kt \u2014 Q 4 R \u2014 K 8 ch",
+   "box": [
+    202,
+    541,
+    516,
+    564
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Q 4\",\n  \"black\": \"R\u2014K 8 ch\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 1,
+   "ocr": "1. P \u2014 K 4 P \u2014 K 4",
+   "box": [
+    202,
+    881,
+    481,
+    902
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K 4\",\n  \"black\": \"P\u2014K 4\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt \u2014 K B 3 Kt \u2014 Q B 3",
+   "box": [
+    201,
+    916,
+    513,
+    939
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014KB 3\",\n  \"black\": \"Kt\u2014QB 3\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 3,
+   "ocr": "3. B \u2014 Kt 5 P \u2014 Q R 3",
+   "box": [
+    199,
+    952,
+    502,
+    974
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 5\",\n  \"black\": \"P\u2014QR 3\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 4,
+   "ocr": "4. B \u00d7 Kt",
+   "box": [
+    199,
+    988,
+    307,
+    1008
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"B\u00d7Kt\"\n}",
+   "seconds": 9.9
+  }
+ ]
+}

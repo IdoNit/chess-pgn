@@ -1,0 +1,9 @@
+I now was on the point of playing P—B 4, to be followed by P—Q 4, which I thought would give me a draw, but suddenly I became ambitious and thought that I could play the text move, 17...Kt—B 1, and later on sacrifice the exchange for the Knight at K 6, winning a Pawn for it, and leaving White's K P still weaker. I intended to carry this plan either before or after playing P—K Kt 4 as the circumstances demanded. Now let us analyse: 17...P—B 4. If 18 Kt—Q 5, B × Kt; 19 P × B, P—Q Kt 4; and a careful analysis will show that Black has nothing to fear. Black's plan in this case would be to work his Kt around to K 4, via Q B 1, Q Kt 3, and Q B 5 or Q 2. Again, 17...P—B 4; 18 R—B 2, P—Q 4; 19 P × P, B × P; 20 Kt × B (best, since if R (B 2)—Q 2, B × Kt give Black the advantage), R × Kt; 21 R × R, Kt × R; and there is no good reason why Black should lose.
+
+17. ....
+
+Kt—B 1
+
+18. R—B 2
+
+P—Q Kt 4

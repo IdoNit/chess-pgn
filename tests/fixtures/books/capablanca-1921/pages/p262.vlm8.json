@@ -1,0 +1,102 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 33,
+   "ocr": "33. ... R\u2014Q 3",
+   "box": [
+    481,
+    137,
+    564,
+    160
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R(Q3)\",\n  \"black\": \"\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 34,
+   "ocr": "34. Kt\u2014K 7 R (Q 3)\u2014Q 7",
+   "box": [
+    481,
+    167,
+    626,
+    192
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R(Q3)\u2013Q7\",\n  \"black\": \"K\u2013B3\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 35,
+   "ocr": "35. Kt\u2014B 5 ch K\u2014B 3",
+   "box": [
+    211,
+    323,
+    573,
+    354
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"K \u00d7 B P\"\n}",
+   "seconds": 8.9
+  },
+  {
+   "number": 36,
+   "ocr": "36. Kt\u2014R 4 K\u2014Kt 4",
+   "box": [
+    481,
+    231,
+    579,
+    253
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt 4\",\n  \"black\": \"R\u2014Kt 7 ch\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 37,
+   "ocr": "37. Kt\u2014B 5 R\u2014Kt 7 ch",
+   "box": [
+    480,
+    264,
+    608,
+    286
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Kt 7 ch\",\n  \"black\": \"P\u2014R 7\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 38,
+   "ocr": "38. K\u2014B 1 P\u2014R 7",
+   "box": [
+    481,
+    297,
+    564,
+    318
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R7\",\n  \"black\": \"K\u00d7B P\"\n}",
+   "seconds": 9.6
+  },
+  {
+   "number": 39,
+   "ocr": "39. P\u2014B 4 ch K\u00d7B P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 40,
+   "ocr": "40. Resigns.",
+   "box": [
+    211,
+    360,
+    337,
+    383
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 9.3
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 43,
+   "ocr": "43. K \u2014 Kt 4 Q \u2014 B 3",
+   "box": [
+    208,
+    196,
+    489,
+    221
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt 4\",\n  \"black\": \"Q\u2014B 3\"\n}",
+   "seconds": 9.9
+  },
+  {
+   "number": 44,
+   "ocr": "44. Kt \u00d7 B Q \u2014 Kt 2 ch",
+   "box": [
+    207,
+    227,
+    532,
+    251
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt \u00d7 B\",\n  \"black\": \"Q\u2014Kt 2 ch\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 45,
+   "ocr": "45. K \u2014 B 4 Resigns.",
+   "box": [
+    207,
+    259,
+    487,
+    283
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B 4\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 1,
+   "ocr": "1. P \u2014 K 4 P \u2014 K 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt \u2014 K B 3 Kt \u2014 Q B 3",
+   "box": [
+    206,
+    680,
+    527,
+    703
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014KB3\",\n  \"black\": \"Kt\u2014QB3\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 3,
+   "ocr": "3. B \u2014 Kt 5 P \u2014 Q 3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 4,
+   "ocr": "4. Kt \u2014 B 3 B \u2014 Q 2",
+   "box": [
+    204,
+    743,
+    490,
+    765
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B 3\",\n  \"black\": \"B\u2014Q 2\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 5,
+   "ocr": "5. P \u2014 Q 4 P \u00d7 P",
+   "box": [
+    205,
+    773,
+    469,
+    796
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q 4\",\n  \"black\": \"P\u00d7P\"\n}",
+   "seconds": 8.8
+  },
+  {
+   "number": 6,
+   "ocr": "6. Kt \u00d7 P P \u2014 K Kt 3",
+   "box": [
+    204,
+    805,
+    527,
+    828
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt \u00d7 P\",\n  \"black\": \"P\u2014K Kt 3\"\n}",
+   "seconds": 9.6
+  }
+ ]
+}

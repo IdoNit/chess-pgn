@@ -1,0 +1,10 @@
+The position looks most interesting. I thought it would be possible to get up such an attack against the White King as to make it impossible for him to hold out much longer, but I was wrong, unless it could have been done by playing B—B 3 first, forcing P—Kt 3 and then playing K—R 4. I followed a similar plan, but lost a very important move by playing Q R—K Kt 1; which gave White time to play R—Q 1. I am convinced, however, that B—B 3 at once was the right move. White would be forced to play P—Kt 3, and Black would reply with either K—R 4; as already indicated, which looks the best (the plan, of course, is to play R—K R 1; and follow it up with K—Kt 5; threatening mate, or some other move according to circumstances. In some cases, of course, it will be better first to play K—Kt 5), or Kt—K 5, which will at least give him a draw. There are so many possibilities in this position that it would be impossible to give them all. It will be worth the reader's time to go carefully through the lines of play indicated above.
+
+29. ... Q R—K Kt 1
+
+As stated B—B 3 was the best move.
+
+30. P—Kt 3 B—B 3
+31. R—Q 1 K—R 4
+
+The plan, of course, as explained above, is to go to Kt 5 in due time and threaten mate at K R 8, but it is now too late, the White Rook having come in

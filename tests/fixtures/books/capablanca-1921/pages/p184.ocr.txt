@@ -1,0 +1,16 @@
+Q 5 in conjunction with the extra Pawn on the Queen's side and the awkward position of White's King. (See how this is so.)
+
+31. R — B 7 ch K — Q 3
+32. R × K Kt P P — Kt 4
+33. B — Kt 8 P — Q R 4
+34. R × P P — R 5
+35. P — R 4 P — Kt 5
+36. R — R 6 ch K — B 4
+37. R — R 5 ch K — Kt 3
+38. B — Q 5
+
+With these last three moves White again gives Black a chance. Even before the last move B — B 4 would have won with comparative ease, but the text move is a downright blunder, of which, fortunately for him, Black does not avail himself.
+
+38. P — Kt 6
+
+R × P would make it practically impossible for White to win, if he can win at all. White's best con-

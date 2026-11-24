@@ -1,0 +1,213 @@
+{
+ "model": "qwen3-vl:8b-instruct",
+ "lines": [
+  {
+   "number": 40,
+   "ocr": "40 R\u2014Kt 5 ch, K\u2014B 2; 41 B\u2014Kt 8, P\u2014R 6;",
+   "box": [
+    118,
+    169,
+    671,
+    200
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R\u2014Kt 5 ch, K\u2014B 2\",\n  \"black\": \"B\u2014Kt 8, P\u2014R 6\"\n}",
+   "seconds": 10.9
+  },
+  {
+   "number": 42,
+   "ocr": "42 P\u2014R 5, P\u2014R 7; 43 B \u00d7 P, R \u00d7 B, and if there is a win it is very difficult to find it, as against 44 P\u2014R 6, R\u2014R 3! offers excellent chances for a draw.",
+   "box": [
+    118,
+    204,
+    670,
+    228
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014R 5, P\u2014R 7;\",\n  \"black\": \"B \u00d7 P, R \u00d7 B,\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 39,
+   "ocr": "39. P \u00d7 P P\u2014R 6",
+   "box": [
+    232,
+    321,
+    519,
+    349
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P\",\n  \"black\": \"P \u2014 R 6\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 40,
+   "ocr": "40. B \u00d7 Kt R \u00d7 Kt P",
+   "box": [
+    232,
+    357,
+    537,
+    378
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"R \u00d7 Kt P\"\n}",
+   "seconds": 10.5
+  },
+  {
+   "number": 42,
+   "ocr": "42 R\u2014Kt 8.",
+   "box": [
+    117,
+    429,
+    256,
+    450
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Kt 8.\",\n  \"black\": \"\"\n}",
+   "seconds": 9.4
+  },
+  {
+   "number": 41,
+   "ocr": "41. B\u2014Q 5 P\u2014R 7",
+   "box": [
+    231,
+    467,
+    519,
+    489
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q 5\",\n  \"black\": \"P\u2014R 7\"\n}",
+   "seconds": 10.1
+  },
+  {
+   "number": 42,
+   "ocr": "42. R\u2014R 6 ch Resigns.",
+   "box": [
+    231,
+    498,
+    517,
+    521
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014R 6 ch\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 10.2
+  },
+  {
+   "number": 1,
+   "ocr": "1. P\u2014Q 4 Kt\u2014K B 3",
+   "box": [
+    233,
+    801,
+    556,
+    823
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q 4\",\n  \"black\": \"Kt\u2014K B 3\"\n}",
+   "seconds": 9.3
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt\u2014K B 3 P\u2014Q 3",
+   "box": [
+    233,
+    832,
+    516,
+    855
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014KB 3\",\n  \"black\": \"P\u2014Q 3\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 3,
+   "ocr": "3. B\u2014Kt 5 Q Kt\u2014Q 2",
+   "box": [
+    232,
+    859,
+    554,
+    891
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 5\",\n  \"black\": \"Q Kt\u2014Q 2\"\n}",
+   "seconds": 10.4
+  },
+  {
+   "number": 4,
+   "ocr": "4. P\u2014K 3 P\u2014K 4",
+   "box": [
+    232,
+    896,
+    520,
+    917
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K 3\",\n  \"black\": \"P\u2014K 4\"\n}",
+   "seconds": 9.1
+  },
+  {
+   "number": 5,
+   "ocr": "5. Kt\u2014B 3 P\u2014B 3",
+   "box": [
+    233,
+    927,
+    516,
+    949
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B 3\",\n  \"black\": \"P\u2014B 3\"\n}",
+   "seconds": 10.3
+  },
+  {
+   "number": 6,
+   "ocr": "6. B\u2014Q 3 B\u2014K 2",
+   "box": [
+    232,
+    958,
+    520,
+    980
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q 3\",\n  \"black\": \"B\u2014K 2\"\n}",
+   "seconds": 9.5
+  },
+  {
+   "number": 7,
+   "ocr": "7. Q\u2014K 2 Q\u2014R 4",
+   "box": [
+    234,
+    989,
+    520,
+    1011
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014K 2\",\n  \"black\": \"Q\u2014R 4\"\n}",
+   "seconds": 10.3
+  },
+  {
+   "number": 8,
+   "ocr": "8. O\u2014O Kt\u2014B 1",
+   "box": [
+    233,
+    1018,
+    528,
+    1038
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"O-O\",\n  \"black\": \"Kt-'B 1\"\n}",
+   "seconds": 9.7
+  },
+  {
+   "number": 9,
+   "ocr": "9. K R\u2014Q 1 B\u2014Kt 5",
+   "box": [
+    233,
+    1057,
+    249,
+    1074
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 9.1
+  }
+ ]
+}

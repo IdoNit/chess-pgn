@@ -1,0 +1,12 @@
+plications. However, as will soon be seen, the move is not a losing one by any means.
+
+25. P × P e.p. Kt × P (B 3)
+26. P × P ch R × P
+
+27. R × P ch
+
+This wins the Queen.
+
+27. ... K × R
+28. Kt — B 5 ch P × Kt
+29. Q × Q
