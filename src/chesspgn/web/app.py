@@ -1,6 +1,7 @@
 """Local web app: convert screenshots, review and fix moves, history, download."""
 
 import io
+import json
 import os
 import tempfile
 from pathlib import Path
@@ -15,15 +16,44 @@ from fastapi.staticfiles import StaticFiles
 from chesspgn.decoder import suggest_moves
 from chesspgn.pipeline import NoGameFound, convert, game_from_text
 from chesspgn.reader import OllamaReader, PageIncomplete, Reader, ReaderUnavailable
+from chesspgn.repair import OllamaRowReader, RowReader
 from chesspgn.storage import GameNotFound, GameStore
 
 STATIC = Path(__file__).parent / "static"
 ALLOWED_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".bmp", ".tif", ".tiff"}
+AI_MIN_MEMORY_GB = 16  # GLM-OCR and the 8b vision model together; below this the helper starts switched off
 
 
-def create_app(store_root: Path, reader: Reader) -> FastAPI:
+def create_app(store_root: Path, reader: Reader, row_reader: RowReader | None = None,
+               memory_gb: float | None = None) -> FastAPI:
     app = FastAPI(title="Chess PGN")
     store = GameStore(store_root)
+    settings_file = store_root / "settings.json"
+    enough_memory = memory_gb is None or memory_gb >= AI_MIN_MEMORY_GB
+    progress = {"step": ""}
+
+    def settings() -> dict:
+        saved = json.loads(settings_file.read_text(encoding="utf-8")) if settings_file.exists() else {}
+        on = row_reader is not None and saved.get("ai_helper", enough_memory)
+        return {"ai_helper": bool(on), "available": row_reader is not None, "enough_memory": enough_memory,
+                "memory_gb": memory_gb}
+
+    @app.get("/api/settings")
+    def get_settings():
+        return settings()
+
+    @app.put("/api/settings")
+    def put_settings(body: dict):
+        settings_file.parent.mkdir(parents=True, exist_ok=True)
+        settings_file.write_text(json.dumps({"ai_helper": bool(body.get("ai_helper"))}), encoding="utf-8")
+        return settings()
+
+    @app.get("/api/progress")
+    def get_progress():
+        return dict(progress)
+
+    def report(step: str) -> None:
+        progress["step"] = step
 
     @app.exception_handler(GameNotFound)
     def _not_found(_request, _exc):
@@ -39,13 +69,16 @@ def create_app(store_root: Path, reader: Reader) -> FastAPI:
                 path.write_bytes(upload.file.read())
                 paths.append(path)
             try:
-                games = convert(paths, reader)
+                games = convert(paths, reader, row_reader=row_reader if settings()["ai_helper"] else None,
+                                progress=report)
             except NoGameFound:
                 return JSONResponse({"error": "no_game"}, status_code=422)
             except PageIncomplete:
                 return JSONResponse({"error": "page_incomplete"}, status_code=422)
             except ReaderUnavailable:
                 return JSONResponse({"error": "engine_down"}, status_code=503)
+            finally:
+                report("")
             records = [store.save(game, paths) for game in games]
         return {
             "games": [
@@ -130,8 +163,22 @@ def app_from_env() -> FastAPI:
     """Entry point for `uvicorn --factory chesspgn.web.app:app_from_env`."""
     data = Path(os.environ.get("CHESSPGN_DATA", "/data"))
     fake = os.environ.get("CHESSPGN_FAKE_READER")
-    reader: Reader = _FixtureReader(Path(fake)) if fake else OllamaReader(os.environ.get("OLLAMA_URL", "http://ollama:11434"))
-    return create_app(data, reader)
+    ollama = os.environ.get("OLLAMA_URL", "http://ollama:11434")
+    reader: Reader = _FixtureReader(Path(fake)) if fake else OllamaReader(ollama)
+    ai_model = os.environ.get("CHESSPGN_AI_MODEL", "qwen3-vl:8b-instruct")
+    row_reader = None if fake or ai_model == "off" else OllamaRowReader(ollama, ai_model)
+    return create_app(data, reader, row_reader=row_reader, memory_gb=_memory_gb())
+
+
+def _memory_gb() -> float | None:
+    """The machine's memory as this container sees it (Docker Desktop's share of the computer)."""
+    meminfo = Path("/proc/meminfo")
+    if not meminfo.exists():
+        return None
+    for line in meminfo.read_text().splitlines():
+        if line.startswith("MemTotal:"):
+            return round(int(line.split()[1]) / 1024 / 1024, 1)
+    return None
 
 
 class _FixtureReader:

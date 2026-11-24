@@ -1,5 +1,7 @@
 """Screenshots in, checked PGN games out."""
 
+import re
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -7,11 +9,11 @@ import chess.pgn
 
 from chesspgn.decoder import Flag
 from chesspgn.games import continues_on_next_page, extract_headers, pgn_filename, split_games
-import re
 
 from chesspgn.icons import annotate, find_icons
 from chesspgn.layout import mark_commentary
 from chesspgn.reader import Reader
+from chesspgn.repair import RowReader, repair_pages
 from chesspgn.tokens import normalize_notation
 from chesspgn.variations import BuiltGame, build_game
 
@@ -33,8 +35,31 @@ class ConvertedGame:
     text: str  # this game's annotated text, kept for re-decoding with the user's fixes
 
 
-def convert(images: list[Path], reader: Reader) -> list[ConvertedGame]:
-    text = normalize_notation("\n".join(reader.read(image) for image in images))
+_TROUBLE = ("unreadable", "missing", "skipped")
+
+
+def convert(images: list[Path], reader: Reader, row_reader: RowReader | None = None,
+            progress: Callable[[str], None] | None = None) -> list[ConvertedGame]:
+    """Read the pages and decode their games. With a `row_reader`, rows the board couldn't read get a second
+    reading from it (see chesspgn.repair) and the games are decoded again."""
+    pages = []
+    for n, image in enumerate(images, start=1):
+        if progress:
+            progress(f"page {n}/{len(images)}")
+        pages.append(reader.read(image))
+    games = _games(pages, images)
+    if row_reader is None:
+        return games
+    trouble = {(f.ply + 1) // 2 + d for g in games for f in g.flags if f.reason in _TROUBLE for d in (-1, 0, 1)}
+    if not trouble:
+        return games
+    repaired, rewritten = repair_pages(images, pages, trouble, row_reader,
+                                       (lambda done: progress(f"ai {done}")) if progress else None)
+    return _games(repaired, images) if rewritten else games
+
+
+def _games(pages: list[str], images: list[Path]) -> list[ConvertedGame]:
+    text = normalize_notation("\n".join(pages))
     if not uses_piece_letters(text):  # figurines lose their symbols in OCR; letters don't
         text = annotate(text, find_icons(images))
     games = [game_from_text(segment) for segment in split_games(mark_commentary(text))]

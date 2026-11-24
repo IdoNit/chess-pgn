@@ -29,6 +29,7 @@ _NUMBER = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.+)?$")
 _L_FOR_ONE = re.compile(r"^([KQRBN♔♕♖♗♘♚♛♜♝♞]?[a-h]?x?[a-h])l([+#]*)$")
 _OCR_NUMBER = re.compile(r"^(?=.*\d|[lI]{2})[\dlI]{2,3}(?P<dots>\.{0,3})$")  # "ll" = 11, "l3" = 13
 _NUMBER_GLUED = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.{1,3})(?P<rest>[^.\s]\S*)$")
+AI_MARK = "†"  # written after a move the vision model read
 _ANNOTATION = re.compile(r"[!?]+$")
 RESULT = re.compile(r"^(1-0|0-1|1:0|0:1|½-½|1/2-1/2)$")
 
@@ -58,6 +59,7 @@ class Token:
     annotation: str = ""
     number: int | None = None
     black_to_move: bool = False
+    ai: bool = False  # read by the vision model (written with a trailing "†"), not by the OCR
 
 
 def normalize_notation(text: str) -> str:
@@ -98,11 +100,13 @@ def _split_word(raw: str) -> list[Token]:
     if number is not None:
         out.append(Token("", number=int(number["n"]), black_to_move=len(number["dots"] or "") >= 2))
         return out
+    ai = raw.endswith(AI_MARK)
+    raw = raw.removesuffix(AI_MARK)
     annotation = _ANNOTATION.search(raw)
     body = raw[: annotation.start()] if annotation else raw
     body = _L_FOR_ONE.sub(r"\g<1>1\g<2>", body)
     if body:
-        out.append(Token(body, annotation=annotation.group(0) if annotation else ""))
+        out.append(Token(body, annotation=annotation.group(0) if annotation else "", ai=ai))
     return out
 
 

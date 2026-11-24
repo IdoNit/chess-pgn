@@ -2,7 +2,8 @@ import {Chessboard, COLOR, INPUT_EVENT_TYPE} from "/static/vendor/cm-chessboard/
 import {Chess} from "/static/vendor/chess.js"
 
 const HEADER_FIELDS = ["White", "Black", "Event", "Site", "Date", "Round", "Opening"]
-const CONVERT_TIMEOUT_MS = 15 * 60 * 1000
+const PROGRESS_EVERY_MS = 2000
+const CONVERT_TIMEOUT_MS = 3 * 60 * 60 * 1000  // the AI helper on a computer without a GPU can take an hour or more
 let STRINGS = {}
 const state = {files: [], game: null, selectedPly: null, board: null}
 
@@ -98,8 +99,10 @@ async function runConvert() {
     $("convert-button").disabled = true
     status.textContent = t("convert.working")
     $("results").innerHTML = ""
+    const poll = setInterval(() => showProgress(status), PROGRESS_EVERY_MS)
     try {
         const data = await api("POST", "/api/convert", form, true, CONVERT_TIMEOUT_MS)
+        clearInterval(poll)
         status.textContent = ""
         state.files = []
         renderPages()
@@ -112,11 +115,32 @@ async function runConvert() {
             $("results").prepend(all)
         }
     } catch (error) {
+        clearInterval(poll)
         status.textContent = errorText(error)
         status.classList.add("error")
     } finally {
+        clearInterval(poll)
         $("convert-button").disabled = false
     }
+}
+
+// "page 1/2" while pages are read, "ai 2/4" while the AI helper checks rows
+async function showProgress(status) {
+    try {
+        const { step } = await api("GET", "/api/progress")
+        const match = /^(page|ai) (\d+)\/(\d+)$/.exec(step || "")
+        if (!match) return
+        const key = match[1] === "page" ? "convert.progress_page" : "convert.progress_ai"
+        status.textContent = t(key).replace("{done}", match[2]).replace("{total}", match[3])
+    } catch (_error) { /* progress is a nicety: keep the last text */ }
+}
+
+async function loadSettings() {
+    const settings = await api("GET", "/api/settings")
+    $("ai-helper").hidden = !settings.available
+    $("ai-helper-on").checked = settings.ai_helper
+    $("ai-helper-note").hidden = !settings.available || settings.enough_memory
+    $("ai-helper-on").onchange = () => api("PUT", "/api/settings", { ai_helper: $("ai-helper-on").checked })
 }
 
 function statusBadge(flagsOpen) {
@@ -331,6 +355,7 @@ async function start() {
     drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove("over"); addFiles(e.dataTransfer.files) }
     $("file-input").onchange = (e) => { addFiles(e.target.files); e.target.value = "" }
     $("convert-button").onclick = runConvert
+    loadSettings().catch(() => {})
     $("headers").onsubmit = saveHeaders
     window.onhashchange = route
     route()

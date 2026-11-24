@@ -377,6 +377,7 @@ def _play(
     board = state.board.copy(stack=False)
     flags = state.flags
     ply = len(state.moves) + 1
+    reason = reason or ("ai_read" if token.ai else "")
     if reason:
         flags = flags + (Flag(ply, token.text, board.san(move), reason),)
     slot = state.slot

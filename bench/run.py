@@ -22,7 +22,8 @@ import chess
 import chess.pgn
 
 from bench.extraction import extraction
-from bench.vlm_answers import VlmAssisted
+from bench.vlm_answers import SavedRowReader, VlmAssisted, whole_page
+from chesspgn import repair
 from bench.score import Score, score
 from chesspgn.pipeline import ConvertedGame, NoGameFound, convert
 
@@ -61,12 +62,15 @@ def best_match(expected: list[str], games: list[ConvertedGame], accept: dict[int
     return max(scored, key=lambda gs: gs[1].correct)
 
 
+ROW_READER = None  # set by --ai: the real repair path, replaying saved answers
+
+
 def run_game(book: Path, entry: dict, reader: SavedText) -> dict:
     expected = sans((book / "expected" / f"{entry['id']}.pgn").read_text(encoding="utf-8"))
     accept = {int(k): v for k, v in entry.get("accept", {}).items()}
     started = time.monotonic()
     try:
-        games = convert([book / "pages" / p for p in entry["pages"]], reader)
+        games = convert([book / "pages" / p for p in entry["pages"]], reader, row_reader=ROW_READER)
     except NoGameFound:
         games = []
     seconds = time.monotonic() - started
@@ -80,11 +84,13 @@ def run_game(book: Path, entry: dict, reader: SavedText) -> dict:
         return row | asdict(Score(expected=len(expected), correct=0, wrong=len(expected), extra=0, unflagged_wrong=0)) | {
             "flags": 0, "found": False}
     game, result = best_match(expected, games, accept, {2 * n - 1 + black for n, black in repaired})
+    ai_flags = sum(f.reason == "ai_read" for f in game.flags)
     main_flags = [f for f in game.flags if not f.reason.startswith("side:")]
     output = sans(game.pgn)
     return row | asdict(result) | {
         "found": True,
         "flags": len(main_flags),
+        "ai_flags": ai_flags,
         "side_flags": len(game.flags) - len(main_flags),
         "silent_detail": [
             f"ply {p}: got {output[p - 1] if p <= len(output) else '-'}"
@@ -97,10 +103,15 @@ def main() -> None:
     parser.add_argument("--split", choices=["dev", "test"])
     parser.add_argument("--show", type=int, default=0)
     parser.add_argument("--books", type=Path, default=BOOKS)
+    parser.add_argument("--ai", action="store_true", help="the app's AI row repair, replaying the saved answers")
     parser.add_argument("--vlm", choices=["labels", "repair", "labels+repair", "tiebreak", "tiebreak+repair"], help="use the vision model's answers")
     parser.add_argument("--suffix", default=".ocr.txt", help="which saved text to use (e.g. another OCR's output)")
     args = parser.parse_args()
     reader = SavedText(args.suffix)
+    if args.ai:
+        global ROW_READER
+        ROW_READER = SavedRowReader()
+        repair.row_strip = whole_page
     if args.vlm:
         reader = VlmAssisted(labels="labels" in args.vlm or "tiebreak" in args.vlm, repair="repair" in args.vlm,
                              tiebreak="tiebreak" in args.vlm)

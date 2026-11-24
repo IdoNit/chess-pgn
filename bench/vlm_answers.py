@@ -99,3 +99,32 @@ class VlmAssisted:
             self.repaired.add((number, True))
         dots = " ..." if black_only else ""
         return f"{number}.{dots} {white if not black_only else ''} {black}".replace("  ", " ")
+
+
+class SavedRowReader:
+    """A row reader that replays the vision model's saved answers (pNNN.vlm8.json), for the real repair path.
+
+    The benchmark points `chesspgn.repair.row_strip` at `whole_page`, so the "strip" it receives is the page,
+    which still knows its file name."""
+
+    def __init__(self, suffix: str = ".vlm8.json") -> None:
+        self.suffix = suffix
+
+    def read_row(self, strip, number: int) -> tuple[str, str] | None:
+        from chesspgn.repair import needs_reading
+
+        answers = Path(strip.filename).with_suffix(self.suffix)
+        if not answers.exists():
+            return None
+        for entry in json.loads(answers.read_text(encoding="utf-8"))["lines"]:
+            if entry["number"] == number and "reading" in entry and needs_reading(entry["ocr"]):
+                try:
+                    reading = json.loads(entry["reading"])
+                except (json.JSONDecodeError, TypeError):
+                    return None
+                return str(reading.get("white", "")).strip(), str(reading.get("black", "")).strip()
+        return None
+
+
+def whole_page(page, box):
+    return page
