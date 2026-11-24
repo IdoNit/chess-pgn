@@ -12,6 +12,7 @@ import re
 from chesspgn.icons import annotate, find_icons
 from chesspgn.layout import mark_commentary
 from chesspgn.reader import Reader
+from chesspgn.tokens import normalize_notation
 from chesspgn.variations import BuiltGame, build_game
 
 HEADER_ORDER = ["Event", "Site", "Date", "Round", "White", "Black", "Result", "Opening"]
@@ -33,7 +34,7 @@ class ConvertedGame:
 
 
 def convert(images: list[Path], reader: Reader) -> list[ConvertedGame]:
-    text = "\n".join(reader.read(image) for image in images)
+    text = normalize_notation("\n".join(reader.read(image) for image in images))
     if not uses_piece_letters(text):  # figurines lose their symbols in OCR; letters don't
         text = annotate(text, find_icons(images))
     games = [game_from_text(segment) for segment in split_games(mark_commentary(text))]

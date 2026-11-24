@@ -2,7 +2,8 @@
 
 Outside brackets, a line belongs to the commentary when it starts with an ordinary word, when it continues a
 commentary paragraph (same paragraph: no blank line in between) without being a plain move line, or when it
-is mostly words. Commentary lines are wrapped in { } so the decoder ignores them. Lines that end the game
+is mostly words. A line of moves strung together with semicolons is analysis, so commentary too.
+Commentary lines are wrapped in { } so the decoder ignores them. Lines that end the game
 ("White resigns", "Resigns", "and won", "1-0") always stay game text. Bracketed text is left as it is.
 """
 
@@ -39,10 +40,17 @@ def mark_commentary(text: str) -> str:
         if not tokens:
             out.append(line)  # entirely inside brackets: already a side line or a comment
             continue
-        commentary = _RESULT.search(outside) is None and _is_commentary(tokens, previous_was_commentary)
+        commentary = _RESULT.search(outside) is None and (
+            _is_analysis(tokens) or _is_commentary(tokens, previous_was_commentary))
         previous_was_commentary = commentary
         out.append(_wrap(text, start, end, depth) + line[end - start:] if commentary else line)
     return "".join(out)
+
+
+def _is_analysis(tokens: list[str]) -> bool:
+    """Moves strung together with semicolons ("21 N-K7ch K-B1; 22 R-B7 R-K1; ...") are a line of analysis:
+    game text is printed move by move, never semicolon-separated."""
+    return any(t.endswith(";") and _kind(t) == "move" for t in tokens) and [_kind(t) for t in tokens].count("move") >= 2
 
 
 def _is_commentary(tokens: list[str], continues_commentary: bool) -> bool:

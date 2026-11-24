@@ -14,16 +14,24 @@ from functools import lru_cache
 import chess
 
 from chesspgn import notation
-from chesspgn.tokens import COST_DROP_GROUP, COST_SUBSTITUTION, RESULT, Token, tokenize, variants
+from chesspgn.tokens import COST_DROP_GROUP, COST_SUBSTITUTION, RESULT, Token, normalize_notation, tokenize, variants
 
 COST_SKIP_MOVELIKE = 3.0  # ignore something that reads as a move
 COST_WILDCARD = 4.0  # token unreadable: play any legal move instead
-COST_NUMBER_MISMATCH = 1.5
+COST_OFF_SLOT = 1.5  # a move played away from the place its printed move number gives it
+COST_SIDE_ONLY = 0.3  # right move number, other side: "14. P-B4" for Black's 14th, the dots left out
+
 COST_GROUP_CONFLICT = 2.0  # an icon whose group was already learned as another piece
 CLOSE_CALL_MARGIN = 1.0  # a different game this close in cost gets a flag where it differs
 BEAM_WIDTH = 100
 BEAM_WIDTH_OVER_BUDGET = 10
 MISSING_MOVE_TOP_STATES = 5
+COST_MISSING_WITH_NUMBER = 2.0  # each move of a pair the move numbers say is missing (cheaper: there's evidence)
+MISSING_PAIR_TOP_STATES = 2
+# A printed move that fits two legal moves ("B-R4": Ba4 or Bh4) is settled by the moves after it. If the text
+# goes wrong soon after, the choice may be what went wrong, so it is flagged too.
+AMBIGUITY_WINDOW = 12
+_TROUBLE = ("unreadable", "missing", "skipped")
 PROBE_TOKENS = 24  # tokens decoded under every convention before committing to one
 RETRY_COST_PER_MOVE = 1.0  # a committed convention this costly gets the runner-up tried in full too
 DEFAULT_TIME_BUDGET_S = 90.0
@@ -75,7 +83,8 @@ class _State:
     flags: tuple[Flag, ...] = field(compare=False, default=())
     token_index: tuple[int, ...] = field(compare=False, default=())
     mapping: tuple[int, ...] = field(compare=False, default=_NO_MAPPING)
-    numbers_in_sync: bool = field(compare=False, default=True)
+    slot: int | None = field(compare=False, default=None)  # the ply the next printed move should be, by its number
+    ambiguous: tuple[int, ...] = field(compare=False, default=())  # plies whose token fit two moves equally well
 
     def but(self, **changes) -> "_State":
         values = {f: getattr(self, f) for f in self.__dataclass_fields__}
@@ -93,7 +102,7 @@ def decode_text(
     time_budget_s: float = DEFAULT_TIME_BUDGET_S,
 ) -> Decoded:
     """Main line of `text`, ignoring everything inside ( ), [ ] and { }."""
-    return decode_tokens(tokenize(strip_brackets(text)), convention, pins, time_budget_s)
+    return decode_tokens(tokenize(strip_brackets(normalize_notation(text))), convention, pins, time_budget_s)
 
 
 def decode_tokens(
@@ -227,7 +236,7 @@ def _search(
         elif RESULT.match(token.text) is not None:
             if not strict:
                 break  # the game is over; anything after it belongs to the next game
-        elif token.text != "=":
+        elif token.text not in ("=", ""):  # "" is a token blanked out as analysis
             new_beam, unmatched_move = _expand(
                 beam, token, index, convention, pins, hurried=budget_ply is not None, strict=strict
             )
@@ -238,13 +247,22 @@ def _search(
 
 
 def _apply_number(state: _State, token: Token) -> _State:
-    black_to_move = state.board.turn == chess.BLACK
-    if state.board.fullmove_number == token.number and black_to_move == token.black_to_move:
-        return state if state.numbers_in_sync else state.but(numbers_in_sync=True)
-    flags = state.flags
-    if state.numbers_in_sync:  # flag the first mismatch of a run; numbers are OCR'd and misprinted too
-        flags = flags + (Flag(len(state.moves) + 1, str(token.number), "", "number"),)
-    return state.but(cost=state.cost + COST_NUMBER_MISMATCH, flags=flags, numbers_in_sync=False)
+    """A printed move number says which ply the next move is; moves are charged and flagged against it."""
+    return state.but(slot=2 * token.number - 1 + (1 if token.black_to_move else 0))
+
+
+def _slot_cost(state: _State) -> tuple[float, bool]:
+    """Cost of playing the next move at its printed place, and whether that needs a "number" flag."""
+    ply = len(state.moves) + 1
+    if state.slot is None or state.slot == ply:
+        return 0.0, False
+    if (state.slot + 1) // 2 == (ply + 1) // 2:
+        return COST_SIDE_ONLY, False
+    return COST_OFF_SLOT, True
+
+
+def _next_slot(state: _State) -> int | None:
+    return None if state.slot is None else state.slot + 1
 
 
 def _expand(
@@ -281,7 +299,7 @@ def _expand(
             offer(state.but())
         elif not strict:  # a side line never skips a move: it matches or is cut
             skipped = Flag(len(state.moves) + 1, token.text, "", "skipped")
-            offer(state.but(cost=state.cost + COST_SKIP_MOVELIKE, flags=state.flags + (skipped,)))
+            offer(state.but(cost=state.cost + COST_SKIP_MOVELIKE, flags=state.flags + (skipped,), slot=_next_slot(state)))
         pinned = pins.get(len(state.moves) + 1)
         if pinned is not None and state.board.is_legal(pinned):  # an illegal (stale) pin is ignored here
             if looks_like_move:
@@ -289,12 +307,17 @@ def _expand(
                 any_matched = True
             continue
         matched, matched_cleanly = False, False
-        for move in state.board.legal_moves:
-            found = _reading_match(state.board, move, readings, state.mapping)
-            if found is not None:
-                matched = True
-                matched_cleanly = matched_cleanly or found[0] < COST_SUBSTITUTION
-                offer(_play(state, move, found[0], token, _reason(found[0]), index, found[1]))
+        found_moves = [(move, found) for move in state.board.legal_moves
+                       if (found := _reading_match(state.board, move, readings, state.mapping)) is not None]
+        cheapest = min((found[0] for _, found in found_moves), default=None)
+        tied = sum(1 for _, found in found_moves if found[0] == cheapest) >= 2 and cheapest < COST_SUBSTITUTION
+        for move, found in found_moves:
+            matched = True
+            matched_cleanly = matched_cleanly or found[0] < COST_SUBSTITUTION
+            played = _play(state, move, found[0], token, _reason(found[0]), index, found[1])
+            if tied and found[0] == cheapest:
+                played = played.but(ambiguous=played.ambiguous + (len(played.moves),))
+            offer(played)
         any_matched = any_matched or matched
         if strict:
             continue
@@ -303,6 +326,9 @@ def _expand(
                 offer(_play(state, move, COST_WILDCARD, token, "unreadable", index, state.mapping))
             if rank < MISSING_MOVE_TOP_STATES and not hurried:
                 _offer_missing_move(state, token, readings, index, offer)
+        two_ahead = state.slot is not None and state.slot == len(state.moves) + 3
+        if looks_like_move and two_ahead and rank < MISSING_PAIR_TOP_STATES and not hurried:
+            _offer_missing_full_move(state, token, readings, index, offer)
     width = BEAM_WIDTH_OVER_BUDGET if hurried else BEAM_WIDTH
     return sorted(best.values())[:width], looks_like_move and not any_matched
 
@@ -323,6 +349,20 @@ def _offer_missing_move(state: _State, token: Token, readings, index: int, offer
                 offer(_play(inserted, move, found[0], token, _reason(found[0]), index, found[1]))
 
 
+def _offer_missing_full_move(state: _State, token: Token, readings, index: int, offer) -> None:
+    """The move number says a whole move (both sides) is missing from the text: insert two, then read this token.
+    Both inserted moves are flagged."""
+    for first in state.board.legal_moves:
+        once = _play(state, first, COST_MISSING_WITH_NUMBER, Token("<missing>"), "missing", index, state.mapping)
+        for second in once.board.legal_moves:
+            twice = _play(once, second, COST_MISSING_WITH_NUMBER, Token("<missing>"), "missing", index, once.mapping)
+            for move in twice.board.legal_moves:
+                found = _reading_match(twice.board, move, readings, twice.mapping)
+                if found is not None:
+                    played = _play(twice, move, found[0], token, _reason(found[0]), index, found[1])
+                    offer(played)
+
+
 def _reason(cost: float) -> str:
     if cost >= COST_SUBSTITUTION:
         return "ocr"
@@ -336,12 +376,20 @@ def _play(
 ) -> _State:
     board = state.board.copy(stack=False)
     flags = state.flags
+    ply = len(state.moves) + 1
     if reason:
-        flags = flags + (Flag(len(state.moves) + 1, token.text, board.san(move), reason),)
+        flags = flags + (Flag(ply, token.text, board.san(move), reason),)
+    slot = state.slot
+    if token.text != "<missing>":  # an inserted move was never printed: it takes no numbered place
+        slot_cost, off = _slot_cost(state)
+        cost += slot_cost
+        if off and not any(f.ply == ply for f in flags):
+            flags = flags + (Flag(ply, token.text, board.san(move), "number"),)
+        slot = _next_slot(state)
     board.push(move)
     return _State(
         state.cost + cost, board, state.moves + (move,), state.annotations + (token.annotation,), flags,
-        state.token_index + (index,), mapping, state.numbers_in_sync,
+        state.token_index + (index,), mapping, ambiguous=state.ambiguous, slot=slot,
     )
 
 
@@ -398,9 +446,20 @@ def _reading_match(
 # ---------------------------------------------------------------- result
 
 
+def _san_at(moves: tuple[chess.Move, ...], ply: int) -> str:
+    board = chess.Board()
+    for move in moves[: ply - 1]:
+        board.push(move)
+    return board.san(moves[ply - 1])
+
+
 def _finish(beam: list[_State], convention: str, result: str) -> Decoded:
     best = beam[0]
     flags = list(best.flags)
+    trouble = [f.ply for f in flags if f.reason in _TROUBLE]
+    for ply in best.ambiguous:
+        if any(ply < t <= ply + AMBIGUITY_WINDOW for t in trouble) and not any(f.ply == ply for f in flags):
+            flags.append(Flag(ply, "", _san_at(best.moves, ply), "close_call"))
     runner_up = next((s for s in beam[1:] if len(s.moves) == len(best.moves) and s.moves != best.moves), None)
     if runner_up is not None and runner_up.cost - best.cost < CLOSE_CALL_MARGIN:
         ply = next(i for i, (a, b) in enumerate(zip(best.moves, runner_up.moves), start=1) if a != b)

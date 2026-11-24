@@ -1,0 +1,59 @@
+"""Printed move numbers anchor every move: a move played away from its numbered place is flagged, and a
+number that goes back (analysis printed like game text) is not the game."""
+
+import chess
+import pytest
+
+from chesspgn.decoder import decode_text
+
+
+def san(decoded) -> list[str]:
+    board, out = chess.Board(), []
+    for move in decoded.moves:
+        out.append(board.san(move))
+        board.push(move)
+    return out
+
+
+MAIN = ["e4", "e5", "Nf3", "Nc6", "Bb5", "a6", "Ba4", "Nf6", "O-O", "Be7", "Re1", "b5"]
+
+
+@pytest.mark.xfail(reason="analysis printed like game rows can still pull the decoder off the game: next step", strict=True)
+def test_numbered_analysis_between_game_lines_is_not_followed():
+    text = ("1. e4 e5 2. Nf3 Nc6 3. Bb5 a6\n3 Bc4 Bc5 4 c3 Nf6 5 d4 exd4 6 cxd4 Bb4+\n"
+            "4. Ba4 Nf6 5. O-O Be7 6. Re1 b5")
+    assert san(decode_text(text)) == MAIN
+
+
+@pytest.mark.xfail(reason="analysis printed like game rows can still pull the decoder off the game: next step", strict=True)
+def test_a_move_away_from_its_number_is_never_silent():
+    # Whatever the decoder makes of a stray line, every move it plays out of its numbered place is flagged.
+    text = "1. e4 e5 2. Nf3 Nc6 3. Bb5 a6\n3 Bc4 Bc5 4 c3 Nf6\n4. Ba4 Nf6 5. O-O Be7 6. Re1 b5"
+    decoded = decode_text(text)
+    moves = san(decoded)
+    flagged = {f.ply for f in decoded.flags}
+    wrong = [i for i, (a, b) in enumerate(zip(moves, MAIN), start=1) if a != b]
+    assert all(any(abs(p - w) <= 1 for p in flagged) for w in wrong)
+
+
+def test_a_black_move_printed_without_dots_is_fine():
+    # "14. P-B4" for Black's 14th move: the number is right, only the dots are missing.
+    text = "1. e4 e5 2. Nf3 Nc6\n3. Bb5\n3. a6\n4. Ba4 Nf6"
+    decoded = decode_text(text)
+    assert san(decoded) == MAIN[:8] and decoded.flags == []
+
+
+def test_a_misprinted_number_costs_flags_not_silent_errors():
+    decoded = decode_text("1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 3. Ba4 Nf6 5. O-O Be7 6. Re1 b5")
+    moves, flagged = san(decoded), {f.ply for f in decoded.flags}
+    wrong = [i for i, (a, b) in enumerate(zip(moves, MAIN), start=1) if a != b]
+    assert len(moves) == len(MAIN) and all(any(abs(p - w) <= 1 for p in flagged) for w in wrong)
+
+
+@pytest.mark.xfail(reason="analysis printed like game rows can still pull the decoder off the game: next step", strict=True)
+def test_a_note_that_continues_the_numbers_loses_to_the_longer_game():
+    # "If 4) ... Bc5; 5) c3 ..." printed as rows right after "4. Ba4": it continues the numbers for a while,
+    # but the game itself carries on longer.
+    text = ("1. e4 e5 2. Nf3 Nc6 3. Bb5 a6 4. Ba4\n4. ... Bc5 5. c3\n"
+            "4. ... Nf6 5. O-O Be7 6. Re1 b5")
+    assert san(decode_text(text)) == MAIN

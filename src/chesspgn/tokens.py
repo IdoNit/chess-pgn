@@ -24,13 +24,32 @@ for _a, _b in _CONFUSIONS:
 
 _DASHES = re.compile(r"[–—−‒]+|-{2,}")
 _SPACED_DOTS = re.compile(r"\.\s+\.\s*\.")
-_NUMBER = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.{1,3})?$")
+_NUMBER = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.+)?$")
 # Rank "1" read as "l" at the end of a move ("Rgl", "Q×hl+", "Rael"): a routine OCR quirk, fixed silently.
 _L_FOR_ONE = re.compile(r"^([KQRBN♔♕♖♗♘♚♛♜♝♞]?[a-h]?x?[a-h])l([+#]*)$")
 _OCR_NUMBER = re.compile(r"^(?=.*\d|[lI]{2})[\dlI]{2,3}(?P<dots>\.{0,3})$")  # "ll" = 11, "l3" = 13
 _NUMBER_GLUED = re.compile(r"^(?P<n>\d{1,3})(?P<dots>\.{1,3})(?P<rest>[^.\s]\S*)$")
 _ANNOTATION = re.compile(r"[!?]+$")
 RESULT = re.compile(r"^(1-0|0-1|1:0|0:1|½-½|1/2-1/2)$")
+
+# Old English descriptive typography, spelled out with optional single spaces between the parts:
+# "Kt — Q B 3", "K R - Kt 1", "B × B P", "R (K 1) - Q B 1", "R—Ktsq", "Kt(Q4)—K2", "o—o".
+_S = r"[ \t]?"
+_FILE = r"(?:Kt|[RNB])"
+_PIECE = rf"(?:(?:[QK]{_S})?(?:{_FILE}{_S})?P|(?:[QK]{_S})?{_FILE}|[KQ])"
+_SQUARE = rf"(?:[QK]{_S})?(?:{_FILE}{_S})?(?:[1-8]|sq)"
+# After a dash, a lone I/l/i where the rank belongs is a 1 the reader misread ("R—Q I").
+_TARGET = rf"(?:[QK]{_S})?(?:{_FILE}{_S})?(?:[1-8]|sq|[Iil](?![A-Za-z0-9]))"
+_AT = rf"(?:{_S}\({_S}{_SQUARE}{_S}\))?"
+# The reader occasionally writes a line as LaTeX math: "$B \times Kt \quad Kt - B_3$".
+_LATEX_SUBSCRIPT = re.compile(r"_\{?(\d)\}?")
+_LATEX_COMMAND = re.compile(r"\\[a-z]+")
+_SPACED_KT = re.compile(r"(?<![A-Za-z])K[ \t]t(?![a-z])")  # "K t × B": the reader split "Kt"
+_OLD_MOVE = re.compile(
+    rf"(?<![A-Za-z0-9])(?:[Oo0]{_S}-{_S}[Oo0](?:{_S}-{_S}[Oo0])?"
+    rf"|{_PIECE}{_AT}{_S}(?:-\s*{_TARGET}|[x×]{_S}{_PIECE}{_AT}(?!\s*[-x×]))(?:{_S}e\.p\.)?)"
+    rf"(?:{_S}ch)?(?![a-z0-9])"
+)
 
 
 @dataclass(frozen=True)
@@ -41,8 +60,23 @@ class Token:
     black_to_move: bool = False
 
 
+def normalize_notation(text: str) -> str:
+    """Write old descriptive moves the modern way, one word each: "Kt — Q B 3" -> "N-QB3", "R—Ktsq" -> "R-N1"."""
+    text = _LATEX_SUBSCRIPT.sub(r"\1", text.replace("$", "")).replace("\\times", "×")
+    text = _LATEX_COMMAND.sub(" ", text)
+    text = _SPACED_KT.sub("Kt", _DASHES.sub("-", text))
+    return _OLD_MOVE.sub(_compact, text)
+
+
+def _compact(match: re.Match[str]) -> str:
+    move = re.sub(r"\s+", "", match.group(0)).replace("×", "x").replace("Kt", "N").replace("sq", "1")
+    move = re.sub(r"\((\w+)\)", r"@\1", move)  # "N(Q4)-K2" -> "N@Q4-K2": not a side line in brackets
+    move = re.sub(r"(?<=-)([QK]?[RNB]?)[Iil](?=ch$|$)", r"\g<1>1", move)
+    return move.replace("o", "O") if move[0] in "Oo0" else move
+
+
 def tokenize(text: str) -> list[Token]:
-    text = _DASHES.sub("-", text).replace("…", "...").replace("×", "x")  # "e×d5" is how many books print captures
+    text = normalize_notation(text).replace("…", "...").replace("×", "x")  # "e×d5" is how many books print captures
     text = _SPACED_DOTS.sub("...", text)  # "16 . . . N-Q2"
     tokens: list[Token] = []
     for raw in text.split():

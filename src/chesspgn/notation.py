@@ -46,10 +46,12 @@ class Clues:
     from_file: int | None = None
     from_rank: int | None = None  # absolute 0-7
     from_rel_rank: int | None = None  # descriptive "N/2": rank counted from the mover's side, 1-8
+    from_files: tuple[int, ...] | None = None  # descriptive "KPxP" / "N(Q4)-K2": the file the piece stands on
     to_file: int | None = None
     to_files: tuple[int, ...] | None = None  # descriptive "B4": QB or KB file
     to_rank: int | None = None  # absolute 0-7
     to_rel_rank: int | None = None  # descriptive rank, 1-8 from the mover's side
+    to_rel_ranks: tuple[int, ...] | None = None  # "BxN(B3)": books count the captured piece's rank from either side
     capture: bool | None = None
     captured: chess.PieceType | None = None
     captured_files: tuple[int, ...] | None = None
@@ -65,10 +67,12 @@ _ALG = re.compile(
     r"^(?P<ff>[a-h])?(?P<fr>[1-8])?(?P<sep>[-x:])?(?P<tf>[a-h])(?P<tr>[1-8])?"
     r"(?:=?\(?(?P<promo>[^\W\d_a-z]{1,2})\)?)?(?:e\.?p\.?)?$"
 )
+_DESC_SQUARE = r"(?:Q[RNB]?|K[RNB]?|[RNB])?[1-8]"
 _DESC_MOVE = re.compile(
-    r"^(?P<mside>[QK])?(?P<mpiece>[KQRBNP])(?:/(?P<mrank>[1-8]))?"
+    r"^(?P<mside>[QK])?(?P<mfile>[RNB](?=P))?(?P<mpiece>[KQRBNP])"
+    rf"(?:/(?P<mrank>[1-8])|@(?P<msquare>{_DESC_SQUARE}))?"
     r"(?:-(?P<dfile>Q[RNB]?|K[RNB]?|[RNB])(?P<drank>[1-8])"
-    r"|x(?P<cside>[QK])?(?P<cfile>[RNB])?(?P<cpiece>[KQRBNP])(?:/(?P<crank>[1-8]))?)"
+    rf"|x(?P<cside>[QK])?(?P<cfile>[RNB])?(?P<cpiece>[KQRBNP])(?:/(?P<crank>[1-8])|@(?P<csquare>{_DESC_SQUARE}))?)"
     r"(?:=?\(?(?P<promo>[QRBN])\)?)?(?:e\.?p\.?)?$"
 )
 
@@ -141,12 +145,18 @@ def _descriptive(body: str, check: bool, mate: bool) -> Clues | None:
         return None
     g = match.groupdict()
     piece = _DESC_PIECES[g["mpiece"]]
-    if g["mside"] and piece not in (chess.ROOK, chess.KNIGHT, chess.BISHOP):
+    if g["mside"] and piece not in (chess.ROOK, chess.KNIGHT, chess.BISHOP, chess.PAWN):
         return None
+    from_files, from_rel_rank = None, int(g["mrank"]) if g["mrank"] else None
+    if piece == chess.PAWN and (g["mside"] or g["mfile"]):  # "KPxP", "QBPxP": the pawn's file
+        from_files = _desc_files(f"{g['mside'] or ''}{g['mfile'] or ''}")
+    if g["msquare"]:  # "N@Q4-K2" (printed "Kt(Q4)-K2"): the square the piece leaves
+        from_files, from_rel_rank = _desc_files(g["msquare"][:-1]) or None, int(g["msquare"][-1])
     common = {
         "piece": piece,
-        "piece_side": g["mside"],
-        "from_rel_rank": int(g["mrank"]) if g["mrank"] else None,
+        "piece_side": g["mside"] if piece != chess.PAWN else None,
+        "from_files": from_files,
+        "from_rel_rank": from_rel_rank,
         "promotion": _DESC_PIECES[g["promo"]] if g["promo"] else None,
         "check": check,
         "mate": mate,
@@ -158,6 +168,10 @@ def _descriptive(body: str, check: bool, mate: bool) -> Clues | None:
     if captured == chess.PAWN and (g["cside"] or g["cfile"]):
         captured_files = _desc_files(f"{g['cside'] or ''}{g['cfile'] or ''}")
     captured_side = g["cside"] if captured in (chess.ROOK, chess.KNIGHT, chess.BISHOP) else None
+    if g["csquare"]:  # "QxP@Q2" (printed "QxP (Q2)"): where the captured piece stands
+        rank = int(g["csquare"][-1])
+        return Clues(capture=True, captured=captured, captured_files=captured_files, captured_side=captured_side,
+                     to_files=_desc_files(g["csquare"][:-1]) or None, to_rel_ranks=(rank, 9 - rank), **common)
     return Clues(
         capture=True,
         captured=captured,
@@ -223,6 +237,8 @@ def _from_ok(board: chess.Board, move: chess.Move, c: Clues) -> bool:
         return False
     if c.from_rel_rank is not None and _rel_rank(board, sq) != c.from_rel_rank:
         return False
+    if c.from_files is not None and chess.square_file(sq) not in c.from_files:
+        return False
     if c.piece_side is not None and _which_side(board, sq) != c.piece_side:
         return False
     return True
@@ -237,6 +253,8 @@ def _to_ok(board: chess.Board, move: chess.Move, c: Clues) -> bool:
     if c.to_rank is not None and chess.square_rank(sq) != c.to_rank:
         return False
     if c.to_rel_rank is not None and _rel_rank(board, sq) != c.to_rel_rank:
+        return False
+    if c.to_rel_ranks is not None and _rel_rank(board, sq) not in c.to_rel_ranks:
         return False
     return True
 

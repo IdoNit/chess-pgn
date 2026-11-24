@@ -14,7 +14,7 @@ import chess.pgn
 from chesspgn import decoder
 from chesspgn.decoder import Decoded, Flag
 from chesspgn.layout import mark_commentary
-from chesspgn.tokens import Token, tokenize
+from chesspgn.tokens import Token, normalize_notation, tokenize
 
 NAGS = {"!": 1, "?": 2, "!!": 3, "??": 4, "!?": 5, "?!": 6}
 NAG_EQUAL = 10
@@ -48,7 +48,7 @@ def build_game(
     text: str, pins: dict[int, chess.Move] | None = None, time_budget_s: float = decoder.DEFAULT_TIME_BUDGET_S
 ) -> BuiltGame:
     deadline = time.monotonic() + time_budget_s
-    tree = _parse_tree(mark_commentary(text))
+    tree = _parse_tree(mark_commentary(normalize_notation(text)))
     tokens, groups = _split(tree.alternatives[0])
     decoded = decoder.decode_tokens(tokens, pins=pins, time_budget_s=time_budget_s)
     decoded.deadline = deadline
