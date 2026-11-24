@@ -114,7 +114,8 @@ def decode_tokens(
     deadline = time.monotonic() + time_budget_s
     options = {"pins": pins or {}, "deadline": deadline}
     if convention is not None:
-        return _decode_with_convention(tokens, convention, game_start(tokens, convention), **options)
+        return _with_pins_after_end(
+            _decode_with_convention(tokens, convention, game_start(tokens, convention), **options), pins, len(tokens))
     # Probe every convention on the opening moves; a wrong one breaks within a few moves.
     probes = []
     for c in notation.CONVENTIONS:
@@ -127,7 +128,21 @@ def decode_tokens(
         _s, second, second_start = probes[1]
         other = _decode_with_convention(tokens, second, second_start, **options)
         result = min((result, other), key=_score)
-    return result
+    return _with_pins_after_end(result, pins, len(tokens))
+
+
+def _with_pins_after_end(decoded: Decoded, pins: dict[int, chess.Move] | None, token_count: int) -> Decoded:
+    """Moves the user added past the end of the text (the page ran out before the game did) are played as
+    given, in order, for as long as each is legal."""
+    board = chess.Board()
+    for move in decoded.moves:
+        board.push(move)
+    while (move := (pins or {}).get(len(decoded.moves) + 1)) is not None and board.is_legal(move):
+        board.push(move)
+        decoded.moves.append(move)
+        decoded.annotations.append("")
+        decoded.token_index.append(token_count)
+    return decoded
 
 
 def _score(decoded: "Decoded") -> float:
@@ -305,6 +320,12 @@ def _expand(
             if looks_like_move:
                 offer(_play(state, pinned, 0.0, token, "", index, state.mapping))
                 any_matched = True
+                # The pinned move may be missing from the text, with this token a move after it.
+                if not strict and not hurried:
+                    if rank < MISSING_MOVE_TOP_STATES:
+                        _offer_missing_move(state, token, readings, index, offer, pins)
+                    if state.slot is not None and state.slot == len(state.moves) + 3:
+                        _offer_missing_full_move(state, token, readings, index, offer, pins)
             continue
         matched, matched_cleanly = False, False
         found_moves = [(move, found) for move in state.board.legal_moves
@@ -325,10 +346,10 @@ def _expand(
             for move in state.board.legal_moves:
                 offer(_play(state, move, COST_WILDCARD, token, "unreadable", index, state.mapping))
             if rank < MISSING_MOVE_TOP_STATES and not hurried:
-                _offer_missing_move(state, token, readings, index, offer)
+                _offer_missing_move(state, token, readings, index, offer, pins)
         two_ahead = state.slot is not None and state.slot == len(state.moves) + 3
         if looks_like_move and two_ahead and rank < MISSING_PAIR_TOP_STATES and not hurried:
-            _offer_missing_full_move(state, token, readings, index, offer)
+            _offer_missing_full_move(state, token, readings, index, offer, pins)
     width = BEAM_WIDTH_OVER_BUDGET if hurried else BEAM_WIDTH
     return sorted(best.values())[:width], looks_like_move and not any_matched
 
@@ -339,28 +360,44 @@ def _piece_starts(convention: str) -> frozenset[str]:
     return frozenset(letters | set(notation.FIGURINES) | set(notation.GROUP_SYMBOLS))
 
 
-def _offer_missing_move(state: _State, token: Token, readings, index: int, offer) -> None:
+def _pinned_or_all(board: chess.Board, ply: int, pins: dict[int, chess.Move], cost: float) -> list[tuple[chess.Move, float]]:
+    """Moves to try for an inserted (unprinted) move: only the user's pin if there is a legal one, at no cost."""
+    pinned = pins.get(ply)
+    if pinned is not None and board.is_legal(pinned):
+        return [(pinned, 0.0)]
+    return [(move, cost) for move in board.legal_moves]
+
+
+def _read_after(state: _State, token: Token, readings, index: int, offer, pins: dict[int, chess.Move]) -> None:
+    """Read `token` as the next move after inserted ones: the user's pin there, or what the text says."""
+    pinned = pins.get(len(state.moves) + 1)
+    if pinned is not None and state.board.is_legal(pinned):
+        offer(_play(state, pinned, 0.0, token, "", index, state.mapping))
+        return
+    for move in state.board.legal_moves:
+        found = _reading_match(state.board, move, readings, state.mapping)
+        if found is not None:
+            offer(_play(state, move, found[0], token, _reason(found[0]), index, found[1]))
+
+
+def _offer_missing_move(state: _State, token: Token, readings, index: int, offer, pins: dict[int, chess.Move]) -> None:
     """The book's previous move is missing from the text: insert one, then read this token."""
-    for missing in state.board.legal_moves:
-        inserted = _play(state, missing, COST_WILDCARD, Token("<missing>"), "missing", index, state.mapping)
-        for move in inserted.board.legal_moves:
-            found = _reading_match(inserted.board, move, readings, inserted.mapping)
-            if found is not None:
-                offer(_play(inserted, move, found[0], token, _reason(found[0]), index, found[1]))
+    for missing, cost in _pinned_or_all(state.board, len(state.moves) + 1, pins, COST_WILDCARD):
+        inserted = _play(state, missing, cost, Token("<missing>"), "missing", index, state.mapping)
+        _read_after(inserted, token, readings, index, offer, pins)
 
 
-def _offer_missing_full_move(state: _State, token: Token, readings, index: int, offer) -> None:
+def _offer_missing_full_move(
+    state: _State, token: Token, readings, index: int, offer, pins: dict[int, chess.Move]
+) -> None:
     """The move number says a whole move (both sides) is missing from the text: insert two, then read this token.
-    Both inserted moves are flagged."""
-    for first in state.board.legal_moves:
-        once = _play(state, first, COST_MISSING_WITH_NUMBER, Token("<missing>"), "missing", index, state.mapping)
-        for second in once.board.legal_moves:
-            twice = _play(once, second, COST_MISSING_WITH_NUMBER, Token("<missing>"), "missing", index, once.mapping)
-            for move in twice.board.legal_moves:
-                found = _reading_match(twice.board, move, readings, twice.mapping)
-                if found is not None:
-                    played = _play(twice, move, found[0], token, _reason(found[0]), index, found[1])
-                    offer(played)
+    Both inserted moves are flagged. Where the user pinned a move, only that move is tried (at no cost)."""
+    ply = len(state.moves) + 1
+    for first, cost in _pinned_or_all(state.board, ply, pins, COST_MISSING_WITH_NUMBER):
+        once = _play(state, first, cost, Token("<missing>"), "missing", index, state.mapping)
+        for second, cost in _pinned_or_all(once.board, ply + 1, pins, COST_MISSING_WITH_NUMBER):
+            twice = _play(once, second, cost, Token("<missing>"), "missing", index, once.mapping)
+            _read_after(twice, token, readings, index, offer, pins)
 
 
 def _reason(cost: float) -> str:

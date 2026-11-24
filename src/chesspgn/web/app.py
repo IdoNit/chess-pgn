@@ -128,7 +128,10 @@ def create_app(store_root: Path, reader: Reader, row_reader: RowReader | None = 
     def dismiss(game_id: str, body: dict):
         """The user checked a flagged move and confirms it as is."""
         _record, state = store.load(game_id)
-        state["flags"] = [f for f in state["flags"] if not (f["ply"] == body.get("ply") and f["reason"] == body.get("reason"))]
+        confirmed = [f for f in state["flags"] if f["ply"] == body.get("ply") and f["reason"] == body.get("reason")]
+        state["flags"] = [f for f in state["flags"] if f not in confirmed]
+        # Remembered, so the flag stays confirmed when a later fix decodes the game again.
+        state["confirmed"] = state.get("confirmed", []) + [_flag_key(f) for f in confirmed]
         store.update(game_id, state)
         return _detail(store, game_id)
 
@@ -213,6 +216,10 @@ def _legal_pin(pgn: str, body: dict) -> tuple[int, str] | None:
     return (ply, uci) if board.is_legal(move) else None
 
 
+def _flag_key(flag: dict) -> list:
+    return [flag["ply"], flag["reason"], flag["chosen"]]
+
+
 def _redecode(store: GameStore, game_id: str, state: dict, pins: dict[str, str], headers: dict[str, str]) -> None:
     game = game_from_text(store.text(game_id), {int(p): chess.Move.from_uci(u) for p, u in pins.items()}, headers)
     played = list(chess.pgn.read_game(io.StringIO(game.pgn)).mainline_moves())
@@ -222,6 +229,9 @@ def _redecode(store: GameStore, game_id: str, state: dict, pins: dict[str, str],
         for f in game.flags
         if f.reason.startswith("side:") or str(f.ply) not in honoured
     ]
+    # A flag the user already confirmed stays confirmed, as long as the same move is still played there.
+    confirmed = state.get("confirmed", [])
+    flags = [f for f in flags if _flag_key(f) not in confirmed]
     # A pin the new decode could not play is dropped and reported, never silently ignored.
     flags += [{"ply": int(p), "token": u, "chosen": "", "reason": "pin_dropped"} for p, u in pins.items() if p not in honoured]
     state.update(

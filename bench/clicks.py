@@ -7,7 +7,7 @@ the game is decoded again with that fix pinned (as the app does), and they carry
     pick     a wrong flagged move whose book move is one of the offered buttons: one click
     drag     a wrong move fixed by dragging the piece on the board (book move not offered)
     hunt     a wrong move with no flag within one ply: the reviewer must find it themselves (then drags it)
-    reshown  confirmed flags the app shows again after a later fix (the app forgets confirmations on re-decode)
+    add      a move added after the end, when the page text ran out before the game did (drag)
     left     the game still differs from the book when the simulation gives up (fix refused or no progress)
 
     uv run python -m bench.clicks --split dev --ai
@@ -48,7 +48,7 @@ def _first_wrong(played: list[chess.Move], expected: list[str], accept: dict[int
 
 
 def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]]) -> dict:
-    counts = dict(confirm=0, pick=0, drag=0, hunt=0, reshown=0, left=0, fixes=0)
+    counts = dict(confirm=0, pick=0, drag=0, hunt=0, add=0, left=0, fixes=0)
     pins: dict[int, chess.Move] = {}
     confirmed: dict[int, str] = {}  # ply -> uci the reviewer confirmed there
     last_wrong = 0
@@ -61,9 +61,7 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
             if ply > end:
                 break
             uci = played[ply - 1].uci() if ply <= len(played) else flag.reason
-            if confirmed.get(ply) == uci:
-                counts["reshown"] += 1
-            else:
+            if confirmed.get(ply) != uci:  # the app remembers confirmations while the move stays the same
                 confirmed[ply] = uci
                 counts["confirm"] += 1
         if wrong is None:
@@ -79,7 +77,9 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
             board.push(move)
         target = board.parse_san(expected[wrong - 1])
         flag = flags.get(wrong)
-        if wrong <= len(played) and flag is not None:
+        if wrong > len(played):
+            counts["add"] += 1
+        elif flag is not None:
             offered = [flag.chosen, *suggest_moves(board, flag.token, played[wrong - 1])]
             counts["pick" if board.san(target) in offered else "drag"] += 1
         elif any(p in flags for p in (wrong - 1, wrong + 1)):
@@ -118,7 +118,7 @@ def main() -> None:
                 continue
             game, _score = run.best_match(expected, games, accept)
             counts = review(game, expected, accept)
-            clicks = counts["confirm"] + counts["pick"] + counts["drag"] + counts["hunt"]
+            clicks = counts["confirm"] + counts["pick"] + counts["drag"] + counts["hunt"] + counts["add"]
             print(f"{book.name:16} {entry['id']}  {len(expected):3} plies  clicks {clicks:3}  "
                   + "  ".join(f"{k} {v:2}" for k, v in counts.items()), flush=True)
             for k, v in counts.items():

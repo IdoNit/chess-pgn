@@ -73,3 +73,20 @@ def test_moves_that_use_a_guessed_moves_squares_are_flagged():
 def test_moves_away_from_a_guess_are_not_flagged():
     decoded = decode_text(GUESSED_ROW)
     assert {f.ply for f in decoded.flags} == {5, 6, 7, 8}
+
+
+def test_a_fix_on_a_missing_row_is_played():
+    # The user fixes a move the decoder had to guess because its row is missing: the fix is always played.
+    decoded = decode_text(GUESSED_ROW, pins={6: chess.Move.from_uci("a7a6")})
+    assert san(decoded)[4:8] == ["Bb5", "a6", "Bxc6", "dxc6"]
+
+
+def test_fixes_on_both_moves_of_a_missing_row_are_played():
+    pins = {5: chess.Move.from_uci("f1b5"), 6: chess.Move.from_uci("a7a6")}
+    assert san(decode_text(GUESSED_ROW, pins=pins))[4:8] == ["Bb5", "a6", "Bxc6", "dxc6"]
+
+
+def test_a_fix_on_a_single_missing_move_is_played():
+    # "3. Bb5 4. Ba4": Black's 3rd move is missing and has to be guessed; the user's fix there is played.
+    decoded = decode_text("1. e4 e5 2. Nf3 Nc6 3. Bb5 4. Ba4 Nf6 5. O-O Be7", pins={6: chess.Move.from_uci("d7d6")})
+    assert san(decoded)[5:8] == ["d6", "Ba4", "Nf6"]

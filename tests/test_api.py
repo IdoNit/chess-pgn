@@ -162,3 +162,28 @@ def test_cut_off_page_is_422(tmp_path):
     client = TestClient(create_app(tmp_path, CutOffReader()))
     response = upload(client, "stein.jpg")
     assert response.status_code == 422 and response.json() == {"error": "page_incomplete"}
+
+
+# A confirmed flag stays confirmed after the user fixes another move (the game is decoded again then).
+def test_confirmation_survives_a_later_fix(tmp_path):
+    text = fixture("stein.ocr.txt").replace("47 QxP+", "47 QXP+")
+    client = TestClient(create_app(tmp_path, SequenceReader(text)))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    client.post(f"/api/games/{game_id}/dismiss", json={"ply": 93, "reason": "ocr"})
+    book_move = expected_moves("stein.pgn")[48].uci()
+    detail = client.post(f"/api/games/{game_id}/pin", json={"ply": 49, "uci": book_move}).json()
+    assert detail["moves"][92]["san"] == "Qxf7+" and not any(f["ply"] == 93 for f in detail["flags"])
+
+
+# When the page text ends before the game does, the user adds the remaining moves one by one.
+def test_moves_added_after_the_end_are_kept(tmp_path):
+    text = fixture("stein.ocr.txt").split("\n43...KxB")[0]
+    book = expected_moves("stein.pgn")
+    client = TestClient(create_app(tmp_path, SequenceReader(text)))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    detail = client.get(f"/api/games/{game_id}").json()
+    end = len(detail["moves"])
+    for ply in (end + 1, end + 2):
+        detail = client.post(f"/api/games/{game_id}/pin", json={"ply": ply, "uci": book[ply - 1].uci()}).json()
+    assert [m["uci"] for m in detail["moves"]] == [m.uci() for m in book[: end + 2]]
+    assert not any(f["reason"] == "pin_dropped" for f in detail["flags"])
