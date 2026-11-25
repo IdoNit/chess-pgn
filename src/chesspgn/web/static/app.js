@@ -261,9 +261,12 @@ function renderPanel(move) {
             `<button class="button ${san === move.san ? "primary" : "secondary"}" type="button" data-san="${esc(san)}">${esc(san)}</button>`).join("")}</div>` : ""}
         <div class="hint">${esc(t("review.or_drag"))}</div>
         ${flag ? `<button class="button secondary confirm" type="button">✓ ${esc(t("review.confirm"))}</button>` : ""}
+        ${endButton(move)}
         <div class="status panel-status"></div>`
     const confirm = panel.querySelector(".confirm")
     if (confirm) confirm.onclick = () => dismiss(flag)
+    const end = panel.querySelector(".end-game")
+    if (end) end.onclick = () => endGame(end.dataset.undo ? null : move.ply)
     panel.querySelectorAll("[data-san]").forEach((button) => {
         button.onclick = () => {
             const chess = new Chess(move.fen_before)
@@ -278,6 +281,25 @@ async function pin(ply, uci) {
     try {
         state.game = await api("POST", `/api/games/${encodeURIComponent(state.game.id)}/pin`, {ply, uci})
         state.selectedPly = firstOpenFlag(ply) ?? ply
+        renderReview()
+    } catch (error) {
+        $("panel").querySelector(".panel-status").textContent = errorText(error)
+    }
+}
+
+// The decoder can run past the game's real end into the text after it: the user cuts the game at a move.
+function endButton(move) {
+    const last = state.game.moves.length
+    if (move.ply < last) return `<button class="button secondary end-game" type="button">${esc(t("review.end_here"))}</button>`
+    if (state.game.end) return `<button class="button secondary end-game" type="button" data-undo="1">${esc(t("review.end_undo"))}</button>`
+    return ""
+}
+
+async function endGame(ply) {
+    $("panel").querySelector(".panel-status").textContent = t("review.saving")
+    try {
+        state.game = await api("POST", `/api/games/${encodeURIComponent(state.game.id)}/end`, {ply})
+        state.selectedPly = ply ?? state.game.moves.length
         renderReview()
     } catch (error) {
         $("panel").querySelector(".panel-status").textContent = errorText(error)

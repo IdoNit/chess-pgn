@@ -78,5 +78,7 @@
   "convert.progress_page": "קורא עמוד {done} מתוך {total}…",
   "convert.progress_ai": "עוזר ה-AI בודק שורה {done} מתוך {total}…",
   "reason.depends": "המסע הזה תלוי במסע לא ודאי שלפניו – כדאי לוודא",
-  "reason.side:depends": "בווריאנט: המסע תלוי במסע לא ודאי שלפניו"
+  "reason.side:depends": "בווריאנט: המסע תלוי במסע לא ודאי שלפניו",
+  "review.end_here": "המשחק מסתיים במסע הזה (מחיקת המסעים שאחריו)",
+  "review.end_undo": "ביטול: להחזיר את המסעים שאחרי הסוף"
 }

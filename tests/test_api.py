@@ -187,3 +187,32 @@ def test_moves_added_after_the_end_are_kept(tmp_path):
         detail = client.post(f"/api/games/{game_id}/pin", json={"ply": ply, "uci": book[ply - 1].uci()}).json()
     assert [m["uci"] for m in detail["moves"]] == [m.uci() for m in book[: end + 2]]
     assert not any(f["reason"] == "pin_dropped" for f in detail["flags"])
+
+
+# The decoder can run past the real end of a game into the text after it: the user ends the game at a move.
+def test_end_the_game_at_a_move(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    detail = client.post(f"/api/games/{game_id}/end", json={"ply": 60}).json()
+    assert len(detail["moves"]) == 60 and detail["end"] == 60
+    assert all(f["ply"] <= 60 for f in detail["flags"])
+    assert "61." not in client.get(f"/api/games/{game_id}/download").text.split("\n\n", 1)[1].split(" (")[0]
+
+
+def test_the_end_stays_after_a_later_fix_and_can_be_undone(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    full = len(client.get(f"/api/games/{game_id}").json()["moves"])
+    client.post(f"/api/games/{game_id}/end", json={"ply": 60})
+    book_move = expected_moves("stein.pgn")[48].uci()
+    assert len(client.post(f"/api/games/{game_id}/pin", json={"ply": 49, "uci": book_move}).json()["moves"]) == 60
+    detail = client.post(f"/api/games/{game_id}/end", json={"ply": None}).json()
+    assert len(detail["moves"]) == full and detail["end"] is None
+
+
+def test_a_move_added_after_the_end_moves_the_end(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    client.post(f"/api/games/{game_id}/end", json={"ply": 60})
+    detail = client.post(f"/api/games/{game_id}/pin", json={"ply": 61, "uci": expected_moves("stein.pgn")[60].uci()}).json()
+    assert len(detail["moves"]) == 61 and detail["end"] == 61

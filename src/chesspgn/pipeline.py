@@ -78,8 +78,13 @@ def uses_piece_letters(text: str) -> bool:
     return len(_LETTER_MOVE.findall(text)) >= MIN_LETTER_MOVES
 
 
-def game_from_text(segment: str, pins: dict[int, chess.Move] | None = None, headers: dict[str, str] | None = None) -> ConvertedGame:
-    built = build_game(segment, pins)
+def game_from_text(
+    segment: str,
+    pins: dict[int, chess.Move] | None = None,
+    headers: dict[str, str] | None = None,
+    end: int | None = None,
+) -> ConvertedGame:
+    built = build_game(segment, pins, end=end)
     found = extract_headers(segment) | (headers or {})
     found["Result"] = built.decoded.result
     return ConvertedGame(

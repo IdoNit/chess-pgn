@@ -121,7 +121,20 @@ def create_app(store_root: Path, reader: Reader, row_reader: RowReader | None = 
         if move is None:
             return JSONResponse({"error": "illegal_pin"}, status_code=422)
         ply, uci = move
+        if state.get("end") is not None and ply > state["end"]:
+            state["end"] = ply  # a move added after the end the user set moves the end with it
         _redecode(store, game_id, state, {**state["pins"], str(ply): uci}, state["headers"])
+        return _detail(store, game_id)
+
+    @app.post("/api/games/{game_id}/end")
+    def end_game(game_id: str, body: dict):
+        """The user ends the game at a move (the decoder ran on into the text after it); null undoes it."""
+        _record, state = store.load(game_id)
+        ply = body.get("ply")
+        if ply is not None and (not isinstance(ply, int) or ply < 1):
+            return JSONResponse({"error": "bad_end"}, status_code=422)
+        state["end"] = ply
+        _redecode(store, game_id, state, state["pins"], state["headers"])
         return _detail(store, game_id)
 
     @app.post("/api/games/{game_id}/dismiss")
@@ -221,7 +234,9 @@ def _flag_key(flag: dict) -> list:
 
 
 def _redecode(store: GameStore, game_id: str, state: dict, pins: dict[str, str], headers: dict[str, str]) -> None:
-    game = game_from_text(store.text(game_id), {int(p): chess.Move.from_uci(u) for p, u in pins.items()}, headers)
+    game = game_from_text(
+        store.text(game_id), {int(p): chess.Move.from_uci(u) for p, u in pins.items()}, headers, end=state.get("end")
+    )
     played = list(chess.pgn.read_game(io.StringIO(game.pgn)).mainline_moves())
     honoured = {p: u for p, u in pins.items() if int(p) <= len(played) and played[int(p) - 1].uci() == u}
     flags = [
@@ -273,5 +288,6 @@ def _detail(store: GameStore, game_id: str) -> dict:
         "moves": moves,
         "move_count": state["move_count"],
         "continues": state["continues"],
+        "end": state.get("end"),
         "images": [f"/api/games/{record.id}/images/{name}" for name in state["image_names"]],
     }

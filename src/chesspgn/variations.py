@@ -45,13 +45,22 @@ class _Line:
 
 
 def build_game(
-    text: str, pins: dict[int, chess.Move] | None = None, time_budget_s: float = decoder.DEFAULT_TIME_BUDGET_S
+    text: str,
+    pins: dict[int, chess.Move] | None = None,
+    time_budget_s: float = decoder.DEFAULT_TIME_BUDGET_S,
+    end: int | None = None,
 ) -> BuiltGame:
+    """`end`: the user ended the game at this ply (the text after it is not part of the game)."""
     deadline = time.monotonic() + time_budget_s
     tree = _parse_tree(mark_commentary(normalize_notation(text)))
     tokens, groups = _split(tree.alternatives[0])
     decoded = decoder.decode_tokens(tokens, pins=pins, time_budget_s=time_budget_s)
     decoded.deadline = deadline
+    cut_at = len(tokens) + 1  # side lines from this token on are cut with the game
+    if end is not None and end < len(decoded.moves):
+        cut_at = decoded.token_index[end]
+        del decoded.moves[end:], decoded.annotations[end:], decoded.token_index[end:]
+        decoded.flags = [f for f in decoded.flags if f.ply <= end]
     game = chess.pgn.Game()
     game.headers["Result"] = decoded.result
     main = _Line(0, _add_moves(game, decoded.moves, decoded.annotations), decoded.token_index)
@@ -59,7 +68,7 @@ def build_game(
     side_flags: list[Flag] = []
     start = decoder.game_start(tokens, decoded.convention)
     for position, group in groups:
-        if position > start:  # groups before the game (titles, prose) are not side lines
+        if start < position < cut_at:  # groups before the game (titles, prose) are not side lines
             _attach(group, position, main, decoded, side_flags)
     return BuiltGame(game, decoded, list(decoded.flags) + side_flags)
 

@@ -8,6 +8,7 @@ the game is decoded again with that fix pinned (as the app does), and they carry
     drag     a wrong move fixed by dragging the piece on the board (book move not offered)
     hunt     a wrong move with no flag within one ply: the reviewer must find it themselves (then drags it)
     add      a move added after the end, when the page text ran out before the game did (drag)
+    end      "the game ends here", when the decoder ran on past the game's last move (one click)
     left     the game still differs from the book when the simulation gives up (fix refused or no progress)
 
     uv run python -m bench.clicks --split dev --ai
@@ -48,7 +49,8 @@ def _first_wrong(played: list[chess.Move], expected: list[str], accept: dict[int
 
 
 def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]]) -> dict:
-    counts = dict(confirm=0, pick=0, drag=0, hunt=0, add=0, left=0, fixes=0)
+    counts = dict(confirm=0, pick=0, drag=0, hunt=0, add=0, end=0, left=0, fixes=0)
+    end: int | None = None
     pins: dict[int, chess.Move] = {}
     confirmed: dict[int, str] = {}  # ply -> uci the reviewer confirmed there
     last_wrong = 0
@@ -56,9 +58,9 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
         played = _moves(game.pgn)
         flags = {f.ply: f for f in game.flags if not f.reason.startswith("side:") and f.ply not in pins}
         wrong = _first_wrong(played, expected, accept)
-        end = (wrong - 1) if wrong is not None else 10**6
+        upto = (wrong - 1) if wrong is not None else 10**6
         for ply, flag in sorted(flags.items()):
-            if ply > end:
+            if ply > upto:
                 break
             uci = played[ply - 1].uci() if ply <= len(played) else flag.reason
             if confirmed.get(ply) != uci:  # the app remembers confirmations while the move stays the same
@@ -66,9 +68,14 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
                 counts["confirm"] += 1
         if wrong is None:
             return counts
-        if wrong > len(expected):  # the game runs on past the book's last move: no way to cut it in the app
-            counts["left"] = len(played) - len(expected)
-            return counts
+        if wrong > len(expected):  # the game runs on past the book's last move: "the game ends here"
+            if end is not None:
+                counts["left"] = len(played) - len(expected)
+                return counts
+            counts["end"] += 1
+            end = len(expected)
+            game = game_from_text(game.text, dict(pins), game.headers, end=end)
+            continue
         if wrong <= last_wrong and wrong in pins or counts["fixes"] >= MAX_FIXES:
             counts["left"] = len(expected) - wrong + 1
             return counts
@@ -89,7 +96,9 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
         counts["fixes"] += 1
         pins[wrong] = target
         last_wrong = wrong
-        game = game_from_text(game.text, dict(pins), game.headers)
+        if end is not None and wrong > end:
+            end = wrong
+        game = game_from_text(game.text, dict(pins), game.headers, end=end)
 
 
 def main() -> None:
@@ -118,7 +127,7 @@ def main() -> None:
                 continue
             game, _score = run.best_match(expected, games, accept)
             counts = review(game, expected, accept)
-            clicks = counts["confirm"] + counts["pick"] + counts["drag"] + counts["hunt"] + counts["add"]
+            clicks = sum(counts[k] for k in ("confirm", "pick", "drag", "hunt", "add", "end"))
             print(f"{book.name:16} {entry['id']}  {len(expected):3} plies  clicks {clicks:3}  "
                   + "  ".join(f"{k} {v:2}" for k, v in counts.items()), flush=True)
             for k, v in counts.items():
