@@ -109,15 +109,34 @@ def repaired_line(line: str, number: int, reading: tuple[str, str]) -> str | Non
     numbered = _NUMBERED.match(line)
     black_only = bool(numbered and numbered["dots"]) or not white
     white = "" if black_only else white
-    model = " ".join(m for m in (white, black) if m)
-    if not model or not all(_readable(m) for m in _moves(model)):
-        return None
-    ocr = _squash(_NUMBERED.sub("", line, count=1))
-    if SequenceMatcher(a=ocr, b=_squash(model)).ratio() < CLOSE_ENOUGH or not all(
-            _kept(ocr, _squash(m)) >= CLOSE_ENOUGH for m in (white, black) if m):
-        return None  # not what the OCR saw: an invention, not a reading
+    if not _moves_read(white, black) or not _close(_NUMBERED.sub("", line, count=1), white, black):
+        return None  # not moves, or not what the OCR saw: an invention, not a reading
     marked = " ".join(f"{m}{AI_MARK}" for m in (white, black) if m)
     return f"{number}. ... {marked}" if black_only else f"{number}. {marked}"
+
+
+def _moves_read(white: str, black: str) -> bool:
+    model = " ".join(m for m in (white, black) if m)
+    return bool(model) and all(_readable(m) for m in _moves(model))
+
+
+def _close(seen: str, white: str, black: str) -> bool:
+    """Whether the model's reading is what another reader (the OCR, or tesseract) saw on that row."""
+    ocr = _squash(seen)
+    model = _squash(" ".join(m for m in (white, black) if m))
+    return SequenceMatcher(a=ocr, b=model).ratio() >= CLOSE_ENOUGH and all(
+        _kept(ocr, _squash(m)) >= CLOSE_ENOUGH for m in (white, black) if m)
+
+
+def dropped_line(number: int, reading: tuple[str, str], tesseract_saw: str | None) -> str | None:
+    """A row the OCR dropped altogether, as the model read it ("N. white† black†"), or None. When tesseract read
+    that row too, the reading must be close to what tesseract saw."""
+    white, black = reading
+    if not white or not _moves_read(white, black):
+        return None
+    if tesseract_saw is not None and not _close(_NUMBERED.sub("", tesseract_saw, count=1), white, black):
+        return None
+    return f"{number}. " + " ".join(f"{m}{AI_MARK}" for m in (white, black) if m)
 
 
 # ---------------------------------------------------------------- finding a row on the page
@@ -167,9 +186,9 @@ def row_strip(page: Image.Image, box: Box) -> Image.Image:
 # ---------------------------------------------------------------- the pass over the pages
 
 def repair_pages(images: list[Path], texts: list[str], numbers: set[int], row_reader: RowReader,
-                 progress: Callable[[str], None] | None = None) -> tuple[list[str], int]:
-    """Ask about each damaged row numbered in `numbers`; return the page texts with accepted readings, and how
-    many rows were rewritten."""
+                 progress: Callable[[str], None] | None = None, flagged: set[int] = frozenset()) -> tuple[list[str], int]:
+    """Ask about each damaged row numbered in `numbers`, and about each row numbered in `numbers` or `flagged`
+    that the OCR lost altogether; return the page texts with accepted readings, and how many rows changed."""
     asks = [(p, i) for p, text in enumerate(texts) for i, line in enumerate(text.splitlines())
             if (m := _NUMBERED.match(line)) and int(m.group(1)) in numbers and needs_reading(line)]
     pages: dict[int, tuple[Image.Image, list[tuple[str, Box]]]] = {}
@@ -192,4 +211,124 @@ def repair_pages(images: list[Path], texts: list[str], numbers: set[int], row_re
         if new is not None:
             out[p][i] = new
             rewritten += 1
+    for number in sorted(_dropped(out, set(numbers) | set(flagged))):
+        p, i, after = _neighbour(out, number)
+        black_printed = _black_only_row(out, number)
+        seen, box, q = None, None, p
+        for q in (p, p - 1, p + 1):  # the lost row can sit at the foot of the previous page, or the next one's head
+            if 0 <= q < len(images):
+                if q not in pages:
+                    image = Image.open(images[q])
+                    pages[q] = (image, page_lines(image))
+                seen, box = _tesseract_row(number, pages[q][1])
+                if box is not None:
+                    break
+        if box is None:
+            q = p
+            box = _beside(out[p][i], number, after, pages[p][1])
+        if box is None:
+            continue
+        strip = row_strip(pages[q][0], box)
+        strip.info["dropped"] = True  # a row the OCR lost (the model's answer cannot be checked against the OCR)
+        reading = row_reader.read_row(strip, number)
+        if reading and black_printed:
+            reading = (reading[0], "")  # Black's move is in the text already: only White's was lost
+        new = dropped_line(number, reading, seen) if reading else None
+        if new is not None:
+            if black_printed:
+                p, i = black_printed
+                out[p].insert(i, new)
+            else:
+                out[p].insert(i + 1 if after else i, new)
+            rewritten += 1
+    for p, i, number in _white_only_rows(out, set(numbers) | set(flagged)):
+        if p not in pages:
+            image = Image.open(images[p])
+            pages[p] = (image, page_lines(image))
+        page, found = pages[p]
+        box = locate(out[p][i], number, found)
+        if box is None:
+            continue
+        strip = row_strip(page, box)
+        strip.info["dropped"] = True  # Black's half of the row was lost
+        reading = row_reader.read_row(strip, number)
+        new = completed_line(out[p][i], reading) if reading else None
+        if new is not None:
+            out[p][i] = new
+            rewritten += 1
     return ["\n".join(lines) for lines in out], rewritten
+
+
+def _white_only_rows(pages: list[list[str]], numbers: set[int]) -> list[tuple[int, int, int]]:
+    """(page, line, number) of rows numbered in `numbers` that hold White's move only, Black's being printed
+    nowhere (no "N. ..." row): a table whose Black column the OCR lost."""
+    black_rows = {n for lines in pages for line in lines if (m := _NUMBERED.match(line)) and m["dots"]
+                  for n in [int(m.group(1))]}
+    found = []
+    for p, lines in enumerate(pages):
+        for i, line in enumerate(lines):
+            m = _NUMBERED.match(line)
+            if not m or m["dots"] or int(m.group(1)) not in numbers or int(m.group(1)) in black_rows:
+                continue
+            moves = [t for t in _moves(_NUMBERED.sub("", line, count=1)) if not _WORD.match(t)]
+            if len(moves) == 1 and _readable(moves[0]):
+                found.append((p, i, int(m.group(1))))
+    return found
+
+
+def completed_line(line: str, reading: tuple[str, str]) -> str | None:
+    """The row with Black's move added from the model's reading ("N. white black†"), or None. The model's White
+    move must be the one the OCR read: that is how we know it read this row."""
+    white, black = reading
+    if not black or not _moves_read(white, black) or not _close(_NUMBERED.sub("", line, count=1), white, ""):
+        return None
+    return f"{line.rstrip()} {black}{AI_MARK}"
+
+
+def _numbers(lines: list[str], white: bool = False) -> list[int | None]:
+    """The move number each line starts with; with `white`, only rows that hold White's move ("N. ..." does not)."""
+    return [int(m.group(1)) if (m := _NUMBERED.match(line)) and not (white and m["dots"]) else None for line in lines]
+
+
+def _dropped(pages: list[list[str]], numbers: set[int]) -> set[int]:
+    """Numbers asked about whose row with White's move is in none of the OCR's text, though the row itself (as
+    "N. ... black"), or a neighbouring row, is."""
+    whites = {n for lines in pages for n in _numbers(lines, white=True) if n is not None}
+    present = {n for lines in pages for n in _numbers(lines) if n is not None}
+    return {n for n in numbers if n not in whites and {n - 1, n, n + 1} & present}
+
+
+def _black_only_row(pages: list[list[str]], number: int) -> tuple[int, int] | None:
+    for p, lines in enumerate(pages):
+        for i, line in enumerate(lines):
+            if (m := _NUMBERED.match(line)) and int(m.group(1)) == number and m["dots"]:
+                return p, i
+    return None
+
+
+def _neighbour(pages: list[list[str]], number: int) -> tuple[int, int, bool]:
+    """(page, line, after): the row before the dropped one (after=True), else the row after it."""
+    for wanted, after in ((number - 1, True), (number + 1, False), (number, False)):
+        for p, lines in enumerate(pages):
+            for i, n in enumerate(_numbers(lines)):
+                if n == wanted:
+                    return p, i, after
+    raise LookupError(number)
+
+
+def _tesseract_row(number: int, found: list[tuple[str, Box]]) -> tuple[str | None, Box | None]:
+    """Tesseract's own line with White's move of that number, if it read one: (its text, its box)."""
+    for text, box in found:
+        if (m := _NUMBERED.match(text)) and int(m.group(1)) == number and not m["dots"]:
+            return text, box
+    return None, None
+
+
+def _beside(neighbour: str, number: int, after: bool, found: list[tuple[str, Box]]) -> Box | None:
+    """The space just below (or above) the neighbouring row, where the dropped row should be."""
+    near = locate(neighbour, number - 1 if after else number + 1, found)
+    if near is None:
+        return None
+    left, top, right, bottom = near
+    height = bottom - top
+    return (left, bottom, right, bottom + height) if after else (left, top - height, right, top)

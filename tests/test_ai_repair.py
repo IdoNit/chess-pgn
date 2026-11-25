@@ -160,3 +160,94 @@ def test_switched_off_the_helper_is_never_asked(tmp_path):
 
 def test_progress_is_empty_when_idle(tmp_path):
     assert app_client(tmp_path, 32).get("/api/progress").json() == {"step": ""}
+
+
+# --- rows the OCR dropped altogether ------------------------------------------------------------------------
+
+GAP_PAGE = "1. P-K4 P-K4\n2. Kt-KB3 Kt-QB3\n4. B-R4 Kt-B3\n5. O-O B-K2\n"  # row 3 is not in the OCR's text
+
+
+class GapPage:
+    def read(self, image):
+        return GAP_PAGE
+
+
+def page_with_lines(tmp_path, monkeypatch, lines):
+    path = tmp_path / "page.png"
+    Image.new("RGB", (400, 300), "white").save(path)
+    monkeypatch.setattr(repair, "page_lines", lambda image: [(line, (10, 20 * k, 300, 20 * k + 15))
+                                                           for k, line in enumerate(lines)])
+    return path
+
+
+SEEN_BY_TESSERACT = ["1. P-K4 P-K4", "2. Kt-KB3 Kt-QB3", "3. B-Kt5 P-QR3", "4. B-R4 Kt-B3", "5. O-O B-K2"]
+
+
+def test_a_row_the_ocr_dropped_is_read_by_the_helper_and_flagged_as_ai(tmp_path, monkeypatch):
+    rows = RowReaderStub({3: ("B — Kt 5", "P — Q R 3")})
+    [game] = convert([page_with_lines(tmp_path, monkeypatch, SEEN_BY_TESSERACT)], GapPage(), row_reader=rows)
+    assert 3 in rows.asked
+    assert "3. Bb5 a6 4. Ba4 Nf6" in game.pgn
+    assert {(f.ply, f.reason) for f in game.flags if f.ply in (5, 6)} == {(5, "ai_read"), (6, "ai_read")}
+
+
+def test_a_dropped_row_is_found_between_its_neighbours_when_tesseract_missed_it_too(tmp_path, monkeypatch):
+    lines = [line for line in SEEN_BY_TESSERACT if not line.startswith("3.")]
+    rows = RowReaderStub({3: ("B-Kt5", "P-QR3")})
+    [game] = convert([page_with_lines(tmp_path, monkeypatch, lines)], GapPage(), row_reader=rows)
+    assert "3. Bb5 a6 4. Ba4 Nf6" in game.pgn
+
+
+def test_a_reading_of_a_dropped_row_that_tesseract_contradicts_is_refused(tmp_path, monkeypatch):
+    rows = RowReaderStub({3: ("Q-R5", "P-KR3")})
+    [game] = convert([page_with_lines(tmp_path, monkeypatch, SEEN_BY_TESSERACT)], GapPage(), row_reader=rows)
+    assert "Qh5" not in game.pgn and any(f.reason == "missing" for f in game.flags)
+
+
+def test_a_reading_of_a_dropped_row_that_is_not_moves_is_refused(tmp_path, monkeypatch):
+    rows = RowReaderStub({3: ("see the note", "below")})
+    [game] = convert([page_with_lines(tmp_path, monkeypatch, SEEN_BY_TESSERACT)], GapPage(), row_reader=rows)
+    assert any(f.reason == "missing" for f in game.flags)
+
+
+# The book prints White's move, a comment, then "3. ... P-QR3": the OCR can lose just the first half.
+HALF_PAGE = "1. P-K4 P-K4\n2. Kt-KB3 Kt-QB3\nA comment about the position.\n3. ... P-QR3\n4. B-R4 Kt-B3\n5. O-O B-K2\n"
+
+
+class HalfPage:
+    def read(self, image):
+        return HALF_PAGE
+
+
+def test_a_dropped_first_half_of_a_row_is_read_by_the_helper(tmp_path, monkeypatch):
+    lines = ["1. P-K4 P-K4", "2. Kt-KB3 Kt-QB3", "3. B-Kt5", "A comment about the position.", "3. ... P-QR3",
+             "4. B-R4 Kt-B3", "5. O-O B-K2"]
+    rows = RowReaderStub({3: ("B-Kt5", "P-QR3")})
+    [game] = convert([page_with_lines(tmp_path, monkeypatch, lines)], HalfPage(), row_reader=rows)
+    assert "3. Bb5 a6 4. Ba4 Nf6" in game.pgn
+    assert {(f.ply, f.reason) for f in game.flags if f.ply == 5} == {(5, "ai_read")}
+
+
+def test_a_dropped_row_is_asked_about_whatever_the_flag_on_its_move(tmp_path, monkeypatch):
+    path = page_with_lines(tmp_path, monkeypatch, SEEN_BY_TESSERACT)
+    rows = RowReaderStub({3: ("B-Kt5", "P-QR3")})
+    texts, rewritten = repair.repair_pages([path], [GAP_PAGE], set(), rows, flagged={3})
+    assert rows.asked == [3] and rewritten == 1 and "3. B-Kt5† P-QR3†" in texts[0]
+
+
+# A two-column table where the OCR read only White's column: "3. B-Kt5" with Black's move lost.
+WHITE_ONLY_PAGE = "1. P-K4 P-K4\n2. Kt-KB3 Kt-QB3\n3. B-Kt5\n4. B-R4 Kt-B3\n5. O-O B-K2\n"
+
+
+def test_a_lost_black_move_is_read_when_the_white_move_matches_the_ocr(tmp_path, monkeypatch):
+    path = page_with_lines(tmp_path, monkeypatch, SEEN_BY_TESSERACT)
+    rows = RowReaderStub({3: ("B-Kt5", "P-QR3")})
+    texts, rewritten = repair.repair_pages([path], [WHITE_ONLY_PAGE], set(), rows, flagged={3})
+    assert rewritten == 1 and "3. B-Kt5 P-QR3†" in texts[0]
+
+
+def test_a_lost_black_move_is_refused_when_the_white_move_is_not_the_ocrs(tmp_path, monkeypatch):
+    path = page_with_lines(tmp_path, monkeypatch, SEEN_BY_TESSERACT)
+    rows = RowReaderStub({3: ("Q-R5", "P-QR3")})  # the model read another row
+    texts, rewritten = repair.repair_pages([path], [WHITE_ONLY_PAGE], set(), rows, flagged={3})
+    assert rewritten == 0 and texts[0] == WHITE_ONLY_PAGE.rstrip("\n")

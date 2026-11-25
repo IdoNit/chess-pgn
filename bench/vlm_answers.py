@@ -101,6 +101,9 @@ class VlmAssisted:
         return f"{number}.{dots} {white if not black_only else ''} {black}".replace("  ", " ")
 
 
+ROWS_SUFFIX = ".rows8.json"  # {"19": ["R-Q3", "P-QR4"]} or {"19": null} when the model could not say
+
+
 class SavedRowReader:
     """A row reader that replays the vision model's saved answers (pNNN.vlm8.json), for the real repair path.
 
@@ -113,6 +116,10 @@ class SavedRowReader:
     def read_row(self, strip, number: int) -> tuple[str, str] | None:
         from chesspgn.repair import needs_reading
 
+        if strip.info.get("dropped"):  # rows the OCR dropped: asked on their own crop, saved apart
+            rows = Path(strip.filename).with_suffix(ROWS_SUFFIX)
+            saved = json.loads(rows.read_text(encoding="utf-8")).get(str(number)) if rows.exists() else None
+            return tuple(saved) if saved else None
         answers = Path(strip.filename).with_suffix(self.suffix)
         if not answers.exists():
             return None
@@ -127,4 +134,16 @@ class SavedRowReader:
 
 
 def whole_page(page, box):
-    return page
+    copy = page.copy()  # a copy: the repair pass marks the "strip" it asks about
+    copy.filename = page.filename
+    return copy
+
+
+from chesspgn.repair import row_strip as _app_row_strip  # noqa: E402 - kept before anyone replaces repair.row_strip
+
+
+def named_strip(page, box):
+    """The app's real crop of a row, still knowing its page's file name (for recording answers)."""
+    strip = _app_row_strip(page, box)
+    strip.filename = page.filename
+    return strip

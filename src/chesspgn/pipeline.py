@@ -51,10 +51,12 @@ def convert(images: list[Path], reader: Reader, row_reader: RowReader | None = N
     if row_reader is None:
         return games
     trouble = {(f.ply + 1) // 2 + d for g in games for f in g.flags if f.reason in _TROUBLE for d in (-1, 0, 1)}
-    if not trouble:
+    # any flagged move whose row the OCR lost altogether is worth a look, whatever the flag says
+    flagged = {(f.ply + 1) // 2 for g in games for f in g.flags if not f.reason.startswith("side:")}
+    if not trouble and not flagged:
         return games
     repaired, rewritten = repair_pages(images, pages, trouble, row_reader,
-                                       (lambda done: progress(f"ai {done}")) if progress else None)
+                                       (lambda done: progress(f"ai {done}")) if progress else None, flagged)
     return _games(repaired, images) if rewritten else games
 
 
