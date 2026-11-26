@@ -1,0 +1,115 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 17,
+   "ocr": "17. B\u2014B 5 K R\u2014B 1",
+   "box": [
+    402,
+    282,
+    410,
+    290
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 4.4
+  },
+  {
+   "number": 18,
+   "ocr": "18. B \u00d7 Kt Q \u00d7 B",
+   "box": [
+    230,
+    784,
+    495,
+    806
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"Q \u00d7 B\"\n}",
+   "seconds": 4.5
+  },
+  {
+   "number": 19,
+   "ocr": "19. P\u2014R 6 B\u2014B 3",
+   "box": [
+    230,
+    815,
+    515,
+    839
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R 6\",\n  \"black\": \"B\u2014B 3\"\n}",
+   "seconds": 4.5
+  },
+  {
+   "number": 20,
+   "ocr": "20. P \u00d7 P P \u00d7 P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 21,
+   "ocr": "21. Q \u00d7 P Q R\u2014Kt 1",
+   "box": [
+    230,
+    878,
+    551,
+    901
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q x P\",\n  \"black\": \"Q R - Kt r\"\n}",
+   "seconds": 5.0
+  },
+  {
+   "number": 22,
+   "ocr": "22. R \u00d7 R R \u00d7 R",
+   "box": [
+    231,
+    957,
+    500,
+    977
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 R\",\n  \"black\": \"R \u00d7 R\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 23,
+   "ocr": "23. Kt\u2014K 5 Q\u2014B 4",
+   "box": [
+    231,
+    989,
+    516,
+    1012
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K 5\",\n  \"black\": \"Q\u2014B 4\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 24,
+   "ocr": "24. P\u2014K B 4 R\u2014Kt 3",
+   "box": [
+    231,
+    1021,
+    528,
+    1042
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K B 4\",\n  \"black\": \"R\u2014Kt 3\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 25,
+   "ocr": "25. Q \u00d7 R! Resigns.",
+   "box": [
+    232,
+    1052,
+    514,
+    1075
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Q\u00d7R!\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 5.2
+  }
+ ]
+}

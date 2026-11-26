@@ -1,0 +1,37 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 12,
+   "ocr": "12. ... P \u2014 Kt 4!",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 13,
+   "ocr": "13. B \u2014 Kt 3 Kt \u2014 KR 4",
+   "box": [
+    216,
+    806,
+    541,
+    837
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 3\",\n  \"black\": \"Kt\u2014K R 4\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 14,
+   "ocr": "14. Kt \u2014 Q 5 P \u2014 R 3",
+   "box": [
+    216,
+    991,
+    499,
+    1014
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt-Q 5\",\n  \"black\": \"P-R 3\"\n}",
+   "seconds": 5.8
+  }
+ ]
+}

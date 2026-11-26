@@ -1,0 +1,128 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 1,
+   "ocr": "1. P \u2014 K 4 P \u2014 K 4",
+   "box": [
+    227,
+    288,
+    510,
+    312
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K 4\",\n  \"black\": \"P\u2014K 4\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt \u2014 K B 3 Kt \u2014 Q B 3",
+   "box": [
+    226,
+    320,
+    544,
+    345
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt-KB3\",\n  \"black\": \"Kt-QB3\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 3,
+   "ocr": "3. B \u2014 Kt 5 P \u2014 Q R 3",
+   "box": [
+    224,
+    352,
+    532,
+    377
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 5\",\n  \"black\": \"P\u2014QR 3\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 4,
+   "ocr": "4. B \u00d7 Kt Q P \u00d7 B",
+   "box": [
+    224,
+    384,
+    511,
+    407
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"Q P \u00d7 B\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 5,
+   "ocr": "5. Kt \u2014 B 3",
+   "box": [
+    224,
+    415,
+    350,
+    438
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014B 3\",\n  \"black\": \"\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 5,
+   "ocr": "5. ... B \u2014 Q B 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 6,
+   "ocr": "6. P \u2014 Q 3 B \u2014 K Kt 5",
+   "box": [
+    221,
+    796,
+    543,
+    820
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q 3\",\n  \"black\": \"B\u2014K Kt 5\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 7,
+   "ocr": "7. B \u2014 K 3 B \u00d7 B",
+   "box": [
+    222,
+    828,
+    484,
+    850
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B\u00d7B\",\n  \"black\": \"B\u2014K3\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 8,
+   "ocr": "8. P \u00d7 B Q \u2014 K 2",
+   "box": [
+    221,
+    973,
+    504,
+    996
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P \u00d7 B\",\n  \"black\": \"Q\u2014K 2\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 9,
+   "ocr": "9. O \u2014 O O \u2014 O \u2014 O",
+   "box": [
+    220,
+    1004,
+    532,
+    1025
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"O\u2014O\",\n  \"black\": \"O\u2014O\u2014O\"\n}",
+   "seconds": 6.2
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 19,
+   "ocr": "19. Kt \u00d7 P Q \u00d7 Q",
+   "box": [
+    210,
+    145,
+    545,
+    179
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt \u00d7 P\",\n  \"black\": \"Q \u00d7 Q\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 20,
+   "ocr": "20. R \u00d7 Q R \u2014 Q 7",
+   "box": [
+    210,
+    179,
+    561,
+    210
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 Q\",\n  \"black\": \"R\u2014Q 7\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 21,
+   "ocr": "21. R \u2014 Kt 1",
+   "box": [
+    210,
+    214,
+    347,
+    232
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"R\u2014Kt i\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 21,
+   "ocr": "21 Kt \u2014 K 7 ch K \u2014 B 1; 22 R \u2014 B 7 R \u2014 K 1 (not B \u00d7 P; because P \u2014 B 3 would give White the best of it); 23 R \u00d7 B (best; not Kt \u2014 Kt 6 ch, because of B P \u00d7 Kt; followed by R \u00d7 K P), R \u00d7 Kt; 24 R \u2014 Kt 8 ch, R \u2014 K 1; 25 R \u00d7 R ch, K \u00d7 R, and with proper play White will draw.",
+   "box": [
+    142,
+    640,
+    696,
+    665
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"21 Kt\u2014K 7 ch\",\n  \"black\": \"K\u2014B r;\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 21,
+   "ocr": "21. ... R \u2014 K 1",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

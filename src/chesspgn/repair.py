@@ -29,6 +29,21 @@ _WORD = re.compile(r"^[A-Za-z][a-z]+[.,;:!?]*$")
 Box = tuple[int, int, int, int]
 
 
+HEADING_PROMPT = """These lines are the heading of a game in a chess book:
+
+{heading}
+
+Copy from it, exactly as printed:
+- white: the player of the White pieces; black: the player of the Black pieces
+- event: the tournament or match (not the game's title or number, and not the opening)
+- site: the city or place where it was played
+- year: the year it was played
+- opening: the name of the opening, if the heading gives one
+Join a word that is broken across two lines with a hyphen (for example "Dus-" then "Chotimirski" is one name,
+"Dus-Chotimirski"). Leave a field empty ("") if the heading does not say. Answer in JSON:
+{{"white": "", "black": "", "event": "", "site": "", "year": "", "opening": ""}}"""
+
+
 class RowReader(Protocol):
     def read_row(self, strip: Image.Image, number: int) -> tuple[str, str] | None:
         """White's and Black's move as printed in the row numbered `number`, or None if it can't say."""
@@ -71,6 +86,23 @@ class OllamaRowReader:
         if not isinstance(answer, dict):
             return None
         return str(answer.get("white", "")).strip(), str(answer.get("black", "")).strip()
+
+
+    def read_headers(self, heading: str) -> dict[str, str] | None:
+        """Players, event, site and year as the game's heading prints them (a reading question)."""
+        payload = {
+            "model": self.model,
+            "messages": [{"role": "user", "content": HEADING_PROMPT.format(heading=heading)}],
+            "stream": False,
+            "format": "json",
+            "options": {"temperature": 0, "num_predict": 200, "num_ctx": 4096},
+        }
+        try:
+            response = self.client.post(f"{self.base_url}/api/chat", json=payload)
+            answer = json.loads(response.json()["message"]["content"]) if response.status_code == 200 else None
+            return {k: str(v).strip() for k, v in answer.items()} if isinstance(answer, dict) else None
+        except (httpx.HTTPError, KeyError, TypeError, ValueError):
+            return None
 
 
 # ---------------------------------------------------------------- deciding whether to use a reading

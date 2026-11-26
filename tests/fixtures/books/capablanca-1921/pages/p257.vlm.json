@@ -1,0 +1,50 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 16,
+   "ocr": "16. P \u00d7 K P",
+   "box": [
+    167,
+    140,
+    571,
+    179
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 KP\",\n  \"black\": \"Kt \u00d7 P (K 3)\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 17,
+   "ocr": "17. B \u00d7 Kt",
+   "box": [
+    169,
+    182,
+    500,
+    205
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q \u00d7 B\",\n  \"black\": \"B \u00d7 Kt\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 18,
+   "ocr": "18. Kt\u2014Q 4!",
+   "box": [
+    164,
+    375,
+    313,
+    398
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt-Q4!\",\n  \"black\": \"\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 18,
+   "ocr": "18. ... Q\u2014K 4!",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 35,
+   "ocr": "35. K \u2014 Kt 1 P \u2014 Kt 5",
+   "box": [
+    191,
+    156,
+    574,
+    179
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"K\u2014Kt r\",\n  \"black\": \"P\u2014Kt 5\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 36,
+   "ocr": "36. P \u00d7 P Q \u00d7 P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 37,
+   "ocr": "37. P \u2014 Q R 3 Q \u2014 R 5!",
+   "box": [
+    163,
+    939,
+    547,
+    964
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014QR3\",\n  \"black\": \"Q\u2014R5!\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 38,
+   "ocr": "38. R \u00d7 P R \u2014 Q Kt 1",
+   "box": [
+    163,
+    970,
+    571,
+    995
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 P\",\n  \"black\": \"R\u2014Q Kt 1\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 39,
+   "ocr": "39. R (Q 1) \u2014 Q 2 P \u2014 B 5",
+   "box": [
+    163,
+    1002,
+    533,
+    1026
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R (Q i) - Q 2\",\n  \"black\": \"P - B 5\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 40,
+   "ocr": "40. Q \u2014 Kt 3 R \u2014 Kt 6",
+   "box": [
+    163,
+    1033,
+    548,
+    1057
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Kt 3\",\n  \"black\": \"R\u2014Kt 6\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 41,
+   "ocr": "41. Q \u2014 Q 6",
+   "box": [
+    163,
+    1066,
+    290,
+    1088
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Q\u2014Q 6\"\n}",
+   "seconds": 6.0
+  }
+ ]
+}

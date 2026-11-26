@@ -1,0 +1,265 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 23,
+   "ocr": "23. $Q \\times Q$ $P \\times Q$",
+   "box": [
+    252,
+    141,
+    515,
+    164
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u00d7Q\",\n  \"black\": \"P\u00d7Q\"\n}",
+   "seconds": 5.0
+  },
+  {
+   "number": 24,
+   "ocr": "24. $Kt - B 5$ $P - K R 4$",
+   "box": [
+    251,
+    173,
+    561,
+    196
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B 5\",\n  \"black\": \"P\u2014KR 4\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 25,
+   "ocr": "25. $B - Q 1$ $Kt - Q 2$",
+   "box": [
+    249,
+    204,
+    548,
+    227
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q i\",\n  \"black\": \"Kt\u2014Q 2\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 26,
+   "ocr": "26. $B \\times P$ $Kt - B 3$",
+   "box": [
+    251,
+    236,
+    546,
+    259
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 P\",\n  \"black\": \"Kt \u2014 B 3\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 27,
+   "ocr": "27. $B - K 2$ $Kt \\times P$",
+   "box": [
+    251,
+    264,
+    527,
+    294
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014K 2\",\n  \"black\": \"Kt \u00d7 P\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 28,
+   "ocr": "28. $K R - Q 1$ $Kt - B 5$",
+   "box": [
+    251,
+    299,
+    544,
+    321
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K R\u2014Q i\",\n  \"black\": \"Kt\u2014B 5\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 29,
+   "ocr": "29. $B - B 4$ $K R - Q 1$",
+   "box": [
+    251,
+    330,
+    560,
+    354
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014B 4\",\n  \"black\": \"K R\u2014Q r\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 30,
+   "ocr": "30. $P - R 4$ $P - R 4$",
+   "box": [
+    250,
+    364,
+    533,
+    386
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R 4\",\n  \"black\": \"P\u2014R 4\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 31,
+   "ocr": "31. $P - K Kt 3$ $Kt - K 3$",
+   "box": [
+    249,
+    452,
+    546,
+    474
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K Kt 3\",\n  \"black\": \"Kt\u2014K 3\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 32,
+   "ocr": "32. $B \\times Kt$ $P \\times B$",
+   "box": [
+    249,
+    483,
+    511,
+    506
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"P \u00d7 B\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 33,
+   "ocr": "33. $Kt - K 3$ $K R - Kt 1$",
+   "box": [
+    249,
+    511,
+    571,
+    541
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K 3\",\n  \"black\": \"K R\u2014Kt r\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 34,
+   "ocr": "34. $Kt - B 4$ $K - K 2$",
+   "box": [
+    248,
+    546,
+    537,
+    568
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt-B 4\",\n  \"black\": \"K-K 2\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 35,
+   "ocr": "35. $Q R - B 1$ $R - R 2$",
+   "box": [
+    248,
+    701,
+    534,
+    724
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"QR-B\",\n  \"black\": \"R-R2\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 36,
+   "ocr": "36. $R - K 1$ $K - B 3$",
+   "box": [
+    248,
+    796,
+    539,
+    819
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R\u2014K 1\",\n  \"black\": \"K\u2014B 3.\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 37,
+   "ocr": "37. $R - K 4$ $R - Kt 5$",
+   "box": [
+    248,
+    814,
+    547,
+    854
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R \u2014 K 4\",\n  \"black\": \"R \u2014 Kt 5\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 38,
+   "ocr": "38. $P - Kt 4$ $R - R 3$",
+   "box": [
+    248,
+    859,
+    534,
+    882
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014Kt 4\",\n  \"black\": \"R\u2014R 3\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 39,
+   "ocr": "39. $R - B 3$ $B - B 4$",
+   "box": [
+    248,
+    957,
+    532,
+    980
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R\u2014B 3\",\n  \"black\": \"B\u2014B 4\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 40,
+   "ocr": "40. $R - B 3$ ch $K - Kt 2$",
+   "box": [
+    248,
+    988,
+    545,
+    1012
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R\u2014B 3 ch\",\n  \"black\": \"K\u2014Kt 2\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 41,
+   "ocr": "41. $P - Kt 3$ $B - Q 5$",
+   "box": [
+    247,
+    1019,
+    531,
+    1043
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014Kt 3\",\n  \"black\": \"B\u2014Q 5\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 42,
+   "ocr": "42. $K - Kt 2$ $R - R 1$",
+   "box": [
+    248,
+    1051,
+    533,
+    1073
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt2\",\n  \"black\": \"Ri\"\n}",
+   "seconds": 5.1
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 12,
+   "ocr": "12. ... P\u2014Q Kt 3",
+   "box": [
+    246,
+    289,
+    559,
+    312
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q Kt 3\",\n  \"black\": \"B\u2014B 4\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 13,
+   "ocr": "13. B\u2014B 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 13,
+   "ocr": "13. B\u2014Kt 2",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

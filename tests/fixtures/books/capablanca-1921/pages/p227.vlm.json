@@ -1,0 +1,44 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 20,
+   "ocr": "20. Kt\u2014B 5! K\u2014B 1",
+   "box": [
+    201,
+    695,
+    487,
+    726
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt-B 5!  Q 1; 21 Kt-Q 6, R-B 2\",\n  \"black\": \"K-B 1\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 21,
+   "ocr": "21. Kt\u00d7B K\u00d7Kt",
+   "box": [
+    201,
+    905,
+    480,
+    923
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt \u00d7 B\",\n  \"black\": \"K \u00d7 Kt\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 22,
+   "ocr": "22. Kt\u2014Q 4 P\u2014Kt 3",
+   "box": [
+    201,
+    936,
+    495,
+    958
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt-Q 4\",\n  \"black\": \"P-Kt 3\"\n}",
+   "seconds": 6.1
+  }
+ ]
+}

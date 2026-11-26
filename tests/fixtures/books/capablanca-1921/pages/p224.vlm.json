@@ -1,0 +1,44 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 42,
+   "ocr": "42. R \u2014 Q B 2",
+   "box": [
+    201,
+    714,
+    559,
+    746
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R-Q B 2\",\n  \"black\": \"P x P\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 43,
+   "ocr": "43. R \u2014 Q 3",
+   "box": [
+    200,
+    745,
+    587,
+    783
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R-Q 3\",\n  \"black\": \"Q-K 5!\"\n}",
+   "seconds": 6.4
+  },
+  {
+   "number": 44,
+   "ocr": "44. R \u2014 Q 1",
+   "box": [
+    200,
+    781,
+    601,
+    803
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Q i\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 5.1
+  }
+ ]
+}

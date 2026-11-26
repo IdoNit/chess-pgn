@@ -1,0 +1,76 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 13,
+   "ocr": "$13. B \\times B \\quad K \\times B$",
+   "box": [
+    233,
+    486,
+    500,
+    508
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B \u00d7 B\",\n  \"black\": \"K \u00d7 B\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 14,
+   "ocr": "$14. B \\times Kt \\quad B - Kt_3$",
+   "box": [
+    233,
+    522,
+    528,
+    544
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B X Kt\",\n  \"black\": \"B\u2014Kt 3\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 15,
+   "ocr": "$15. Q - B_4 \\quad Kt - K_3$",
+   "box": [
+    228,
+    945,
+    526,
+    968
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q-B 4\",\n  \"black\": \"Kt-K 3\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 16,
+   "ocr": "$16. P - Q \\times Kt_4 \\quad Q - B_2$",
+   "box": [
+    228,
+    981,
+    512,
+    1004
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Q Kt 4\",\n  \"black\": \"Q\u2014B 2\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 17,
+   "ocr": "$17. B \\times B \\quad R \\times B$",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 18,
+   "ocr": "$18. Q - K_4 \\quad K - B_3$",
+   "box": [
+    228,
+    1052,
+    514,
+    1075
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014K 4\",\n  \"black\": \"K\u2014B 3\"\n}",
+   "seconds": 5.4
+  }
+ ]
+}

@@ -1,0 +1,336 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 1,
+   "ocr": "1. P\u2014K4 P\u2014K4",
+   "box": [
+    288,
+    220,
+    756,
+    240
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K4\",\n  \"black\": \"Kt\u2014Q B3\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt\u2014KB3 Kt\u2014QB3",
+   "box": [
+    233,
+    1149,
+    259,
+    1165
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"K2\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 3,
+   "ocr": "3. B\u2014Kt5 Kt\u2014B3",
+   "box": [
+    113,
+    561,
+    217,
+    585
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014Q5\",\n  \"black\": \"B\u00d7Kt\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 4,
+   "ocr": "4. o\u2014o P\u2014Q3",
+   "box": [
+    122,
+    1020,
+    813,
+    1040
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014Q3\",\n  \"black\": \"O\u2014o\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 5,
+   "ocr": "5. P\u2014Q4 B\u2014Q2",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 6,
+   "ocr": "6. Kt\u2014B3 B\u2014K2",
+   "box": [
+    123,
+    1063,
+    540,
+    1083
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014B3\",\n  \"black\": \"B\u2014K2\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 7,
+   "ocr": "7. R\u2014Ksq P\u00d7P",
+   "box": [
+    123,
+    1085,
+    338,
+    1104
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Ksq\",\n  \"black\": \"P\u00d7P\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 8,
+   "ocr": "8. Kt\u00d7P o\u2014o",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 9,
+   "ocr": "9. Kt(Q4)\u2014K2",
+   "box": [
+    122,
+    394,
+    570,
+    413
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt(\u03a94)\u2015\",\n  \"black\": \"K2\"\n}",
+   "seconds": 6.7
+  },
+  {
+   "number": 9,
+   "ocr": "9. . . . R\u2014Ksq",
+   "box": [
+    123,
+    1102,
+    740,
+    1130
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014QR3\",\n  \"black\": \"Kt(\u03a94)\u2014K2\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 10,
+   "ocr": "10. Kt\u2014Kt3 B\u2014KBsq",
+   "box": [
+    113,
+    444,
+    773,
+    539
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014Kt3\",\n  \"black\": \"B\u2014KBsq\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 11,
+   "ocr": "11. P\u2014Kt3 P\u2014KKt3",
+   "box": [
+    113,
+    497,
+    700,
+    539
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Kt3\",\n  \"black\": \"P\u2014KKt3\"\n}",
+   "seconds": 6.4
+  },
+  {
+   "number": 12,
+   "ocr": "12. B\u2014Kt2 B\u2014Kt2",
+   "box": [
+    113,
+    475,
+    776,
+    571
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt2\",\n  \"black\": \"B\u2014Kt2\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 13,
+   "ocr": "13. Kt\u2014Q5 P\u2014QR3",
+   "box": [
+    112,
+    533,
+    767,
+    610
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014Q5\",\n  \"black\": \"P\u2014QR3\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 14,
+   "ocr": "14. B\u00d7Kt",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 14,
+   "ocr": "14. . . . B\u00d7B",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 15,
+   "ocr": "15. Kt\u00d7Ktch B\u00d7Kt",
+   "box": [
+    115,
+    738,
+    737,
+    759
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u00d7Ktch\",\n  \"black\": \"B\u00d7Kt\"\n}",
+   "seconds": 6.8
+  },
+  {
+   "number": 16,
+   "ocr": "16. B\u00d7B Q\u00d7B",
+   "box": [
+    140,
+    177,
+    718,
+    197
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Q\u00d7B\",\n  \"black\": \"B\u00d7B\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 17,
+   "ocr": "17. Q\u2014Q3 R\u2014K3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 18,
+   "ocr": "18. P\u2014KB3 QR\u2014Ksq",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 19,
+   "ocr": "19. P\u2014B4 Q\u2014K2",
+   "box": [
+    288,
+    242,
+    732,
+    262
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Threatening P\u2014B4; White\",\n  \"black\": \"Q\u2014K2\"\n}",
+   "seconds": 6.7
+  },
+  {
+   "number": 1,
+   "ocr": "1. P\u2014K4 P\u2014K4",
+   "box": [
+    125,
+    955,
+    813,
+    976
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014K4\",\n  \"black\": \"P\u2014K4\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt\u2014KB3 Kt\u2014QB3",
+   "box": [
+    124,
+    976,
+    814,
+    996
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt\u2014QB3\",\n  \"black\": \"Kt\u2014KB3\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 3,
+   "ocr": "3. B\u2014Kt5 Kt\u2014B3",
+   "box": [
+    124,
+    997,
+    814,
+    1018
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt-B3\",\n  \"black\": \"B-Kt5\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 4,
+   "ocr": "4. o\u2014o P\u2014Q3",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 5,
+   "ocr": "5. P\u2014Q4 B\u2014Q2",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 6,
+   "ocr": "6. Kt\u2014B3 B\u2014K2",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 7,
+   "ocr": "7. R\u2014Ksq P\u00d7P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 8,
+   "ocr": "8. Kt\u00d7P o\u2014o",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 9,
+   "ocr": "9. Kt(Q4)\u2014K2",
+   "box": [
+    124,
+    1127,
+    729,
+    1148
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Kt(\u03a94)\u2014K2\",\n  \"black\": \"P\u2014QR3\"\n}",
+   "seconds": 6.9
+  },
+  {
+   "number": 10,
+   "ocr": "10. B\u2014R4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 10,
+   "ocr": "10. . . . R\u2014Ksq",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 11,
+   "ocr": "11. P\u2014B3 P\u2014R3",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

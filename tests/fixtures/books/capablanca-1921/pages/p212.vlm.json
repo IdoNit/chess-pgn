@@ -1,0 +1,148 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 51,
+   "ocr": "51 Q \u00d7 P ch, K \u2014 R 2; 52 Q \u2014 R 5, R \u00d7 P; 53 B \u2014 Kt 5 ch, K \u2014 Kt 2; 54 B \u00d7 R ch, K \u00d7 B; and while White has a won game it is by no means easy. If the reader does not believe it, let him take the White pieces against a master and see what happens. My opponent, who decided to take no chances, played 51 B \u2014 Kt 7, and finally won as shown below.",
+   "box": [
+    129,
+    276,
+    683,
+    300
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Q \u00d7 P ch, K\u2014R 2\",\n  \"black\": \"Kt 5 ch, K\u2014Kt 2\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 51,
+   "ocr": "51. B \u2014 Kt 7 P \u2014 Kt 6",
+   "box": [
+    243,
+    514,
+    545,
+    536
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 7\",\n  \"black\": \"P\u2014Kt 6\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 52,
+   "ocr": "52. K \u2014 K 2 P \u2014 Kt 7",
+   "box": [
+    243,
+    546,
+    544,
+    568
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014K 2\",\n  \"black\": \"P\u2014Kt 7\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 53,
+   "ocr": "53. K \u2014 B 2 Kt \u2014 B 1",
+   "box": [
+    243,
+    577,
+    545,
+    599
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B 2\",\n  \"black\": \"Kt\u2014B r\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 54,
+   "ocr": "54. Q \u2014 Kt 4 Kt \u2014 Q 2",
+   "box": [
+    243,
+    608,
+    545,
+    630
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Kt 4\",\n  \"black\": \"Kt\u2014Q 2\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 55,
+   "ocr": "55. K \u2014 Kt 1 P \u2014 R 4",
+   "box": [
+    242,
+    636,
+    535,
+    666
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt r\",\n  \"black\": \"P\u2014R 4\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 56,
+   "ocr": "56. P \u2014 R 4 B \u00d7 P",
+   "box": [
+    242,
+    671,
+    513,
+    693
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R 4\",\n  \"black\": \"B \u00d7 P\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 57,
+   "ocr": "57. Q \u2014 R 3 R \u00d7 P",
+   "box": [
+    242,
+    702,
+    515,
+    724
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014R 3\",\n  \"black\": \"R \u00d7 P\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 58,
+   "ocr": "58. B \u00d7 R Kt \u00d7 B",
+   "box": [
+    242,
+    729,
+    527,
+    761
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 R\",\n  \"black\": \"Kt \u00d7 B\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 59,
+   "ocr": "59. Q \u00d7 P ch K \u2014 B 1",
+   "box": [
+    242,
+    764,
+    535,
+    786
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q \u00d7 P ch\",\n  \"black\": \"K \u2014 B r\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 60,
+   "ocr": "60. Q \u00d7 P",
+   "box": [
+    241,
+    791,
+    354,
+    822
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Q\u00d7P\"\n}",
+   "seconds": 5.6
+  }
+ ]
+}

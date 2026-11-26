@@ -1,0 +1,44 @@
+{
+ "stretches": [
+  {
+   "start": 20,
+   "end": 20,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 260,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): r1bq2k1/pppp1ppp/2n5/8/1b2rB2/6Q1/PPP2PPP/2KR1BNR b - - 1 10\nMoves just before it: Re8 Qg3 Nxe4 Nxe4 Rxe4 Bf4\nLegal moves now: Ba3 Ba5 Bc3 Bc5 Bd2+ Bd6 Be1 Be7 Bf8 Kf8 Kh8 Na5 Nb8 Nd4 Ne5 Ne7 Qe7 Qe8 Qf6 Qf8 Qg5 Qh4 Rb8 Rc4 Rd4 Re1 Re2 Re3 Re5 Re6 Re7 Re8 Rxf4 a5 a6 b5 b6 d5 d6 f5 f6 g5 g6 h5 h6\n\nWhat the book prints for the moves to find, in order:\n10. Black: White's\n\nAfter them the book continues with:\n11. White: B-Q3 / N-R3 / P-Q3\n11. Black: R-K1\n12. White: N-B3 / B-Q3\n12. Black: N-Q5\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 1 moves.",
+   "v": 2
+  },
+  {
+   "start": 44,
+   "end": 59,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 241,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): r5k1/1pp2ppp/2qp4/p1bR4/4QP2/2P5/PP4PP/2K1R3 b - - 4 22\nMoves just before it: Qb5 c3 Bc5 Rhe1 Qc6 Rd5\nLegal moves now: Ba3 Ba7 Bb4 Bb6 Bd4 Be3+ Bf2 Bg1 Kf8 Kh8 Qa4 Qa6 Qb5 Qb6 Qd7 Qe8 Qxd5 Ra6 Ra7 Rb8 Rc8 Rd8 Re8 Rf8 a4 b5 b6 f5 f6 g5 g6 h5 h6\n\nWhat the book prints for the moves to find, in order:\n22. Black: QxQ\n23. White: (nothing printed: missing or unreadable)\n23. Black: (nothing printed: missing or unreadable)\n24. White: (nothing printed: missing or unreadable)\n24. Black: (nothing printed: missing or unreadable)\n25. White: Q-B3\n25. Black: B-K2\n26. White: QR-K2\n26. Black: B-B3\n27. White: Q-R5\n27. Black: P-KR3\n28. White: P-KN4\n28. Black: K-R2\n29. White: K-N1\n29. Black: R-Q1\n30. White: R-Q1\n\nAfter them the book continues with:\n30. Black: P-B4\n31. White: Q-R3\n31. Black: Q-R5\n32. White: R@K2-Q2\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 16 moves.",
+   "v": 2
+  },
+  {
+   "start": 60,
+   "end": 75,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 254,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): 3r4/2p3pk/3p3p/ppbR1p2/2q2PP1/2P5/PP4QP/K2R4 b - - 1 30\nMoves just before it: f5 Qh3 Qc4 Ka1 b5 Qg2\nLegal moves now: Ba3 Ba7 Bb4 Bb6 Bd4 Be3 Bf2 Bg1 Kg6 Kg8 Kh8 Qa4 Qb3 Qb4 Qd3 Qd4 Qe2 Qe4 Qf1 Qxa2+ Qxc3 Qxd5 Qxf4 Ra8 Rb8 Rc8 Rd7 Re8 Rf8 Rg8 Rh8 a4 b4 c6 fxg4 g5 g6 h5\n\nWhat the book prints for the moves to find, in order:\n30. Black: P-B4\n31. White: Q-R3\n31. Black: Q-R5\n32. White: R@K2-Q2\n32. Black: Q-K5ch\n33. White: K-R1\n33. Black: P-QN4\n34. White: Q-N2\n34. Black: Q-R5\n35. White: K-N1\n35. Black: P-N5\n36. White: PxP\n36. Black: QxP\n37. White: RxP / P-QR3\n37. Black: Q-R5\n38. White: RxR / RxP\n\nAfter them the book continues with:\n38. Black: BxP / R-QN1\n39. White: R@Q1-Q2\n39. Black: P-B5\n40. White: Q-N3\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 16 moves.",
+   "v": 2
+  },
+  {
+   "start": 76,
+   "end": 78,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 254,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): 8/2p3pk/7p/2b5/p1q2Pp1/Pr1R2Q1/1PR4P/1K6 b - - 1 38\nMoves just before it: a4 Qg3 Rb3 Rc2 fxg4 Rd3\nLegal moves now: Ba7 Bb4 Bb6 Bd4 Bd6 Be3 Be7 Bf2 Bf8 Bg1 Bxa3 Kg6 Kg8 Kh8 Qa6 Qb4 Qb5 Qc3 Qd4 Qd5 Qe4 Qe6 Qf7 Qg8 Qxc2+ Qxd3 Qxf4 Rb4 Rb5 Rb6 Rb7 Rb8 Rc3 Rxa3 Rxb2+ Rxd3 c6 g5 g6 h5\n\nWhat the book prints for the moves to find, in order:\n38. Black: BxP / R-QN1\n39. White: R@Q1-Q2\n39. Black: P-B5\n\nAfter them the book continues with:\n40. White: Q-N3\n40. Black: R-N6\n41. White: Q-Q6\n41. Black: BxP\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 3 moves.",
+   "v": 2
+  }
+ ]
+}

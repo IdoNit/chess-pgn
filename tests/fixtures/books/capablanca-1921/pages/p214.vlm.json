@@ -1,0 +1,70 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 13,
+   "ocr": "13. Kt \u2014 K 3 R \u2014 K 1",
+   "box": [
+    250,
+    246,
+    540,
+    271
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K 3\",\n  \"black\": \"R\u2014K 1\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 14,
+   "ocr": "14. O \u2014 O Q \u2014 K 2",
+   "box": [
+    249,
+    278,
+    539,
+    301
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"O\u2014O\",\n  \"black\": \"Q\u2014K 2\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 15,
+   "ocr": "15. Kt \u2014 Q 5 B \u00d7 Kt",
+   "box": [
+    250,
+    757,
+    531,
+    783
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt-Q 5\",\n  \"black\": \"B \u00d7 Kt\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 16,
+   "ocr": "16. P \u00d7 B Kt \u2014 Kt 1",
+   "box": [
+    251,
+    788,
+    561,
+    810
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P x B\",\n  \"black\": \"Kt - Kt r\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 17,
+   "ocr": "17. P \u2014 Q R 4 P \u2014 Kt 5",
+   "box": [
+    252,
+    954,
+    548,
+    980
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014QR 4\",\n  \"black\": \"P\u2014Kt 5\"\n}",
+   "seconds": 5.6
+  }
+ ]
+}

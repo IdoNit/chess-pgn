@@ -2,13 +2,13 @@
 
 import re
 from collections.abc import Callable
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 import chess.pgn
 
 from chesspgn.decoder import Flag
-from chesspgn.games import continues_on_next_page, extract_headers, pgn_filename, split_games
+from chesspgn.games import continues_on_next_page, extract_headers, pgn_filename, split_games, title_lines
 
 from chesspgn.icons import annotate, find_icons
 from chesspgn.layout import mark_commentary
@@ -50,6 +50,10 @@ def convert(images: list[Path], reader: Reader, row_reader: RowReader | None = N
     games = _games(pages, images)
     if row_reader is None:
         return games
+    return [_headers_read(g, row_reader) for g in _repaired(games, images, pages, row_reader, progress)]
+
+
+def _repaired(games, images, pages, row_reader, progress) -> list[ConvertedGame]:
     trouble = {(f.ply + 1) // 2 + d for g in games for f in g.flags if f.reason in _TROUBLE for d in (-1, 0, 1)}
     # any flagged move whose row the OCR lost altogether is worth a look, whatever the flag says
     flagged = {(f.ply + 1) // 2 for g in games for f in g.flags if not f.reason.startswith("side:")}
@@ -58,6 +62,44 @@ def convert(images: list[Path], reader: Reader, row_reader: RowReader | None = N
     repaired, rewritten = repair_pages(images, pages, trouble, row_reader,
                                        (lambda done: progress(f"ai {done}")) if progress else None, flagged)
     return _games(repaired, images) if rewritten else games
+
+
+HEADER_FIELDS = {"white": "White", "black": "Black", "event": "Event", "site": "Site", "opening": "Opening"}
+
+
+def _headers_read(game: ConvertedGame, helper) -> ConvertedGame:
+    """The helper reads the game's heading (players, event, site, year). A value is kept only if the heading
+    prints it: the model copies, it does not invent."""
+    if not hasattr(helper, "read_headers"):
+        return game
+    heading = "\n".join(reversed(title_lines(game.text)))
+    answer = helper.read_headers(heading) if heading else None
+    if not answer:
+        return game
+    printed = _plain(heading)
+    headers = dict(game.headers)
+    for key, tag in HEADER_FIELDS.items():
+        value = answer.get(key, "").strip(" ,.;:()[]")
+        if value and not value.replace(" ", "").isdigit() and _plain(value) in printed:
+            headers[tag] = value
+    year = answer.get("year", "").strip()
+    if re.fullmatch(r"1[5-9]\d\d|20\d\d", year) and year in heading:
+        headers["Date"] = f"{year}.??.??"
+    if headers == game.headers:
+        return game
+    pgn = game.pgn
+    for tag, value in headers.items():
+        line = f'[{tag} "{value}"]'
+        if re.search(rf'^\[{tag} "', pgn, flags=re.M):
+            pgn = re.sub(rf'^\[{tag} "[^"\n]*"\]$', lambda _m: line, pgn, count=1, flags=re.M)
+        else:  # a tag the game had no line for (Opening): after the last tag line
+            last = list(re.finditer(r'^\[\w+ "[^"\n]*"\]$', pgn, flags=re.M))[-1]
+            pgn = pgn[: last.end()] + "\n" + line + pgn[last.end():]
+    return replace(game, pgn=pgn, headers=headers, filename=pgn_filename(headers))
+
+
+def _plain(text: str) -> str:
+    return " ".join(re.sub(r"[^\w]+", " ", text.lower()).split())
 
 
 def _games(pages: list[str], images: list[Path]) -> list[ConvertedGame]:

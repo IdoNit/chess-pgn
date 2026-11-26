@@ -1,0 +1,63 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 5,
+   "ocr": "5. $P \\times P$",
+   "box": [
+    222,
+    243,
+    315,
+    266
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P x P\",\n  \"black\": \"\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 5,
+   "ocr": "5. ... Q \u00d7 P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 6,
+   "ocr": "6. $B \\times Kt$ $B \\times Kt$ ch",
+   "box": [
+    216,
+    748,
+    525,
+    766
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"B \u00d7 Kt ch\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 7,
+   "ocr": "7. $P \\times B$ $P \\times B$",
+   "box": [
+    218,
+    783,
+    481,
+    804
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 B\",\n  \"black\": \"P \u00d7 B\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 8,
+   "ocr": "8. $Kt \u2014 B_3$ $P \u2014 Q Kt_3$",
+   "box": [
+    216,
+    818,
+    536,
+    841
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt-B 3\",\n  \"black\": \"P-Q Kt 3\"\n}",
+   "seconds": 5.7
+  }
+ ]
+}

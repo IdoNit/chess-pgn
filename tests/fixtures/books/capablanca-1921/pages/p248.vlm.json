@@ -1,0 +1,88 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 7,
+   "ocr": "7. Kt \u2014 B 3 B \u2014 Kt 2",
+   "box": [
+    262,
+    258,
+    560,
+    284
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B 3\",\n  \"black\": \"B\u2014Kt 2\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 8,
+   "ocr": "8. B \u2014 Kt 5 Kt \u2014 B 3",
+   "box": [
+    262,
+    291,
+    560,
+    315
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 5\",\n  \"black\": \"Kt\u2014B 3\"\n}",
+   "seconds": 5.3
+  },
+  {
+   "number": 9,
+   "ocr": "9. Q \u2014 Q 2 P \u2014 K R 3",
+   "box": [
+    274,
+    491,
+    577,
+    515
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q-Q 2\",\n  \"black\": \"P-KR 3\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 10,
+   "ocr": "10. B \u2014 K R 4",
+   "box": [
+    265,
+    524,
+    420,
+    545
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014KR 4\",\n  \"black\": \"\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 10,
+   "ocr": "10. ... O \u2014 O",
+   "box": [
+    265,
+    750,
+    422,
+    768
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 11,
+   "ocr": "11. O \u2014 O \u2014 O",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 11,
+   "ocr": "11. ... R \u2014 K 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 12,
+   "ocr": "12. K R \u2014 K 1",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 21,
+   "ocr": "21. P\u2014B 4 R\u00d7R",
+   "box": [
+    226,
+    953,
+    379,
+    975
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 22,
+   "ocr": "22. R\u00d7R R\u2014Q 1",
+   "box": [
+    222,
+    336,
+    507,
+    357
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R X R\",\n  \"black\": \"R\u2014Q I\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 23,
+   "ocr": "23. R\u00d7R Kt\u00d7R",
+   "box": [
+    224,
+    549,
+    503,
+    581
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R x R\",\n  \"black\": \"Kt x R\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 24,
+   "ocr": "24. P\u2014K R 4",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

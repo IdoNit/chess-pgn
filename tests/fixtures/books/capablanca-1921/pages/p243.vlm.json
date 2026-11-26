@@ -1,0 +1,120 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 13,
+   "ocr": "13. P\u00d7P B\u2014B 4",
+   "box": [
+    211,
+    384,
+    491,
+    407
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P\",\n  \"black\": \"B \u2014 B 4\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 14,
+   "ocr": "14. Q\u2014K B 4 B\u00d7B",
+   "box": [
+    211,
+    416,
+    471,
+    438
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014KB4\",\n  \"black\": \"B\u00d7B\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 15,
+   "ocr": "15. O\u2014O\u2014O B\u2014Kt 2",
+   "box": [
+    211,
+    447,
+    502,
+    470
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"O\u2014O\u2014O\",\n  \"black\": \"B\u2014Kt 2\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 16,
+   "ocr": "16. R\u00d7B Q\u2014K 2",
+   "box": [
+    210,
+    480,
+    493,
+    502
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 B\",\n  \"black\": \"Q\u2014K 2\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 17,
+   "ocr": "17. Q\u2014B 4",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 17,
+   "ocr": "17. ... QR\u2014Q 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 18,
+   "ocr": "18. KR\u2014Q 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 18,
+   "ocr": "18. ... R\u00d7R",
+   "box": [
+    207,
+    817,
+    491,
+    838
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 19,
+   "ocr": "19. R\u00d7R R\u2014K 1",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 20,
+   "ocr": "20. P\u2014B 3 P\u2014QB 3",
+   "box": [
+    207,
+    848,
+    510,
+    871
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P-B 3\",\n  \"black\": \"P-QB 3\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 21,
+   "ocr": "21. R\u2014K 3",
+   "box": [
+    207,
+    975,
+    336,
+    998
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R\u2014K 3\",\n  \"black\": \"\"\n}",
+   "seconds": 5.8
+  }
+ ]
+}

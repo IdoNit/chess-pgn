@@ -1,0 +1,34 @@
+{
+ "stretches": [
+  {
+   "start": 19,
+   "end": 26,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 253,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): 2kr2nr/1pp1qppp/p1p5/4p3/4P1b1/2NPPN2/PPP3PP/R2Q1RK1 w - - 3 10\nMoves just before it: Be3 Bxe3 fxe3 Qe7 O-O O-O-O\nLegal moves now: Kf2 Kh1 Na4 Nb1 Nb5 Nd2 Nd4 Nd5 Ne1 Ne2 Ng5 Nh4 Nxe5 Qb1 Qc1 Qd2 Qe1 Qe2 Rb1 Rc1 Re1 Rf2 a3 a4 b3 b4 d4 g3 h3 h4\n\nWhat the book prints for the moves to find, in order:\n10. White: (nothing printed: missing or unreadable)\n10. Black: (nothing printed: missing or unreadable)\n11. White: RUY / R-N1\n11. Black: LOPEZ / P-B3\n12. White: P-N4 / FRENCH\n12. Black: N-B2 / DEFENCE\n13. White: P-QR4\n13. Black: BxN\n\nAfter them the book continues with:\n14. White: RxB\n14. Black: P-QN3\n15. White: P-N5\n15. Black: BPxP\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 8 moves.",
+   "v": 2
+  },
+  {
+   "start": 39,
+   "end": 45,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 263,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): 2kr3r/2p3pp/1p2np2/pPqNp3/2P1P2N/3PP3/5RPP/3R2K1 w - - 3 20\nMoves just before it: Nd5 Qc5 c4 Ng5 Rf2 Ne6\nLegal moves now: Kf1 Kh1 Nb4 Nc3 Ne7+ Nf3 Nf4 Nf5 Ng6 Nxb6+ Nxc7 Nxf6 Ra1 Ra2 Rb1 Rb2 Rc1 Rc2 Rdd2 Rdf1 Re1 Re2 Rf3 Rf4 Rf5 Rfd2 Rff1 Rxf6 d4 g3 g4 h3\n\nWhat the book prints for the moves to find, in order:\n20. White: Q-B3\n20. Black: R-Q2\n21. White: R-Q1\n21. Black: K-N2\n22. White: P-Q4\n22. Black: Q-Q3\n23. White: R-B2\n\nAfter them the book continues with:\n23. Black: PxP\n24. White: PxP\n24. Black: N-B5\n25. White: P-B5\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 7 moves.",
+   "v": 2
+  },
+  {
+   "start": 50,
+   "end": 61,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 257,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): 7r/1kpr2pp/1p1q1p2/pPP5/3PPn1N/2N5/2R3PP/2R3K1 b - - 0 25\nMoves just before it: Qd6 Rfc2 exd4 exd4 Nf4 c5\nLegal moves now: Ka7 Ka8 Kb8 Kc8 Nd3 Nd5 Ne2+ Ne6 Ng6 Nh3+ Nh5 Nxg2 Qc6 Qd5 Qe5 Qe6 Qe7 Qf8 Qxc5 Qxd4+ Ra8 Rb8 Rc8 Rdd8 Re7 Re8 Rf7 Rf8 Rg8 Rhd8 a4 bxc5 c6 f5 g5 g6 h5 h6\n\nWhat the book prints for the moves to find, in order:\n25. Black: NxN\n26. White: PxN\n26. Black: QxQP\n27. White: P-B6ch\n27. Black: K-N1\n28. White: PxR\n28. Black: QxP@Q2\n29. White: P-Q5\n29. Black: R-K1\n30. White: P-Q6\n30. Black: PxP\n31. White: Q-B6\n\nAfter them the book continues with:\n31. Black: (nothing printed: missing or unreadable)\n32. White: (nothing printed: missing or unreadable)\n32. Black: (nothing printed: missing or unreadable)\n33. White: (nothing printed: missing or unreadable)\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 12 moves.",
+   "v": 2
+  }
+ ]
+}

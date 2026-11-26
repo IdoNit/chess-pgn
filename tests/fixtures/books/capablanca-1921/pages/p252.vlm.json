@@ -1,0 +1,31 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 22,
+   "ocr": "22. B\u2014R 2 Kt\u2014B 3",
+   "box": [
+    253,
+    225,
+    550,
+    247
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014R 2\",\n  \"black\": \"Kt\u2014B 3\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 23,
+   "ocr": "23. P\u2014K Kt 3",
+   "box": [
+    257,
+    770,
+    420,
+    793
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014K Kt 3\",\n  \"black\": \"\"\n}",
+   "seconds": 5.5
+  }
+ ]
+}

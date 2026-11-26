@@ -1,0 +1,219 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 21,
+   "ocr": "21. Kt \u00d7 Q B \u00d7 Kt",
+   "box": [
+    218,
+    215,
+    483,
+    246
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt \u00d7 Q\",\n  \"black\": \"B \u00d7 Kt\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 22,
+   "ocr": "22. B \u00d7 B B \u2014 B 3",
+   "box": [
+    217,
+    669,
+    499,
+    693
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 4.8
+  },
+  {
+   "number": 23,
+   "ocr": "23. Q R \u2014 Q I B \u00d7 Kt",
+   "box": [
+    220,
+    279,
+    483,
+    309
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"QR-Qr\",\n  \"black\": \"B\u00d7Kt\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 24,
+   "ocr": "24. R \u00d7 B K \u2014 Kt 2",
+   "box": [
+    218,
+    634,
+    505,
+    665
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 B\",\n  \"black\": \"K \u2014 Kt 2\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 25,
+   "ocr": "25. B \u2014 B 4 R \u2014 Kt 3",
+   "box": [
+    217,
+    731,
+    501,
+    755
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 26,
+   "ocr": "26. R \u2014 K I K \u2014 B 3",
+   "box": [
+    217,
+    700,
+    489,
+    724
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014K i\",\n  \"black\": \"K\u2014B 3\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 27,
+   "ocr": "27. P \u2014 B 4 Kt \u2014 K 3",
+   "box": [
+    217,
+    790,
+    492,
+    821
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 28,
+   "ocr": "28. P \u00d7 P ch P \u00d7 P",
+   "box": [
+    216,
+    758,
+    468,
+    790
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 P\",\n  \"black\": \"P \u00d7 P\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 29,
+   "ocr": "29. R \u2014 B 1 ch K \u2014 K 2",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 30,
+   "ocr": "30. R \u2014 Kt 4 R \u2014 K Kt 1",
+   "box": [
+    216,
+    821,
+    525,
+    851
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Kt 4\",\n  \"black\": \"R\u2014K Kt r\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 31,
+   "ocr": "31. R \u2014 B 5 R \u2014 B 3",
+   "box": [
+    216,
+    856,
+    486,
+    880
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014B 5\",\n  \"black\": \"R\u2014B 3\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 32,
+   "ocr": "32. P \u2014 K R 4 K R \u2014 Q B 1",
+   "box": [
+    229,
+    888,
+    538,
+    910
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-KR4\",\n  \"black\": \"KR-QB r\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 33,
+   "ocr": "33. P \u00d7 P R \u2014 B 4",
+   "box": [
+    216,
+    915,
+    488,
+    946
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P x P\",\n  \"black\": \"R - B 4\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 34,
+   "ocr": "34. B \u00d7 Kt P \u00d7 B",
+   "box": [
+    216,
+    950,
+    465,
+    972
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B \u00d7 Kt\",\n  \"black\": \"P \u00d7 B\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 35,
+   "ocr": "35. R \u00d7 R R \u00d7 R",
+   "box": [
+    216,
+    978,
+    469,
+    1009
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R \u00d7 R\",\n  \"black\": \"R \u00d7 R\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 36,
+   "ocr": "36. P \u2014 Kt 6 K \u2014 B 1",
+   "box": [
+    216,
+    1013,
+    487,
+    1035
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Kt 6\",\n  \"black\": \"K\u2014B r\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 37,
+   "ocr": "37. R \u2014 Q B 4 R \u2014 Q R 4",
+   "box": [
+    217,
+    1044,
+    513,
+    1067
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R-QB4\",\n  \"black\": \"R-QR4\"\n}",
+   "seconds": 5.7
+  }
+ ]
+}

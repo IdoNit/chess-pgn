@@ -101,7 +101,7 @@ def extract_headers(segment: str) -> dict[str, str]:
             headers["White"], headers["Black"] = players["white"].strip(), players["black"].strip()
         elif headers["Date"].startswith("????") and year is not None:
             headers["Date"] = f"{year.group(1)}.??.??"
-            place = re.sub(r"\bcirca\b", "", line[: year.start()] + line[year.end():]).strip(" ,.")
+            place = re.sub(r"\bcirca\b", "", line[: year.start()] + line[year.end():]).strip(" ,.()[]")
             if "," in place:
                 event, site = place.rsplit(",", 1)
                 headers["Event"], headers["Site"] = event.strip(), site.strip()
@@ -129,3 +129,8 @@ def pgn_filename(headers: dict[str, str]) -> str:
 def continues_on_next_page(built: BuiltGame) -> bool:
     """No result and the game didn't end in mate: the text probably stops mid-game."""
     return built.decoded.result == "*" and len(built.decoded.moves) > 0
+
+
+def title_lines(segment: str) -> list[str]:
+    """The heading lines above the game's first move, nearest first."""
+    return _title_lines(segment)

@@ -1,0 +1,24 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 17,
+   "ocr": "17. ....",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 18,
+   "ocr": "18. R\u2014B 2",
+   "box": [
+    199,
+    1063,
+    581,
+    1085
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R-B 2\",\n  \"black\": \"P-Q Kt 4\"\n}",
+   "seconds": 6.2
+  }
+ ]
+}

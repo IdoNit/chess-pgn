@@ -1,0 +1,50 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 15,
+   "ocr": "15. B \u2014 Q 3 B \u2014 K 3",
+   "box": [
+    258,
+    153,
+    545,
+    175
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q 3\",\n  \"black\": \"B\u2014K 3\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 16,
+   "ocr": "16. P \u2014 B 3",
+   "box": [
+    257,
+    272,
+    383,
+    294
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-B 3\",\n  \"black\": \"\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 16,
+   "ocr": "16. ... P \u2014 B 4!",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 17,
+   "ocr": "17. P \u2014 K R 4 P \u2014 B 5",
+   "box": [
+    266,
+    994,
+    556,
+    1016
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014KR 4\",\n  \"black\": \"P\u2014B 5\"\n}",
+   "seconds": 6.0
+  }
+ ]
+}

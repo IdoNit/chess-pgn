@@ -1,0 +1,24 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 14,
+   "ocr": "14. B \u00d7 Kt Q \u00d7 B",
+   "box": [
+    211,
+    199,
+    474,
+    221
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B X Kt\",\n  \"black\": \"Q X B\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 15,
+   "ocr": "15. Kt \u00d7 P! Q \u2014 R3",
+   "box": null,
+   "error": "line not found on the page"
+  }
+ ]
+}

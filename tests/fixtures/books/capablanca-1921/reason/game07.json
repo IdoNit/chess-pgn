@@ -1,0 +1,14 @@
+{
+ "stretches": [
+  {
+   "start": 66,
+   "end": 66,
+   "model": "qwen3.5:9b",
+   "moves": [],
+   "error": "JSONDecodeError: Expecting value: line 1 column 1 (char 0)",
+   "seconds": 230,
+   "prompt": "You are reading a chess game from an old chess book. The text below was read from the page by OCR and may be damaged: letters misread, symbols lost, or a move missing entirely. The book may use old descriptive notation (P-K4, Kt-KB3, BxKt, R-Q sq, O-O) or algebraic notation.\n\nPosition before the first move to find (FEN): r2r1k2/2p5/3bp3/p3p3/P6P/4N1P1/1P3P2/R2R2K1 b - - 1 33\nMoves just before it: a5 g3 Ne6 Bxe6 fxe6 Ne3\nLegal moves now: Ba3 Bb4 Bc5 Be7 Ke7 Ke8 Kf7 Kg7 Kg8 Ra6 Ra7 Rab8 Rac8 Rd7 Rdb8 Rdc8 Re8 c5 c6 e4\n\nWhat the book prints for the moves to find, in order:\n33. Black: KR-N1\n\nAfter them the book continues with:\n34. White: N-B4\n34. Black: K-K2\n35. White: QR-B1\n35. Black: R-R2\n\nGive the moves actually played, one for each line above, in standard algebraic notation (SAN, e.g. Nf3, exd5, O-O), each legal after the previous ones. Prefer the move that matches the printed text; where the text is missing or unreadable, choose the move that makes the following printed moves possible. Answer with JSON only: {\"moves\": [\"...\", \"...\"]} with exactly 1 moves.",
+   "v": 2
+  }
+ ]
+}

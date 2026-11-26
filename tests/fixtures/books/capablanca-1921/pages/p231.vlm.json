@@ -1,0 +1,115 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 37,
+   "ocr": "37. ... K \u2014 Q 4",
+   "box": [
+    205,
+    909,
+    487,
+    939
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 38,
+   "ocr": "38. B \u2014 Kt 7 Resigns.",
+   "box": [
+    206,
+    263,
+    488,
+    285
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B\u2014Kt 7\",\n  \"black\": \"Resigns.\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 1,
+   "ocr": "1. P \u2014 K 4 P \u2014 K 4",
+   "box": [
+    207,
+    841,
+    492,
+    863
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014K 4\",\n  \"black\": \"P\u2014K 4\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 2,
+   "ocr": "2. Kt \u2014 K B 3 Kt \u2014 K B 3",
+   "box": [
+    206,
+    877,
+    527,
+    900
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014KB3\",\n  \"black\": \"Kt\u2014KB3\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 3,
+   "ocr": "3. Kt \u00d7 P P \u2014 Q 3",
+   "box": [
+    205,
+    948,
+    480,
+    971
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014K B 3\",\n  \"black\": \"Kt \u00d7 P\"\n}",
+   "seconds": 5.2
+  },
+  {
+   "number": 4,
+   "ocr": "4. Kt \u2014 K B 3 Kt \u00d7 P",
+   "box": null,
+   "error": "line not found on the page"
+  },
+  {
+   "number": 5,
+   "ocr": "5. Q \u2014 K 2 Q \u2014 K 2",
+   "box": [
+    206,
+    983,
+    490,
+    1005
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014K 2\",\n  \"black\": \"Q\u2014K 2\"\n}",
+   "seconds": 5.1
+  },
+  {
+   "number": 6,
+   "ocr": "6. P \u2014 Q 3 Kt \u2014 K B 3",
+   "box": [
+    205,
+    1015,
+    529,
+    1047
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-Q 3\",\n  \"black\": \"Kt-K B 3\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 7,
+   "ocr": "7. B \u2014 Kt 5",
+   "box": [
+    205,
+    1054,
+    330,
+    1075
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt 5\",\n  \"black\": \"\"\n}",
+   "seconds": 5.9
+  }
+ ]
+}

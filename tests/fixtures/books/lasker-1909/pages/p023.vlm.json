@@ -1,0 +1,681 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 12,
+   "ocr": "12) Q\u2014K2; 13) B\u2014Kt5, KR\u2014Qsq;; 14) Q\u2014Q3, P\u2014KR3, was a feasible line of play. The checks would have done Black no harm.",
+   "box": [
+    21,
+    102,
+    369,
+    125
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"KR\u2014Qsq;;\",\n  \"black\": \"Q\u2014K2;\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 13,
+   "ocr": "13. B\u2014Kt5 B\u2014K2",
+   "box": [
+    42,
+    223,
+    281,
+    245
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B\u2014Kt5\",\n  \"black\": \"B\u2014K2\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 14,
+   "ocr": "14. Kt\u2014Q4 P\u2014KKt3",
+   "box": [
+    41,
+    245,
+    305,
+    266
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Q4\",\n  \"black\": \"P\u2014KKt3\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 15,
+   "ocr": "15. Q\u2014K2",
+   "box": [
+    42,
+    268,
+    277,
+    289
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014K2\",\n  \"black\": \"\"\n}",
+   "seconds": 5.4
+  },
+  {
+   "number": 15,
+   "ocr": "15. Kt\u2014B3",
+   "box": [
+    601,
+    523,
+    670,
+    543
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"...\"\n}",
+   "seconds": 6.4
+  },
+  {
+   "number": 16,
+   "ocr": "16. Kt\u2014B3 Q\u2014Kt3",
+   "box": [
+    42,
+    456,
+    290,
+    477
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B3\",\n  \"black\": \"Q\u2014Kt3\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 17,
+   "ocr": "17. P\u2014KR3 KR\u2014Qsq",
+   "box": [
+    43,
+    478,
+    309,
+    499
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014KR3\",\n  \"black\": \"KR\u2014Qsq\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 18,
+   "ocr": "18. KR\u2014Qsq K\u2014Kt2",
+   "box": [
+    42,
+    499,
+    292,
+    520
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"KR\u2014Qsq\",\n  \"black\": \"K\u2014Kt2\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 19,
+   "ocr": "19. Kt\u2014Q4 Kt\u00d7Kt",
+   "box": [
+    42,
+    521,
+    289,
+    543
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Q4\",\n  \"black\": \"Kt\u00d7Kt\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 20,
+   "ocr": "20. PxKt R\u2014B5",
+   "box": [
+    41,
+    543,
+    281,
+    563
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"PxKt\",\n  \"black\": \"R\u2014B5\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 21,
+   "ocr": "21. B\u2014K3 R(Bsq)\u2014Bsq",
+   "box": [
+    41,
+    565,
+    346,
+    586
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B\u2014K3\",\n  \"black\": \"R (Bsq)\u2014Bsq\"\n}",
+   "seconds": 6.8
+  },
+  {
+   "number": 22,
+   "ocr": "22. B\u2014Q3 R\u2014Kt5",
+   "box": [
+    41,
+    587,
+    290,
+    607
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q3\",\n  \"black\": \"R\u2014Kt5\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 23,
+   "ocr": "23. P\u2014QKt3 Q\u2014Qsq",
+   "box": [
+    41,
+    608,
+    295,
+    630
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014QKt3\",\n  \"black\": \"Q\u2014Qsq\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 24,
+   "ocr": "24. Kt\u2014R4 R\u00d7R",
+   "box": [
+    41,
+    630,
+    273,
+    650
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014R4\",\n  \"black\": \"R\u00d7R\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 25,
+   "ocr": "25. R\u00d7R B\u2014Q2",
+   "box": [
+    41,
+    652,
+    283,
+    674
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u00d7R\",\n  \"black\": \"B\u2014Q2\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 26,
+   "ocr": "26. Kt\u2014B5 R\u2014Kt3",
+   "box": [
+    40,
+    673,
+    291,
+    694
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014B5\",\n  \"black\": \"R\u2014Kt3\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 27,
+   "ocr": "27. B\u2014KB4 B\u00d7Kt",
+   "box": [
+    41,
+    696,
+    280,
+    716
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014KB4\",\n  \"black\": \"B\u00d7Kt\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 28,
+   "ocr": "28. P\u00d7B R\u2014K3",
+   "box": [
+    41,
+    717,
+    284,
+    738
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u00d7B\",\n  \"black\": \"R\u2014K3\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 29,
+   "ocr": "29. Q\u2014Kt2 Q\u2014K2",
+   "box": [
+    41,
+    739,
+    285,
+    760
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Kt2\",\n  \"black\": \"Q\u2014K2\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 30,
+   "ocr": "30. B\u2014Q6 Q\u2014Ksq",
+   "box": [
+    738,
+    54,
+    747,
+    68
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 31,
+   "ocr": "31. Q\u2014Q2 B\u2014B3",
+   "box": [
+    42,
+    783,
+    281,
+    804
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Q2\",\n  \"black\": \"B\u2014B3\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 32,
+   "ocr": "32. B\u2014KB4 Kt\u2014Ktsq",
+   "box": [
+    41,
+    804,
+    309,
+    825
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014KB4\",\n  \"black\": \"Kt\u2014Ktsq\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 33,
+   "ocr": "33. Q\u2014B3ch P\u2014B3",
+   "box": [
+    42,
+    826,
+    280,
+    847
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014B3ch\",\n  \"black\": \"P\u2014B3\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 34,
+   "ocr": "34. K\u2014R2 K\u2014B2",
+   "box": [
+    42,
+    848,
+    283,
+    869
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014R2\",\n  \"black\": \"K\u2014B2\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 35,
+   "ocr": "35. Q\u2014Q2 P\u2014QR3",
+   "box": [
+    42,
+    870,
+    299,
+    891
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Q2\",\n  \"black\": \"P\u2014QR3\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 36,
+   "ocr": "36. B\u2014Q6 K\u2014Kt2",
+   "box": [
+    42,
+    891,
+    293,
+    912
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q6\",\n  \"black\": \"K\u2014Kt2\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 37,
+   "ocr": "37. B\u2014KB4 Q\u2014K2",
+   "box": [
+    42,
+    913,
+    285,
+    934
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014KB4\",\n  \"black\": \"Q\u2014K2\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 38,
+   "ocr": "38. B\u2014Q6 Q\u2014Ksq",
+   "box": [
+    42,
+    973,
+    294,
+    993
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q6\",\n  \"black\": \"Q\u2014Ksq\"\n}",
+   "seconds": 6.2
+  },
+  {
+   "number": 39,
+   "ocr": "39. B\u2014KB4 Q\u2014K2",
+   "box": [
+    42,
+    995,
+    285,
+    1015
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014KB4\",\n  \"black\": \"Q\u2014K2\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 40,
+   "ocr": "40. P\u2014QKt4 Q\u2014Ksq",
+   "box": [
+    42,
+    1016,
+    295,
+    1037
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014QKt4\",\n  \"black\": \"Q\u2014Ksq\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 41,
+   "ocr": "41. P\u2014R3 K\u2014B2",
+   "box": [
+    42,
+    1038,
+    283,
+    1058
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014R3\",\n  \"black\": \"K\u2014B2\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 42,
+   "ocr": "42. R\u2014Ktsq P\u2014B4",
+   "box": [
+    42,
+    1060,
+    281,
+    1080
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Ktsq\",\n  \"black\": \"P\u2014B4\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 43,
+   "ocr": "43. R\u2014Kt2 Kt\u2014B3",
+   "box": [
+    43,
+    1081,
+    290,
+    1102
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014Kt2\",\n  \"black\": \"Kt\u2014B3\"\n}",
+   "seconds": 6.4
+  },
+  {
+   "number": 44,
+   "ocr": "44. B\u2014Ktsq Q\u2014K2",
+   "box": [
+    42,
+    1103,
+    285,
+    1123
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Ktsq\",\n  \"black\": \"Q\u2014K2\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 45,
+   "ocr": "45. P\u2014B3 Kt\u2014R4",
+   "box": [
+    42,
+    1125,
+    292,
+    1145
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014B3\",\n  \"black\": \"Kt\u2014R4\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 46,
+   "ocr": "46. B\u2014Q6 Q\u2014R5",
+   "box": [
+    42,
+    1135,
+    283,
+    1177
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Q6\",\n  \"black\": \"Q\u2014R5\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 47,
+   "ocr": "47. P\u2014Kt3",
+   "box": [
+    42,
+    1168,
+    304,
+    1188
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P\u2014Kt3\",\n  \"black\": \"\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 47,
+   "ocr": "47. Q\u2014Qsq",
+   "box": [
+    420,
+    212,
+    672,
+    233
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"Q\u2014Qsq\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 48,
+   "ocr": "48. B\u2014QR2 Kt\u2014B3",
+   "box": [
+    420,
+    234,
+    669,
+    254
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014QR2\",\n  \"black\": \"Kt\u2014B3\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 49,
+   "ocr": "49. K\u2014Kt2 Q\u2014Ksq",
+   "box": [
+    420,
+    255,
+    673,
+    277
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt2\",\n  \"black\": \"Q\u2014Ksq\"\n}",
+   "seconds": 6.3
+  },
+  {
+   "number": 50,
+   "ocr": "50. K\u2014B2 K\u2014Kt2",
+   "box": [
+    420,
+    277,
+    671,
+    298
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014B2\",\n  \"black\": \"K\u2014Kt2\"\n}",
+   "seconds": 6.6
+  },
+  {
+   "number": 51,
+   "ocr": "51. B\u2014KB4 B\u2014Kt4",
+   "box": [
+    424,
+    299,
+    669,
+    320
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"B\u2014KB4\",\n  \"black\": \"B\u2014Kt4\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 52,
+   "ocr": "52. B\u2014R6ch K\u2014Rsq",
+   "box": [
+    421,
+    420,
+    672,
+    442
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014R6ch\",\n  \"black\": \"K\u2014Rsq\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 53,
+   "ocr": "53. Q\u2014Qsq Kt\u2014Ktsq",
+   "box": [
+    422,
+    442,
+    689,
+    463
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"Q\u2014Qsq\",\n  \"black\": \"Kt\u2014Ktsq\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 54,
+   "ocr": "54. Q\u2014Q4ch Kt\u2014B3",
+   "box": [
+    422,
+    524,
+    554,
+    545
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Q4ch\",\n  \"black\": \"P\u2014KR4\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 55,
+   "ocr": "55. P\u2014KR4",
+   "box": [
+    422,
+    545,
+    605,
+    566
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"\",\n  \"black\": \"P\u2014KR4\"\n}",
+   "seconds": 5.9
+  },
+  {
+   "number": 55,
+   "ocr": "55. R\u2014K7ch",
+   "box": [
+    423,
+    918,
+    685,
+    939
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"R\u2014K7ch\",\n  \"black\": \"\"\n}",
+   "seconds": 6.1
+  },
+  {
+   "number": 56,
+   "ocr": "56. K\u2014Ktsq R\u2014K8ch",
+   "box": [
+    423,
+    940,
+    685,
+    961
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Ktsq\",\n  \"black\": \"R\u2014K8ch\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 57,
+   "ocr": "57. K\u2014R2 R\u2014K7ch",
+   "box": [
+    423,
+    962,
+    685,
+    983
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014R2\",\n  \"black\": \"R\u2014K7ch\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 58,
+   "ocr": "58. K\u2014R3 Q\u2014K3",
+   "box": [
+    423,
+    984,
+    665,
+    1005
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014R3\",\n  \"black\": \"Q\u2014K3\"\n}",
+   "seconds": 5.6
+  },
+  {
+   "number": 59,
+   "ocr": "59. B\u2014Kt5 P\u2014B5ch",
+   "box": [
+    424,
+    1006,
+    681,
+    1026
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"B\u2014Kt5\",\n  \"black\": \"P\u2014B5ch\"\n}",
+   "seconds": 6.5
+  },
+  {
+   "number": 60,
+   "ocr": "60. P\u2014Kt4 R\u2014K4",
+   "box": [
+    423,
+    1027,
+    665,
+    1046
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"P\u2014Kt4\",\n  \"black\": \"R\u2014K4\"\n}",
+   "seconds": 5.9
+  }
+ ]
+}

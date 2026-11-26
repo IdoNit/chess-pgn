@@ -1,0 +1,109 @@
+{
+ "model": "qwen3-vl:4b-instruct",
+ "lines": [
+  {
+   "number": 28,
+   "ocr": "28. ... P\u2014K 4!",
+   "box": [
+    126,
+    975,
+    677,
+    999
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"I played P\u2014 B 4.\",\n  \"black\": \"The student can find out what would happen if White plays Q\u2014 Q 4! at once. I\"\n}",
+   "seconds": 5.8
+  },
+  {
+   "number": 29,
+   "ocr": "29. Q\u2014Kt 1 P\u2014K 5",
+   "box": [
+    242,
+    304,
+    522,
+    328
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Q\u2014Kt r\",\n  \"black\": \"P\u2014K 5\"\n}",
+   "seconds": 5.5
+  },
+  {
+   "number": 30,
+   "ocr": "30. P \u00d7 Kt P \u00d7 R",
+   "box": [
+    241,
+    335,
+    503,
+    358
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P \u00d7 Kt\",\n  \"black\": \"P \u00d7 R\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 31,
+   "ocr": "31. P\u2014Q 6 R\u2014K 7",
+   "box": [
+    241,
+    367,
+    525,
+    390
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-Q 6\",\n  \"black\": \"R-K 7\"\n}",
+   "seconds": 5.7
+  },
+  {
+   "number": 32,
+   "ocr": "32. P\u2014Q 7 R\u2014B 7 ch",
+   "box": [
+    241,
+    398,
+    552,
+    421
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"P-Q 7\",\n  \"black\": \"R-B 7 ch\"\n}",
+   "seconds": 6.4
+  },
+  {
+   "number": 33,
+   "ocr": "33. K\u2014Kt 1 R\u2014Kt 1 ch",
+   "box": [
+    241,
+    426,
+    564,
+    457
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"K\u2014Kt 1\",\n  \"black\": \"R\u2014Kt 1 ch\"\n}",
+   "seconds": 6.4
+  },
+  {
+   "number": 34,
+   "ocr": "34. Kt\u2014Kt 3 Q\u2014K 2",
+   "box": [
+    240,
+    461,
+    523,
+    484
+   ],
+   "kind": "A",
+   "reading": "{\n  \"white\": \"Kt\u2014Kt 3\",\n  \"black\": \"Q\u2014K 2\"\n}",
+   "seconds": 6.0
+  },
+  {
+   "number": 35,
+   "ocr": "35. R \u00d7 P",
+   "box": [
+    238,
+    836,
+    347,
+    859
+   ],
+   "kind": "B",
+   "reading": "{\n  \"white\": \"R\u00d7P\",\n  \"black\": \"\"\n}",
+   "seconds": 5.6
+  }
+ ]
+}
