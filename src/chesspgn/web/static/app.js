@@ -214,6 +214,7 @@ function renderMoves() {
 }
 
 async function renderBoardAndPanel() {
+    focusMove()
     const game = state.game
     const move = game.moves.find((m) => m.ply === state.selectedPly)
     const fen = move ? move.fen_before : (game.moves.length ? game.moves[0].fen_before : "start")
@@ -329,17 +330,45 @@ async function saveHeaders(event) {
     }
 }
 
+// One page of the game's screenshots at a time, with page buttons; wheel zooms, drag moves. The selected move's
+// page is shown and its row boxed (state.places, from /api/games/{id}/places).
 function renderPageViewer() {
+    state.places = null
     const viewer = $("page-viewer")
-    viewer.innerHTML = state.game.images.map((src) => `<img alt="" src="${esc(src)}">`).join("")
-    const view = {scale: 1, x: 0, y: 0}
-    const images = [...viewer.querySelectorAll("img")]
-    let offset = 0
-    images.forEach((img) => img.onload = () => {
-        offset = 0
-        images.forEach((i) => { i.style.top = `${offset}px`; offset += i.clientHeight + 8 })
-    })
-    const apply = () => images.forEach((img) => { img.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.scale})` })
+    const pages = state.game.images
+    const view = {scale: 1, x: 0, y: 0, page: -1}
+    viewer.innerHTML = `<div class="page-sheet"><img alt=""><div class="row-box" hidden></div></div>`
+    const sheet = viewer.querySelector(".page-sheet")
+    const img = sheet.querySelector("img")
+    const box = sheet.querySelector(".row-box")
+    const apply = () => { sheet.style.transform = `translate(${view.x}px, ${view.y}px) scale(${view.scale})` }
+    const show = (page) => {
+        if (page === view.page) return
+        view.page = page; view.scale = 1; view.x = 0; view.y = 0
+        img.src = pages[page]
+        box.hidden = true
+        $("page-label").textContent = t("review.page").replace("{n}", page + 1).replace("{total}", pages.length)
+        $("page-prev").disabled = page === 0
+        $("page-next").disabled = page === pages.length - 1
+        apply()
+    }
+    // the box sits on the row; if the row is out of view, move the page so it shows a third of the way down
+    const mark = (rect) => {
+        if (!rect) { box.hidden = true; return }
+        const [left, top, right, bottom] = rect
+        const pad = (bottom - top) * 0.45  // frame the row rather than strike through it
+        Object.assign(box.style, {left: `${left * 100}%`, top: `${(top - pad) * 100}%`,
+                                  width: `${(right - left) * 100}%`, height: `${(bottom - top + 2 * pad) * 100}%`})
+        box.hidden = false
+        const place = () => {
+            const y = top * img.clientHeight * view.scale + view.y
+            if (y < 0 || y > viewer.clientHeight * 0.8) { view.y = -top * img.clientHeight * view.scale + viewer.clientHeight / 3; apply() }
+        }
+        img.complete ? place() : (img.onload = place)
+    }
+    // right to left: the previous-page button sits on the right and points right (›), the next one left (‹)
+    $("page-prev").onclick = () => { if (view.page > 0) show(view.page - 1) }
+    $("page-next").onclick = () => { if (view.page < pages.length - 1) show(view.page + 1) }
     viewer.onwheel = (e) => {
         e.preventDefault()
         const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15
@@ -354,6 +383,25 @@ function renderPageViewer() {
     viewer.onpointerdown = (e) => { drag = {x: e.clientX - view.x, y: e.clientY - view.y}; viewer.setPointerCapture(e.pointerId) }
     viewer.onpointermove = (e) => { if (drag) { view.x = e.clientX - drag.x; view.y = e.clientY - drag.y; apply() } }
     viewer.onpointerup = () => { drag = null }
+    state.viewer = {show, mark}
+    show(0)
+    loadPlaces()
+}
+
+async function loadPlaces() {
+    const id = state.game.id
+    try {
+        const {places} = await api("GET", `/api/games/${encodeURIComponent(id)}/places`)
+        if (state.game && state.game.id === id) { state.places = places; focusMove() }
+    } catch (_error) { state.places = null }  // the page buttons still work
+}
+
+// Show the selected move's page and box its row (when we know where it is printed).
+function focusMove() {
+    const place = state.places && state.selectedPly ? state.places[state.selectedPly - 1] : null
+    if (!place || !state.viewer) return
+    state.viewer.show(place.page)
+    state.viewer.mark(place.box)
 }
 
 // ---------------------------------------------------------------- my games

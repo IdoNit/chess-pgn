@@ -12,8 +12,10 @@ import chess.pgn
 from fastapi import FastAPI, HTTPException, UploadFile
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
+from PIL import Image
 
 from chesspgn.decoder import suggest_moves
+from chesspgn.move_places import move_places
 from chesspgn.pipeline import NoGameFound, convert, game_from_text
 from chesspgn.reader import OllamaReader, PageIncomplete, Reader, ReaderUnavailable
 from chesspgn.repair import OllamaRowReader, RowReader
@@ -110,6 +112,24 @@ def create_app(store_root: Path, reader: Reader, row_reader: RowReader | None = 
         store.delete(game_id)
         return {"deleted": game_id}
 
+    @app.get("/api/games/{game_id}/places")
+    def places(game_id: str):
+        """Where each move is printed: {"places": [{"page": i, "box": [l, t, r, b] fractions or null}]}, one per
+        move. Tesseract reads the pages once per game; kept in the game's state."""
+        _record, state = store.load(game_id)
+        moves = len(_detail(store, game_id)["moves"])
+        cached = state.get("places")
+        if not cached or cached["plies"] < moves:
+            from chesspgn import repair  # looked up at call time (tests replace page_lines)
+
+            paths = [store.image(game_id, name) for name in state["image_names"]]
+            opened = [Image.open(path) for path in paths]
+            found = move_places(max(moves, 1), opened, repair.page_lines, [image.size for image in opened])
+            cached = {"plies": moves, "places": found}
+            state["places"] = cached
+            store.update(game_id, state)
+        return {"places": cached["places"][:moves]}
+
     @app.get("/api/games/{game_id}/images/{name}")
     def get_image(game_id: str, name: str):
         return FileResponse(store.image(game_id, name))
@@ -172,6 +192,16 @@ def create_app(store_root: Path, reader: Reader, row_reader: RowReader | None = 
         return FileResponse(STATIC / "index.html")
 
     app.mount("/static", StaticFiles(directory=STATIC), name="static")
+
+    @app.middleware("http")
+    async def revalidate(request, call_next):
+        """The browser checks for a fresh copy of the page and its scripts every time (a cheap 304 when nothing
+        changed), so after an update it never keeps running an old script."""
+        response = await call_next(request)
+        if request.url.path == "/" or request.url.path.startswith("/static/"):
+            response.headers["Cache-Control"] = "no-cache"
+        return response
+
     return app
 
 

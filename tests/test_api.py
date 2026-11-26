@@ -216,3 +216,32 @@ def test_a_move_added_after_the_end_moves_the_end(tmp_path):
     client.post(f"/api/games/{game_id}/end", json={"ply": 60})
     detail = client.post(f"/api/games/{game_id}/pin", json={"ply": 61, "uci": expected_moves("stein.pgn")[60].uci()}).json()
     assert len(detail["moves"]) == 61 and detail["end"] == 61
+
+
+# Where each move is printed (page and row box), for the review screen's page viewer.
+def test_places_give_each_move_its_page_and_row(tmp_path, monkeypatch):
+    from chesspgn import repair
+
+    calls = []
+
+    def lines(image):
+        calls.append(1)
+        return [("1. P-K4 P-K4", (10, 20, 300, 40))]
+
+    monkeypatch.setattr(repair, "page_lines", lines)
+    client = TestClient(create_app(tmp_path, SequenceReader(fixture("stein.ocr.txt"))))
+    game_id = upload(client, "stein.jpg").json()["games"][0]["id"]
+    moves = len(client.get(f"/api/games/{game_id}").json()["moves"])
+    places = client.get(f"/api/games/{game_id}/places").json()["places"]
+    assert len(places) == moves and places[0]["page"] == 0 and places[0]["box"] is not None
+    assert places[2]["box"] is None  # move 2 is not among tesseract's lines here
+    client.get(f"/api/games/{game_id}/places")
+    assert len(calls) == 1  # read once, then kept
+
+
+# After an update the browser must not keep running the old script: the app's files are always revalidated.
+def test_the_apps_own_files_are_not_served_stale(tmp_path):
+    client = TestClient(create_app(tmp_path, SequenceReader()))
+    for path in ("/", "/static/app.js", "/static/strings.he.json"):
+        response = client.get(path)
+        assert response.status_code == 200 and response.headers.get("cache-control") == "no-cache", path
