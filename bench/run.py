@@ -21,6 +21,7 @@ from pathlib import Path
 import chess
 import chess.pgn
 
+from bench import reason_answers
 from bench.extraction import extraction
 from bench.vlm_answers import SavedRowReader, VlmAssisted, whole_page
 from chesspgn import repair
@@ -63,6 +64,7 @@ def best_match(expected: list[str], games: list[ConvertedGame], accept: dict[int
 
 
 ROW_READER = None  # set by --ai: the real repair path, replaying saved answers
+REASON_MODEL = None  # set by --reason: replay the reasoning model's saved answers
 
 
 def run_game(book: Path, entry: dict, reader: SavedText) -> dict:
@@ -84,10 +86,16 @@ def run_game(book: Path, entry: dict, reader: SavedText) -> dict:
         return row | asdict(Score(expected=len(expected), correct=0, wrong=len(expected), extra=0, unflagged_wrong=0)) | {
             "flags": 0, "found": False}
     game, result = best_match(expected, games, accept, {2 * n - 1 + black for n, black in repaired})
+    reasoning = {}
+    if REASON_MODEL:
+        applied = reason_answers.apply(game, book / "reason" / f"{entry['id']}.json", REASON_MODEL)
+        game, result = best_match(expected, [applied.game], accept)
+        reasoning = {"reason_asked": applied.asked, "reason_accepted": applied.accepted,
+                     "reason_rejected": applied.rejected, "reason_invalid": applied.invalid}
     ai_flags = sum(f.reason == "ai_read" for f in game.flags)
     main_flags = [f for f in game.flags if not f.reason.startswith("side:")]
     output = sans(game.pgn)
-    return row | asdict(result) | {
+    return row | asdict(result) | reasoning | {
         "found": True,
         "flags": len(main_flags),
         "ai_flags": ai_flags,
@@ -104,10 +112,14 @@ def main() -> None:
     parser.add_argument("--show", type=int, default=0)
     parser.add_argument("--books", type=Path, default=BOOKS)
     parser.add_argument("--ai", action="store_true", help="the app's AI row repair, replaying the saved answers")
+    parser.add_argument("--reason", metavar="MODEL", help="replay the reasoning model's saved answers")
     parser.add_argument("--vlm", choices=["labels", "repair", "labels+repair", "tiebreak", "tiebreak+repair"], help="use the vision model's answers")
     parser.add_argument("--suffix", default=".ocr.txt", help="which saved text to use (e.g. another OCR's output)")
     args = parser.parse_args()
     reader = SavedText(args.suffix)
+    if args.reason:
+        global REASON_MODEL
+        REASON_MODEL = args.reason
     if args.ai:
         global ROW_READER
         ROW_READER = SavedRowReader()

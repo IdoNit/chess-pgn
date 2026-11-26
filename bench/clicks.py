@@ -23,9 +23,10 @@ import chess
 import chess.pgn
 
 import bench.run as run
+from bench import reason_answers
 from bench.vlm_answers import SavedRowReader, whole_page
 from chesspgn import repair
-from chesspgn.decoder import suggest_moves
+from chesspgn.decoder import Flag, suggest_moves
 from chesspgn.pipeline import ConvertedGame, NoGameFound, convert, game_from_text
 
 MAX_FIXES = 200
@@ -48,15 +49,22 @@ def _first_wrong(played: list[chess.Move], expected: list[str], accept: dict[int
     return len(expected) + 1 if len(played) > len(expected) else None
 
 
-def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]]) -> dict:
+def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]],
+           reasoned: dict[int, chess.Move] | None = None, weak: set[int] = frozenset(),
+           log: list[tuple[str, int]] | None = None) -> dict:
+    """`reasoned`: moves the reasoning model supplied (played as pins, each flagged until the reviewer acts)."""
     counts = dict(confirm=0, pick=0, drag=0, hunt=0, add=0, end=0, left=0, fixes=0)
     end: int | None = None
     pins: dict[int, chess.Move] = {}
+    reasoned = dict(reasoned or {})
     confirmed: dict[int, str] = {}  # ply -> uci the reviewer confirmed there
     last_wrong = 0
     while True:
         played = _moves(game.pgn)
         flags = {f.ply: f for f in game.flags if not f.reason.startswith("side:") and f.ply not in pins}
+        for ply, move in reasoned.items():
+            if ply in weak and ply not in pins and ply <= len(played) and played[ply - 1] == move:
+                flags[ply] = Flag(ply, "", "", "reasoned")
         wrong = _first_wrong(played, expected, accept)
         upto = (wrong - 1) if wrong is not None else 10**6
         for ply, flag in sorted(flags.items()):
@@ -66,6 +74,8 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
             if confirmed.get(ply) != uci:  # the app remembers confirmations while the move stays the same
                 confirmed[ply] = uci
                 counts["confirm"] += 1
+                if log is not None:
+                    log.append(("confirm", ply))
         if wrong is None:
             return counts
         if wrong > len(expected):  # the game runs on past the book's last move: "the game ends here"
@@ -73,6 +83,8 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
                 counts["left"] = len(played) - len(expected)
                 return counts
             counts["end"] += 1
+            if log is not None:
+                log.append(("end", len(expected) + 1))
             end = len(expected)
             game = game_from_text(game.text, dict(pins), game.headers, end=end)
             continue
@@ -85,26 +97,32 @@ def review(game: ConvertedGame, expected: list[str], accept: dict[int, list[str]
         target = board.parse_san(expected[wrong - 1])
         flag = flags.get(wrong)
         if wrong > len(played):
-            counts["add"] += 1
+            action = "add"
         elif flag is not None:
             offered = [flag.chosen, *suggest_moves(board, flag.token, played[wrong - 1])]
-            counts["pick" if board.san(target) in offered else "drag"] += 1
+            action = "pick" if board.san(target) in offered else "drag"
         elif any(p in flags for p in (wrong - 1, wrong + 1)):
-            counts["drag"] += 1
+            action = "drag"
         else:
-            counts["hunt"] += 1
+            action = "hunt"
+        counts[action] += 1
+        if log is not None:
+            log.append((action, wrong))
         counts["fixes"] += 1
         pins[wrong] = target
         last_wrong = wrong
         if end is not None and wrong > end:
             end = wrong
-        game = game_from_text(game.text, dict(pins), game.headers, end=end)
+        for ply in [p for p in reasoned if p >= wrong]:  # a fix overrides the model's answer from there on
+            del reasoned[ply]
+        game = game_from_text(game.text, {**reasoned, **pins}, game.headers, end=end)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--split", choices=["dev", "test"])
     parser.add_argument("--ai", action="store_true")
+    parser.add_argument("--reason", metavar="MODEL", help="replay the reasoning model's saved answers")
     args = parser.parse_args()
     row_reader = None
     if args.ai:
@@ -126,7 +144,12 @@ def main() -> None:
                 print(f"{book.name:16} {entry['id']}  no game found")
                 continue
             game, _score = run.best_match(expected, games, accept)
-            counts = review(game, expected, accept)
+            reasoned, weak = None, set()
+            if args.reason:
+                applied = reason_answers.apply(game, book / "reason" / f"{entry['id']}.json", args.reason)
+                game, reasoned = applied.game, applied.pins
+                weak = applied.weak
+            counts = review(game, expected, accept, reasoned, weak)
             clicks = sum(counts[k] for k in ("confirm", "pick", "drag", "hunt", "add", "end"))
             print(f"{book.name:16} {entry['id']}  {len(expected):3} plies  clicks {clicks:3}  "
                   + "  ".join(f"{k} {v:2}" for k, v in counts.items()), flush=True)
