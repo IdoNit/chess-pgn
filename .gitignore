@@ -7,3 +7,5 @@ spike/results/
 .pytest_cache/
 dist/
 bench/results/
+examples/holdout/
+_to_delete/
